@@ -232,8 +232,6 @@ The migration maintains the professional appearance and academic focus while pos
 
 For questions about this conversion or the new Quarto setup:
 - GitHub: https://github.com/KevinNavarreteParra
-- Email: REDACTED@example.com
-- LinkedIn: https://www.linkedin.com/in/kevin-navarrete-parra
 
 ---
 
