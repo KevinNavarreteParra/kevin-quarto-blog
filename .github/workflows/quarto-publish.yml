@@ -49,7 +49,6 @@
 #           target: gh-pages
 #           path: _site
 #         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 name: Quarto Publish
 
 on:
@@ -89,6 +88,5 @@ jobs:
         with:
           target: gh-pages
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
           CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}

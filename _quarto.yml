@@ -21,8 +21,6 @@ website:
         href: https://github.com/KevinNavarreteParra
       - icon: linkedin
         href: https://www.linkedin.com/in/kevin-navarrete-parra
-      - icon: envelope
-        href: !expr paste0("mailto:", Sys.getenv("CONTACT_EMAIL"))
         
   page-footer:
     center: |
