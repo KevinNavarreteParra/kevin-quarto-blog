@@ -1,0 +1,15 @@
+---
+title: "All Posts"
+page-layout: full
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  page-size: 20
+  feed: true
+---
+
+Browse all blog posts organized by date and category. Use the filters above to find content on specific topics.

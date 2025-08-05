@@ -1,0 +1,32 @@
+---
+title: "About"
+image: assets/headshot.png
+about:
+  template: trestles
+  image-width: 15em
+  image-shape: round
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/KevinNavarreteParra
+    - icon: linkedin
+      text: LinkedIn  
+      href: https://www.linkedin.com/in/kevin-navarrete-parra
+    - icon: envelope
+      text: Email
+      href: mailto:navark4@unlv.nevada.edu
+---
+
+## Political Science Ph.D. Student
+
+I am currently a Ph.D. student at the University of Nevada, Las Vegas, where I study politics in the Department of [Political Science](https://www.unlv.edu/people/kevin-navarrete-parra). My two general areas of interest are international relations and political theory, but I am particularly fascinated by international political economy and the question of justice in political thought.
+
+I am currently working on developing my Ph.D. dissertation, which will focus on Investor-State Dispute Settlement (ISDS). However, my broader interest lies in finding and working within the intersection between theory and practice, between the beautiful, idyllic realm of political philosophy and the exciting, fast-paced world of data science. As such, I am dedicating every spare moment of my cherished time as a graduate student immersing myself in sublime works of political thought and the tantalizing environment of my R console.
+
+## Education & Background
+
+I got a bachelor's degree in political science from the University of Nevada, Las Vegas, where I did my capstone on the philosophical evolution of the political constitution from Ancient Greek thought to modernity. I had the profound pleasure of graduating with a certificate from the [Great Works Academic Program](https://www.unlv.edu/liberalarts/gwac), which afforded me the opportunity to sit and converse with some of history's greatest thinkers, ranging from Thucydides and Plato to Rousseau and Hegel.^[During my time studying the great works, I had the distinct honor of being awarded the Liberal Arts General Scholar award for my essay submission of Jean-Jacques Rousseau's *The Emile*.]
+
+## Personal Interests
+
+In the past, I have dedicated my personal time to volunteering in local organizations, such as [mentoring young kids](https://involvementcenter.unlv.edu/organization/UNLVBuddies) or [walking future service dogs](https://silverstateservicedogs.com/). I also enjoy hiking the gorgeous local trails in Las Vegas--my favorite being the [Goldstrike trail](https://www.alltrails.com/trail/us/nevada/gold-strike-hot-springs-trail) just outside the city. And when I'm home, there's nothing like rewatching my favorite Star Wars movies or reading a good book.
