@@ -50,4 +50,4 @@ format:
     fig-height: 6
 
 execute:
-  freeze: auto  # Cache computational content
+  freeze: auto
