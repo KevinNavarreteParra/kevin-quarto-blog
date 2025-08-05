@@ -4,7 +4,7 @@ project:
 
 website:
   title: "Kevin Navarrete-Parra"
-  site-url: "https://kevinnavreteparra.github.io/kevin-quarto-blog"
+  site-url: "https://kevinnavreteparra.github.io/kevin-quarto-blog/"
   description: "A place for my notes and thoughts on political science, data science, and research methods"
   
   navbar:
