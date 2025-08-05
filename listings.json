@@ -1,6 +1,6 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/posts.html",
     "items": [
       "/posts/horology/writing-on-watches.html",
       "/posts/Notes/probability_axioms.html",
@@ -29,7 +29,7 @@
     ]
   },
   {
-    "listing": "/posts.html",
+    "listing": "/index.html",
     "items": [
       "/posts/horology/writing-on-watches.html",
       "/posts/Notes/probability_axioms.html",
