@@ -1,0 +1,94 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Notes
+- Model
+- Data Science
+- Multilevel
+- Continuous
+date: '2023-10-24'
+description: Quick notes for continuous multilevel models.
+draft: true
+format: html
+title: Continuous Multilevel Models
+toc: true
+---
+
+*I am writing quick and easy R guides for my didactic purposes and to provide useful starting places for my peers in grad school. If you see that I have made a mistake or would like to suggest some way to make the post better or more accurate, please feel free to [email][1] me. I am always happy to learn from others' experiences!* 
+
+# Table of contents
+1. [Introduction](#section1)
+    1. [Basic Multilevel Model](#subsection1)
+    2. [Model-Building](#subsection2)
+    3. [Diagnostic Statistics](#subsection3)
+    4. [Centering](#subsection4)
+2. [Conditional Probabilities and Odds Ratios](#section2)
+3. [Running it in R](#section3)
+4. [Diagnostic Statistics](#section4)
+
+
+
+# Introduction <a name="section1"></a>
+
+Multilevel models work under very different circumstances than the models I've covered elsewhere. Whereas earlier models dealt with the linear relationship between the predictors and the response, multilevel models deal with hierarchical data in which some observations are nested within others. The logic behind modeling a relationship with a multilevel model lies in the independence assumption violation. In other words, if there exists greater homogeneity within groups than there is between groups, one should probably employ a multilevel model. 
+
+When trying to determine whether the multilevel model is appropriate, a good first step is to look at the between-group variation as opposed to the within-group variation of your data. Simply put, if you have a set of internally homogenous groups, but they notably vary from each other, your data likely violate the independence assumption. To test whether this is happening, you'll want to find the interclass correlation coefficient, which is the ratio of between-group variance to total variance. 
+
+## Basic Multilevel Model <a name="subsection1"></a>
+
+If a multilevel model does prove to be appropriate for the given data, one can model a basic two-level model as 
+
+$$ 
+
+Level 1 : Y_\{ij} = \beta_\{0j} + \beta_\{1j}X_\{ij} + r_\{ij} \\
+Level 2 : \beta_\{0j} = \gamma_\{00} + \gamma_\{01}Z_j + u_\{0j} \\
+beta_\{10} = \gamma_\{10} + \gamma_\{11}Z_j + u_\{1j}
+
+$$
+
+where $Y_\{ij}$ is the dependent variable for the $i$th observation in the $j$th group. $\beta_\{0j}$ is the intercept for the first level, $\beta_\{1j} is the first-level slope for the given coefficient in the $j$th group. $r_\{ij}$ refers to the random error, which, in this context, indicates the degree to which the within-group observation deviates from the respective group average. 
+
+Shifting the focus to the model's second level, the $\gamma_\{00}$ value reflects the outcome variable's overall intercept across groups. $\gamma_\{01}$ is the level one slope's mean when the level two predictors are held constant. $\gamma_\{11} is the level two predictor's effect. $u_\{0j}$ and $u_\{1j}$ represent the random effects with respect to the first level's intercept and the slope of the predictor(s) across all groups, respectively. 
+
+## Model-Building <a name="subsection2"></a>
+
+As we can see, multilevel models are more complicated than single-level models, and one would likely not begin by modeling something in this way. As we saw above, a solid indicator that one should use a multi-level model is a high interclass correlation coefficient. To find this value, it is good to start by specifying an unconditional means model with no predictors in either level. Effectively, this model works a lot like a one-way random effects ANOVA. Moreover, this model will be useful for comparison's sake because we can use it like the null model against which we compare single-level linear models. 
+
+Once that initial model is constructed, one can begin by adding predictors to the first level, which will build a random-intercept model and a random-coefficient model. Note that random-intercept models allow only the intercepts to vary freely along higher-level groups while the level-one slopes are fixed. On the other hand, the random coefficient model allows both level-one intercepts and coefficients to vary across higher-level groups. 
+
+After building the rudimentary model with level-one predictors, one can begin to add level-two predictors to the model's second level. 
+
+## Diagnostic Statistics <a name="subsection3"></a>
+
+The multilevel models for continuous dependent variables I'll cover below utilize many of the same diagnostic statistics as the [logit model][2] I discussed elsewhere. As such, one could run a likelihood ratio test, AIC, or BIC after specifying the multilevel model. 
+
+Importantly, the first two-level model specified above will be a good point of comparison when running a likelihood ratio test. This is because the likelihood ratio test teases out the differences between a full model and its nested counterparts. 
+
+## Centering <a name="subsection4"></a>
+
+Centering is a process by which we transform the independent variables in a model so that they are easier to interpret when the model is run. Usually, 
+
+
+# Conditional Probabilities and Odds Ratios <a name="section2"></a>
+
+
+
+
+# Running it in R <a name="section3"></a>
+
+
+
+
+
+
+
+
+# Diagnostic Statistics <a name="section4"></a>
+
+
+
+
+
+[1]: navark4@unlv.nevada.edu
+
+[2]: https://www.kevinparra.co/blog/Notes/logit-notes

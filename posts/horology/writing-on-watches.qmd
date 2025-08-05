@@ -1,0 +1,33 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Horology
+- Writing
+date: '2025-03-06'
+description: Setting out to write more and explore a hobby.
+format: html
+title: Writing on Watches
+toc: true
+---
+
+I resolved at the turn of the year to write more, which I did for all of three or four weeks before I began to falter. From the outset, I settled on writing about my academic life--which I'm still interested in doing--because I thought it would be a good way to continue having material about which I could write on a weeklyish basis. When I set out to do this, I couldn't think of much else to write about, though to be fair, I didn't think too hard about what I could write. 
+
+Now that my prospectus defense is done and I'm ABD (finally), I've been trying to think of other things I could write. The most obvious path is to keep writing about my academic life, perhaps expanding the topic to include things I'm learning about machine learning, international investment law, and other topics I'm pursuing. But I like other stuff too. It doesn't all have to be about school.
+
+Fortunately, I've been thinking a lot about watches recently. I've had a tiny collection for a while now, and I've been meaning to expand it, but other things keep getting in the way. So a good step to accomplish both goals--writing and expanding my watch collection--is to write about watches. Here I can find a topic that readily interests me while also developing a hobby. And goodness knows, I need more hobbies these days. 
+
+I'm writing this inaugural post more to collect my thoughts than anything else. A game plan of sorts. If I'm going to write about watches, I'd like to have something of a plan I can loosely follow. As much as I love watches, I don't think I could keep up a weekly schedule just on this, so I don't want to start off with a lofty, albeit unrealistic, goal. As such, I won't aim to write about watches on a schedule. Instead, I'll write something here and there, whenever I buy a new watch or whenever I have something to say about a watch I already own.
+
+I think I'll start with a post about the most recent watch I purchased, and 1948 Pobeda manufactured in the post-war Soviet Union. I've loved Russian watches for a while now and I've wanted to add some to my collection for as long as I can remember. This will be my first Russian watch, and, as I'll probably elaborate on when I write about it after it arrives, its history is exciting and fascinating. I can't wait for it to arrive. 
+
+I'd also like to take some deep dives into the history of watchmaking, particularly in the Soviet Union. I've read a bit about it, and I've pieced together a rough timeline of the major events in Soviet watchmaking, but I'd like to delve deeper into the subject--especially as it relates to the pieces that I intend to buy. 
+
+I would also like to learn some more about what makes a watch tick. I know some basics about mechanical movements, but I typically end up forgetting anything more technical I learn within a few days. I think here I'll take a similar approach to what I've done to learn statistics and machine learning: whatever I want to learn I'll break apart first, then put back together. I know there are a few watchmaking sets I can buy online that come with detailed instructions about putting together a simple movement. Another good option would be to just buy some cheap movements--maybe an NH35 or a Miyota--and take them apart. If I can successfully put them back together, then I'll know I've learned something that'll stick. 
+
+I think that'll be a good start. Broadly, I have three goals: 
+
+1. Write about the watches I own and the watches I buy.
+2. Learn more about the history of watchmaking, particularly in the Soviet Union, and write about it.
+3. Learn more about how watches work and write about my experiences learning.
+
+All three of which I think will be fun and interesting for me to pursue. I'm not putting any pressure on myself to write on a schedule--at least not about watches--so I think I can keep this up more readily. I'll try to write about other stuff too.

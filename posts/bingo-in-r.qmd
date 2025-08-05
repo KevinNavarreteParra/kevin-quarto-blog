@@ -1,0 +1,80 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- R
+- Bingo
+- Code
+date: '2024-11-03'
+description: A quick guide to making a bingo card in R.
+draft: false
+format: html
+title: How to Make a Bingo Card in R
+toc: true
+---
+
+# Table of contents
+1. [Introduction](#section1)
+2. [Creating the Bingo Card](#section2)
+3. [Making a Bingo Card Generator](#section3)
+
+# Introduction <a name="section1"></a>
+
+I recently found myself wanting to make a few bingo cards for an election day game night with some friends. We had a list of options that would go on the cards, but we didn't have a way to generate the cards themselves. I'm sure there's a website out there that would do it easily, but I thought it would be fun to see if anyone has tried doing this in R. After all, you can make just about anything in `ggplot2`, so why not bingo cards?
+
+I did a quick search and found some interesting code on R Bloggers that made things similar to bingo cards as well as an R package by Jenny Bryan and Dean Attali, the code for which can be found on [GitHub](https://github.com/jennybc/bingo?tab=readme-ov-file). However, I also found a [simple blog post](https://qntkhvn.netlify.app/projects/bingo) by Quang Nguyen that provided a straightforward way to make bingo cards using `ggplot2`. I decided to use his code as a starting point for my bingo cards.[^1]
+
+# Creating the Bingo Card <a name="section2"></a>
+
+The first step was to run Nguyen's code to see what the bingo cards would look like. His original code is as follows: 
+
+```
+library(tidyverse)
+
+# replace this with whatever you're interested in
+str <- letters
+
+set.seed(1)
+tibble(what = sample(str, 25),
+       row = rep(1:5, 5),
+       col = rep(1:5, each = 5)) %>% 
+  mutate(what = ifelse(row == 3 & col == 3, 
+                       "Free space", what)) %>% 
+  ggplot(aes(row, col)) +
+  geom_tile(color = "black", fill = "white") +
+  geom_text(aes(label = what)) +
+  coord_fixed() +
+  theme_void()
+```
+
+The code ran well, generating a 5x5 plot with random letters in each cell. Morover, the center cell was labeled "Free space", which is a useful feature. However, when I ran the code with my bingo card options, I found that the unformatted text was too large for the cells, leading to significant lack of readability. After some experimentation, I adjusted the font size, added some text wrapping, and updated some of the formatting to make the cards more to my liking. 
+
+
+The output looked like this: 
+
+![An example of a messy bingo card](/static/images/messy-bingo.png)
+
+As you can see, the card is fairly illegible, which is not ideal. However, after some tweaking, I was able to generate a card that looks like this: 
+
+![An example of a cleaned up bingo card](/static/images/clean-bingo.png)
+
+
+I used the `stringr` package to wrap the text and I added additional facets to the `ggplot2` code to make the cards more to my liking. Despite being quite pleased with the final product, I wanted to take things a step further by making a bingo card generating function I could use for future game nights. 
+
+# Making a Bingo Card Generator <a name="section3"></a>
+
+I started by wrapping the code above in a function that would take a character vector as an argument to fill the cells. As I progressed, though, I realized that I could make the function more flexible by allowing the user (in this case, me) to specify a series of arguments that would control the card's appearance. 
+
+Ultimately, I ended up with the `make_bingo` function, which you can find in my [personal utility package, `kevinsRepo`](https://github.com/KevinNavarreteParra/kevinsRepo?tab=readme-ov-file). The final product allows the user to specify the text wrapping, font size, and title, among other things. More importantly, it offers a simple, yet effective way to generate bingo cards for any occasion while adding a greater level of customization than the original code. To generate a test bingo card, simply run:
+
+```
+devtools::install_github("KevinNavarreteParra/kevinsRepo")
+
+library(kevinsRepo)
+
+make_bingo(letters)
+```
+
+I hope you find this function as useful as I do!
+
+
+[^1]: I did this instead of using the extand Shiny app provided by Jenny Bryan's and Dean Attali's `bingo` package because I wanted to have more granular control over the cards' appearance.

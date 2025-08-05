@@ -1,0 +1,225 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- LaTeX
+- Word
+- Code
+- Pandoc
+date: '2024-12-16'
+description: A quick guide to converting a LaTeX document to a DOCX file.
+format: html
+title: How to Convert a LaTeX Document to a DOCX File
+toc: true
+---
+
+# Table of contents
+1. [Introduction](#section1)
+2. [Setup](#section2)
+3. [Conversion](#section3)
+4. [A Note on Complex Tables*](#section4)
+5. [Conclusion](#section5)
+
+
+# Introduction <a name="section1"></a>
+
+I found myself needing to convert `.tex` documents into Word documents recently, so I sought out a solution that would mean I could avoid manually copying and pasting from one document to the other (which is a pain). While looking for a solution online, I saw a few suitable methods, each with their own minor drawbacks.
+
+A simple solution is to simply open a `.pdf` file in Word, which will then convert the document to something editable in the word processor. However, this method often leads to some finicky formatting issues that I'd rather avoid. On top of that, something always feels off about those conversions. I can't quite put my finger on it--it's as if there is a formatting uncanny valley that continually throws me off. 
+
+There are other solutions, like tex2rtf, which can convert the base file into a rich text format that Word can read. However, I wasn't a fan of this one for a few reasons. First, the program installation was a bit of a pain. More importantly, the formatting was still a little off! 
+
+Pandoc, however, does a pretty good job of converting between the two formats--especially if you have a solid reference doc you can use to ensure the formatting is consistent. Additionally, I was already a little familiar with Pandoc due to my extensive experience with Markdown and RMarkdown, so I figured I'd give it a shot.
+
+# Setup <a name="section2"></a>
+
+Before you can convert a LaTeX document to a DOCX file, you'll need to have a few things in place. First, you'll need to have Pandoc installed on your machine. If you don't have it installed, you can download it from the [Pandoc website](https://pandoc.org/installing.html).
+
+If you're on a Mac and already have Homebrew installed, then just run: 
+
+```bash
+brew install pandoc
+```
+
+which will run through the process for you automatically.
+
+In addition to the local Pandoc installation, you'll want: 
+
+- A LaTeX document to convert; 
+- A reference `.docx` file to ensure the formatting is consistent; 
+- A `.bib` file if you're using citations in your document; and
+- Your terminal open and ready to go.
+
+# Conversion <a name="section3"></a>
+
+Before I get into the specifics, I should note that I'm using a Mac for this process. If you come across any problems on Windows or Linux, you might need to adjust the commands slightly.
+
+To convert my `.tex` file to a `.docx` file, I first navigated to the directory from which I'd like to operate. 
+
+```bash
+cd /path/to/your/directory
+```
+
+Once in, I ran the following command: 
+
+```bash
+pandoc document/name.tex \
+--citeproc  --bibliography=works-cited.bib \
+-o document/name.docx \
+--reference-doc "Turabian Style Research paper.docx"
+```
+
+This command does a few things:
+
+- It begins by calling the `pandoc` command, which will convert the document;
+- It specifies the `.tex` file you'd like to convert, which in this case is a file called `name.tex` in the `document/` directory;
+- It tells Pandoc to use the `citeproc` filter to handle citations, which is necessary if you're using a `.bib` file;
+- It specifies the `.bib` file you're using for citations using the `--bibliography` flag;
+- It tells Pandoc to output (`-o`) the file as a `.docx` file, which will be named `name.docx` in the `document/` directory; and
+- It specifies the reference document you'd like to use to ensure the formatting is consistent.
+
+In this case, I'm using a Turabian-style research paper as my reference document, but you could use any `.docx` file you'd like.
+
+
+# A Note on Complex Tables* <a name="section4"></a>
+
+One of the issues I've run into with this process is that Pandoc doesn't always do a good job at handling tables--especially complex ones. If you have a table that's more than just a simple grid, you might run into some issues with the conversion. Namely, the table just won't appear in the converted Word document. 
+
+After some digging, I found that the best way to handle this issue is to convert the table to an image and then insert the image into the Word document. While this is more of a workaround than a true solution, it gets the job done and ensures that the output document looks the way you want it without too much hassle.
+
+By complex tables, I'm referring to something along these lines, which includes table notes and a resize box command:
+
+```latex
+\usepackage{threeparttable}
+\usepackage{graphicx}
+
+\begin{document}
+\begin{table}[th]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{threeparttable}
+    \caption{Variable Descriptions}
+    \label{tab:variables}
+    \begin{tabular}{l p{5cm} l l l}
+        \hline
+        \textbf{Variable} & \textbf{Description} & \textbf{Hypothesis} & \textbf{Direction} & \textbf{Source} \\ 
+        \hline
+        \multicolumn{5}{l}{\emph{Dependent Variable}} \\
+        Variable A & Placeholder description for variable A & -- & -- & Source 1 \\ 
+        \hline
+        \multicolumn{5}{l}{\emph{Independent Variables}} \\
+        Variable B & Placeholder description for variable B & H1 & $+$ & Source 1 \\ 
+        Variable C & Placeholder description for variable C & H2 & $-$ & Source 1 \\ 
+        Variable D & Placeholder description for variable D & H3 & $-$ & Source 2 \\ 
+        Variable E & Placeholder description for variable E & H4 & $-$ & Source 3 \\ 
+        Variable F & Placeholder description for variable F & H4 & $-$ & Source 3 \\ 
+        Variable G & Placeholder description for variable G & H4 & $-$ & Source 3 \\ 
+        Variable H & Placeholder description for variable H & H4 & $-$ & Source 3 \\
+        \hline
+    \end{tabular}
+    \begin{tablenotes}
+        \small
+        \item[*] Placeholder note content for table details.
+    \end{tablenotes}
+    \end{threeparttable}%
+    }
+\end{table}
+\end{document}
+```
+
+The first step to converting this table to an image is to extract the table from the original `.tex` document and save it as a seperate `.tex` file that looks something like this:
+
+```latex
+\documentclass[border=10pt, varwidth]{standalone}
+\usepackage{threeparttable}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{lmodern}
+
+\begin{document}
+
+\begin{table}[th]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{threeparttable}
+    \caption{Variable Descriptions}
+    \label{tab:variables}
+    \begin{tabular}{l p{5cm} l l l}
+        \hline
+        \textbf{Variable} & \textbf{Description} & \textbf{Hypothesis} & \textbf{Direction} & \textbf{Source} \\ 
+        \hline
+        \multicolumn{5}{l}{\emph{Dependent Variable}} \\
+        Variable A & Placeholder description for variable A & -- & -- & Source 1 \\ 
+        \hline
+        \multicolumn{5}{l}{\emph{Independent Variables}} \\
+        Variable B & Placeholder description for variable B & H1 & $+$ & Source 1 \\ 
+        Variable C & Placeholder description for variable C & H2 & $-$ & Source 1 \\ 
+        Variable D & Placeholder description for variable D & H3 & $-$ & Source 2 \\ 
+        Variable E & Placeholder description for variable E & H4 & $-$ & Source 3 \\ 
+        Variable F & Placeholder description for variable F & H4 & $-$ & Source 3 \\ 
+        Variable G & Placeholder description for variable G & H4 & $-$ & Source 3 \\ 
+        Variable H & Placeholder description for variable H & H4 & $-$ & Source 3 \\
+        \hline
+    \end{tabular}
+    \begin{tablenotes}
+        \small
+        \item[*] Placeholder note content for table details.
+    \end{tablenotes}
+    \end{threeparttable}%
+    }
+\end{table}
+
+\end{document}
+```
+
+Make sure to customize your preamble to match the necessary packages and formatting for your table. 
+
+In this new `.tex` document, I used the `standalone` document class to ensure that the table is the only thing on the page, facilitating the conversion to an image. Once compited using `pdflatex`, the table will be saved as a `.pdf` file. 
+
+Next, you'll want to use a pdf to image converter to convert the `.pdf` file to a `.png` file. I found that the `imagemagick` package works well for this--especially since I can do everything from the command line without needing to open a separate program. If you don't have this installed already, you can do so by running:
+
+```bash
+brew install imagemagick
+```
+
+If you don't already have the `ghostscript` package installed, you'll need to install that as well since it's a dependency for `imagemagick`. You can do so by running:
+
+```bash
+brew install ghostscript
+```
+
+Once you have `imagemagick` installed, you can convert the `.pdf` file to a `.png` file by running:
+
+```bash
+magick -density 300 table.pdf -quality 100 table.png
+```
+
+which will output a `.png` file that you can call in your `.tex` file instead of the original table. 
+
+The `magick` command is the ImageMagick command line tool, which you can use to convert images from one format to another. The `-density` flag specifies the resolution of the image, and the `-quality` flag specifies the quality of the image. You can adjust these values as needed to get the desired output.
+
+```latex
+\usepackage{graphicx}
+
+\begin{document}
+\begin{figure}
+    \centering
+    \label{fig:foo-table}
+    \includegraphics[width=\textwidth]{images/table.png}
+\end{figure}
+\end{document}
+```
+
+Make sure to adjust the path to the image directory as needed, of course, and ensure that any cross-references are updated to reflect the new table format.
+
+After doing this, you can run the Pandoc command as usual, and the table will appear in the Word document as an image.
+
+While this is a bit of a workaround, it's a relatively quick process that ensures the table appears in the Word document as you'd like. Moreover, it has a positive externality, depending on how you look at it: it forces you to render tables on their own, meaning that you can fiddle with them in a more controlled environment without having to worry about rendering the rest of the document.[^1]
+
+
+# Conclusion <a name="section5"></a>
+
+While this is still not a perfect solution, it's a pretty good one. The formatting is consistent, and the process is relatively quick. If you're looking to convert a LaTeX document to a Word document, I'd recommend giving Pandoc a shot. It's a versatile tool that can handle a variety of conversions, and it's relatively easy to use once you get the hang of it. And, most importantly, it doesn't have that weird uncanny valley look that you might get with other conversion methods.
+
+~~One issue I'm still having is that it isn't doing a good job converting my LaTeX tables to Word tables. When I find a solution to this issue, I'll be sure to update this post.~~
+
+[^1]: Regardless, I'd still prefer to have the table within the `.tex` document itself, rather than on its own. However, if you're in the position of needing to convert a LaTeX document to a Word document, this is a solid workaround that gets the job done. 

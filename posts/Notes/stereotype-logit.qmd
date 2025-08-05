@@ -1,0 +1,81 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Notes
+- Stereotyped Logit
+- Model
+- Data Science
+date: '2023-09-24'
+description: Quick notes for Stereotyped Logit Models.
+draft: false
+format: html
+title: Stereotype Logit Model
+toc: true
+---
+
+*I am writing quick and easy R guides for my didactic purposes and to provide useful starting places for my peers in grad school. If you see that I have made a mistake or would like to suggest some way to make the post better or more accurate, please feel free to [email][1] me. I am always happy to learn from others' experiences!* 
+
+# Table of contents
+1. [Model Formula](#section1)
+2. [Odds Ratios](#section2)
+3. [Running it in R](#section3)
+
+*Note that I explore much of the information for Sections 2-4 more thoroughly in other posts. Of particular utility will be my posts on [logit models][2] and [continuation ratio models][3].*
+
+# Model Formula <a name="section1"></a>
+
+The stereotype logit model is an interesting generalization of the proportional odds model, as we will see below because it adds a series of nuances to categorical data exploration. One of the primary use cases for this model instead of the PO model is when the proportional odds assumption does not hold, which is unsurprisingly common for most data. Of course, you could fit the PPO and GOL models if your data don't follow the PO assumption, but the SL model might be more interesting. 
+
+The model's equation is as follows: 
+
+$$ logit[\pi (j, J)] = ln \left( \frac{P(Y = j | x_1, x_2, ..., x_p)}{P(Y = J | x_1, x_2, ..., x_p)} \right) = \alpha_j + \phi_j(\beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p) $$
+
+where J is the baseline (i.e., last) category for this given equation, $j=1,2,..., J - 1$, Y is the ordinal response variable with J categories, \alpha_j represents the intercepts, the \beta values are the coefficients for X variables, and \phi_j represents the constraints or scale parameters used to determine whether the outcome variable is ordinal. Importantly, \phi_j assumes that 
+
+$$ 1 = \phi_1 > \phi_2 > \phi_3 > ... > \phi_{J-1} > \phi_J = 0 $$
+
+Notice that the constraints are ordered from one to zero, with each subsequent constraint being smaller than the last. Therefore, $\phi_1 = 1$ and $\phi_J = 0$, the constraints in the middle falling somewhere in between. What this does is force the model to have *ordered* categorical variables. Suppose, then, that you have a variable where J = 4. Once you know what $\phi_1$ and $\phi_4$ are, the only constraints you have left to estimate are $\phi_2$ and $\phi_3$. 
+
+As you can probably guess from the model formula above, the \phi values are distributed across your coefficients, leading to 
+
+$$ \phi_1\beta > \phi_2\beta > \phi_3\beta > \phi_4\beta $$ 
+
+assuming we continue with our earlier example. As you can see here, the scale parameters (aka, constraints) ensure ordinality in the model. 
+
+Naturally, this leads to a minor complication when calculating the odds of being in category j versus category m. Rather than simply exponentiating the coefficients, we take the exponential of $[(\alpha_j - \alpha_m) + (\phi_j - \phi_m)\beta]$
+
+
+
+# Odds Ratios <a name="section2"></a>
+
+The stereotype logit model estimates the log odds of being in a given category relative to the baseline. Therefore, generating the odds ratio can be done by 
+
+$$ Odds(Y = j vs. Y = J) = \frac{P(Y = j)}{P(Y = J)} $$
+
+where j can be any category from 1 to J - 1. Recall, however, that the log odds of being in a given category as opposed to the baseline need to be multiplied by the scale parameters 4\phi_j$, as we saw above. 
+
+# Running it in R <a name="section3"></a>
+
+Running the stereotype logit model in r works with the `rrvglm` function from the `VGAM` package. An SL model would look like the following: 
+
+``` R 
+sl.model <- rrvglm(y ~ x1 + x2 + x3, family = multinomial, rank = 1, data = data)
+summary(sl.model)
+
+```
+
+where `rank = 1` indicates to R that the model is a one-dimensional SL model. 
+
+After you run your model, be sure to get the odds ratio table to interpret the results. 
+
+``` R 
+
+sl.or <- exp(coef(sl.model, matrix = TRUE))
+
+```
+
+[1]: navark4@unlv.nevada.edu
+
+[2]: https://www.kevinparra.co/blog/Notes/logit-notes
+
+[3]: https://www.kevinparra.co/blog/Notes/continuation-ratio-model

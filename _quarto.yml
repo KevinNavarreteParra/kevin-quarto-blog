@@ -1,0 +1,54 @@
+project:
+  type: website
+  output-dir: docs  # For GitHub Pages
+
+website:
+  title: "Kevin Navarrete-Parra"
+  site-url: "https://kevinnavreteparra.github.io/blog"
+  description: "A place for my notes and thoughts on political science, data science, and research methods"
+  
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - href: posts.qmd
+        text: Posts
+      - href: projects.qmd
+        text: Projects
+    right:
+      - icon: github
+        href: https://github.com/KevinNavarreteParra
+      - icon: linkedin
+        href: https://www.linkedin.com/in/kevin-navarrete-parra
+      - icon: envelope
+        href: mailto:REDACTED@example.com
+        
+  page-footer:
+    center: |
+      © 2025 Kevin Navarrete-Parra. All rights reserved.
+    background: primary
+
+  google-analytics: "G-REDACTED"
+  cookie-consent: true
+  open-graph: true
+
+format:
+  html:
+    theme: 
+      - cosmo
+      - custom.scss
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    html-math-method: katex
+    citations-hover: true
+    footnotes-hover: true
+    code-fold: show
+    code-tools: true
+    fig-width: 8
+    fig-height: 6
+
+execute:
+  freeze: auto  # Cache computational content

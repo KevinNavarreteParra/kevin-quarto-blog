@@ -1,0 +1,103 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Notes
+- Model
+- Data Science
+- Poisson
+date: '2023-10-08'
+description: Quick notes for Poisson Model.
+draft: false
+format: html
+title: Poisson Model
+toc: true
+---
+
+*I am writing quick and easy R guides for my didactic purposes and to provide useful starting places for my peers in grad school. If you see that I have made a mistake or would like to suggest some way to make the post better or more accurate, please feel free to [email][1] me. I am always happy to learn from others' experiences!* 
+
+# Table of contents
+1. [Model Formula](#section1)
+2. [Incidence Ratios](#section2)
+3. [Running it in R](#section3)
+4. [Diagnostic Statistics](#section4)
+
+
+# Model Formula <a name="section1"></a>
+
+Poisson models are useful for running regressions on count response variables (i.e., nonnegative integers that follow a Poisson distribution). You can represent this model as 
+
+$$ ln(\mu) = \alpha + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p $$
+
+where $\mu$ represents the average or expected average of observed events in the dependent variable, $\alpha$ is the intercept, and the $\beta$ values are the coefficients. As you can see, $ln(\mu)$ uses the log link. 
+
+Importantly, the Poisson model assumes that the mean of the count response variable is equal to the variable's variance, such that $E(Y) = Variance (Y) = \mu$. We get the predicted mean for the count response by exponentiating both sides of the equation. 
+
+$$ \mu = exp( \alpha + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p ) $$
+
+We can also specify the model so that the response variable represents a count value within a given set of times, which is called the incidence rate. This model can be specified as 
+
+$$ ln(\mu /t) = \alpha + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p $$
+
+where $t$ is a period of time and $\mu /t$ indicates the incidence rate. You can also represent this equation as 
+
+$$ ln(\mu) = ln(t) + \alpha + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p $$
+
+where $ln(t)$ is the offset in the model equation.
+
+The Poisson model assumes the response variable follows the Poisson probability distribution, which can be expressed as 
+
+$$ P(y) = \frac{e^{-u} u^y}{y!} $$
+
+where y is the count value of the response variable, $\mu$ is the expected or average of events, and $y!$ is a factorial of the response. Note that $\mu$ is often represented as $\lambda$ as well. 
+
+In the Poisson distribution, the count variable's mean is equal to the variable's variance. 
+
+$$ \mu = E(y) = Variance(y) $$
+
+The log-likelihood function for the Poisson distribution can be expressed as 
+
+$$ l(\mu;y) = \sum^{n}_{i=1}{y_1 ln\mu_i - \mu_i - ln(y_i!)} $$
+
+where $l(\mu;y)$ is the log likelihood function of $\mu$ given the values of the count variable. 
+
+
+
+# Incidence Ratios <a name="section2"></a>
+
+Returning to the incidence rate from above, the Poisson model estimates the log of the expected counts of an event, given the predictor variables. We can get the expected counts of a given even by exponentiating both sides of the equation, so that 
+
+$$ \mu = exp(\alpha + \beta X) $$ 
+
+Once you have the incidence rate calculated, you can find the incidence ratio, which will tell you how the count value will change with a one-unit increase in the given independent variable. You can take the incidence rate to calculate the percent change in the response by doing the following: 
+
+$$ (Incidence Rate - 1) * 100 $$
+
+# Running it in R <a name="section3"></a>
+
+You can run a Poisson regression in R by using either the `glm` function from the `stats` package or the `vglm` function from the `VGAM` package. The easiest way of doing this, though, is by using the `glm` function since that comes with base R. Because of that, I'll be focusing on the `glm` function, but the code should not be too different for the `vglm` function. 
+
+```
+
+poi.mod <- glm(y ~ x1 + x2 + x3, family = poisson, data = data)
+summary(poi.mod)
+
+poi.irr <- exp(coef(poi.mod))*sqrt(diag(vcov(poi.mod)))
+
+```
+
+# Diagnostic Statistics <a name="section4"></a>
+
+The diagnostic statistics are mostly the same as those for other models covered, so this section will be brief. The one thing worth pointing out is that you can run a likelihood ratio test by fitting a null model. 
+
+```
+
+anova(poi.mod, update(poi.mod, ~ 1), test = "Chisq")
+
+```
+
+The above code will compare the fitted model to a null model using a Chi-squared test. A significant result indicates that the fitted model fits your data better than the null model. 
+
+You can also run Pseudo-$R^2$, AIC, and BIC tests for this model. 
+
+
+[1]: navark4@unlv.nevada.edu

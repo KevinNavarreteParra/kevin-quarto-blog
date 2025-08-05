@@ -1,0 +1,84 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Notes
+- Bayes
+- Formula
+- Data Science
+date: '2024-09-21'
+description: Quick notes on Bayes' Formula and how to Calculate it.
+draft: false
+format: html
+title: Notes on Bayes' Formula
+toc: true
+---
+
+*I am writing these quick notes for my didactic purposes and to provide useful starting places for my peers in grad school. If you see that I have made a mistake or would like to suggest some way to make the post better or more accurate, please feel free to [email][1] me. I am always happy to learn from others' experiences!* 
+
+
+# Table of contents
+1. [Bayes' Theorem](#section1)
+2. [Going Through an Example](#section2)
+
+# Bayes' Theorem <a name="section1"></a>
+
+Bayes' Theorem is a fundamental concept in probability theory that allows us to update our beliefs about the probability of an event occurring given new information. The formula is written as:
+
+$$ P(A|B) = \frac{P(B|A) * P(A)}{P(B)} $$
+
+where $P(A|B)$ is the probability of event A occurring given that event B has occurred, $P(B|A)$ is the probability of event B occurring given that event A has occurred, $P(A)$ is the prior probability of event A occurring, and $P(B)$ is the prior probability of event B occurring.
+
+The formula can be interpreted as follows:
+
+- $P(A|B)$ is the posterior probability of event A occurring given that event B has occurred.
+- $P(B|A)$ is the likelihood of observing event B given that event A has occurred.
+- $P(A)$ is the prior probability of event A occurring.
+- $P(B)$ is the prior probability of event B occurring.
+
+$P(B)$ can be calculated as:
+
+$$ P(B) = P(B|A) * P(A) + P(B|\neg A) * P(\neg A) $$
+
+where $P(\neg A)$ is the probability of event A not occurring.
+
+
+# Going Through an Example <a name="section2"></a>
+
+Let's go through an example to illustrate how Bayes' Theorem can be used to update our beliefs about the probability of an event occurring given new information.
+
+Suppose you have two servers, Server 1 and Server 2. Server 1 hosts 70% of the website traffic and Server 2 hosts the remaining 30%. Server 1 has a 98% uptime rate, while Server 2 has 96% uptime rate. A user reports that the website is down. What is the probability that the website is down because of Server 2? 
+
+Let's define the events as follows:
+
+- A: Server 1 hosts the website;
+- B: Server 2 hosts the website;
+- D: The website is down.
+
+We want to calculate $P(A|D)$, the probability that Server 1 hosts the website given that the website is down. 
+
+We can calculate $P(A|R)$ using Bayes' Theorem as follows: 
+
+$$ P(A|D) = \frac{P(D|A) * P(A)}{P(D)} $$
+
+where $P(D|A)$ is the probability of the website being down given that Server 1 was hosting it, $P(A)$ is the prior probability of Server 1 hosting the site, and $P(D)$ is the prior probability of the site being down.
+
+We can calculate $P(D|A)$ as the probability of the website being down given it's hosted by Server 1 $.02$, and $P(A)$ as the prior probability of the website being hosted by Server 1, which is $.7$.
+
+To calculate $P(D)$, we can use the law of total probability:
+
+$$ P(D) = P(D|A) * P(A) + P(D|B) * P(B) $$
+
+where $P(D|A)$ is the probability of the website being down given that it was hosted on Server 1, which is $.02$. $P(A)$ is the prior probability that the website was hosted on Server 1, which is $.7$. $P(D|B)$ is the probability of the website being down given that it was hosted on Server 2, which is $.04$, and $P(B)$ is the prior probability of the website being on Server 2, which is $.3$.
+
+Substituting the values into the formula, we get:
+
+$$ P(D) = .7 * .02 + .3 * .04 = .026 $$
+
+Now we can substitute the values into the formula for $P(A|R)$:
+
+$$ P(A|R) = \frac{.02 * .7}{.026} \approx 0.5384615385 $$
+
+Therefore, the probability that the website is down because of Server 1 is approximately $.54$.
+
+
+[1]: mailto:navark4@unlv.nevada.edu

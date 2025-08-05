@@ -1,0 +1,29 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Quarto
+- Bash
+- PDF
+date: '2025-01-27'
+description: A simple guide to converting a Quarto Reveal.js deck to a PDF
+draft: false
+format: html
+title: How to Convert a Quarto Reveal.js Deck to PDF
+toc: true
+---
+
+My favorite way to make slide decks is to use [Quarto](https://quarto.org/), which is a Markdown-based document processor that allows you to create documents in a variety of formats using the simple Markdown typesetting language. One feature that I utilize more often than any other is its ability to create slide decks using the Reveal.js framework in a simple and straightforward way. Usually, I'll publish these decks to Quarto Pub, which freely and simply hosts my slides online, and which makes it possible to easily share a link to the presentation for others to view more conveniently. 
+
+Despite the convenience of Quarto for my deck-making needs, I've found that I'm occasionally dissatisfied whenever I need to export them to PDF. I know that I can open the deck in the browser, press `e` to enable export mode, and print the document using my browser's print dialog, but I've found that the resulting PDFs don't often look how I'd like. For instance, recently the PDF I generated in this way had too much of a margin, which ate up some footnotes,[^1] and the deck saved as entirely white with black text, despite the Reveal.js theme I was using.
+
+After some quick searching, I found a neat alternative that I thought I'd share here so I remember it in the future. If you download the `decktape` npm package, you can easily convert your Quarto Reveal.js deck to a PDF using the following command:
+
+```bash
+npm install -g decktape
+decktape <URL to your Quarto Reveal.js deck> <output file>.pdf
+```
+
+In my case, I provided a URL to the Quarto Pub link where my deck was hosted, and the command generated a PDF that looked exactly like the deck I had created in Quarto. I was very pleased with the result, and I'll definitely be using this method in the future.
+
+
+[^1]: I even tried messing with the margins in the print dialog, but it didn't help.

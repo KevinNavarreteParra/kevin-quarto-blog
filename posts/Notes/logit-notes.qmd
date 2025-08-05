@@ -1,0 +1,187 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Notes
+- Logit
+- Model
+- Data Science
+date: '2023-09-06'
+description: Quick notes for logit model.
+draft: false
+format: html
+title: Logit Notes
+toc: true
+---
+
+*I am writing quick and easy R guides for my didactic purposes and to provide useful starting places for my peers in grad school. If you see that I have made a mistake or would like to suggest some way to make the post better or more accurate, please feel free to [email][1] me. I am always happy to learn from others' experiences!* 
+
+# Logit Function
+
+$$ logit(p) = \alpha + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_p X_p $$
+
+Let's break up the above function to understand better what's going on.
+On the left side of the `=` sign, we see the logit transformation of the
+dependent variable. Unlike an OLS regression, you're not just inputting
+$y_i$ on the left side. Since logit models deal with dichotomous
+variables, you must first transform the 1's and 0's. Therefore, we need
+the logit transformation $logit(p) = ln(\frac{p}{1-p})$ where *p* is
+probability and *ln* is the natural log. Notice that this is the odds
+function shown below. The logit function does not simply predict a 1 or
+a 0 like an OLS model would predict a continuous dependent variable;
+instead, it predicts the natural log of the dependent variable's
+probability.
+
+On the right side of the logit formula, we see $\alpha + \beta_1 X_1$
+where $\alpha$ is the intercept, $\beta$ is the coefficient, and $X_1$
+is the independent variable.
+
+# Odds
+
+Calculating the odds of a given event. Notice the implicit assumption in
+this equation: the odds for the population (P) equal the odds for the
+sample (p).
+
+$$ Odds = \frac{P(Y =1)}{P(Y=0)} = \frac{p}{1-p} $$
+
+Forward transformation from odds to log odds.
+
+$$ ln\frac{p}{1-p} $$
+
+Backward transformation from odds to probabilities
+
+$$ p = \frac{odds}{1 + odds} $$
+
+Backward transformation from logit to odds.
+
+$$ Odds = exp(logit) $$
+
+# Log Likelihood
+
+First, we have the likelihood function,
+
+$$ L(p; y) = \prod_{i = 1}^{n} p_{i}^{y_i}(1-p_i)^{1-y_i} $$
+
+This function gives us the unknown parameter $p$ given the known data
+$y$. This effectively acts as the reverse of the probability function
+discussed above.
+
+Next, we get the log-likelihood function, which builds up from the
+likelihood function above. The log-likelihood function will be important
+in what follows when we talk about the deviance of the logit model.
+
+$$ l(p;y) = \sum_{i=1}^{n}\{y_iln\frac{p_i}{1-p_i}+ln(1-p_i)\} $$
+
+where $l(p;y) = ln[L(p;y)]$. In other words, the log-likelihood is the
+natural log (ln) of the likelihood(L) of a parameter (p) given the
+present data (y).
+
+The other half of the equation gives us the process for estimating the
+log-likelihood, which is the summation ($\sum_{i=1}^{n}$) of the natural
+log (ln) of the given probability ($\frac{p_i}{1-p_i}$) for the data
+($y_i$) plus the natural log (ln) of the probability of observing a 1
+($(1-p_i)$).
+
+When using the log-likelihood statistic to test a model's goodness of
+fit, one will often look at the 2LL values in conjunction with the LL
+value. The 2LL value is calculated as
+
+$$ 2LL = -2(log\ likelihood\ of\ the\ current\ model - log\ likelihood\ of the\ saturated\ model) $$
+
+where the saturated model is the theoretical logit model that perfectly
+fits your data. This theoretical model would be of zero value because it
+would be so severely overspecified that there would be as many
+parameters as observations. Usually, this is simplified to $-2LL$. Your
+2LL value for the logit model is termed the deviance, which indicates
+how well your model fits the data compared to the "perfect" model.
+
+## Using Deviance to Compare Nested Models
+
+A nested model is a model whose parameters are a subset of another
+model's parameters. The model with fewer parameters is the reduced model
+and the one with the full set of parameters is the full model. Recall
+that parameters are the number of independent variables plus the
+intercept. Suppose that you have two logit models, then. The first has
+$x_1 + x_2 + x_3$ as the independent variables and the second only has
+$x_1 + x_2$ as independent variables. The first would be the full model
+and the second would be the reduced model. You compare these two models
+by finding the difference between their 2LL values
+($G = D_{Reduced}-D_{Full}$).
+
+# Pseudo R-squared
+
+The $R^2$ values for logit models are treated differently from the same
+values in OLS models. Here, we generally have three options for
+measuring $R^2$: Likelihood ratio (i.e., McFadden's $R^2$), Cox and
+Snell's $R^2$ (i.e., Maximum Likelihood $R^2$), and Nagelkerke's $R^2$
+(i.e., Cragg and Uhler's $R^2$).
+
+The McFadden's $R^2$ is as follows:
+
+$$ R^{2}_{L} = 1- \frac{LL_m}{LL_0} $$
+
+where $LL_m$ signifies the log-likelihood for your model, and $LL_0$ is
+the log-likelihood for the null model.
+
+Cox and Snell's $R^2$ is as follows: 
+
+$$ R^{2}_{ML}(\frac{L_0}{L_m})^{2/n} $$
+
+where $L_0$ is the likelihood of the null model, $L_m$ is the likelihood
+of the fitted model, and $n$ is the number of observations.
+
+Nagelkerke's $R^2$ is as follows:
+
+$$ R^{2}_{N} = \frac{R^{2}_{ML}}{maximum R^{2}_{ML}} $$
+
+Notice that this $R^2$ takes Cox and Snell's version and builds onto it.
+
+When you calculate the above values, they will not range from 0-1 in
+quite the same way as the $R^2$ value for OLS models. Instead, they will
+increase more gradually.
+
+# AIC and BIC
+
+The AIC and BIC scores are helpful when comparing two different models.
+
+AIC is calculated as
+
+$$ -2(LL_m - k) = D_m + 2k $$
+
+where $D_m$ is the deviance and $k$ is the number of parameters.
+
+BIC is calculated as
+
+$$ -2LL_m + ln(n) \times k = D_m + ln(n) \times k $$
+
+where $k$ is the number of parameters, $ n $ is the number of
+observations and $D_m$ is the deviance of the fitted model.
+
+# Significance
+
+The logit model's significance is tested by finding the Wald z-score,
+which is simply
+
+$$ \frac{\hat\beta}{SE(\hat\beta)} $$
+
+where $\hat\beta$ is the estimated logit coefficient and SE is the
+standard error.
+
+Calculating the confidence interval is as follows:
+
+$$ Confidence\ Interval\ for\ parameter\ \beta = \hat\beta \pm z*SE(\hat\beta) $$
+
+where SE is the standard error, and z is the z-score from above.
+
+# Odds Ratios
+
+The odds ratios for the different variables are an important facet of
+logit models because they help you interpret the directionality and
+magnitude of the relationship between a given variable and the response.
+
+$$ OR = \frac{exp(\alpha +\beta)}{exp(\alpha)}=\frac{exp(\alpha) \times exp(\beta)}{exp(\alpha)} = exp(\beta) $$
+
+If the result equals 1, there is neither a positive nor a negative
+relationship between the given variable and the response. A result of 2
+indicates that a one-unit increase in the predictor corresponds to
+doubling the response. And a response below 1 similarly indicates a
+negative relationship.

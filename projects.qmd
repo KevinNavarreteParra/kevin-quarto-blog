@@ -1,0 +1,26 @@
+---
+title: "Projects"
+page-layout: full
+---
+
+This page will showcase academic and personal projects. Currently under development as part of the migration from Next.js to Quarto.
+
+## Academic Projects
+
+- **Ph.D. Dissertation**: Research on Investor-State Dispute Settlement (ISDS)
+- **Statistical Analysis**: Various projects using R for political science research
+- **Research Methods**: Development of tools and workflows for reproducible research
+
+## Data Science & Programming
+
+- **R Automation**: Scripts for email automation and workflow optimization
+- **Academic Writing**: Tools for managing citations, references, and academic workflows
+- **Blog Migration**: Converting from Next.js/MDX to Quarto for better academic publishing
+
+## Open Source Contributions
+
+Future contributions to the R and Quarto ecosystems as I develop my technical skills alongside my academic work.
+
+---
+
+*This projects page is being developed. Check back for updates on current research and coding projects.*

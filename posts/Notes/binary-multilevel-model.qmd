@@ -1,0 +1,65 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Notes
+- Model
+- Data Science
+- multilevel
+- binary
+date: '2023-10-31'
+description: Quick notes for a multilevel model for binary response variables.
+draft: true
+format: html
+title: Multilevel Model for Binary Response Variable
+toc: true
+---
+
+*I am writing quick and easy R guides for my didactic purposes and to provide useful starting places for my peers in grad school. If you see that I have made a mistake or would like to suggest some way to make the post better or more accurate, please feel free to [email][1] me. I am always happy to learn from others' experiences!* 
+
+# Table of contents
+1. [Model Formula](#section1)
+2. [Conditional Probabilities and Odds Ratios](#section2)
+3. [Running it in R](#section3)
+4. [Diagnostic Statistics](#section4)
+
+
+
+# Model Formula <a name="section1"></a>
+
+As I discussed in the [logit post][2], one ought to model binary dependent variables using an appropriate model. Now, if the data one has are hierarchical, one can run a binary multilevel model based on the logit model with the logit link.
+
+A basic binary multilevel model with a single predictor can be expressed as 
+
+$$
+Level \ 1: \eta_\{ij} = logit[\pi(x_{ij})] = ln(\frac\{\pi(x_{ij})}\{1 - \pi(x_[ij])}) = \beta_0 + \beta_\{1j}X_\{ij}
+\\ 
+Level \ 2: \beta_\{0j} = \gamma_\{00} + \gamma_\{01}X_j + u_\{0j}
+\\
+\beta_\{1j} = \gamma_\{10} + \gamma_\{11}X_j + u_\{1j}
+$$
+
+where the first level is the same as the logit model, given the addition of the *i* and *j* subscripts. The former represents the given observation whereas the latter represents the given group. The second level of the model has the $\gamma$ values, which are the level 2 fixed effects coefficients. $\gamma_\{00}$ represents the overall average log odds of attaining the 
+
+# Conditional Probabilities and Odds Ratios <a name="section2"></a>
+
+
+
+
+# Running it in R <a name="section3"></a>
+
+
+
+
+
+
+
+
+# Diagnostic Statistics <a name="section4"></a>
+
+
+
+
+
+[1]: navark4@unlv.nevada.edu
+
+[2]: https://www.kevinparra.co/blog/Notes/logit-notes

@@ -1,0 +1,103 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- R
+- RStudio
+- Code
+- Projects
+date: '2024-05-28'
+description: A quick guide to setting up an R project template in RStudio.
+format: html
+title: How to Make an R Project Template
+toc: true
+---
+
+# Table of contents
+1. [Introduction](#section1)
+2. [Setup](#section2)
+3. [Project Function](#section3)
+4. [Setting up the Metadata](#section4)
+
+
+# Introduction <a name="section1"></a>
+
+Standardizing a project template in R can be a great way to ensure consistency across projects--especially if you find yourself working on similarly structured projects frequently. In this post, I'll briefly walk through how to set up a project template in the RStudio project template wizard. 
+
+# Setup <a name="section2"></a>
+
+Before you can make a project template, you'll need a few things in place. First, you'll need to have an r package through which you can access the project template. If you don't have one, see the excellent [R Packages textbook](https://r-pkgs.org/index.html) by Hadley Wickham and Jennifer Bryan, which thoroughly covers the process of creating your first R package. If you already have an R package, I'll assume it follows the standard structure discussed in the book above. For instance, you should have an `R/` directory with all of your R scripts, a `man/` directory for your documentation, and, importantly for our purposes, an `inst/` directory for your project template. Moreover, as you'll see below, I'm assuming you're employing the `usethis`, `devtools`, and `roxygen2` packages to help you manage your package and its documentation.
+
+The first thing you should do to set up, then, is create the following directory structure in your package: `{your-package}/inst/rstudio/templates/project/`. This structure will allow RStudio to find the necessary metadata to create your project template. While you're in the `inst/` directory, it might be worthwhile creating a `extdata/` folder to store any data files you might want to pull into the project template. For instance, if you have a standard script or file you use in every project, you should store it in the `extdata/` folder for ease of access later on. 
+
+# Project Function <a name="section3"></a>
+
+Now that you have everything set up, you should begin by writing the function you'll call to create the project template. I'll do this by creating a new R script in the `R/` directory of my package using the `use_r` function from the `usethis` package. However, you could also create the script manually if you prefer. 
+
+```r
+library(devtools)
+library(roxygen2)
+
+usethis::use_r("make_project_template")
+
+```
+
+Now that you have a blank script, you can begin writing the function. This step will vary considerably depending on your needs and the structure of your projects. However, there are a few things that will likely be standard regardless of your particular needs. First, the function will need a `path` argument to ensure RStudio knows where you'll be creating the project. You could add arguments for other things, such as initializing a git repository, but I'll keep it simple for these purposes. Additionally, you'll likely be documenting the function using `roxygen2`, as I've done below, so that you can consistently generate documentation for your package. 
+
+```R
+#' @title Make Project Template
+#' @description Create a new project template in RStudio.
+#' @param path The path to the new project.
+#' @export
+#' @examples
+#' try(make_project_template("path/to/new/project"))
+#' @importFrom usethis create_project
+make_project_template <- function(path) {
+
+    # stop if no path is provided
+    if (path == "") {
+        stop("You must provide a path for the new project.")
+    }
+# create the project
+  usethis::create_project(path, open = FALSE)
+
+# create the necessary directories
+  dir.create(path, recursive = TRUE, showWarnings = FALSE)
+
+# create the data subdirectory
+  dir.create(file.path(path, "data"), recursive = TRUE, showWarnings = FALSE)
+
+# copy the script to the project
+  script_source <- system.file("extdata", "script.R", package = "your-package")
+  script_dest <- file.path(path, "script.R")
+  file.copy(script_source, script_dest, overwrite = TRUE)
+}
+```
+
+The `make_project_template` function above is a simple example of what you might include in your project template. It begins by checking that a path argument is provided and then creates a new project at that path. Next, it creates a `data/` directory, which is a common directory in data projects. You could just as easily create a `scripts/` directory or any other directory you might need. Finally, the function copies a script from the `extdata/` directory in your package to the new project. This script could be anything you use in every project, such as a script to load your data or a script to clean your data. While not strictly necessary, I included these two final steps to demonstrate the utility and flexibility of this type of function. 
+
+Once you save the script above, be sure to run the `document` and `install` functions from `devtools` to ensure that the function is properly documented and installed in your package. If you don't do this, RStudio won't be able to find the function later on when you try to create the new project. 
+
+```R
+devtools::document()
+devtools::install()
+```
+
+
+# Setting up the Metadata <a name="section4"></a>
+
+Now that you have your project-creation function, you'll need to explicitly tell RStudio where to find the function and how to call it if you want to use the project template wizard. To do this, you'll need to create a `.dcf` file in the `inst/rstudio/templates/project/` directory you created earlier.[^1] Since the function I provided above is relatively simple, the `.dcf` file won't need much information. However, if your function is more complex, you might need to provide more information regarding the parameters your function expects. Although it might initially appear intimidating, the `.dcf` file is relatively straightforward--somewhat mimicking the protocol you'd follow when creating an R shiny app. 
+
+```
+Binding: make_project_template
+Title: Make a New Project
+Subtitle: Create a new project template in RStudio.
+OpenFiles: script.R
+```
+
+The `.dcf` file above begins with Binding, which is where you explicitly call the function you wrote earlier. Next, you'll provide a Title and an optional Subtitle for your project template. The title will be what appears in the RStudio project template wizard, so make sure it's descriptive and easy to understand. The subtitle will be what appears when your mouse hovers over the title in the wizard. Finally, the OpenFiles argument tells RStudio that you'd like to automatically open the `script.R` file every time you generate a new project. This is optional, but it can be helpful if you have a standard script you use in every project.
+
+Now that you have everything in place, you should be able to open RStudio and create a new project using your project template. To do so, click on `Project` in the top-right corner of RStudio, followed by `New Project... -> New Directory -> {Title of your project template}`. You should see a screen appear requesting a path for your new project. Once you provide the path, click `Create Project`, and you should see a new project with the directories and files you specified in your function.
+
+
+[^1]: Note that the `.dcf` file is a simple text file, so you can create it in any text editor you prefer. I recommend using VSCode to generate it as it is relatively straightforward to do so there, but you can edit it using RStudio's built-in text editor if you prefer. 
+

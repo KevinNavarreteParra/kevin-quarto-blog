@@ -1,0 +1,106 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- LaTeX
+- bibliography
+- citations
+- biblatex
+- troubleshooting
+date: '2025-01-03'
+description: A potential fix for an annoying LaTeX error
+format: html
+title: 'LaTeX Issue Fix: No \citation, \bibdata, or \bibstyle commands'
+toc: true
+---
+
+# Table of contents
+1. [Introduction](#section1)
+2. [The Solution](#section2)
+3. [Conclusion](#section3)
+
+
+# Introduction <a name="section1"></a>
+
+I recently ran into a pesky LaTeX error that I had never seen before. After looking through Stack Exchange and other forums, I found others with similar issues, but none of the solutions were applicable to my case or seemed to work.[^1]
+
+While writing my prospectus, I was compiling my document and received the following error message:
+
+```bash
+The top-level auxiliary file: prospectus.aux
+I found no \\citation commands---while reading file prospectus.aux
+I found no \\bibdata command---while reading file prospectus.aux
+I found no \\bibstyle command---while reading file prospectus.aux
+(There were 3 error messages)
+```
+
+Which was strange because my preamble contained the following:[^2]
+
+```latex
+\documentclass[authordate]{turabian-thesis}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes, ellipsis}
+\usepackage{graphicx}
+\usepackage[capposition=top]{floatrow}
+\usepackage{acro}
+\usepackage{longtable}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\usepackage{array}
+\usepackage{url}
+
+\usepackage[breaklinks=true,colorlinks,citecolor=blue]{hyperref}
+
+\setcounter{tocdepth}{2}
+\usepackage[pass, letterpaper]{geometry} % for margins
+\usepackage[backend=biber]{biblatex-chicago} % for bibliography
+
+\bibliography{works-cited.bib}
+```
+
+so it clearly wasn't that I was missing the necessary packages, nor was it that I was missing the `\bibliography{}` command. Now, I didn't have any citations in the `prospectus.tex` file, but that couldn't be the issue because I had plenty of citations in the `.tex` files for each of my chapters, which were all included in the `prospectus.tex` file using the helpful `\include{}` command. I also didn't think I needed a `\bibliographystyle{}` command because I was using `biblatex-chicago`, which I thought would take care of that for me. Moreover, I had never had this issue before despite never using a `\bibliographystyle{}` command in any of my previous documents using `biblatex-chicago`.
+
+For an idea of what my document structure looked like, here's a truncated map of my working directory:
+
+```bash
+final/
+├── introduction/
+│   ├── introduction.tex
+├── chapter-1/
+│   ├── chapter-1.tex
+├── chapter-2/
+│   ├── chapter-2.tex
+├── chapter-3/
+│   ├── chapter-3.tex
+├── media/
+├── prospectus.tex
+├── works-cited.bib
+
+
+```
+
+
+Although the issue was certainly annoying (I can't stand to see error messages when I compile my documents), this problem wasn't a genuine impediment. After all, my document was still compiling, despite the errors, and it consistently looked the way I wanted it to. I had all but given up on the issue until it just went away on its own. I love it when that happens!
+
+# The Solution <a name="section2"></a>
+
+After some digging, I found that the issue was likely due to the fact that I had an active chapter file with no citations in it. This chapter was the last one left to write, and I hadn't gotten around to adding anything to it for a while, meaning that it was just an empty `.tex` file with a `\chapter{}` command in it. When I got closer to starting it, I added some sections and subsections to it in anticipation of writing the content, likely resulting in this error. I say likely because I was making a lot of changes to the document at the time, resulting in a plethora of possible reasons for the error. 
+
+The solution was simple: I added a citation to the chapter file, and the error went away. 
+
+# Conclusion <a name="section3"></a>
+
+A conclusion might seem silly for a post like this one, but I'd like to take a moment to reflect on the issue. I think it's important to remember that LaTeX is a powerful tool that can be finicky at times. It's easy to get frustrated when you run into an error message that you've never seen before, but it's important to remember that there are often simple solutions to these problems. In this case, the solution was as simple as adding a citation to a chapter file.
+
+More importantly, I learned that I shouldn't get ahead of myself while writing LaTeX documents with complicated structures. I should take my time and simply work on the document one step at a time, focusing solely on the task at hand. I didn't need to add an empty chapter to the document, nor did I need to add sections and subsections to it before I was ready to write the content. I seem to have a habit of doing this--especially when writing LaTeX--and I often end up relearning this lesson the hard way and in different contexts. LaTeX can sure be fickle sometimes, but it sure is fun!
+
+If this solution doesn't work for you or you have a different solution, please let me know and I'll be more than happy to add it to the post. 
+
+
+[^1]: If you'd like to see the other proposed solutions, see [this Stack Exchange thread that suggested a fresh Biber install](https://tex.stackexchange.com/questions/294916/i-found-no-citation-bibdata-bibstyle-commands-in-error-in-texmaker-or-biblate) and [this one that suggested a fresh compile process](https://tex.stackexchange.com/questions/107132/no-citation-bibdata-bibstyle-commands). Neither solution was particularly helpful in my case because the issue persisted after I tried them. 
+
+[^2]: Please don't judge my package load order too harshly! I'm sure there's something I could do to make it more efficient or potentially less problematic, but I haven't made the time to do so at the time of writing. 

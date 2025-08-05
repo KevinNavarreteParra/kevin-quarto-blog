@@ -1,0 +1,74 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Notes
+- Ordered Logit
+- Model
+- Data Science
+- Proportional Odds
+date: '2023-09-13'
+description: Quick notes for the proportional odds model.
+draft: false
+format: html
+title: Proportional Odds Models
+toc: true
+---
+
+*I am writing quick and easy R guides for my didactic purposes and to provide useful starting places for my peers in grad school. If you see that I have made a mistake or would like to suggest some way to make the post better or more accurate, please feel free to [email][1] me. I am always happy to learn from others' experiences!*  
+
+# Proportional odds model
+
+The proportional odds model equation is 
+
+$$ logit[\pi_j(x)] = ln(\frac{\pi_j(x)}{1-\pi_j(x)}) = \alpha_j + (-\beta_1X_1 - \beta_2X_2 - ... - \beta_pX_p) $$
+
+where $\pi_j(x) = P(Y \le j| x_1,x_2, ..., x_p)$, which is the probability (P) of being at or below a given category (j) given a set of predictors. The $\beta$ values are the logit coefficients and $\alpha_j$ is the number of cut points. 
+
+To run a proportional odds model, you can run the `clm` function from the `ordinal` package or the `VGLM` function from `VGAM` package. 
+
+# Estimating log odds
+
+Estimating the ln(odds) of being at or below the jth category means the model is rewritten as 
+
+$$ logit[P(Y \le j| x_1,x_2, ..., x_p)] = (\frac{P(Y \le j| x_1,x_2, ..., x_p)}{P(Y > j| x_1,x_2, ..., x_p)}) = \alpha_j + (-\beta_1X_1 - \beta_2X_2 - ... - \beta_pX_p) $$
+
+The only new thing in the equation above is the large fraction in parenthesis, and that just explains what's going on to the left and right. 
+
+The proportional odds model effectively acts like several logistic regression models estimated simultaneously. Their outcomes are dichotomized from the ordinal outcome variable to compare the probabilities of being below or above a given category ($Y\le j$ & $Y > j$). Although each model has different intercepts, all models' estimated logit coefficients are constrained to be equal. Hence the proportional odds part of the model because the regression lines are parallel. 
+
+Like with logit models, the odds of a given outcome are 
+
+$$ Odds(Y\le j) = \frac{P(Y\le j)}{1-P(Y\le j)} $$
+
+The cumulative probability is the probability of being less than or equal to $P(Y \le j)$ since it equals the sum of all categories' probabilities
+
+$$ P(Y \le j) = P(Y=1) + P(Y=2) + ... + P(Y=j) \ \ \ \ When j = 1, 2, ..., j $$
+
+When comparing categories in a proportional odds model, you compare the given category to the remaining categories. 
+
+# Odds ratios in proportional odds models
+
+Calculating the odds ratio for the proportional odds model is similar to the logit model, but requires an additional step. Whereas the explanation for categories above the jth level is calculated as $exp(\beta)$, the odds for categories below are calculated as $exp(- \beta)$. In other words, you exponentiate the inverse of the given coefficient. 
+
+# Proportional odds assumption
+
+The model's fundamental assumption is that each independent variable has the same effects across all categories of the dependent variable. 
+
+In order to test the proportional odds assumption, we employ a likelihood ratio test. In R, we can run this test using the `nominal_test` function in the `ordinal` package or the `lrtest` function from the `VGAM` package. 
+
+Other tests for the model include pseudo-$R^2$, deviance, likelihood ratio test, AIC, and BIC, like with the logit model. For the pseudo-$R^2$ values, you can employ the `nagelkerke` function from the `rcompanion` package. 
+
+You can generate an odds ratio matrix for the proportional odds model by running 
+
+```
+cbind(exp(coef(model)), exp(confint(model)))
+``` 
+
+To test the log-likelihood for a given proportional odds model, you can run 
+
+```
+anova(model1, model2)
+``` 
+
+Using the `ggpredict` function from the `ggeffects` package, we can generate margin tables for the given predictor variables. 
+

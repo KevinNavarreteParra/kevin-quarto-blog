@@ -1,0 +1,70 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- R
+- RStudio
+- Code
+- Packages
+date: '2023-10-21'
+description: Easy way to migrate user-installed packages.
+draft: false
+format: html
+title: How to Migrate All R Packages to a New Computer
+toc: true
+---
+
+*If you have any questions or comments regarding the code below, feel free to reach out to [me][1]. I am always happy to talk R with anyone!*
+
+It can be a bit of a hassle to install R and RStudio on a new computer, especially when you have hundreds of user-downloaded packages you'd like to migrate to the new computer. You could copy the folder that has all your packages installed, but there are bound to be issues that arise from such a brute-force solution--especially if you're switching from one operating system to another. Below is some simple code that helped me switch from using R in Windows to Mac. Before I proceed, though, I would like to thank [Andrew Z.][2] from [R-Bloggers][3] for the helpful [post][4] that inspired this one. 
+
+I've split the code into three chunks. The first generates a list of all the user-installed packages in your original R installation. The second takes that list and makes it into a downloadable vector. Finally, the third chunk takes the .txt file and uses it to download all the R packages on your new machine. 
+
+**Importantly, the first two chunks should be run on the original machine and the third should be run on the new one.** 
+
+# Generating the List
+
+The code below is what generates the list of user-installed packages in your original computer's R installation.
+```
+packs <- as.vector(installed.packages()[,1])
+
+print(packs, row.names = FALSE)
+```
+
+As you can see from the code, you start by generating a vector with the `installed.packages` function. However, it is important to subset the data because the function will return a lot of unnecessary information--along with the base packages. The, we print all the packages to see if we got what we wanted. 
+
+# Saving the vector
+
+Importantly, we want to make sure that all the packages are surrounded by quotation marks for when we input the vector in the `install.package` function. Moreover, when we write the vector as a txt file, we want to ensure that all the packages have comma delimiters so that they work properly in the coming code. 
+```
+
+packs1 <- paste0('"', packs, '"')
+
+writeLines(paste(packs1, collapse = ","), "package_list.txt")
+```
+
+# Downloading to the New Computer
+
+Finally, we get to the bit of code that we'll run on the new computer! As we can see below, the first step is going to be bringing in the .txt file. You can do so with the `read.delim` function, which will generate an object with all the desired packages. Next, we take the generated object and convert it into a vector with the desired properties. And finally, we install the vector of packages to the new computer. 
+
+```
+setwd("/Users/kevin/Downloads")
+
+data1 <- read.delim('package_list.txt', header = FALSE, sep = ",")
+
+pack_vec <- as.vector(unlist(t(as.matrix(data1[,-1]))))
+
+install.packages(pack_vec)
+
+```
+
+
+
+
+
+[1]: navark4@unlv.nevada.edu
+
+[2]: https://www.r-bloggers.com/author/andrew-z/
+
+[3]: https://www.r-bloggers.com/
+
+[4]: https://www.r-bloggers.com/2015/06/list-of-user-installed-r-packages-and-their-versions/

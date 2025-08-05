@@ -1,0 +1,110 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Notes
+- Model
+- Data Science
+- Zero-Inflation
+- Count Data
+date: '2023-10-18'
+description: Quick notes for Zero-inflated models.
+draft: false
+format: html
+title: Zero-Inflated Models
+toc: true
+---
+
+*I am writing quick and easy R guides for my didactic purposes and to provide useful starting places for my peers in grad school. If you see that I have made a mistake or would like to suggest some way to make the post better or more accurate, please feel free to [email][1] me. I am always happy to learn from others' experiences!* 
+
+# Table of contents
+1. [Model Formula](#section1)
+2. [Running it in R](#section3)
+3. [Diagnostic Statistics](#section4)
+
+
+
+# Model Formula <a name="section1"></a>
+
+When we are dealing with count data, the first step is always going to be to fit a [Poisson][3] or [negative binomial][2] model. However, sometimes this is not always the best way of handling count data because neither model handles zero inflation adequately. Zero inflation is bound to be an issue with many data for the Poisson model because, as one can probably imagine, this will likely lead to a significant difference between the response variable's variance and mean (i.e., dispersion). The negative binomial model is not immune to such an issue either, so a zero-inflated model necessarily becomes more appropriate for our purposes. 
+
+Now, just because the Poisson and negative binomial models are no longer appropriate for a response with zero inflation does not mean we forget about those models altogether. Just the opposite, in fact. The Poisson and negative binomial models play a key role in the zero-inflated models I'll discuss below. 
+
+Before looking at those models, though, it is crucial to begin with a base understanding of what zero inflation means. Simply having zero values in count data does not mean there is zero inflation. Indeed, we likely expect there to be zero counts in a given response variable. For zero inflation to occur, we have to have a dependent variable with an excessive degree of zeroes.
+
+When fitting a zero-inflated model, we see that there are two steps to predicting the dependent variable: (1) the zero prediction and (2) the count prediction. In other words, the zero-inflated model begins by running a [logistic regression][4], which, if we recall, can be expressed as 
+
+$$ logit(p) = \alpha + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_p X_p $$
+
+This half of the model will predict whether the outcome will be zero or a positive count integer(coded as 1 for zero predictions and 0 for count predictions). From this, we get the probability of observing a zero in the response. If the given predictors can significantly predict the probability of observing a zero, then we have a pretty good indication that there is zero inflation. Note that the model does not go on to exclude the observed zero values from the count half of the model. 
+
+After the model accounts for the probability of observing zero values, we move on to the next step, which is the count prediction. Here, the model applies either a Poisson regression or negative binomial regression to the response variable, which is how we distinguish between a ZIP and ZINB model. If we recall, the [Poisson model][3] can be expressed as 
+
+$$ ln(\mu) = \alpha + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p $$
+
+and the [negative binomial model][2] can be expressed as 
+
+$$ ln(\mu) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \epsilon $$
+
+We can therefore express the zero-inflated Poisson model as 
+
+$$
+\begin{aligned}
+Pr(Y = 0) = \pi + (1 - \pi)e^{-\lambda} \\
+Pr(Y = y_i) = (1 - \pi)\frac{\lambda^{y_1}e^{-\lambda}}{y_{i}!} \\
+y_i = 1,2,3,...
+\end{aligned}
+$$
+
+where $y_i$ represents the non-negative count values in the response, $\lambda$ is the expected count for the *i*th observation in the Poisson model, and $\pi$ is the probability of extra zeros. 
+
+
+# Running it in R <a name="section3"></a>
+
+Running either type of zero-inflated model in r can be done using the `zeroinfl` function from the `pscl` package. Notice that the syntax for this model differs from other models insofar as this model asks us to specify linear predictors for both the zero and count sides. Therefore, we would write 
+
+```
+
+zip.mod <- zeroinfl(dv ~ iv1 + iv2 + iv3 | iv4 + iv5 + iv6, data = data)
+summary(zip.mod)
+
+```
+
+Notice that the default is set to the zero-inflated Poisson model, but you can change that by adding the argument `dist = "negbin"` to specify a zero-inflated negative binomial model. 
+
+```
+
+zinb.mod <- zeroinfl(dv ~ iv1 + iv2 + iv3 | iv4 + iv5 + iv6, dist = "negbin", data = data)
+summary(zinb.mod)
+
+```
+
+As you can see from the two models specified above, there are different predictors for the zero half of the model than there are for the count side of the model. That does not necessarily need to be the case, of course. You can fit the same predictors to both sides if that is what your theory stipulates. 
+
+Importantly, we can use 
+
+```
+zip.irr <- cbind(exp(coef(zip.mod)), exp(confint(zip.mod)))
+```
+
+to create an incidence rate ratio for ease of interpretation. 
+
+We can also compute the model's standard errors by running 
+
+```
+exp(coef(zip.mod)) * sqrt(diag(vcov(zip.mod)))
+```
+
+
+# Diagnostic Statistics <a name="section4"></a>
+
+The diagnostic statistics for these two models will be *mostly* the same as those used for other count and categorical variable models. Importantly, though, we also want to employ the `vuong` function from `pscl` to run a Vuong test. This test will give us insight into the difference between a zero-inflated model and a Poisson or negative binomial model. A significant result indicates that we prefer one model over another. 
+
+
+
+[1]: navark4@unlv.nevada.edu
+
+[2]: https://www.kevinparra.co/blog/Notes/nagative-binomial
+
+[3]: https://www.kevinparra.co/blog/Notes/poisson-notes
+
+[4]: https://www.kevinparra.co/blog/Notes/logit-notes
