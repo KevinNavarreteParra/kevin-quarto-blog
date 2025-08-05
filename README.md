@@ -4,7 +4,7 @@ A Quarto-based academic blog focusing on political science research, data scienc
 
 ## About This Site
 
-This is the Quarto version of Kevin's academic blog, migrated from a Next.js/MDX setup to take advantage of Quarto's enhanced academic publishing features. The blog covers:
+This is the Quarto version of my academic blog, migrated from a Next.js/MDX setup to take advantage of Quarto's enhanced academic publishing features. The blog covers:
 
 - **Research Methods**: Statistical modeling, multilevel analysis, count data models
 - **Data Science**: R programming, automation, reproducible research
@@ -105,14 +105,6 @@ data %>%
 ```
 ````
 
-## Categories
-
-The blog uses the following category system:
-- `research-methods`, `statistics`, `multilevel`, `count-data`
-- `data-science`, `R`, `python`, `automation`
-- `academic-life`, `phd`, `reading`
-- `personal`, `horology`, `writing`
-
 ## Customization
 
 ### Styling
@@ -147,23 +139,6 @@ The blog uses the following category system:
 - `CNAME` file configured for kevinparra.co
 - Requires DNS configuration with domain provider
 - SSL automatically provided by GitHub Pages
-
-## Migration Notes
-
-This site was migrated from a Next.js/MDX blog with:
-- ✅ 27 blog posts converted (100% success rate)
-- ✅ All mathematical content preserved
-- ✅ Academic formatting maintained
-- ✅ Category system preserved
-- ✅ Static assets migrated
-
-See `CONVERSION-REPORT.md` for detailed migration information.
-
-## Contact
-
-- **Email**: navark4@unlv.nevada.edu
-- **GitHub**: https://github.com/KevinNavarreteParra
-- **LinkedIn**: https://www.linkedin.com/in/kevin-navarrete-parra
 
 ## License
 
