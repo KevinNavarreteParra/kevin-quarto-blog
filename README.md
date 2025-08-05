@@ -31,7 +31,13 @@ quarto render
 ```
 
 ### Deployment
-This site is configured for automatic deployment to GitHub Pages using GitHub Actions. Simply push to the `main` branch and the site will be built and deployed automatically.
+This site uses **GitHub Actions** for automatic deployment to GitHub Pages. Simply push to the `main` branch and the site will be built and deployed automatically.
+
+**Workflow:**
+1. Make changes to content (add posts, edit pages)
+2. Commit and push to `main`: `git add . && git commit -m "Your message" && git push`
+3. GitHub Actions automatically builds and deploys the site
+4. Site is live at: https://kevinnavreteparra.github.io/kevin-quarto-blog/
 
 ## Site Structure
 
