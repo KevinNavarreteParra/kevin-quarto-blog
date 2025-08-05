@@ -36,7 +36,7 @@ website:
 format:
   html:
     theme: 
-      - slate
+      - morph
       - custom.scss
     css: styles.css
     toc: true
