@@ -1,0 +1,94 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Notes
+- Model
+- Data Science
+- Multinomial
+- Logit
+date: '2023-10-02'
+description: Quick notes for Multinomial Logit Model
+draft: false
+format: html
+title: Multinomial Logit Model
+toc: true
+---
+
+*I am writing quick and easy R guides for my didactic purposes and to provide useful starting places for my peers in grad school. If you see that I have made a mistake or would like to suggest some way to make the post better or more accurate, please feel free to [email][1] me. I am always happy to learn from others' experiences!* 
+
+# Table of contents
+1. [Model Formula](#section1)
+2. [Conditional Probabilities and Odds Ratios](#section2)
+3. [Running it in R](#section3)
+4. [Diagnostic Statistics](#section4)
+
+
+# Model Formula <a name="section1"></a>
+
+The multinomial logistic regression is used for nominal response variables with multiple unordered categories, like party ID variables. You can also use this for an ordinal response variable, assuming the proportional odds assumption doesn't hold. This model differs from the proportional odds and partial proportional odds models because it compares the odds of being in a given category against the odds of being in the baseline category. Recall that the PO and PPO models compare the odds of being at or below a given category. The multinomial logit model can be expressed as 
+
+$$ ln \left( \frac{P(Y = j | x_1, x_2, ..., x_p)}{P(Y = J | x_1, x_2, ..., x_p)} \right) = \alpha_j + \beta_{j1}X_1 + \beta_{j2}X_2 + ... + \beta_{jp}X_p  $$
+
+where $j = 1,2, ..., J - 1$. J is the baseline category, which can be any category but is usually the highest. $\alpha_j$ represents the intercepts and the beta values represent the logit coefficients. This model is similar to the generalized ordinal logit model in that it estimates $J - 1$ logit coefficients for each independent variable. 
+
+As you can see, this model is essentially a series of logit models, where being in a given category is coded as 1 and being in the baseline is a 0. 
+
+It's important to note that this model assumes the dependent variable follows the multinomial distribution, which is an extension of the binomial distribution. The binomial distribution can be expressed as 
+
+$$ P(Y = k) = \binom{n}{k}p^k (1-p)^{n-k} $$
+
+where $\binom{n}{k}$ is the binomial coefficient, k is the number of successes (1), n is the number of trials, and p is the success probability when the outcome is 1. Therefore, 
+
+$$ \binom{n}{k} = \frac{n!}{(n-k)! k!} $$
+
+Since our model has a response variable with multiple categories, the probability function can be expressed as 
+
+$$ P(n_1, n_2, ..., n_j) = \frac{n!}{(n_1!n_2!...n_j!)}p_{1}^{n_1}p_{2}^{n_2}...p_{j}^{n_j} $$
+
+where j is the number of categories in the response, $n_j$ is the number of observations for a given category, and $p_j$ is the probability of choosing a given category. 
+
+The log-likelihood function for the multinomial distribution can be expressed as 
+
+$$ l(p, n) = \sum^j_{i=1} n_i ln p_i + ln\frac{n!}{n_1!n_2!...n_j!} $$ 
+
+where $ln\frac{n!}{n_1!n_2!...n_j!}$ is a constant term and does not involve parameter *p*. $\sum{j}{i=1} n_i ln p_i$ is the sum of the number of observations for a given category and the log probability of choosing that category. 
+
+# Conditional Probabilities and Odds Ratios <a name="section2"></a>
+
+If you want to calculate the odds of being in a category as opposed to the baseline, you can express the equation as 
+
+$$ Odds(Y = j vs. Y = J) = \frac{P(Y = j)}{P(Y = J)} $$
+
+The odds ratios for this model function almost exactly like those for the [logit model][2]. 
+
+
+# Running it in R <a name="section3"></a>
+
+There are three packages you can use to run the multinomial logit model: `VGAM`, `nnet`, and `mlogit`. Using `VGAM`, you can run the `vglm` function. `nnet` uses the `multinom` function. And `mlogit` uses the `mlogit` function. The syntax for the `vglm` function is 
+
+``` 
+
+mlm.mod <- vglm(dv ~ iv1 + iv2 + ivp, multinomial(refLevel = 1), data = data)
+summary(mlm.mod)
+
+```
+
+where multinomial is the family function and the refLevel argument indicates which level will serve as the baseline. 
+
+After running the code above, make sure to generate an odds ratio table, which can be done by running the following code: 
+
+``` 
+
+mlm.or <- cbind(exp(coef(mlm.mod)), exp(confint(mlm.mod)))
+
+```
+
+# Diagnostic Statistics <a name="section4"></a>
+
+The diagnostic statistics for this model are exactly the same as those for the [logit model][2]. 
+
+
+
+[1]: navark4@unlv.nevada.edu
+
+[2]: https://www.kevinparra.co/blog/Notes/logit-notes

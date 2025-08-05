@@ -1,0 +1,81 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Notes
+- Adjacent Categories
+- Model
+- Data Science
+date: '2023-09-24'
+description: Quick notes for Adjacent Categories Models.
+draft: false
+format: html
+title: Adjacent Categories Models
+toc: true
+---
+
+*I am writing quick and easy R guides for my didactic purposes and to provide useful starting places for my peers in grad school. If you see that I have made a mistake or would like to suggest some way to make the post better or more accurate, please feel free to [email][1] me. I am always happy to learn from others' experiences!* 
+
+# Table of contents
+1. [Model Formula](#section1)
+2. [Conditional Probabilities and Odds Ratios](#section2)
+3. [Running it in R](#section3)
+4. [Diagnostic Statistics](#section4)
+
+
+# Model Formula <a name="section1"></a>
+
+The adjacent categories model is similar to the [continuation ratio model][2] and the series of [proportional odds models][3], differing only slightly in how the equation is specified. As the name indicates, the AC model estimates the odds of being in category $j+1$ as opposed to being in the lower category j of the given ordinal response variable. Simply put, this model takes category pairs and compares the odds of being in category j instead of category $j+1$. The model is written as 
+
+$$ logit[P(Y = j + 1|x_1, x_2, ..., x_p)] = ln \left( \frac{P(Y = j + 1 | x_1, x_2, ..., x_p)}{P(Y + j | x_1, x_2, ..., x_p)} \right) = \alpha_j + \beta_1X_1 + \beta_2X_2 + ... + \beta_3X_3 $$
+
+where j represents $J-1$ categories, \alpha_j gives us the intercepts, and the betas are logit coefficients. 
+
+
+# Conditional Probabilities and Odds Ratios <a name="section2"></a>
+
+Unsurprisingly, calculating this model's odds is very similar to the [CR model][2] and [PO model][3]. In this case, the equation is 
+
+$$ Odds(Y = j vs. Y = j - 1) = \frac{P(Y = j)}{P(Y = j-1)} $$
+
+where j is any category above zero. 
+
+And like with the other models mentioned above, the first thing you do after running the model is exponentiate the odds to get an odds ratio. Interpreting the odds ratio differs only insofar as this model is marginally distinct from the earlier models. 
+
+
+
+# Running it in R <a name="section3"></a>
+
+You can run the AC model in R using the `vglm` function from the `VGAM` package, just like for the earlier models. The only difference is that the `family` argument should be `acat`, such that the model looks like 
+
+``` R 
+
+model <- vglm(dv ~ iv, family = acat(parallel = TRUE, reverse = FALSE), data = data)
+summary(model)
+
+```
+
+where parallel = TRUE indicates that the model abides by the proportional odds assumption. 
+
+And as with the earlier models, you can get an odds ratio by running 
+
+``` R 
+
+ac.or <- cbind(exp(coef(model)), exp(confint(model)))
+print(ac.or)
+
+```
+
+# Diagnostic Statistics <a name="section4"></a>
+
+For a deeper dive into the model fit statistics, see the [Logit Model Notes][4] and the [CR Model Notes][2].
+
+
+
+
+[1]: navark4@unlv.nevada.edu
+
+[2]: https://www.kevinparra.co/blog/continuation-ratio-model
+
+[3]: https://www.kevinparra.co/blog/ppo-notes
+
+[4]: https://www.kevinparra.co/blog/logit-notes

@@ -1,0 +1,106 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Notes
+- Continuation Ratio
+- Model
+- Data Science
+date: '2023-09-23'
+description: Quick notes for continuation ratio model.
+draft: false
+format: html
+title: Continuation Ratio Model
+toc: true
+---
+
+*I am writing quick and easy R guides for my didactic purposes and to provide useful starting places for my peers in grad school. If you see that I have made a mistake or would like to suggest some way to make the post better or more accurate, please feel free to [email][1] me. I am always happy to learn from others' experiences!* 
+
+# Table of contents
+1. [Model Formula](#section1)
+2. [Conditional Probabilities and Odds Ratios](#section2)
+3. [Running it in R](#section3)
+4. [Diagnostic Statistics](#section4)
+
+
+# Model Formula <a name="section1"></a>
+
+Before we begin looking at the model's equation, it's important to begin by distinguishing this from the proportional odds and generalized ordinal logit models. The latter two models estimate the probability of being at or above a given category (or at or below a given category). Instead, the continuation ratio model estimates the odds of being in a given category versus being above that category. In other words, this model is more suited to estimating the odds of attaining a given category, assuming that the response variable represents successive, ordered stages. 
+
+The model is estimated as 
+
+$$ ln \left(\frac{P(Y > j | x_1, x_2, ..., x_p)}{P(Y = j | x_1, x_2, ..., x_p)}\right) = \alpha_j + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p $$
+
+where $P(Y > j | x_1, x_2, ..., x_p)$ is the conditional probability of being above j, given one already is in that given category. As with the PO and GOL models, $j = 1,2, ..., J - 1$. $\alpha_j$ represents the cutoff points and the $\beta$ values represent the logit coefficients. 
+
+Similarly, the model can estimate the odds of being in a given category relative to being above that category. 
+
+$$ ln \left(\frac{P(Y = j | x_1, x_2, ..., x_p)}{P(Y > j | x_1, x_2, ..., x_p)}\right) = \alpha_j + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p $$
+
+where all else about the model is equal except for the switched conditional probabilities on the left side of the equation. 
+
+Importantly, the continuation ratio model is similar to the proportional odds model in that it assumes the logit coefficients are parallel across the ordinal categories. 
+
+# Conditional Probabilities and Odds Ratios <a name="section2"></a>
+
+Conditional probabilities in the CR model act a lot like cumulative probabilities in the PO model, except that they calculate the odds of being in a category, given you're at or above that category. The conditional odds are calculated as 
+
+$$ Odds = \frac{P(Y = j)}{P(Y>j)} $$
+
+And like with other odds ratios, the conditional probabilities represent the change in odds given a one-unit increase in the predictor. 
+
+# Running it in R <a name="section3"></a>
+
+You can run the continuation ratio model in R using the `vglm` function from the `VGAM` package. The syntax is similar to the proportional odds and generalized ordinal logit models, except you use either the `sratio` or `cratio` family. The former estimates the stopping ratio, which is $P(Y=j)/P(Y>j)$, and the latter is the continuation ratio, which is $P(Y>j)/P(Y=j)$. Simply put, the stopping ratio estimates the conditional probability of being at or before value j while the continuation ratio estimates the conditional probability of an event happening after j, given j has not already happened. 
+
+When running the CR model, make sure to stipulate `parallel = TRUE` in the family to ensure the model is abiding by the proportional odds assumption. You can run this model with `parallel = FALSE` to specify a model that follows the proportional odds assumption. Additionally, make sure to add `reverse = FALSE` to the family parameters to make sure there is no interpretive confusion.
+
+After all that is specified, interpreting the model is very similar to the proportional odds model. Make sure to run 
+
+``` R 
+
+model.or <- cbind(exp(coef(model)), exp(confint(model)))
+print(model.or)
+
+```
+
+to get the odds ratio for the given model. Interpreting the odds ratios works just like it does for the proportional odds and generalized ordinal logit models. 
+
+# Diagnostic Statistics <a name="section4"></a>
+
+The model fit statistics for the CR model are the same as those used by the PO and GOL models. You can run a likelihood ratio test to test the model's overall fit. Make sure to create a null version of your model for this test. 
+
+``` R 
+
+model.null <- vglm(dv ~ 1, sratio(parallel = TRUE, reverse = FALSE))
+summary(model.null)
+
+lrtest(model.null, model)
+
+```
+
+The null hypothesis is that the specified variables do not contribute to the model and the alternate hypothesis is that the predictors contribute to a better-fitting model relative to the null model. Therefore, a significant result for the fitted model will allow us to reject the null hypothesis, indicating that the predictors contribute to a better-fitting model. 
+
+Additionally, you can use $Pseudo R^2$, which will be the same as for the logit, PO, and GOL models. See the [logit notes][2] for a deeper dive into the $Pseudo R^2$ diagnostics. Recall that these values act like the $R^2$ values for OLS models, but they're are not entirely interchangeable. 
+
+Consult the [logit notes][2] for a deeper dive into the AIC and BIC values as well. Recall that lower values of AIC and BIC are better than higher ones. Additionally, the BIC is slightly preferable to the AIC because the former rewards more parsimonious models. 
+
+Finally, you can use `ggpredict` from `ggeffects` to create marginal effects plots for the model
+
+``` R 
+
+prd.m <- ggpredict(model, terms = "iv[x, y, z]")
+marg.m <- plot(prd.m)
+
+```
+
+where "iv[x, y, z]" indicates the given independent variable for which you'll be plotting the marginal effects plot at three cutoff points. 
+
+
+
+
+
+
+
+[1]: navark4@unlv.nevada.edu
+
+[2]: https://www.kevinparra.co/blog/logit-notes

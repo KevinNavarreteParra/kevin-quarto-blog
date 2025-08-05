@@ -1,0 +1,120 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- R
+- email
+- automation
+date: '2024-01-11'
+description: Simple code for using R to send recurring emails
+draft: false
+format: html
+title: Recurring Emails Using R
+toc: true
+execute:
+  eval: false
+---
+
+# Table of contents
+1. [Introduction](#section1)
+2. [Setting Up Gmailr](#section2)
+3. [Gmailr Code](#section3)
+4. [Automating with CronR](#section4)
+
+
+# Introduction <a name="section1"></a>
+
+I started trying to figure out how to send emails to myself recently when I had the idea to send myself a weekly reminder email with a link to an R Shiny app I created to survey myself--primarily for collecting some data on myself for year-end analytics. I figured I could use one of the many Gmail apps that are out there, but I soon became frustrated when they either didn't work how I wanted them to or charged far too much for the functionality I wanted. I didn't feel like I needed to pay between 5 and 10 dollars a month to send myself a few reminder emails a month!
+
+Soon thereafter, I found out that there are a few packages in R that allow you to use API calls to send emails through existing accounts. I decided to use the `gmailr` package because the email I am currently using is a Gmail account, and the package seemed well-supported. Moreover, I used the `cronR` package to do the scheduling, which worked well on my Mac!
+
+If you would just like to see the code I used, feel free to [download the document here.](https://kevinparra.co/downloads/auto-email.txt)
+
+
+# Setting Up Gmailr <a name="section2"></a>
+
+Setting up the required authorization for the `gmailr` package takes quite a bit of clicking, but you can do it by [following the instructions here.](https://gmailr.r-lib.org/articles/oauth-client.html). Following those instructions allowed me to make calls to the Gmail API from R. 
+
+In short, you'll begin by signing in to your Google account so that you can create a project in the Google Cloud console. You'll enable the Gmail API, configure the OAuth consent screen for your project, and generate an OAuth client JSON. Importantly, make sure you put the JSON file in the same folder as your R script. 
+
+# Gmailr Code <a name="section3"></a>
+
+The code to send the email is fairly short. First, I load the gmailr package setting the additional arguments so they don't clutter your console when the code gets run. Additionally, I save the path to the JSON file as an object so that I can call it later when I authenticate the credentials. Note that my JSON file is called `credentials.json` and is saved in my home directory, but it'll be called something different by default when you get it originally. Once I have the credentials path established, I can run the `gm_auth_configure()` function to tell the package where to find them. Finally, I run the `gm_oauth_client()` function to authenticate the credentials.
+
+The purpose of running this code is to make sure that the script runs without any user input. If you don't run this code, you'll have to manually select the authorized email address each time you run the script, which defeats the purpose of having such a script in the first place. 
+
+```{r}
+library(gmailr, 
+        warn.conflicts = FALSE, 
+        quietly = TRUE, 
+        verbose = FALSE
+        )
+
+GMAILR_OAUTH_CLIENT = "~/path/to/credentials.json"
+gm_auth_configure(path = GMAILR_OAUTH_CLIENT)
+gm_oauth_client()
+
+```
+
+If I don't run the code above, I get the following message when I run the code to send the email: 
+
+```{r}
+The gmailr package is requesting access to your Google account.
+Enter '1' to start a new auth process or select a pre-authorized account.
+1: Send me to the browser for a new auth process.
+2: youremail@email.com
+```
+
+which means I have to manually select the authorized email address. Since I want to automate this process, I set the authorized email address as a system variable.
+
+Next, I made an object with the authorized email and one for the recipient email.[^1]
+
+```{r}
+sender_email <- "your_email_address"
+
+recipient_email <- sender_email
+```
+
+Of course, the same thing could be done using one object, but I wanted to make the code as clear as possible for myself if I reviewed it at some future point. 
+
+Next, I set the email's subject and body--the former as a string and the latter as an HTML file I wrote in VSCode. Of course, I could just as easily write the body as a string in R, including simple HTML tags to format the text. However, I wanted a more complex email body, including a much longer HTML code for my email signature. 
+
+```{r}
+email_subject <- "Email Subject"
+
+email_body <- readLines("~/path/to/body.html",
+                        warn = FALSE
+                        )
+
+email_body <- paste(email_body, 
+                    collapse = "\n"
+                    )
+```
+
+Finally, I ran the following code to put together everything above: 
+
+```{r}
+gm_mime() |>
+  gm_from(sender_email) |>
+  gm_to(recipient_email) |>
+  gm_html_body(email_body) |>
+  gm_subject(email_subject) |>
+  gm_send_message()
+```
+
+The `gm_mime()` function creates a new email object, and the native pipe operator (`|>`) passes the object to the next function. The `gm_from()` function sets the sender email address, and the `gm_to()` function sets the recipient email address from above. Next, the `gm_html_body()` function sets the email body, and `gm_subject()` sets the email subject. Finally, the `gm_send_message()` function sends the email.[^2]
+
+# Automating with CronR <a name="section4"></a>
+
+Now that you have the code needed to send the Gmail message, you should automate the process so that you don't have to manually source the document each week. After all, what's the point of using this as a reminder if you need to remember to run the code each week?
+
+I used the `CronR` package, which adds a handy GUI Addin to your RStudio session. I selected the settings I wanted, and the package did its job, sending me a weekly reminder email with a link to my Shiny app. For a more detailed explanation of how to use the package's commands or its GUI, check out the [package's documentation.](https://github.com/bnosac/cronR) However, the add-in menu is fairly straightforward, and I was able to set up the automation in a few minutes.
+
+If you're doing this on a Windows machine, you won't be able to use the `CronR` package. However, you can use the `taskscheduleR` package, which is available on CRAN. I haven't used it myself, but it seems to be fairly straightforward as well. 
+
+[1]: navark4@unlv.nevada.edu
+
+[^1]: Note that I saved my personal email as an RDS file so that I could call it in the script using `readRDS()` for security and ease. That way, I wouldn't accidentally push my email to GitHub by hard-coding it into my script. However, running the code in this post can be just as easily done by setting the email address as a string, assuming it'll just live on your local machine.
+
+[^2]: If you run this code and end up with any issues, make sure to look through the official documentation for the `gmailr` package. I had a few issues with the authorization when I initially ran this code, but I was able to resolve them by looking through the [comprehensive documentation](https://gmailr.r-lib.org/index.html). 
+
+

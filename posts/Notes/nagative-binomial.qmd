@@ -1,0 +1,105 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Notes
+- Model
+- Data Science
+- Count
+date: '2023-10-15'
+description: Quick notes for the negative binomial model.
+draft: false
+format: html
+title: Negative Binomial Model
+toc: true
+---
+
+*I am writing quick and easy R guides for my didactic purposes and to provide useful starting places for my peers in grad school. If you see that I have made a mistake or would like to suggest some way to make the post better or more accurate, please feel free to [email][1] me. I am always happy to learn from others' experiences!* 
+
+# Table of contents
+1. [Negative Binomial Model](#section1)
+    1. [Model Equation](#subsection1)
+    2. [Negative Binomial Distribution](#subsection2)
+2. [Incidence Rate Ratios](#section2)
+3. [Running it in R](#section3)
+4. [Diagnostic Statistics](#section4)
+
+
+# Negative Binomial Model <a name="section1"></a>
+
+# Model Equation <a name="subsection1"></a>
+This model is similar to the [Poisson Model][2] in that it is suited for count dependent variables. However, the Poisson model assumes that the response variable's mean and variance are equal--a condition that most real data commonly violate. If your response variable suffers from overdispersion (i.e., the dependent variable's variance is greater than its mean), then the negative binomial model is a good alternative. Whereas the Poisson model assumes the variable follows a Poisson distribution, the negative binomial model works off of the negative binomial distribution, which relaxes the dispersion assumption. In order to do so, the $Variance (Y)$ is made into a function of the mean $\mu$ and a dispersion parameter $\alpha$. Therefore, $Variance (Y) = \mu(1 + \alpha \mu). When $\alpha = 0$, the variance is equal to the mean, making the negative binomial identical to the Poisson, under these circumstances. 
+
+The negative binomial model is similar to the Poisson model in that it can be modeled as 
+
+$$ ln(\mu) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \epsilon $$
+
+where $mu$ is the mean, $\beta_0$ is the intercept, the remaining $\beta$ values are coefficients, and $\epsilon$ is an error term. The equation's left side contains the log link function. We include an error term in this model to reflect the overdispersion. Notably, there are two ways of expressing the response variable's variance: as a linear equation $Variance (Y) = \mu(1 + \mu)$ or a quadratic equation $Variance (Y) = \mu(1 + \alpha \mu) = \mu + \alpha \mu^2$. The former is often called the NB1 model and the latter the NB2 model, and the latter is the one that most people use. 
+
+When trying to predict the response variable's mean, we exponentiate both sides of the negative binomial model. 
+
+$$ \mu = exp(\beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p) $$
+
+Notice that the equation above does not include the $\epsilon$ value. That is because $exp(\epsilon)$ is assumed to be equal to 1 in this model as with the Poisson model, so it would be redundant to include it. 
+
+Additionally, as with the Poisson model, we can incorporate a temporal element if we want to represent a count of occurrences in a given timeframe $t$. If we do define an incidence rate, the model can be re-expressed as 
+
+$$ ln(\mu / t) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \epsilon $$
+
+where $t$ is the time period and $ln(\mu / t)$ represents the log of the incidence rate. We can also rewrite the equation above as 
+
+$$ ln(\mu) = ln(t) + \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \epsilon $$
+
+where $ln(t)$ is the offset in the model. 
+
+# Negative Binomial Distribution <a name="subsection2"></a>
+
+As we saw above, the negative binomial model handles overdispersion in count data better than the Poisson model. That is because the negative binomial probability distribution handles greater variance better than the Poisson distribution. In this probability distribution, we count all the independent Bernoulli trials before a given number of achieved successes. We can express the negative binomial probability distribution as 
+
+$$ P(Y = y) = \binom{y + k - 1}{y} p^k (1-p)^y $$
+
+where $\binom{y = k - 1}{y}$ is the negative binomial coefficient, $y$ is the number of trials before an achieved success, k is the number of successes in $y + k$ trials, and $p$ is the given trial's success probability. 
+
+
+
+# Incidence Rate Ratios <a name="section2"></a>
+
+The negative binomial model employs incidence rate ratios like the Poisson model, estimating the response variable's log incidence rate. In order to get this value, then, we exponentiation both sides of the model. 
+
+
+
+
+# Running it in R <a name="section3"></a>
+
+When you want to fit a negative binomial model in R, you can use the `glm.nb` function from the `MASS` package. The code would look like 
+
+```
+
+nb.mod <- glm.nb(dv ~ iv1 + iv2 + ivp, data = data)
+summary(nb.mod)
+
+```
+
+
+You can also run the same model using the `vglm` function from `VGAM` using the following code: 
+
+```
+
+nb.vglm <- vglm(dv ~ iv1 + iv2 + ivp, family = neginomial, data = data)
+summary(nb.vglm)
+
+```
+
+Using the `glm.nb` might be somewhat easier, unless you are specifying other models in the `VGAM` package. 
+
+
+
+# Diagnostic Statistics <a name="section4"></a>
+
+The diagnostic statistics for this model are mostly the same as those used for the [Poisson model][2] and others I've covered here. 
+
+
+
+
+[1]: navark4@unlv.nevada.edu
+
+[2]: https://www.kevinparra.co/blog/Notes/poisson-notes

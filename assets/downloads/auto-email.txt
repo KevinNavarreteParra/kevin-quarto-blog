@@ -1,0 +1,34 @@
+# install.packages("gmailr")
+library(gmailr, 
+        warn.conflicts = FALSE, 
+        quietly = TRUE, 
+        verbose = FALSE
+        )
+
+# Set up your Google API credentials
+Sys.setenv(GARGLE_AUTH_EMAIL = "your_authorized_email_address")
+
+# Set up your email credentials
+sender_email <- "your_email_address"
+
+# Set up the recipient's email
+recipient_email <- sender_email
+
+# Set up the email content
+email_subject <- "Email Subject"
+
+email_body <- readLines("~/path/to/body.html",
+                        warn = FALSE
+                        )
+
+email_body <- paste(email_body, 
+                    collapse = "\n"
+                    )
+
+# Send the email
+gm_mime() |>
+  gm_from(sender_email) |>
+  gm_to(recipient_email) |>
+  gm_html_body(email_body) |>
+  gm_subject(email_subject) |>
+  gm_send_message()

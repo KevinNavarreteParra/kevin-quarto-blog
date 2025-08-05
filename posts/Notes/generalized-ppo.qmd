@@ -1,0 +1,77 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Notes
+- Proportional Odds
+- Model
+- Data Science
+- Ordered Logit
+date: '2023-09-15'
+description: Quick notes for PPO and GOL models.
+draft: false
+format: html
+title: Generalized Ordinal Logistic Regression Models and Partial Proportional Odds
+  Models
+toc: true
+---
+
+*I am writing quick and easy R guides for my didactic purposes and to provide useful starting places for my peers in grad school. If you see that I have made a mistake or would like to suggest some way to make the post better or more accurate, please feel free to [email][1] me. I am always happy to learn from others' experiences!* 
+
+# Partial Proportional Odds Model
+
+If you violate the proportional odds assumption for the proportional odds model--as is likely to happen--you will use one of these models instead. This model is effectively the same as the PO model, but it relaxes the proportional odds assumption. It is expressed as 
+
+$$ ln(\frac{\pi_j(x)}{1- \pi_j(x)}) = \alpha_j + (\beta_{1j}X_1 + \beta_{2j}X_2 + ... + \beta_{pj}X_p) $$
+
+where $\alpha_j$ represents the cut point given $j-1$ categories and the $\beta_jX$ values represent the coefficients for the given variables. Notice that the link equation on the left side is the same as the proportional odds link function and is similar to the logit link function. 
+
+The equation above can also be expressed as 
+
+$$ logit[P(Y \le j | x_1,x_2,...,x_p)] = ln(\frac{P(Y \le j|x_1,x_2,...,x_p)}{P(Y > j|x_1,x_2,...,x_p)}) = \alpha_j + (\beta_{1j}X_1 + \beta_{2j}X_2 + ... + \beta_{jp}X_p) $$
+
+Again, notice how the equation is essentially identical to the proportional odds one, differing only in the added $j$ values throughout instances of $\beta$ and in the additive property of the coefficients. Like with the proportional odds model, this model estimates the odds of being at or below a certain category. If you want to estimate the odds of being above a given category instead, you would express the model as 
+
+$$ logit[P(Y > j | x_1,x_2,...,x_p)] = ln(\frac{P(Y > j|x_1,x_2,...,x_p)}{P(Y \le j|x_1,x_2,...,x_p)}) = -\alpha_j - (\beta_{1j}X_1 + \beta_{2j}X_2 + ... + \beta_{jp}X_p) $$
+
+with the only changes being the signs by the cutoff point and the > and $\le$ signs toward the left of the equation. 
+
+Running these models requires the `VGLM` function in the `VGAM` package. The default model will be the first of the two options presented above. If you would like to run the reverse model, simply specify `reverse = TRUE` as an argument. Additionally, you need to add the argument `parallel = FALSE` so that the command does not run a proportional odds model abiding by the proportional odds assumption. 
+
+## Odds and Odds Ratios
+
+As with the proportional odds model and logit model, you must calculate the odds ratio for your coefficients. Therefore, the odds of being at or below the jth category are expressed as 
+
+$$ Odds(Y \le j) = \frac{P(Y \le j)}{P(Y > j)} $$
+
+Note that the odds equation above works for the PPO model in which you estimate the odds of being at or below the jth category. For the odds of being at or above the jth category would be expressed as 
+
+$$ Odds(Y \ge j) = \frac{P(Y \ge j)}{P(Y < j)} $$
+
+For a more thorough discussion of odds ratios and their interpretation, see the notes for logit and proportional odds models . 
+
+## Goodness of Fit 
+
+The goodness of fit statistics for the PPO model are the same as those for the proportional odds and logit models. See the notes for those models for explanations of deviance, likelihood ratio test, and pseudo-$R^2$ measures. 
+
+# In Practice
+
+These models can be run using either the `ordinal` package or the `VGAM` package, though the latter is seemingly preferable because it has a wider selection of functions for running and diagnosing these models. The basic syntax for the model is 
+
+
+```r
+library(VGAM)
+model <- vglm(y ~ x1 + x2 +x3, cumulative(parallel = FALSE, reverse = FALSE), data = data)
+summary(model)
+```
+where `cumulative(parallel = FALSE, reverse = FALSE)` indicates that the proportional odds assumption is relaxed and that the regular equation is being run, not the reverse. 
+
+Then, we test the proportional odds assumption with 
+
+
+```r
+lrtest(model)
+```
+Recall that a significant result indicates that the model assumptions are violated. 
+
+
+

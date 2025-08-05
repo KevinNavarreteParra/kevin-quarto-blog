@@ -1,0 +1,44 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Markdown
+- RMarkdown
+- Greek Alphabet
+date: '2024-05-19'
+description: Quick notes regarding Greek alphabet notation in markdown.
+draft: false
+format: html
+title: Greek Alphabet in Markdown
+toc: true
+---
+
+The following table is a recreation of Table 1.3 found in [A Mathematics Course for Political & Social Research](https://press.princeton.edu/books/paperback/9780691159171/a-mathematics-course-for-political-and-social-research) by Will H. Moore and David A. Siegel, with a few additions and changes. This table is a quick reference for Greek alphabet notation in Markdown and RMarkdown, and it can also be useful for formatting math equations in LaTeX.
+
+Note that the inline code snippets for the Greek letters' lower case and upper case versions are the same, with the only difference relating to the capitalization of the letter in the inline code. For example, the inline code for the lower case alpha is `$\alpha$`, and the inline code for the upper case alpha is `$\Alpha$`.
+
+| Upper case | Lower case | Name     | Inline Code           |
+|------------|------------|----------|-----------------------|
+| $\Alpha$   | $\alpha$   | Alpha    | `$\alpha$`            |
+| $\Beta$    | $\beta$    | Beta     | `$\beta$`             |
+| $\Gamma$   | $\gamma$   | Gamma    | `$\Gamma$`            |
+| $\Delta$   | $\delta$   | Delta    | `$\Delta$`            |
+| $\Epsilon$ | $\epsilon$ | Epsilon  | `$\Epsilon$`          |
+| $\Zeta$    | $\zeta$    | Zeta     | `$\Zeta$`             |
+| $\Eta$     | $\eta$     | Eta      | `$\Eta$`              |
+| $\Theta$   | $\theta$   | Theta    | `$\Theta$`            |
+| $\Iota$    | $\iota$    | Iota     | `$\Iota$`             |
+| $\Kappa$   | $\kappa$   | Kappa    | `$\Kappa$`            |
+| $\Lambda$  | $\lambda$  | Lambda   | `$\Lambda$`           |
+| $\Mu$      | $\mu$      | Mu       | `$\Mu$`               |
+| $\Nu$      | $\nu$      | Nu       | `$\Nu$`               |
+| $\Xi$      | $\xi$      | Xi       | `$\Xi$`               |
+| $\Omicron$ | $\omicron$ | Omicron  | `$\Omicron$`          |
+| $\Pi$      | $\pi$      | Pi       | `$\Pi$`               |
+| $\Rho$     | $\rho$     | Rho      | `$\Rho$`              |
+| $\Sigma$   | $\sigma$   | Sigma    | `$\Sigma$`            |
+| $\Tau$     | $\tau$     | Tau      | `$\Tau$`              |
+| $\Upsilon$ | $\upsilon$ | Upsilon  | `$\Upsilon$`          |
+| $\Phi$     | $\phi$     | Phi      | `$\Phi$`              |
+| $\Chi$     | $\chi$     | Chi      | `$\Chi$`              |
+| $\Psi$     | $\psi$     | Psi      | `$\Psi$`              |
+| $\Omega$   | $\omega$   | Omega    | `$\Omega$`            |

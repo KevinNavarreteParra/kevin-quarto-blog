@@ -1,0 +1,89 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Notes
+- Probability
+date: '2025-02-03'
+draft: false
+format: html
+title: Notes on Probability Axioms
+toc: true
+---
+
+# Probability Axioms
+
+These are some quick notes on probability axioms for future reference.
+
+Let $\Omega$ be the sample space, $F$ be the event space, and $P$ be the probability measure, with $(\Omega, F, P)$ being a probability space. The probability of some event $P(E)$ is the probability of some event $E$ occurring. 
+
+Boiling this down to simpler terms, the sample space $\Omega$ is the set of all possible outcomes. So, if I am flipping a coin, 
+
+$$ \Omega = \{H, T\} $$
+
+because heads and tails are the only possible outcomes. The event space $F$ is all the possible sets of outcomes that can occur. Keeping with the coin flip example, 
+
+$$ F = \{\emptyset, \{H\}, \{T\}, \{H, T\}\} $$
+
+where $\emptyset$ is the empty set, $\{H\}$ is the event of flipping heads, $\{T\}$ is the event of flipping tails, and $\{H, T\}$ is the event of flipping either heads or tails.
+
+## Axiom 1: Non-Negativity
+
+The first axiom stipulates the non-negativity of the probability measure for events $E$ in the event space $F$. That is, 
+
+$$ P(E) \in \R , P(E) \geq 0 \forall E \in F $$
+
+In simple terms, this axiom states that the probability of an event occurring is always a real number greater than or equal to zero for all events in the event space. 
+
+## Axiom 2: Unit Measure
+
+The second axiom states that the probability of the entire sample space $\Omega$ is equal to 1. That is,
+
+$$ P(\Omega) = 1 $$
+
+which, in simple terms, means that the probability of at least one event from the event space occurring is 1. 
+
+## Axiom 3: Countable Additivity
+
+The third axiom states that the probability of the union of disjoint events is equal to the sum of the probabilities of the individual events. That is,
+
+$$ P(\bigcup_\{i=1\}^\{\infty\} E_i) = \sum_\{i=1\}^\{\infty\} P(E_i) $$
+
+where $E_i$ are disjoint events in the event space $F$. In simpler terms, this axiom states that the probability of the union of two or more events is equal to the sum of the probabilities of the individual events. And, by disjoint events, I mean that the events are mutually exclusive; that is, they don't share any common elements.
+
+# Consequences of the Axioms
+
+The probability axioms lead to some notable consequences that are also worth mentioning. 
+
+For example, 
+
+$$ if A \subseteq B, then P(A) \leq P(B) $$
+
+which means that if event $A$ is a subset of event $B$, then the probability of event $A$ occurring is less than or equal to the probability of event $B$ occurring.
+
+Another consequence is that 
+
+$$ P(\emptyset) = 0 $$
+
+which means that the probability of the null set is zero. 
+
+The complement of an event $A$ is denoted as $A^c$, and the probability of the complement of an event is
+
+$$ P(A^c) = P(\Omega - A) = 1 - P(A) $$
+
+which gives the helpful interpretation that the probability of the complement of an event is equal to one minus the probability of the event itself.
+
+Additionally, probabilities are bounded such that 
+
+$$ 0 \leq P(E) \leq 1 \forall E \in F $$
+
+which means that the probability of any event $E$ is always between zero and one. 
+
+Finally, the probability of the union of two events is
+
+$$ P(A \cup B) = P(A) + P(B) - P(A \cap B) $$
+
+which simplifies to 
+
+$$ P(A \cup B) = P(A) + P(B) $$
+
+if the events $A$ and $B$ are mutually exclusive.

@@ -1,0 +1,54 @@
+/*-- scss:defaults --*/
+$primary: #e91e63;  // Pink color to match original theme
+$secondary: #6c757d;
+$body-color: #212529;
+$font-family-sans-serif: "Space Grotesk", system-ui, sans-serif;
+$headings-font-family: "Space Grotesk", system-ui, sans-serif;
+
+/*-- scss:rules --*/
+.navbar-brand {
+  font-weight: 600;
+}
+
+.quarto-title-banner {
+  background: linear-gradient(135deg, $primary 0%, lighten($primary, 10%) 100%);
+}
+
+// Academic paper styling for posts
+.post-content {
+  line-height: 1.6;
+  
+  blockquote {
+    border-left: 4px solid $primary;
+    padding-left: 1rem;
+    font-style: italic;
+  }
+}
+
+// Custom styling for academic content
+.math-display {
+  margin: 1.5rem 0;
+}
+
+// Code block enhancements
+pre.sourceCode {
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+// Tag styling
+.category-tag {
+  background-color: rgba($primary, 0.1);
+  color: $primary;
+  border: 1px solid rgba($primary, 0.3);
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.85rem;
+  margin-right: 0.5rem;
+  text-decoration: none;
+}
+
+.category-tag:hover {
+  background-color: rgba($primary, 0.2);
+  text-decoration: none;
+}

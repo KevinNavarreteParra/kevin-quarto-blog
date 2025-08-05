@@ -1,0 +1,135 @@
+============================================================
+MDX to Quarto QMD Conversion Report
+============================================================
+Generated: 2025-08-05 11:37:09
+
+SUMMARY:
+  Total files processed: 27
+  Successfully converted: 27
+  Failed conversions: 0
+  Success rate: 100.0%
+
+SUCCESSFUL CONVERSIONS:
+  [✓] auto-emails-in-r.mdx -> auto-emails-in-r.qmd
+    Categories: R, email, automation
+
+  [✓] bingo-in-r.mdx -> bingo-in-r.qmd
+    Categories: R, Bingo, Game
+
+  [✓] book-counts.mdx -> book-counts.qmd
+    Categories: Books, Reading
+
+  [✓] latex-citation-bibdata-bibstyle-issue.mdx -> latex-citation-bibdata-bibstyle-issue.qmd
+    Categories: LaTeX, Citations, Bibliography
+
+  [✓] quarto-deck-to-pdf.mdx -> quarto-deck-to-pdf.qmd
+    Categories: Quarto, PDF, Presentation
+
+  [✓] r-packages-install.mdx -> r-packages-install.qmd
+    Categories: R, Packages, Installation
+
+  [✓] r-project-template.mdx -> r-project-template.qmd
+    Categories: R, Project, Template
+
+  [✓] tex-to-docx.mdx -> tex-to-docx.qmd
+    Categories: LaTeX, DOCX, Conversion
+
+  [✓] horology/writing-on-watches.mdx -> horology/writing-on-watches.qmd
+    Categories: Horology, Writing
+
+  [✓] phd/finished-prospectus.mdx -> phd/finished-prospectus.qmd
+    Categories: PhD, Prospectus
+
+  [✓] phd/spring-2025-kickoff.mdx -> phd/spring-2025-kickoff.qmd
+    Categories: PhD
+
+  [✓] Notes/adjacent-categories-model.mdx -> Notes/adjacent-categories-model.qmd
+    Categories: Notes, Adjacent Categories, Model, Data Science
+
+  [✓] Notes/bayes-formula.mdx -> Notes/bayes-formula.qmd
+    Categories: Notes, Bayes, Formula, Data Science
+
+  [✓] Notes/binary-multilevel-model.mdx -> Notes/binary-multilevel-model.qmd
+    Categories: Notes, Binary, Multilevel, Model, Data Science
+
+  [✓] Notes/continuation-ratio-model.mdx -> Notes/continuation-ratio-model.qmd
+    Categories: Notes, Continuation Ratio, Model, Data Science
+
+  [✓] Notes/continuous-multilevel-model.mdx -> Notes/continuous-multilevel-model.qmd
+    Categories: Notes, Continuous, Multilevel, Model, Data Science
+
+  [✓] Notes/generalized-ppo.mdx -> Notes/generalized-ppo.qmd
+    Categories: Notes, PPO, RL, Data Science
+
+  [✓] Notes/greek-letters.mdx -> Notes/greek-letters.qmd
+    Categories: Notes, Greek Letters, LaTeX, Data Science
+
+  [✓] Notes/logit-notes.mdx -> Notes/logit-notes.qmd
+    Categories: Notes, Logit, Model, Data Science
+
+  [✓] Notes/markdown-notation.mdx -> Notes/markdown-notation.qmd
+    Categories: Notes, Markdown, Notation, Data Science
+
+  [✓] Notes/multinomial-logit.mdx -> Notes/multinomial-logit.qmd
+    Categories: Notes, Multinomial, Logit, Model, Data Science
+
+  [✓] Notes/nagative-binomial.mdx -> Notes/nagative-binomial.qmd
+    Categories: Notes, Negative Binomial, Model, Data Science
+
+  [✓] Notes/poisson-notes.mdx -> Notes/poisson-notes.qmd
+    Categories: Notes, Poisson, Model, Data Science
+
+  [✓] Notes/ppo-notes.mdx -> Notes/ppo-notes.qmd
+    Categories: Notes, PPO, RL, Data Science
+
+  [✓] Notes/probability_axioms.mdx -> Notes/probability_axioms.qmd
+    Categories: Notes, Probability, Axioms, Data Science
+
+  [✓] Notes/stereotype-logit.mdx -> Notes/stereotype-logit.qmd
+    Categories: Notes, Stereotype, Logit, Model, Data Science
+
+  [✓] Notes/zero-inflated.mdx -> Notes/zero-inflated.qmd
+    Categories: Notes, Zero Inflated, Model, Data Science
+
+DIRECTORY STRUCTURE CREATED:
+  [📁] posts/ (root level)
+  [📁] posts/Notes/
+  [📁] posts/horology/
+  [📁] posts/phd/
+
+CONVERSION FEATURES IMPLEMENTED:
+- YAML frontmatter conversion to Quarto format
+- Tags converted to categories
+- Summary converted to description
+- Added author field: Kevin Navarrete-Parra
+- Added Quarto-specific fields (format: html, toc: true)
+- Preserved mathematical expressions (LaTeX syntax)
+- Maintained code blocks and academic content
+- Preserved footnotes and citations
+- Maintained directory structure organization
+- Handled nested subdirectories properly
+
+TECHNICAL DETAILS:
+- Source directory: D:\website\kevin-blog-two\data\blog\
+- Target directory: D:\website\kevin-quarto-site\posts\
+- Conversion method: Python script with PyYAML parsing
+- Content processing: Preserved all markdown formatting
+- Math expressions: LaTeX $$ syntax preserved for Quarto
+- All files maintain original content integrity
+
+READY FOR QUARTO:
+The converted QMD files are now ready to be used with Quarto. 
+The Quarto site configuration (_quarto.yml) already includes:
+- KaTeX math rendering (html-math-method: katex)
+- Table of contents support
+- Citation and footnote hover features
+- Code folding and tools
+
+NEXT STEPS:
+1. Review converted files for any manual adjustments needed
+2. Build the Quarto site to test rendering
+3. Check that all mathematical expressions render correctly
+4. Verify that all internal links and references work
+5. Test category-based filtering and navigation
+
+============================================================

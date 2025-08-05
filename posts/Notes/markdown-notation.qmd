@@ -1,0 +1,68 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- Markdown
+- RMarkdown
+- Math Notation
+date: '2024-05-19'
+description: Quick notes regarding mathematical notation in markdown.
+draft: false
+format: html
+title: Markdown Notation
+toc: true
+---
+
+The following table is a recreation of Table 1.2 found in [A Mathematics Course for Political & Social Research](https://press.princeton.edu/books/paperback/9780691159171/a-mathematics-course-for-political-and-social-research) by Will H. Moore and David A. Siegel, with a few additions and changes[^1]. This table is a quick reference for mathematical notation in Markdown and RMarkdown, and it can also be useful for formatting math equations in LaTeX. Additionally, it is worth noting that any of these inline code snippets can also be expressed as code blocks in markdown and Rmarkdown by wrapping them in double dollar signs, e.g., `$$a + b$$`.
+
+
+| Symbol                                | Meaning                                        | Inline Code                                 |
+|---------------------------------------|------------------------------------------------|---------------------------------------------|
+| $a + b$                               | Addition                                       | `$a + b$`                                   |
+| $a - b$                               | Subtraction                                    | `$a - b$`                                   |
+| $a \times b$  $a \ast b$  $a \cdot b$ | Multiplication                                 | `$a \times b$`  `$a \ast b$`  `$a \cdot b$` |
+| $a / b$  $a \div b$  $\frac{a}{b}$    | Division                                       | `$a / b$`  `$a \div b$`  `$\frac{a}{b}$`    |
+| $5\mod 2=1$                           | Modulo                                         | `$5\mod 2 = 1$`                             |
+| $\pm a$                               | Plus or Minus                                  | `$\pm a$`                                   |
+| $a^n$                                 | Exponent                                       | `$a^n$`                                     |
+| $\sqrt[n]{a}$                         | Radical                                        | `$\sqrt[n]{a}$`                             |
+| $3!=3 \times 2 \times 1$              | Factorial                                      | `$3!=3 \times 2 \times 1$`                  |
+| $\Delta x$                            | Change in x                                    | `$\Delta x$`                                |
+| $\pi$                                 | Pi                                             | `$\pi$`                                     |
+| $e$                                   | Euler's constant                               | `$e$`                                       |
+| $\infty$ $-\infty$                    | Infinity                                       | `$\infty$` `$-\infty$`                      |
+| $\displaystyle\sum_{i = k}^l x_i$     | Sum of $x_i$ from index $i = k$ to $i = l$     | `$\displaystyle\sum_{i = k}^l x_i$`         |
+| $\displaystyle\prod_{i = k}^l x_i$    | Product of $x_i$ from index $i = k$ to $i = l$ | `$\displaystyle\prod_{i = k}^l x_i$`        |
+| $...$                                 | Continued progression                          | `$...$`                                     |
+| $\frac{d}{dx}$                        | Total derivative with respect to x             | `$\frac{d}{dx}$`                            |
+| $\frac{\partial}{\partial x}$         | Partial derivative with respect to x           | `$\frac{\partial}{\partial x}$`             |
+| $\int dx$                             | Integral over x                                | `$\int dx$`                                 |
+| $a \bigcup b$                         | Set union                                      | `$a \bigcup b`                              |
+| $a \bigcap b$                         | Set intersection                               | `$a \bigcap b$`                             |
+| $a \times b$                          | Cartesian product of sets                      | `$a \times b$`                              |
+| $\setminus$                           | Set difference                                 | `$\setminus$`                               |
+| $A^{c}$                               | Complement of set A                            | `$A^{c}$`                                   |
+| $A = \emptyset$                       | A is an empty (or null) set                    | `$A = \emptyset$`                           |
+| $x \in A$                             | Set membership                                 | `$x \in A$`                                 |
+| $x \notin A$                          | Not a member of a set                          | `$x \notin A$`                              |
+| $\mid$ $\ni$ $:$                      | Such that                                      | `$\mid$` `$\ni$` `$:$`                      |
+| $a \subset b$                         | Proper subset                                  | `$a \subset b$`                             |
+| $a \subseteq b$                       | Subset                                         | `$a \subseteq b$`                           |
+| $< $ and $ > $                        | Less than and greater than                     | `$< $ and $ > $`                            |
+| $\leq$ and $\geq$                     | Less than or equal to and greater than or equal to | `$\leq$ and $\geq$`                        |
+| $\approx$                             | Approximately equal to                         | `$\approx$`                                 |
+| $\equiv$                              | Equivalent to                                  | `$\equiv$`                                  |
+| $\neq$                                | Not equal to                                   | `$\neq$`                                    |
+| $\forall$                             | For all                                        | `$\forall$`                                 |
+| $\exists$                             | There exists                                   | `$\exists$`                                 |
+| $\Rightarrow$                         | Implies                                        | `$\Rightarrow$`                             |
+| $\Leftrightarrow$                     | If and only if                                 | `$\Leftrightarrow$`                         |
+| $\because$                            | Because                                        | `$\because$`                                |
+| $\therefore$                          | Therefore                                      | `$\therefore$`                              |
+| $\neg$                                | Negation                                       | `$\neg$`                                    |
+| $f(x)$                                | Function                                       | `$f(x)$`                                    |
+| ${a, b}$                              | Delimiter for a discrete set                   | `${a, b}$`                                  |
+| $[a, b]$                              | Closed interval                                | `$[a, b]$`                                  |
+| $(a, b)$                              | Open interval                                  | `$(a, b)$`                                  |
+
+
+[^1]: I've added some additional symbols and changed the formatting slightly for my purposes. 
