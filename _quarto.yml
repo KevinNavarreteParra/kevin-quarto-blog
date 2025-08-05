@@ -1,6 +1,5 @@
 project:
   type: website
-  output-dir: docs  # For GitHub Pages
 
 website:
   title: "Kevin Navarrete-Parra"
