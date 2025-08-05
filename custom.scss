@@ -1,15 +1,17 @@
 /*-- scss:defaults --*/
-// Updated color palette for Slate theme (dark)
-$primary: #ff6b9d;  // Brighter pink for dark theme visibility
-$secondary: #6c757d;
-$success: #28a745;
-$info: #17a2b8;
-$warning: #ffc107;
-$danger: #dc3545;
+// Professional analytical color palette
+$primary: #1A365D;    
+$accent: #38B2AC;    
+$accent-light: #4FD1C7; 
+$secondary: #4A5568;  
+$success: #38B2AC;    
+$info: #4FD1C7;      
+$warning: #ED8936;   
+$danger: #E53E3E;    
 
-// Dark theme friendly colors
-$light: #495057;
-$dark: #212529;
+// Enhanced theme colors
+$light: #F7FAFC;    
+$dark: #2D3748;   
 
 // Typography
 $font-family-sans-serif: "Space Grotesk", system-ui, sans-serif;
@@ -26,7 +28,7 @@ $border-radius-lg: 0.75rem;
 .navbar-brand {
   font-weight: 700;
   font-size: 1.5rem;
-  background: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 100%);
+  background: linear-gradient(135deg, $primary 0%, $accent 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -38,15 +40,15 @@ $border-radius-lg: 0.75rem;
 }
 
 .navbar-nav .nav-link:hover {
-  color: $primary !important;
+  color: $light !important;
 }
 
 // Title banner with gradient
 .quarto-title-banner {
   background: linear-gradient(135deg, 
     rgba($primary, 0.9) 0%, 
-    rgba(lighten($primary, 10%), 0.8) 50%,
-    rgba(darken($primary, 10%), 0.9) 100%);
+    rgba($accent, 0.8) 50%,
+    rgba($primary, 0.9) 100%);
   border-radius: 0 0 2rem 2rem;
   margin-bottom: 2rem;
 }
@@ -62,11 +64,11 @@ $border-radius-lg: 0.75rem;
   line-height: 1.7;
   
   blockquote {
-    border-left: 4px solid $primary;
+    border-left: 4px solid $accent;
     border-radius: 0 $border-radius-sm $border-radius-sm 0;
     padding: 1rem 1.5rem;
     margin: 1.5rem 0;
-    background: rgba($primary, 0.05);
+    background: rgba($accent, 0.05);
     font-style: italic;
     position: relative;
   }
@@ -74,7 +76,7 @@ $border-radius-lg: 0.75rem;
   blockquote::before {
     content: '"';
     font-size: 3rem;
-    color: rgba($primary, 0.3);
+    color: rgba($accent, 0.3);
     position: absolute;
     left: 0.5rem;
     top: -0.5rem;
@@ -86,9 +88,9 @@ $border-radius-lg: 0.75rem;
 .math-display {
   margin: 2rem 0;
   padding: 1rem;
-  background: rgba($primary, 0.02);
+  background: rgba($accent, 0.02);
   border-radius: $border-radius;
-  border: 1px solid rgba($primary, 0.1);
+  border: 1px solid rgba($accent, 0.1);
 }
 
 // Code block enhancements for dark theme
@@ -101,8 +103,8 @@ pre.sourceCode {
 }
 
 code {
-  background: rgba($primary, 0.1);
-  color: lighten($primary, 20%);
+  background: rgba($accent, 0.1);
+  color: $accent-light;
   padding: 0.2rem 0.4rem;
   border-radius: $border-radius-sm;
   font-size: 0.9em;
@@ -110,8 +112,8 @@ code {
 
 // Enhanced tag/category styling
 .quarto-category {
-  background: linear-gradient(135deg, rgba($primary, 0.8), rgba($primary, 0.6));
-  color: white;
+  background: linear-gradient(135deg, rgba($accent, 0.8), rgba($accent, 0.6));
+  color: $dark;
   border: none;
   border-radius: 2rem;
   padding: 0.3rem 0.8rem;
@@ -121,13 +123,13 @@ code {
   text-decoration: none;
   display: inline-block;
   transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba($primary, 0.3);
+  box-shadow: 0 2px 4px rgba($accent, 0.3);
 }
 
 .quarto-category:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba($primary, 0.4);
-  color: white;
+  box-shadow: 0 4px 8px rgba($accent, 0.4);
+  color: $dark;
   text-decoration: none;
 }
 
@@ -142,19 +144,19 @@ code {
 
 .card:hover {
   transform: translateY(-4px);
-  border-color: rgba($primary, 0.3);
-  box-shadow: 0 8px 24px rgba($primary, 0.15);
+  border-color: rgba($accent, 0.3);
+  box-shadow: 0 8px 24px rgba($accent, 0.15);
 }
 
 // Footer styling
 .nav-footer {
-  border-top: 1px solid rgba($primary, 0.2);
-  background: rgba($primary, 0.02);
+  border-top: 1px solid rgba($accent, 0.2);
+  background: rgba($accent, 0.02);
 }
 
 // Custom button styling
 .btn-primary {
-  background: linear-gradient(135deg, $primary, darken($primary, 10%));
+  background: linear-gradient(135deg, $primary, $accent);
   border: none;
   border-radius: 2rem;
   padding: 0.5rem 1.5rem;
@@ -164,8 +166,8 @@ code {
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba($primary, 0.3);
-  background: linear-gradient(135deg, lighten($primary, 5%), $primary);
+  box-shadow: 0 4px 12px rgba($accent, 0.3);
+  background: linear-gradient(135deg, $accent-light, $accent);
 }
 
 // Table of contents styling
@@ -175,15 +177,15 @@ code {
 }
 
 .sidebar-item:hover {
-  background: rgba($primary, 0.05);
+  background: rgba($accent, 0.05);
 }
 
 // Enhanced academic styling
 .theorem, .definition, .example {
-  border-left: 4px solid $primary;
+  border-left: 4px solid $accent;
   padding: 1rem 1.5rem;
   margin: 1.5rem 0;
-  background: rgba($primary, 0.03);
+  background: rgba($accent, 0.03);
   border-radius: 0 $border-radius $border-radius 0;
 }
 
@@ -198,10 +200,10 @@ code {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba($primary, 0.6);
+  background: rgba($accent, 0.6);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba($primary, 0.8);
+  background: rgba($accent, 0.8);
 }
