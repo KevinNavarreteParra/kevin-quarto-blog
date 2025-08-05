@@ -27,7 +27,7 @@ website:
       © 2025 Kevin Navarrete-Parra. All rights reserved.
     background: primary
 
-  google-analytics: !expr Sys.getenv("GOOGLE_ANALYTICS_ID")
+  google-analytics: ${GOOGLE_ANALYTICS_ID}
   cookie-consent: true
   open-graph: true
 
