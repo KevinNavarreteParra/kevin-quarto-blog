@@ -51,11 +51,11 @@ The code ran well, generating a 5x5 plot with random letters in each cell. Morov
 
 The output looked like this: 
 
-![An example of a messy bingo card](/static/images/messy-bingo.png)
+![An example of a messy bingo card](/assets/images/messy-bingo.png)
 
 As you can see, the card is fairly illegible, which is not ideal. However, after some tweaking, I was able to generate a card that looks like this: 
 
-![An example of a cleaned up bingo card](/static/images/clean-bingo.png)
+![An example of a cleaned up bingo card](/assets/images/clean-bingo.png)
 
 
 I used the `stringr` package to wrap the text and I added additional facets to the `ggplot2` code to make the cards more to my liking. Despite being quite pleased with the final product, I wanted to take things a step further by making a bingo card generating function I could use for future game nights. 
