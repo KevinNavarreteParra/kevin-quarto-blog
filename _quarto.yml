@@ -48,7 +48,7 @@ format:
     fig-height: 6
 
 execute:
-  freeze: autoproject:
+  freeze: autoproject
   type: website
 
 website:
