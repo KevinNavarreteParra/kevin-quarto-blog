@@ -1,6 +1,6 @@
 [
   {
-    "listing": "/posts.html",
+    "listing": "/index.html",
     "items": [
       "/posts/horology/writing-on-watches.html",
       "/posts/Notes/probability_axioms.html",
@@ -12,8 +12,8 @@
       "/posts/bingo-in-r.html",
       "/posts/Notes/bayes-formula.html",
       "/posts/r-project-template.html",
-      "/posts/Notes/markdown-notation.html",
       "/posts/Notes/greek-letters.html",
+      "/posts/Notes/markdown-notation.html",
       "/posts/auto-emails-in-r.html",
       "/posts/r-packages-install.html",
       "/posts/Notes/zero-inflated.html",
@@ -29,7 +29,7 @@
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/posts.html",
     "items": [
       "/posts/horology/writing-on-watches.html",
       "/posts/Notes/probability_axioms.html",
@@ -41,8 +41,8 @@
       "/posts/bingo-in-r.html",
       "/posts/Notes/bayes-formula.html",
       "/posts/r-project-template.html",
-      "/posts/Notes/markdown-notation.html",
       "/posts/Notes/greek-letters.html",
+      "/posts/Notes/markdown-notation.html",
       "/posts/auto-emails-in-r.html",
       "/posts/r-packages-install.html",
       "/posts/Notes/zero-inflated.html",

@@ -10,7 +10,7 @@
 <atom:link href="https://kevinnavreteparra.github.io/kevin-quarto-blog/posts.xml" rel="self" type="application/rss+xml"/>
 <description>A place for my notes and thoughts on political science, data science, and research methods</description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Thu, 06 Mar 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 06 Mar 2025 08:00:00 GMT</lastBuildDate>
 <item>
   <title>Writing on Watches</title>
   <dc:creator>Kevin Navarrete-Parra</dc:creator>
@@ -43,7 +43,7 @@
   <category>Horology</category>
   <category>Writing</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/horology/writing-on-watches.html</guid>
-  <pubDate>Thu, 06 Mar 2025 00:00:00 GMT</pubDate>
+  <pubDate>Thu, 06 Mar 2025 08:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Notes on Probability Axioms</title>
@@ -112,7 +112,7 @@
   <category>Notes</category>
   <category>Probability</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/probability_axioms.html</guid>
-  <pubDate>Mon, 03 Feb 2025 00:00:00 GMT</pubDate>
+  <pubDate>Mon, 03 Feb 2025 08:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How to Convert a Quarto Reveal.js Deck to PDF</title>
@@ -159,7 +159,7 @@ font-style: inherit;">&gt;</span>.pdf</span></code></pre></div>
   <category>Bash</category>
   <category>PDF</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/quarto-deck-to-pdf.html</guid>
-  <pubDate>Mon, 27 Jan 2025 00:00:00 GMT</pubDate>
+  <pubDate>Mon, 27 Jan 2025 08:00:00 GMT</pubDate>
 </item>
 <item>
   <title>The Spring 2025 Semester Kicks Off</title>
@@ -191,7 +191,7 @@ font-style: inherit;">&gt;</span>.pdf</span></code></pre></div>
 </section></div> ]]></description>
   <category>PhD</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/phd/spring-2025-kickoff.html</guid>
-  <pubDate>Sat, 25 Jan 2025 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 25 Jan 2025 08:00:00 GMT</pubDate>
 </item>
 <item>
   <title>I Just Finished My Prospectus</title>
@@ -219,7 +219,7 @@ font-style: inherit;">&gt;</span>.pdf</span></code></pre></div>
  ]]></description>
   <category>PhD</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/phd/finished-prospectus.html</guid>
-  <pubDate>Sat, 18 Jan 2025 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 18 Jan 2025 08:00:00 GMT</pubDate>
 </item>
 <item>
   <title>LaTeX Issue Fix: No , , or commands</title>
@@ -435,7 +435,7 @@ font-style: inherit;">├──</span> works-cited.bib</span>
   <category>biblatex</category>
   <category>troubleshooting</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/latex-citation-bibdata-bibstyle-issue.html</guid>
-  <pubDate>Fri, 03 Jan 2025 00:00:00 GMT</pubDate>
+  <pubDate>Fri, 03 Jan 2025 08:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How to Convert a LaTeX Document to a DOCX File</title>
@@ -1127,7 +1127,7 @@ font-style: inherit;">document</span>}</span></code></pre></div>
   <category>Code</category>
   <category>Pandoc</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/tex-to-docx.html</guid>
-  <pubDate>Mon, 16 Dec 2024 00:00:00 GMT</pubDate>
+  <pubDate>Mon, 16 Dec 2024 08:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How to Make a Bingo Card in R</title>
@@ -1214,7 +1214,7 @@ make_bingo(letters)</code></pre>
   <category>Bingo</category>
   <category>Code</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/bingo-in-r.html</guid>
-  <pubDate>Sun, 03 Nov 2024 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 03 Nov 2024 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Notes on Bayes’ Formula</title>
@@ -1284,7 +1284,7 @@ make_bingo(letters)</code></pre>
   <category>Formula</category>
   <category>Data Science</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/bayes-formula.html</guid>
-  <pubDate>Sat, 21 Sep 2024 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 21 Sep 2024 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How to Make an R Project Template</title>
@@ -1494,7 +1494,186 @@ OpenFiles: script.R</code></pre>
   <category>Code</category>
   <category>Projects</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/r-project-template.html</guid>
-  <pubDate>Tue, 28 May 2024 00:00:00 GMT</pubDate>
+  <pubDate>Tue, 28 May 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Greek Alphabet in Markdown</title>
+  <dc:creator>Kevin Navarrete-Parra</dc:creator>
+  <link>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/greek-letters.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The following table is a recreation of Table 1.3 found in <a href="https://press.princeton.edu/books/paperback/9780691159171/a-mathematics-course-for-political-and-social-research">A Mathematics Course for Political &amp; Social Research</a> by Will H. Moore and David A. Siegel, with a few additions and changes. This table is a quick reference for Greek alphabet notation in Markdown and RMarkdown, and it can also be useful for formatting math equations in LaTeX.</p>
+<p>Note that the inline code snippets for the Greek letters’ lower case and upper case versions are the same, with the only difference relating to the capitalization of the letter in the inline code. For example, the inline code for the lower case alpha is <code>$\alpha$</code>, and the inline code for the upper case alpha is <code>$\Alpha$</code>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Upper case</th>
+<th>Lower case</th>
+<th>Name</th>
+<th>Inline Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CAlpha"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Calpha"></td>
+<td>Alpha</td>
+<td><code>$\alpha$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CBeta"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cbeta"></td>
+<td>Beta</td>
+<td><code>$\beta$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CGamma"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cgamma"></td>
+<td>Gamma</td>
+<td><code>$\Gamma$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CDelta"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cdelta"></td>
+<td>Delta</td>
+<td><code>$\Delta$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CEpsilon"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cepsilon"></td>
+<td>Epsilon</td>
+<td><code>$\Epsilon$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CZeta"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Czeta"></td>
+<td>Zeta</td>
+<td><code>$\Zeta$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CEta"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Ceta"></td>
+<td>Eta</td>
+<td><code>$\Eta$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CTheta"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Ctheta"></td>
+<td>Theta</td>
+<td><code>$\Theta$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CIota"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Ciota"></td>
+<td>Iota</td>
+<td><code>$\Iota$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CKappa"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Ckappa"></td>
+<td>Kappa</td>
+<td><code>$\Kappa$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CLambda"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Clambda"></td>
+<td>Lambda</td>
+<td><code>$\Lambda$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CMu"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cmu"></td>
+<td>Mu</td>
+<td><code>$\Mu$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CNu"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cnu"></td>
+<td>Nu</td>
+<td><code>$\Nu$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CXi"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cxi"></td>
+<td>Xi</td>
+<td><code>$\Xi$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5COmicron"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Comicron"></td>
+<td>Omicron</td>
+<td><code>$\Omicron$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CPi"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cpi"></td>
+<td>Pi</td>
+<td><code>$\Pi$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CRho"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Crho"></td>
+<td>Rho</td>
+<td><code>$\Rho$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CSigma"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Csigma"></td>
+<td>Sigma</td>
+<td><code>$\Sigma$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CTau"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Ctau"></td>
+<td>Tau</td>
+<td><code>$\Tau$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CUpsilon"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cupsilon"></td>
+<td>Upsilon</td>
+<td><code>$\Upsilon$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CPhi"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cphi"></td>
+<td>Phi</td>
+<td><code>$\Phi$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CChi"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cchi"></td>
+<td>Chi</td>
+<td><code>$\Chi$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CPsi"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cpsi"></td>
+<td>Psi</td>
+<td><code>$\Psi$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5COmega"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Comega"></td>
+<td>Omega</td>
+<td><code>$\Omega$</code></td>
+</tr>
+</tbody>
+</table>
+
+
+<!-- -->
+
+
+ ]]></description>
+  <category>Markdown</category>
+  <category>RMarkdown</category>
+  <category>Greek Alphabet</category>
+  <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/greek-letters.html</guid>
+  <pubDate>Sun, 19 May 2024 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Markdown Notation</title>
@@ -1768,186 +1947,7 @@ OpenFiles: script.R</code></pre>
   <category>RMarkdown</category>
   <category>Math Notation</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/markdown-notation.html</guid>
-  <pubDate>Sun, 19 May 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Greek Alphabet in Markdown</title>
-  <dc:creator>Kevin Navarrete-Parra</dc:creator>
-  <link>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/greek-letters.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>The following table is a recreation of Table 1.3 found in <a href="https://press.princeton.edu/books/paperback/9780691159171/a-mathematics-course-for-political-and-social-research">A Mathematics Course for Political &amp; Social Research</a> by Will H. Moore and David A. Siegel, with a few additions and changes. This table is a quick reference for Greek alphabet notation in Markdown and RMarkdown, and it can also be useful for formatting math equations in LaTeX.</p>
-<p>Note that the inline code snippets for the Greek letters’ lower case and upper case versions are the same, with the only difference relating to the capitalization of the letter in the inline code. For example, the inline code for the lower case alpha is <code>$\alpha$</code>, and the inline code for the upper case alpha is <code>$\Alpha$</code>.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Upper case</th>
-<th>Lower case</th>
-<th>Name</th>
-<th>Inline Code</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CAlpha"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Calpha"></td>
-<td>Alpha</td>
-<td><code>$\alpha$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CBeta"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cbeta"></td>
-<td>Beta</td>
-<td><code>$\beta$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CGamma"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cgamma"></td>
-<td>Gamma</td>
-<td><code>$\Gamma$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CDelta"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cdelta"></td>
-<td>Delta</td>
-<td><code>$\Delta$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CEpsilon"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cepsilon"></td>
-<td>Epsilon</td>
-<td><code>$\Epsilon$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CZeta"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Czeta"></td>
-<td>Zeta</td>
-<td><code>$\Zeta$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CEta"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Ceta"></td>
-<td>Eta</td>
-<td><code>$\Eta$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CTheta"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Ctheta"></td>
-<td>Theta</td>
-<td><code>$\Theta$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CIota"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Ciota"></td>
-<td>Iota</td>
-<td><code>$\Iota$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CKappa"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Ckappa"></td>
-<td>Kappa</td>
-<td><code>$\Kappa$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CLambda"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Clambda"></td>
-<td>Lambda</td>
-<td><code>$\Lambda$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CMu"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cmu"></td>
-<td>Mu</td>
-<td><code>$\Mu$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CNu"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cnu"></td>
-<td>Nu</td>
-<td><code>$\Nu$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CXi"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cxi"></td>
-<td>Xi</td>
-<td><code>$\Xi$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5COmicron"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Comicron"></td>
-<td>Omicron</td>
-<td><code>$\Omicron$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CPi"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cpi"></td>
-<td>Pi</td>
-<td><code>$\Pi$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CRho"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Crho"></td>
-<td>Rho</td>
-<td><code>$\Rho$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CSigma"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Csigma"></td>
-<td>Sigma</td>
-<td><code>$\Sigma$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CTau"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Ctau"></td>
-<td>Tau</td>
-<td><code>$\Tau$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CUpsilon"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cupsilon"></td>
-<td>Upsilon</td>
-<td><code>$\Upsilon$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CPhi"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cphi"></td>
-<td>Phi</td>
-<td><code>$\Phi$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CChi"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cchi"></td>
-<td>Chi</td>
-<td><code>$\Chi$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CPsi"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cpsi"></td>
-<td>Psi</td>
-<td><code>$\Psi$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5COmega"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Comega"></td>
-<td>Omega</td>
-<td><code>$\Omega$</code></td>
-</tr>
-</tbody>
-</table>
-
-
-<!-- -->
-
-
- ]]></description>
-  <category>Markdown</category>
-  <category>RMarkdown</category>
-  <category>Greek Alphabet</category>
-  <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/greek-letters.html</guid>
-  <pubDate>Sun, 19 May 2024 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 19 May 2024 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Recurring Emails Using R</title>
@@ -2164,7 +2164,7 @@ font-style: inherit;">gm_send_message</span>()</span></code></pre></div>
   <category>email</category>
   <category>automation</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/auto-emails-in-r.html</guid>
-  <pubDate>Thu, 11 Jan 2024 00:00:00 GMT</pubDate>
+  <pubDate>Thu, 11 Jan 2024 08:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How to Migrate All R Packages to a New Computer</title>
@@ -2218,7 +2218,7 @@ install.packages(pack_vec)
   <category>Code</category>
   <category>Packages</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/r-packages-install.html</guid>
-  <pubDate>Sat, 21 Oct 2023 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 21 Oct 2023 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Zero-Inflated Models</title>
@@ -2289,7 +2289,7 @@ summary(zinb.mod)
   <category>Zero-Inflation</category>
   <category>Count Data</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/zero-inflated.html</guid>
-  <pubDate>Wed, 18 Oct 2023 00:00:00 GMT</pubDate>
+  <pubDate>Wed, 18 Oct 2023 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Negative Binomial Model</title>
@@ -2371,7 +2371,7 @@ summary(nb.vglm)
   <category>Data Science</category>
   <category>Count</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/nagative-binomial.html</guid>
-  <pubDate>Sun, 15 Oct 2023 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 15 Oct 2023 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Poisson Model</title>
@@ -2450,7 +2450,7 @@ anova(poi.mod, update(poi.mod, ~ 1), test = "Chisq")
   <category>Data Science</category>
   <category>Poisson</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/poisson-notes.html</guid>
-  <pubDate>Sun, 08 Oct 2023 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 08 Oct 2023 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Multinomial Logit Model</title>
@@ -2523,7 +2523,7 @@ mlm.or &lt;- cbind(exp(coef(mlm.mod)), exp(confint(mlm.mod)))
   <category>Multinomial</category>
   <category>Logit</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/multinomial-logit.html</guid>
-  <pubDate>Mon, 02 Oct 2023 00:00:00 GMT</pubDate>
+  <pubDate>Mon, 02 Oct 2023 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Adjacent Categories Models</title>
@@ -2620,7 +2620,7 @@ font-style: inherit;">print</span>(ac.or)</span></code></pre></div>
   <category>Model</category>
   <category>Data Science</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/adjacent-categories-model.html</guid>
-  <pubDate>Sun, 24 Sep 2023 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 24 Sep 2023 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Stereotype Logit Model</title>
@@ -2711,7 +2711,7 @@ font-style: inherit;">TRUE</span>))</span></code></pre></div>
   <category>Model</category>
   <category>Data Science</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/stereotype-logit.html</guid>
-  <pubDate>Sun, 24 Sep 2023 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 24 Sep 2023 07:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
