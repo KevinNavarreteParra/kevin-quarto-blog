@@ -32,11 +32,21 @@ jobs:
           }
         shell: Rscript {0}
       
-      - name: Render and Publish
+      - name: Secure Build and Publish
+        run: |
+          # Make build script executable
+          chmod +x build.sh
+          
+          # Run secure build with environment variables
+          ./build.sh
+        env:
+          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+          CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
+      
+      - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
+          path: _site
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
-          CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
