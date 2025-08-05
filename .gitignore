@@ -1,13 +1,28 @@
+# Environment variables - never commit sensitive data
+.env
+.env.local
+.env.production
+.env.staging
+
+# Quarto
 /.quarto/
 /_site/
 /docs/
+/_freeze/
+
+# R
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
 *.Rproj
+
+# OS
 .DS_Store
 Thumbs.db
+
+# Build artifacts
 errors/
 
+# Conversion artifacts
 CONVERSION-REPORT.md

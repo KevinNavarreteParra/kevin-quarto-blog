@@ -22,14 +22,14 @@ website:
       - icon: linkedin
         href: https://www.linkedin.com/in/kevin-navarrete-parra
       - icon: envelope
-        href: mailto:REDACTED@example.com
+        href: !expr paste0("mailto:", Sys.getenv("CONTACT_EMAIL"))
         
   page-footer:
     center: |
       © 2025 Kevin Navarrete-Parra. All rights reserved.
     background: primary
 
-  google-analytics: "G-REDACTED"
+  google-analytics: !expr Sys.getenv("GOOGLE_ANALYTICS_ID")
   cookie-consent: true
   open-graph: true
 
