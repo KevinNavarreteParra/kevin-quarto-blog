@@ -1,0 +1,25 @@
+---
+title: "Kevin Navarrete-Parra"
+subtitle: "Political Science Ph.D. Student | Data Science Enthusiast"
+page-layout: full
+listing:
+  contents: posts
+  sort: "date desc"
+  type: grid
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  page-size: 10
+  feed: true
+---
+
+Welcome to my blog where I share thoughts on political science research, data science methods, and academic life. I explore the intersection between theory and practice, between political philosophy and data science.
+
+Use the category filters below to explore posts by topic, or browse through my latest thoughts on research methods, statistical modeling, and academic work.
+
+## Recent Highlights
+
+- **Research Methods**: Notes on statistical modeling, multilevel analysis, and count data models
+- **Data Science**: R programming, automation, and reproducible research practices  
+- **Academic Life**: Reflections on PhD work, reading, and scholarly development
+- **Personal Projects**: Tools, workflows, and explorations in data analysis
