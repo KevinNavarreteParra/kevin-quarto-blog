@@ -1,0 +1,60 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/horology/writing-on-watches.html",
+      "/posts/Notes/probability_axioms.html",
+      "/posts/quarto-deck-to-pdf.html",
+      "/posts/phd/spring-2025-kickoff.html",
+      "/posts/phd/finished-prospectus.html",
+      "/posts/latex-citation-bibdata-bibstyle-issue.html",
+      "/posts/tex-to-docx.html",
+      "/posts/bingo-in-r.html",
+      "/posts/Notes/bayes-formula.html",
+      "/posts/r-project-template.html",
+      "/posts/Notes/greek-letters.html",
+      "/posts/Notes/markdown-notation.html",
+      "/posts/auto-emails-in-r.html",
+      "/posts/r-packages-install.html",
+      "/posts/Notes/zero-inflated.html",
+      "/posts/Notes/nagative-binomial.html",
+      "/posts/Notes/poisson-notes.html",
+      "/posts/Notes/multinomial-logit.html",
+      "/posts/Notes/adjacent-categories-model.html",
+      "/posts/Notes/stereotype-logit.html",
+      "/posts/Notes/continuation-ratio-model.html",
+      "/posts/Notes/generalized-ppo.html",
+      "/posts/Notes/ppo-notes.html",
+      "/posts/Notes/logit-notes.html"
+    ]
+  },
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/horology/writing-on-watches.html",
+      "/posts/Notes/probability_axioms.html",
+      "/posts/quarto-deck-to-pdf.html",
+      "/posts/phd/spring-2025-kickoff.html",
+      "/posts/phd/finished-prospectus.html",
+      "/posts/latex-citation-bibdata-bibstyle-issue.html",
+      "/posts/tex-to-docx.html",
+      "/posts/bingo-in-r.html",
+      "/posts/Notes/bayes-formula.html",
+      "/posts/r-project-template.html",
+      "/posts/Notes/greek-letters.html",
+      "/posts/Notes/markdown-notation.html",
+      "/posts/auto-emails-in-r.html",
+      "/posts/r-packages-install.html",
+      "/posts/Notes/zero-inflated.html",
+      "/posts/Notes/nagative-binomial.html",
+      "/posts/Notes/poisson-notes.html",
+      "/posts/Notes/multinomial-logit.html",
+      "/posts/Notes/adjacent-categories-model.html",
+      "/posts/Notes/stereotype-logit.html",
+      "/posts/Notes/continuation-ratio-model.html",
+      "/posts/Notes/generalized-ppo.html",
+      "/posts/Notes/ppo-notes.html",
+      "/posts/Notes/logit-notes.html"
+    ]
+  }
+]
