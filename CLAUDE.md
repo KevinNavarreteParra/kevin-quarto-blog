@@ -63,6 +63,24 @@ toc: true
 - Publishes to GitHub Pages on `main` branch pushes
 - Uses `freeze: auto` for computational caching
 
+## Security & Environment Variables
+
+**Critical Security Setup:**
+- Sensitive variables (Google Analytics, email) are stored as environment variables
+- GitHub Secrets required: `GOOGLE_ANALYTICS_ID`, `CONTACT_EMAIL`
+- Local development: Create `.env` file (never commit this)
+- Use `.env.example` as template for required variables
+
+**Environment Variable Loading:**
+```bash
+# Local development (bash/zsh)
+export $(cat .env | xargs)
+quarto preview
+
+# PowerShell
+Get-Content .env | ForEach-Object { if ($_ -match "^([^=]+)=(.*)$") { [Environment]::SetEnvironmentVariable($matches[1], $matches[2]) } }
+```
+
 ## Important Notes
 
 - This is an academic blog migrated from Next.js/MDX to Quarto
@@ -70,3 +88,4 @@ toc: true
 - Mathematical expressions use LaTeX syntax with KaTeX rendering
 - R code blocks should use Quarto execution options (`#| echo: true`, etc.)
 - The site uses a custom domain (kevinparra.co) configured via `CNAME` file
+- **Never commit sensitive data** - always use environment variables for secrets
