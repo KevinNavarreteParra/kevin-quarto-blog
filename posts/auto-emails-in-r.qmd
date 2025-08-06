@@ -43,6 +43,8 @@ The code to send the email is fairly short. First, I load the gmailr package set
 The purpose of running this code is to make sure that the script runs without any user input. If you don't run this code, you'll have to manually select the authorized email address each time you run the script, which defeats the purpose of having such a script in the first place. 
 
 ```{r}
+#| eval: false
+
 library(gmailr, 
         warn.conflicts = FALSE, 
         quietly = TRUE, 
@@ -57,7 +59,7 @@ gm_oauth_client()
 
 If I don't run the code above, I get the following message when I run the code to send the email: 
 
-```{r}
+```
 The gmailr package is requesting access to your Google account.
 Enter '1' to start a new auth process or select a pre-authorized account.
 1: Send me to the browser for a new auth process.
@@ -69,6 +71,7 @@ which means I have to manually select the authorized email address. Since I want
 Next, I made an object with the authorized email and one for the recipient email.[^1]
 
 ```{r}
+#| eval: false
 sender_email <- "your_email_address"
 
 recipient_email <- sender_email
@@ -79,6 +82,8 @@ Of course, the same thing could be done using one object, but I wanted to make t
 Next, I set the email's subject and body--the former as a string and the latter as an HTML file I wrote in VSCode. Of course, I could just as easily write the body as a string in R, including simple HTML tags to format the text. However, I wanted a more complex email body, including a much longer HTML code for my email signature. 
 
 ```{r}
+#| eval: false
+
 email_subject <- "Email Subject"
 
 email_body <- readLines("~/path/to/body.html",
@@ -93,6 +98,9 @@ email_body <- paste(email_body,
 Finally, I ran the following code to put together everything above: 
 
 ```{r}
+
+#| eval: false
+
 gm_mime() |>
   gm_from(sender_email) |>
   gm_to(recipient_email) |>
