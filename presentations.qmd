@@ -6,21 +6,6 @@ format:
         css: styles.css
 ---
 
-<!-- ## Recent Presentations
-
-::: {.presentation-grid}
-
-::: {.presentation-card}
-
-### [On Troubleshooting](https://kevinnavarreteparra.quarto.pub/on-troubleshooting/)
-*UNLV Political Science| Date*
-
-Add to this later.
-
-![](https://kevinnavarreteparra.quarto.pub/on-troubleshooting/)
-
-::: -->
-
 ::: {.presentation-grid}
 
 ::: {.presentation-card}
