@@ -2199,10 +2199,32 @@ font-style: inherit;">gm_oauth_client</span>()</span></code></pre></div>
 </details>
 </div>
 <p>If I don’t run the code above, I get the following message when I run the code to send the email:</p>
-<pre><code>The gmailr package is requesting access to your Google account.
-Enter '1' to start a new auth process or select a pre-authorized account.
-1: Send me to the browser for a new auth process.
-2: youremail@email.com</code></pre>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">The gmailr package is requesting access to your Google account.</span>
+<span id="cb2-2">Enter <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'1'</span> to start a new auth process or select a pre<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>authorized account.</span>
+<span id="cb2-3"><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> Send me to the browser <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> a new auth process.</span>
+<span id="cb2-4"><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> youremail<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">@</span>email.com</span></code></pre></div>
+</details>
+</div>
 <p>which means I have to manually select the authorized email address. Since I want to automate this process, I set the authorized email address as a system variable.</p>
 <p>Next, I made an object with the authorized email and one for the recipient email.<sup>1</sup></p>
 <div class="cell">
@@ -2265,36 +2287,32 @@ font-style: inherit;">"</span></span>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#| eval: false</span></span>
-<span id="cb5-2"></span>
-<span id="cb5-3"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gm_mime</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-4">  <span class="fu" style="color: #4758AB;
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gm_from</span>(sender_email) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-5">  <span class="fu" style="color: #4758AB;
+<span id="cb5-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gm_to</span>(recipient_email) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-6">  <span class="fu" style="color: #4758AB;
+<span id="cb5-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gm_html_body</span>(email_body) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-7">  <span class="fu" style="color: #4758AB;
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gm_subject</span>(email_subject) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-8">  <span class="fu" style="color: #4758AB;
+<span id="cb5-6">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gm_send_message</span>()</span></code></pre></div>
 </details>
