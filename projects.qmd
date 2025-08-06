@@ -8,8 +8,6 @@ This page will showcase academic and personal projects. Currently under developm
 ## Academic Projects
 
 - **Ph.D. Dissertation**: Research on Investor-State Dispute Settlement (ISDS)
-- **Statistical Analysis**: Various projects using R for political science research
-- **Research Methods**: Development of tools and workflows for reproducible research
 
 ## Data Science & Programming
 

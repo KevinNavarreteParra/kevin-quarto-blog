@@ -12,9 +12,9 @@ about:
     - icon: linkedin
       text: LinkedIn  
       href: https://www.linkedin.com/in/kevin-navarrete-parra
-    - icon: envelope
-      text: Email
-      href: mailto:navark4@unlv.nevada.edu
+    # - icon: envelope
+    #   text: Email
+    #   href: mailto:navark4@unlv.nevada.edu
 ---
 
 ## Political Science Ph.D. Student

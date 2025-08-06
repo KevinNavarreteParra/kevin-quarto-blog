@@ -13,13 +13,11 @@ listing:
   feed: true
 ---
 
-Welcome to my blog where I share thoughts on political science research, data science methods, and academic life. I explore the intersection between theory and practice, between political philosophy and data science.
+Welcome to my website, where I write about things that interest me. I love programming in R and Python, and I enjoy learning about anything having to do with data science. 
+
+A few recent topics of interest include:
+- Using large language models for natural language inference tasks;
+- Building machine learning pipelines; 
+- Working with Word2Vec models for document similarity.
 
 Use the category filters below to explore posts by topic, or browse through my latest thoughts on research methods, statistical modeling, and academic work.
-
-## Recent Highlights
-
-- **Research Methods**: Notes on statistical modeling, multilevel analysis, and count data models
-- **Data Science**: R programming, automation, and reproducible research practices  
-- **Academic Life**: Reflections on PhD work, reading, and scholarly development
-- **Personal Projects**: Tools, workflows, and explorations in data analysis
