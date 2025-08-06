@@ -11,6 +11,8 @@ This is the Quarto version of my academic blog, migrated from a Next.js/MDX setu
 - **Academic Life**: PhD journey, reading notes, scholarly reflections
 - **Technical Projects**: Tools and workflows for academic research
 
+I built this website using Anthropic's Claude Code, which helped me migrate the website from the previous Tailwind version. **All substantive content, including blog posts, is my own.**
+
 ## Quick Start
 
 ### Prerequisites
