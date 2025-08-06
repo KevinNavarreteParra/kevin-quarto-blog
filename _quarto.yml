@@ -21,6 +21,8 @@ website:
         href: https://github.com/KevinNavarreteParra
       - icon: linkedin
         href: https://www.linkedin.com/in/kevin-navarrete-parra
+      - icon: rss
+        href: index.xml
         
   page-footer:
     center: |
