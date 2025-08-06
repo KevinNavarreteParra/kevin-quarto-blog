@@ -1,0 +1,53 @@
+---
+title: "Talks and Presentations"
+format:
+    html:
+        toc: true
+        css: presentations.css
+---
+
+<!-- ## Recent Presentations
+
+::: {.presentation-grid}
+
+::: {.presentation-card}
+
+### [On Troubleshooting](https://kevinnavarreteparra.quarto.pub/on-troubleshooting/)
+*UNLV Political Science| Date*
+
+Add to this later.
+
+![](https://kevinnavarreteparra.quarto.pub/on-troubleshooting/)
+
+::: -->
+
+::: {.presentation-grid}
+
+::: {.presentation-card}
+
+### On Troubleshooting
+*UNLV Political Science | 11 October 2024*
+
+A talk given to an incoming class of graduate students on the troubleshooting process in programming.
+
+<iframe src="https://kevinnavarreteparra.quarto.pub/on-troubleshooting/" width="100%" height="500px" frameborder="0"></iframe>
+
+[View Full Screen](https://kevinnavarreteparra.quarto.pub/on-troubleshooting/){target="_blank"}
+
+:::
+
+::: {.presentation-card}
+
+### ¿Reputación Importa?
+*UNLV Spanish Class | 9 Dec 2024*
+
+A presentation given to my graduate-level Spanish class where I translated an early draft of a research project. 
+
+<iframe src="https://kevinnavarreteparra.quarto.pub/span709-ponencia/" width="100%" height="500px" frameborder="0"></iframe>
+
+[View Full Screen](https://kevinnavarreteparra.quarto.pub/span709-ponencia/){target="_blank"}
+
+:::
+
+:::
+

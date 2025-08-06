@@ -16,6 +16,8 @@ website:
         text: Posts
       # - href: projects.qmd
       #   text: Projects
+      - href : presentations.qmd
+        text: Presentations
     right:
       - icon: github
         href: https://github.com/KevinNavarreteParra

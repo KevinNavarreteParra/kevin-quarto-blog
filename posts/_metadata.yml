@@ -1,6 +1,5 @@
 format:
   html:
     author: Kevin Navarrete-Parra
-    date: today
     toc: true
 freeze: true
