@@ -1,6 +1,6 @@
 [
   {
-    "listing": "/posts.html",
+    "listing": "/index.html",
     "items": [
       "/posts/migrating-to-quarto.html",
       "/posts/horology/writing-on-watches.html",
@@ -30,7 +30,7 @@
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/posts.html",
     "items": [
       "/posts/migrating-to-quarto.html",
       "/posts/horology/writing-on-watches.html",
