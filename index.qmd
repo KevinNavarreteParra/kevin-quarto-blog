@@ -20,5 +20,3 @@ A few recent topics of interest include:
 - Using large language models for natural language inference tasks;
 - Building machine learning pipelines; 
 - Working with Word2Vec models for document similarity.
-
-Use the category filters below to explore posts by topic, or browse through my latest thoughts on research methods, statistical modeling, and academic work.
