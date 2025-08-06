@@ -17,7 +17,7 @@ about:
     #   href: mailto:navark4@unlv.nevada.edu
 ---
 
-## Political Science Ph.D. Student
+<!-- ## Political Science Ph.D. Student
 
 I am currently a Ph.D. student at the University of Nevada, Las Vegas, where I study politics in the Department of [Political Science](https://www.unlv.edu/people/kevin-navarrete-parra). My two general areas of interest are international relations and political theory, but I am particularly fascinated by international political economy and the question of justice in political thought.
 
@@ -29,4 +29,4 @@ I got a bachelor's degree in political science from the University of Nevada, La
 
 ## Personal Interests
 
-In the past, I have dedicated my personal time to volunteering in local organizations, such as [mentoring young kids](https://involvementcenter.unlv.edu/organization/UNLVBuddies) or [walking future service dogs](https://silverstateservicedogs.com/). I also enjoy hiking the gorgeous local trails in Las Vegas--my favorite being the [Goldstrike trail](https://www.alltrails.com/trail/us/nevada/gold-strike-hot-springs-trail) just outside the city. And when I'm home, there's nothing like rewatching my favorite Star Wars movies or reading a good book.
+In the past, I have dedicated my personal time to volunteering in local organizations, such as [mentoring young kids](https://involvementcenter.unlv.edu/organization/UNLVBuddies) or [walking future service dogs](https://silverstateservicedogs.com/). I also enjoy hiking the gorgeous local trails in Las Vegas--my favorite being the [Goldstrike trail](https://www.alltrails.com/trail/us/nevada/gold-strike-hot-springs-trail) just outside the city. And when I'm home, there's nothing like rewatching my favorite Star Wars movies or reading a good book. -->
