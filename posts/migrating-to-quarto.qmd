@@ -56,9 +56,7 @@ First, I can set the date key in the `YAML` to `today`, which automatically sets
 Second, writing math just works better now. I always had issues with the MDX files when I'd write math equations because of how often I'd have to use `{}` in the `LaTeX` code. Whenever the MDX file detected brackets, I'd get an acorn error because the file thought I was trying to insert JavaScript code instead of writing math. This almost always resulted in errors unless I properly escaped the brackets--and sometime even when I properly escaped the brackets. Using Quarto, I can just write:
 
 $$
-
 \mu = \frac{1}{n} \sum^{n}_{i=1} x_i
-
 $$
 
 without having to worry about those pesky rendering issues or website-breaking mistakes! I can't emphasize enough how stoked I am about this. 
