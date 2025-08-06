@@ -13,9 +13,10 @@ listing:
   feed: true
 ---
 
-Welcome to my website, where I write about things that interest me. I love programming in R and Python, and I enjoy learning about anything having to do with data science. 
+Welcome to my website, where I write about things that interest me. I love programming in R and Python, and I enjoy learning about anything having to do with data science. And I like writing about programming, data science, my experience in academia, and watches when I get the chance. 
 
 A few recent topics of interest include:
+
 - Using large language models for natural language inference tasks;
 - Building machine learning pipelines; 
 - Working with Word2Vec models for document similarity.
