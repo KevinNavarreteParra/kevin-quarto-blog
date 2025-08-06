@@ -29,9 +29,13 @@ website:
       © 2025 Kevin Navarrete-Parra. All rights reserved.
     background: primary
 
-  google-analytics: ${GOOGLE_ANALYTICS_ID}
-  cookie-consent: true
+  google-analytics: 
+    tracking-id: ${GOOGLE_ANALYTICS_ID}
+    storage: none
+    anonymize-ip: true
+  cookie-consent: false
   open-graph: true
+
 
 format:
   html:
