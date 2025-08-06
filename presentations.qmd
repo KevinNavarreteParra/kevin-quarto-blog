@@ -3,7 +3,7 @@ title: "Talks and Presentations"
 format:
     html:
         toc: true
-        css: presentations.css
+        css: styles.css
 ---
 
 <!-- ## Recent Presentations
