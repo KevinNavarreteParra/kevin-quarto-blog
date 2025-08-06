@@ -52,9 +52,7 @@
 <p>I mentioned a few reasons why I switched to Quarto in the introduction above. Now that I’ve switched, I’d like to add a few fun features that Quarto has that my previous website didn’t.</p>
 <p>First, I can set the date key in the <code>YAML</code> to <code>today</code>, which automatically sets the date to today’s date. I remember I spent so much time trying to figure out how to do that in my previous website to no avail. This is one of my favorite parts of programming: I get to be lazy about unimportant things because I can make the computer do it instead!</p>
 <p>Second, writing math just works better now. I always had issues with the MDX files when I’d write math equations because of how often I’d have to use <code>{}</code> in the <code>LaTeX</code> code. Whenever the MDX file detected brackets, I’d get an acorn error because the file thought I was trying to insert JavaScript code instead of writing math. This almost always resulted in errors unless I properly escaped the brackets–and sometime even when I properly escaped the brackets. Using Quarto, I can just write:</p>
-<p>$$</p>
-<p>= ^{n}_{i=1} x_i</p>
-<p>$$</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmu%20=%20%5Cfrac%7B1%7D%7Bn%7D%20%5Csum%5E%7Bn%7D_%7Bi=1%7D%20x_i%0A"></p>
 <p>without having to worry about those pesky rendering issues or website-breaking mistakes! I can’t emphasize enough how stoked I am about this.</p>
 <p>Third, I now get to execute code inside my posts!<sup>2</sup> Now, if I want to showcase some R inside a blog post, for example, I can write the code AND display its output. For instance, see this quick implementation of the probability density function for the normal distribution:</p>
 <div class="cell">
