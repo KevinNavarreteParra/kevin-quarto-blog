@@ -10,7 +10,187 @@
 <atom:link href="https://kevinnavreteparra.github.io/kevin-quarto-blog/posts.xml" rel="self" type="application/rss+xml"/>
 <description>A place for my notes and thoughts on political science, data science, and research methods</description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Thu, 06 Mar 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 06 Aug 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Migrating to Quarto</title>
+  <dc:creator>Kevin Navarrete-Parra</dc:creator>
+  <link>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/migrating-to-quarto.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="table-of-contents" class="level1">
+<h1>Table of contents</h1>
+<ol type="1">
+<li>Introduction</li>
+<li>How I Migrated to Quarto</li>
+<li>A Few Useful Features</li>
+<li>Concluding Thoughts</li>
+</ol>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction <a name="section1"></a></h1>
+<p>I feel like I’ve left this site sort of in disarray recently with next to no posts and multiple pages that have gone drastically long without necessary updates. I had resolved earlier this year to write more–and my dissertation doesn’t count–and a major part of that was going to be writing on this site. Unfortunately, writing was one of the first things that fell by the wayside as soon as I got busy, as usual.</p>
+<p>Although my business level has in no way diminished this summer, I was recently inspired to try setting up a writing habit again. I saw <a href="https://nrennie.rbind.io/blog/hugo-quarto-website/">a post</a> by Nicola Rennie, a data scientist whose content I follow. She talked about the migration process from Hugo to Quarto and pointed to a few useful resources that could help with this move.</p>
+<p>After reading the post, I figured migrating from my old website (which felt too complicated) wouldn’t be too hard. I also thought migrating would be a good way to start writing again–especially since working in Quarto is a lot easier than editing the MDX files in the previous website.</p>
+</section>
+<section id="how-i-migrated-to-quarto" class="level1">
+<h1>How I Migrated to Quarto <a name="section2"></a></h1>
+<p>I figured migrating to Quarto would be a whole ordeal because I’d have to convert all the MDX files to Quarto and figure out how the Quarto website structure works. But, thankfully, this project was the perfect way to try out something new: Claude Code! I’ve recently been playing around with it a little bit, but I didn’t have any meaty project to jump in with.</p>
+<p>This was the perfect test case!</p>
+<p>I began by having Claude index my old website using the <code>/index</code> command in the CLI tool. This generated a <code>CLAUDE.md</code> file in my old website, which contained contextual information for the old website. I did so so that the agent would have as much background knowledge as possible in its context window before beginning the migration. The file it generated ended up being pretty comprehensive. After reading through it, I got the impression that the model had a pretty nuanced understanding of my old website’s file structure.</p>
+<p>I proceeded by prompting Claude to make a detailed markdown file that included a description of everything I’d need for the migration. I asked it to give me a breakdown of what I’d need to convert the MDX files into Quarto, what the new website’s file structure would look like, and what other steps I’d need to take outside the immediate coding tasks. I’m not too knowledgeable about how the DNS stuff works, nor do I know much about how to deploy a website.<sup>1</sup> I figured it would be good to have Claude also help me simplify the deployment pipeline as well, so I asked it to also help me migrate to GitHub Pages.</p>
+<p>Once I had that migration guideline, I created a new folder, which contains my old website and a folder for my new one. I opened a new Claude Code agent in this folder and had it read the migration guide and execute everything that was doable without having it access my personal accounts online. As part of the instruction, I had the agent finish the task by generating a conversion report, where I had it detail everything that it did and did not do, what went right and what went wrong, as well as any suggestions for additional work I could do.</p>
+<p>Conversion report in hand, I took some time to understand what the agent did. Frankly, it did a damn good job right off the bat. The file structure looked exactly like what the Quarto website recommends, and the posts migrated really well! From here, I rolled up my sleeves and started working on the GitHub implementation, on which Claude gave me some pointers. I also worked on making sure that the new website used the same URL as my old one, which was easier than I thought it would be.</p>
+<p>Once I had a preliminary version working, I started working on the truly difficult part: the styling. This is where I struggle the most; I’m not good at colors. So, I looked online for a few professional-looking color palletes to get an idea of what I should do, and I also consulted a few data science blogs I’ve seen online.</p>
+<p>I saw some really good stuff, but a lot of the websites I saw were too bright and colorful (not my style). So I figured I’d start with some basics. I know I like blue, and I figured I didn’t want too bright of a blue on this site, so I tried to find stuff that would go well with more of a navy blue. I ended up picking a few colors (#1A365D as a primary, #38B2AC for accents, and #F7FAFC for backgrounds) and I fed them to the model. I told it to start with those three and then make any suggestions based on that starting point.</p>
+<p>And look at that, the model did a good job again. There’s still some aesthetic elements I want to fiddle with, but the agent did a good job overall! All I had to do was play around with the <code>.css</code> and <code>.scss</code> code for a little bit to fine tune whatever I didn’t like, but that wasn’t too hard.</p>
+</section>
+<section id="a-few-useful-features" class="level1">
+<h1>A Few Useful Features<a name="section3"></a></h1>
+<p>I mentioned a few reasons why I switched to Quarto in the introduction above. Now that I’ve switched, I’d like to add a few fun features that Quarto has that my previous website didn’t.</p>
+<p>First, I can set the date key in the <code>YAML</code> to <code>today</code>, which automatically sets the date to today’s date. I remember I spent so much time trying to figure out how to do that in my previous website to no avail. This is one of my favorite parts of programming: I get to be lazy about unimportant things because I can make the computer do it instead!</p>
+<p>Second, writing math just works better now. I always had issues with the MDX files when I’d write math equations because of how often I’d have to use <code>{}</code> in the <code>LaTeX</code> code. Whenever the MDX file detected brackets, I’d get an acorn error because the file thought I was trying to insert JavaScript code instead of writing math. This almost always resulted in errors unless I properly escaped the brackets–and sometime even when I properly escaped the brackets. Using Quarto, I can just write:</p>
+<p>$$</p>
+<p>= ^{n}_{i=1} x_i</p>
+<p>$$</p>
+<p>without having to worry about those pesky rendering issues or website-breaking mistakes! I can’t emphasize enough how stoked I am about this.</p>
+<p>Third, I now get to execute code inside my posts!<sup>2</sup> Now, if I want to showcase some R inside a blog post, for example, I can write the code AND display its output. For instance, see this quick implementation of the probability density function for the normal distribution:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">x <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span>
+<span id="cb1-2"></span>
+<span id="cb1-3">pdf_gauss <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb1-4">    mu <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(x)</span>
+<span id="cb1-5">    sigma <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">var</span>(x)</span>
+<span id="cb1-6">    const <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sqrt</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> pi <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> sigma))</span>
+<span id="cb1-7">    quantiles <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>()</span>
+<span id="cb1-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> (i <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq_along</span>(x)){</span>
+<span id="cb1-9">        exp_term <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>((x[i] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> mu)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> sigma)</span>
+<span id="cb1-10">        quantiles <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(quantiles, const <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">exp</span>(exp_term))</span>
+<span id="cb1-11">    }</span>
+<span id="cb1-12">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(quantiles)</span>
+<span id="cb1-13">}</span>
+<span id="cb1-14"></span>
+<span id="cb1-15"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pdf_gauss</span>(x))</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/migrating-to-quarto_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As you can see, there’s a plot now! And it looks bell shaped!</p>
+</section>
+<section id="concluding-thoughts" class="level1">
+<h1>Concluding Thoughts <a name="section4"></a></h1>
+<p>This was a lot of fun! I finally got to play around with an agentic AI for a day, and I feel like a got a pretty decent result. I’m pleasantly surprised by the work that it did and I feel like I’m in a much stronger position with regard to my personal website. I’ve got more control over it; I finally have a repository that makes more sense to me.</p>
+<p>I’m excited to keep playing with AI agents, and I’m hoping that this conversion sparks a more robust writing habit!</p>
+
+
+<!-- -->
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>My old website was hosted on Vercel, which I was only able to figure out with my friend, Luis’s, help.↩︎</p></li>
+<li id="fn2"><p><code>R</code> and <code>Python</code> code, that is, not <code>JavaScript</code>. See the second point, about brackets in math equations.↩︎</p></li>
+</ol>
+</section></div> ]]></description>
+  <category>R</category>
+  <category>Quarto</category>
+  <category>Code</category>
+  <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/migrating-to-quarto.html</guid>
+  <pubDate>Wed, 06 Aug 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Writing on Watches</title>
   <dc:creator>Kevin Navarrete-Parra</dc:creator>
@@ -2021,32 +2201,10 @@ font-style: inherit;">gm_oauth_client</span>()</span></code></pre></div>
 </details>
 </div>
 <p>If I don’t run the code above, I get the following message when I run the code to send the email:</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">The gmailr package is requesting access to your Google account.</span>
-<span id="cb2-2">Enter <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'1'</span> to start a new auth process or select a pre<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>authorized account.</span>
-<span id="cb2-3"><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> Send me to the browser <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> a new auth process.</span>
-<span id="cb2-4"><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> youremail<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">@</span>email.com</span></code></pre></div>
-</details>
-</div>
+<pre><code>The gmailr package is requesting access to your Google account.
+Enter '1' to start a new auth process or select a pre-authorized account.
+1: Send me to the browser for a new auth process.
+2: youremail@email.com</code></pre>
 <p>which means I have to manually select the authorized email address. Since I want to automate this process, I set the authorized email address as a system variable.</p>
 <p>Next, I made an object with the authorized email and one for the recipient email.<sup>1</sup></p>
 <div class="cell">
@@ -2109,32 +2267,36 @@ font-style: inherit;">"</span></span>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#| eval: false</span></span>
+<span id="cb5-2"></span>
+<span id="cb5-3"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gm_mime</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-2">  <span class="fu" style="color: #4758AB;
+<span id="cb5-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gm_from</span>(sender_email) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-3">  <span class="fu" style="color: #4758AB;
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gm_to</span>(recipient_email) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-4">  <span class="fu" style="color: #4758AB;
+<span id="cb5-6">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gm_html_body</span>(email_body) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-5">  <span class="fu" style="color: #4758AB;
+<span id="cb5-7">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gm_subject</span>(email_subject) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-6">  <span class="fu" style="color: #4758AB;
+<span id="cb5-8">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gm_send_message</span>()</span></code></pre></div>
 </details>
@@ -2620,97 +2782,6 @@ font-style: inherit;">print</span>(ac.or)</span></code></pre></div>
   <category>Model</category>
   <category>Data Science</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/adjacent-categories-model.html</guid>
-  <pubDate>Sun, 24 Sep 2023 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Stereotype Logit Model</title>
-  <dc:creator>Kevin Navarrete-Parra</dc:creator>
-  <link>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/stereotype-logit.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><em>I am writing quick and easy R guides for my didactic purposes and to provide useful starting places for my peers in grad school. If you see that I have made a mistake or would like to suggest some way to make the post better or more accurate, please feel free to <a href="navark4@unlv.nevada.edu">email</a> me. I am always happy to learn from others’ experiences!</em></p>
-<section id="table-of-contents" class="level1">
-<h1>Table of contents</h1>
-<ol type="1">
-<li>Model Formula</li>
-<li>Odds Ratios</li>
-<li>Running it in R</li>
-</ol>
-<p><em>Note that I explore much of the information for Sections 2-4 more thoroughly in other posts. Of particular utility will be my posts on <a href="https://www.kevinparra.co/blog/Notes/logit-notes">logit models</a> and <a href="https://www.kevinparra.co/blog/Notes/continuation-ratio-model">continuation ratio models</a>.</em></p>
-</section>
-<section id="model-formula" class="level1">
-<h1>Model Formula <a name="section1"></a></h1>
-<p>The stereotype logit model is an interesting generalization of the proportional odds model, as we will see below because it adds a series of nuances to categorical data exploration. One of the primary use cases for this model instead of the PO model is when the proportional odds assumption does not hold, which is unsurprisingly common for most data. Of course, you could fit the PPO and GOL models if your data don’t follow the PO assumption, but the SL model might be more interesting.</p>
-<p>The model’s equation is as follows:</p>
-<p><img src="https://latex.codecogs.com/png.latex?%20logit%5B%5Cpi%20(j,%20J)%5D%20=%20ln%20%5Cleft(%20%5Cfrac%7BP(Y%20=%20j%20%7C%20x_1,%20x_2,%20...,%20x_p)%7D%7BP(Y%20=%20J%20%7C%20x_1,%20x_2,%20...,%20x_p)%7D%20%5Cright)%20=%20%5Calpha_j%20+%20%5Cphi_j(%5Cbeta_1X_1%20+%20%5Cbeta_2X_2%20+%20...%20+%20%5Cbeta_pX_p)%20"></p>
-<p>where J is the baseline (i.e., last) category for this given equation, <img src="https://latex.codecogs.com/png.latex?j=1,2,...,%20J%20-%201">, Y is the ordinal response variable with J categories, _j represents the intercepts, the values are the coefficients for X variables, and _j represents the constraints or scale parameters used to determine whether the outcome variable is ordinal. Importantly, _j assumes that</p>
-<p><img src="https://latex.codecogs.com/png.latex?%201%20=%20%5Cphi_1%20%3E%20%5Cphi_2%20%3E%20%5Cphi_3%20%3E%20...%20%3E%20%5Cphi_%7BJ-1%7D%20%3E%20%5Cphi_J%20=%200%20"></p>
-<p>Notice that the constraints are ordered from one to zero, with each subsequent constraint being smaller than the last. Therefore, <img src="https://latex.codecogs.com/png.latex?%5Cphi_1%20=%201"> and <img src="https://latex.codecogs.com/png.latex?%5Cphi_J%20=%200">, the constraints in the middle falling somewhere in between. What this does is force the model to have <em>ordered</em> categorical variables. Suppose, then, that you have a variable where J = 4. Once you know what <img src="https://latex.codecogs.com/png.latex?%5Cphi_1"> and <img src="https://latex.codecogs.com/png.latex?%5Cphi_4"> are, the only constraints you have left to estimate are <img src="https://latex.codecogs.com/png.latex?%5Cphi_2"> and <img src="https://latex.codecogs.com/png.latex?%5Cphi_3">.</p>
-<p>As you can probably guess from the model formula above, the values are distributed across your coefficients, leading to</p>
-<p><img src="https://latex.codecogs.com/png.latex?%20%5Cphi_1%5Cbeta%20%3E%20%5Cphi_2%5Cbeta%20%3E%20%5Cphi_3%5Cbeta%20%3E%20%5Cphi_4%5Cbeta%20"></p>
-<p>assuming we continue with our earlier example. As you can see here, the scale parameters (aka, constraints) ensure ordinality in the model.</p>
-<p>Naturally, this leads to a minor complication when calculating the odds of being in category j versus category m. Rather than simply exponentiating the coefficients, we take the exponential of <img src="https://latex.codecogs.com/png.latex?%5B(%5Calpha_j%20-%20%5Calpha_m)%20+%20(%5Cphi_j%20-%20%5Cphi_m)%5Cbeta%5D"></p>
-</section>
-<section id="odds-ratios" class="level1">
-<h1>Odds Ratios <a name="section2"></a></h1>
-<p>The stereotype logit model estimates the log odds of being in a given category relative to the baseline. Therefore, generating the odds ratio can be done by</p>
-<p><img src="https://latex.codecogs.com/png.latex?%20Odds(Y%20=%20j%20vs.%20Y%20=%20J)%20=%20%5Cfrac%7BP(Y%20=%20j)%7D%7BP(Y%20=%20J)%7D%20"></p>
-<p>where j can be any category from 1 to J - 1. Recall, however, that the log odds of being in a given category as opposed to the baseline need to be multiplied by the scale parameters 4_j$, as we saw above.</p>
-</section>
-<section id="running-it-in-r" class="level1">
-<h1>Running it in R <a name="section3"></a></h1>
-<p>Running the stereotype logit model in r works with the <code>rrvglm</code> function from the <code>VGAM</code> package. An SL model would look like the following:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">sl.model <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rrvglm</span>(y <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span> x1 <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> x2 <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> x3, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">family =</span> multinomial, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">rank =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">data =</span> data)</span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">summary</span>(sl.model)</span></code></pre></div>
-<p>where <code>rank = 1</code> indicates to R that the model is a one-dimensional SL model.</p>
-<p>After you run your model, be sure to get the odds ratio table to interpret the results.</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"></span>
-<span id="cb2-2">sl.or <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">exp</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">coef</span>(sl.model, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">matrix =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>))</span></code></pre></div>
-
-
-<!-- -->
-
-</section>
-
- ]]></description>
-  <category>Notes</category>
-  <category>Stereotyped Logit</category>
-  <category>Model</category>
-  <category>Data Science</category>
-  <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/stereotype-logit.html</guid>
   <pubDate>Sun, 24 Sep 2023 00:00:00 GMT</pubDate>
 </item>
 </channel>
