@@ -1,0 +1,100 @@
+---
+author: Kevin Navarrete-Parra
+categories:
+- R
+- Quarto
+- Code
+date: today
+description: I migrated my website to Quarto!
+draft: false
+format: html
+title: Migrating to Quarto
+toc: true
+---
+
+# Table of contents
+1. [Introduction](#section1)
+2. [How I Migrated to Quarto](#section2)
+3. [A Few Useful Features](#section3)
+4. [Concluding Thoughts](#section4)
+
+
+# Introduction <a name="section1"></a>
+
+I feel like I've left this site sort of in disarray recently with next to no posts and multiple pages that have gone drastically long without necessary updates. I had resolved earlier this year to write more--and my dissertation doesn't count--and a major part of that was going to be writing on this site. Unfortunately, writing was one of the first things that fell by the wayside as soon as I got busy, as usual. 
+
+Although my business level has in no way diminished this summer, I was recently inspired to try setting up a writing habit again. I saw [a post](https://nrennie.rbind.io/blog/hugo-quarto-website/) by Nicola Rennie, a data scientist whose content I follow. She talked about the migration process from Hugo to Quarto and pointed to a few useful resources that could help with this move. 
+
+After reading the post, I figured migrating from my old website (which felt too complicated) wouldn't be too hard. I also thought migrating would be a good way to start writing again--especially since working in Quarto is a lot easier than editing the MDX files in the previous website.
+
+# How I Migrated to Quarto <a name="section2"></a>
+
+I figured migrating to Quarto would be a whole ordeal because I'd have to convert all the MDX files to Quarto and figure out how the Quarto website structure works. But, thankfully, this project was the perfect way to try out something new: Claude Code! I've recently been playing around with it a little bit, but I didn't have any meaty project to jump in with. 
+
+This was the perfect test case!
+
+I began by having Claude index my old website using the `/index` command in the CLI tool. This generated a `CLAUDE.md` file in my old website, which contained contextual information for the old website. I did so so that the agent would have as much background knowledge as possible in its context window before beginning the migration. The file it generated ended up being pretty comprehensive. After reading through it, I got the impression that the model had a pretty nuanced understanding of my old website's file structure. 
+
+I proceeded by prompting Claude to make a detailed markdown file that included a description of everything I'd need for the migration. I asked it to give me a breakdown of what I'd need to convert the MDX files into Quarto, what the new website's file structure would look like, and what other steps I'd need to take outside the immediate coding tasks. I'm not too knowledgeable about how the DNS stuff works, nor do I know much about how to deploy a website.[^1] I figured it would be good to have Claude also help me simplify the deployment pipeline as well, so I asked it to also help me migrate to GitHub Pages. 
+
+Once I had that migration guideline, I created a new folder, which contains my old website and a folder for my new one. I opened a new Claude Code agent in this folder and had it read the migration guide and execute everything that was doable without having it access my personal accounts online. As part of the instruction, I had the agent finish the task by generating a conversion report, where I had it detail everything that it did and did not do, what went right and what went wrong, as well as any suggestions for additional work I could do. 
+
+Conversion report in hand, I took some time to understand what the agent did. Frankly, it did a damn good job right off the bat. The file structure looked exactly like what the Quarto website recommends, and the posts migrated really well! From here, I rolled up my sleeves and started working on the GitHub implementation, on which Claude gave me some pointers. I also worked on making sure that the new website used the same URL as my old one, which was easier than I thought it would be. 
+
+Once I had a preliminary version working, I started working on the truly difficult part: the styling. This is where I struggle the most; I'm not good at colors. So, I looked online for a few professional-looking color palletes to get an idea of what I should do, and I also consulted a few data science blogs I've seen online. 
+
+I saw some really good stuff, but a lot of the websites I saw were too bright and colorful (not my style). So I figured I'd start with some basics. I know I like blue, and I figured I didn't want too bright of a blue on this site, so I tried to find stuff that would go well with more of a navy blue. I ended up picking a few colors (#1A365D as a primary, #38B2AC for accents, and #F7FAFC for backgrounds) and I fed them to the model. I told it to start with those three and then make any suggestions based on that starting point. 
+
+And look at that, the model did a good job again. There's still some aesthetic elements I want to fiddle with, but the agent did a good job overall! All I had to do was play around with the `.css` and `.scss` code for a little bit to fine tune whatever I didn't like, but that wasn't too hard. 
+
+# A Few Useful Features<a name="section3"></a>
+
+I mentioned a few reasons why I switched to Quarto in the introduction above. Now that I've switched, I'd like to add a few fun features that Quarto has that my previous website didn't. 
+
+First, I can set the date key in the `YAML` to `today`, which automatically sets the date to today's date. I remember I spent so much time trying to figure out how to do that in my previous website to no avail. This is one of my favorite parts of programming: I get to be lazy about unimportant things because I can make the computer do it instead!
+
+Second, writing math just works better now. I always had issues with the MDX files when I'd write math equations because of how often I'd have to use `{}` in the `LaTeX` code. Whenever the MDX file detected brackets, I'd get an acorn error because the file thought I was trying to insert JavaScript code instead of writing math. This almost always resulted in errors unless I properly escaped the brackets--and sometime even when I properly escaped the brackets. Using Quarto, I can just write:
+
+$$
+
+\mu = \frac{1}{n} \sum^{n}_{i=1} x_i
+
+$$
+
+without having to worry about those pesky rendering issues or website-breaking mistakes! I can't emphasize enough how stoked I am about this. 
+
+Third, I now get to execute code inside my posts![^2] Now, if I want to showcase some R inside a blog post, for example, I can write the code AND display its output. For instance, see this quick implementation of the probability density function for the normal distribution: 
+
+```{r}
+
+x <- c(-10:10)
+
+pdf_gauss <- function(x) {
+    mu = mean(x)
+    sigma = var(x)
+    const = 1/(sqrt(2 * pi * sigma))
+    quantiles = c()
+    for (i in seq_along(x)){
+        exp_term = -((x[i] - mu)^2)/(2 * sigma)
+        quantiles = c(quantiles, const * exp(exp_term))
+    }
+    return(quantiles)
+}
+
+plot(pdf_gauss(x))
+
+```
+
+As you can see, there's a plot now! And it looks bell shaped!
+
+
+# Concluding Thoughts <a name="section4"></a>
+
+This was a lot of fun! I finally got to play around with an agentic AI for a day, and I feel like a got a pretty decent result. I'm pleasantly surprised by the work that it did and I feel like I'm in a much stronger position with regard to my personal website. I've got more control over it; I finally have a repository that makes more sense to me. 
+
+I'm excited to keep playing with AI agents, and I'm hoping that this conversion sparks a more robust writing habit! 
+
+
+[^1]: My old website was hosted on Vercel, which I was only able to figure out with my friend, Luis's, help. 
+
+[^2]: `R` and `Python` code, that is, not `JavaScript`. See the second point, about brackets in math equations. 

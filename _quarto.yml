@@ -55,4 +55,15 @@ format:
 
 execute:
   freeze: auto
-  type: website
+
+engines:
+  - knitr
+  - jupyter
+
+jupyter: python3
+
+knitr:
+  opts_chunk:
+    python.reticulate: false
+  opts_knit:
+    python.cmd: py
