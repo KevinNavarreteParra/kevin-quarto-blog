@@ -11,7 +11,7 @@ format:
 ::: {.presentation-card}
 
 ### On Troubleshooting
-*UNLV Political Science | 11 October 2024*
+*UNLV Political Science | 15 October 2024*
 
 A talk given to an incoming class of graduate students on the troubleshooting process in programming.
 
@@ -24,7 +24,7 @@ A talk given to an incoming class of graduate students on the troubleshooting pr
 ::: {.presentation-card}
 
 ### ¿Reputación Importa?
-*UNLV Spanish Class | 9 Dec 2024*
+*UNLV Spanish Class | 10 Dec 2024*
 
 A presentation given to my graduate-level Spanish class where I translated an early draft of a research project. 
 
