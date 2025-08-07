@@ -172,7 +172,7 @@
     "href": "cv.html",
     "title": "Curriculum Vitae",
     "section": "",
-    "text": "This browser does not support PDFs. Please download the PDF to view it: &lt;a href='/publiv)cv.pdf'&gt;Download CV&lt;/a&gt;."
+    "text": "This browser does not support PDFs. Please download the PDF to view it: &lt;a href='/static/public_cv.pdf'&gt;Download CV&lt;/a&gt;."
   },
   {
     "objectID": "about.html",
