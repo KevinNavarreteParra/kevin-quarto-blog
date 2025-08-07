@@ -9,8 +9,8 @@
 <link>https://kevinnavreteparra.github.io/kevin-quarto-blog/</link>
 <atom:link href="https://kevinnavreteparra.github.io/kevin-quarto-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>A place for my notes and thoughts on political science, data science, and research methods</description>
-<generator>quarto-1.7.32</generator>
-<lastBuildDate>Wed, 06 Aug 2025 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.7.33</generator>
+<lastBuildDate>Thu, 07 Aug 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Migrating to Quarto</title>
   <dc:creator>Kevin Navarrete-Parra</dc:creator>
@@ -187,7 +187,7 @@ font-style: inherit;">pdf_gauss</span>(x))</span></code></pre></div>
   <category>Quarto</category>
   <category>Code</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/migrating-to-quarto.html</guid>
-  <pubDate>Wed, 06 Aug 2025 00:00:00 GMT</pubDate>
+  <pubDate>Thu, 07 Aug 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Writing on Watches</title>
