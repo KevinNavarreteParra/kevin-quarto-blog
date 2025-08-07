@@ -18,8 +18,8 @@ website:
       #   text: Projects
       - href: presentations.qmd
         text: Presentations
-      # - href: cv.qmd
-      #   text: CV
+      - href: cv.qmd
+        text: CV
     right:
       - icon: github
         href: https://github.com/KevinNavarreteParra
