@@ -10,7 +10,7 @@
 <atom:link href="https://kevinnavreteparra.github.io/kevin-quarto-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>A place for my notes and thoughts on political science, data science, and research methods</description>
 <generator>quarto-1.7.33</generator>
-<lastBuildDate>Thu, 07 Aug 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 10 Aug 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Migrating to Quarto</title>
   <dc:creator>Kevin Navarrete-Parra</dc:creator>
@@ -187,7 +187,7 @@ font-style: inherit;">pdf_gauss</span>(x))</span></code></pre></div>
   <category>Quarto</category>
   <category>Code</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/migrating-to-quarto.html</guid>
-  <pubDate>Thu, 07 Aug 2025 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 10 Aug 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Writing on Watches</title>
@@ -1675,6 +1675,185 @@ OpenFiles: script.R</code></pre>
   <pubDate>Tue, 28 May 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Greek Alphabet in Markdown</title>
+  <dc:creator>Kevin Navarrete-Parra</dc:creator>
+  <link>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/greek-letters.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The following table is a recreation of Table 1.3 found in <a href="https://press.princeton.edu/books/paperback/9780691159171/a-mathematics-course-for-political-and-social-research">A Mathematics Course for Political &amp; Social Research</a> by Will H. Moore and David A. Siegel, with a few additions and changes. This table is a quick reference for Greek alphabet notation in Markdown and RMarkdown, and it can also be useful for formatting math equations in LaTeX.</p>
+<p>Note that the inline code snippets for the Greek letters’ lower case and upper case versions are the same, with the only difference relating to the capitalization of the letter in the inline code. For example, the inline code for the lower case alpha is <code>$\alpha$</code>, and the inline code for the upper case alpha is <code>$\Alpha$</code>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Upper case</th>
+<th>Lower case</th>
+<th>Name</th>
+<th>Inline Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CAlpha"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Calpha"></td>
+<td>Alpha</td>
+<td><code>$\alpha$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CBeta"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cbeta"></td>
+<td>Beta</td>
+<td><code>$\beta$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CGamma"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cgamma"></td>
+<td>Gamma</td>
+<td><code>$\Gamma$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CDelta"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cdelta"></td>
+<td>Delta</td>
+<td><code>$\Delta$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CEpsilon"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cepsilon"></td>
+<td>Epsilon</td>
+<td><code>$\Epsilon$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CZeta"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Czeta"></td>
+<td>Zeta</td>
+<td><code>$\Zeta$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CEta"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Ceta"></td>
+<td>Eta</td>
+<td><code>$\Eta$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CTheta"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Ctheta"></td>
+<td>Theta</td>
+<td><code>$\Theta$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CIota"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Ciota"></td>
+<td>Iota</td>
+<td><code>$\Iota$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CKappa"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Ckappa"></td>
+<td>Kappa</td>
+<td><code>$\Kappa$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CLambda"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Clambda"></td>
+<td>Lambda</td>
+<td><code>$\Lambda$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CMu"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cmu"></td>
+<td>Mu</td>
+<td><code>$\Mu$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CNu"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cnu"></td>
+<td>Nu</td>
+<td><code>$\Nu$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CXi"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cxi"></td>
+<td>Xi</td>
+<td><code>$\Xi$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5COmicron"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Comicron"></td>
+<td>Omicron</td>
+<td><code>$\Omicron$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CPi"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cpi"></td>
+<td>Pi</td>
+<td><code>$\Pi$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CRho"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Crho"></td>
+<td>Rho</td>
+<td><code>$\Rho$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CSigma"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Csigma"></td>
+<td>Sigma</td>
+<td><code>$\Sigma$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CTau"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Ctau"></td>
+<td>Tau</td>
+<td><code>$\Tau$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CUpsilon"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cupsilon"></td>
+<td>Upsilon</td>
+<td><code>$\Upsilon$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CPhi"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cphi"></td>
+<td>Phi</td>
+<td><code>$\Phi$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5CChi"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cchi"></td>
+<td>Chi</td>
+<td><code>$\Chi$</code></td>
+</tr>
+<tr class="odd">
+<td><img src="https://latex.codecogs.com/png.latex?%5CPsi"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Cpsi"></td>
+<td>Psi</td>
+<td><code>$\Psi$</code></td>
+</tr>
+<tr class="even">
+<td><img src="https://latex.codecogs.com/png.latex?%5COmega"></td>
+<td><img src="https://latex.codecogs.com/png.latex?%5Comega"></td>
+<td>Omega</td>
+<td><code>$\Omega$</code></td>
+</tr>
+</tbody>
+</table>
+
+
+<!-- -->
+
+
+ ]]></description>
+  <category>Markdown</category>
+  <category>RMarkdown</category>
+  <category>Greek Alphabet</category>
+  <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/greek-letters.html</guid>
+  <pubDate>Sun, 19 May 2024 00:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Markdown Notation</title>
   <dc:creator>Kevin Navarrete-Parra</dc:creator>
   <link>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/markdown-notation.html</link>
@@ -1946,185 +2125,6 @@ OpenFiles: script.R</code></pre>
   <category>RMarkdown</category>
   <category>Math Notation</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/markdown-notation.html</guid>
-  <pubDate>Sun, 19 May 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Greek Alphabet in Markdown</title>
-  <dc:creator>Kevin Navarrete-Parra</dc:creator>
-  <link>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/greek-letters.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>The following table is a recreation of Table 1.3 found in <a href="https://press.princeton.edu/books/paperback/9780691159171/a-mathematics-course-for-political-and-social-research">A Mathematics Course for Political &amp; Social Research</a> by Will H. Moore and David A. Siegel, with a few additions and changes. This table is a quick reference for Greek alphabet notation in Markdown and RMarkdown, and it can also be useful for formatting math equations in LaTeX.</p>
-<p>Note that the inline code snippets for the Greek letters’ lower case and upper case versions are the same, with the only difference relating to the capitalization of the letter in the inline code. For example, the inline code for the lower case alpha is <code>$\alpha$</code>, and the inline code for the upper case alpha is <code>$\Alpha$</code>.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Upper case</th>
-<th>Lower case</th>
-<th>Name</th>
-<th>Inline Code</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CAlpha"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Calpha"></td>
-<td>Alpha</td>
-<td><code>$\alpha$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CBeta"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cbeta"></td>
-<td>Beta</td>
-<td><code>$\beta$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CGamma"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cgamma"></td>
-<td>Gamma</td>
-<td><code>$\Gamma$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CDelta"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cdelta"></td>
-<td>Delta</td>
-<td><code>$\Delta$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CEpsilon"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cepsilon"></td>
-<td>Epsilon</td>
-<td><code>$\Epsilon$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CZeta"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Czeta"></td>
-<td>Zeta</td>
-<td><code>$\Zeta$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CEta"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Ceta"></td>
-<td>Eta</td>
-<td><code>$\Eta$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CTheta"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Ctheta"></td>
-<td>Theta</td>
-<td><code>$\Theta$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CIota"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Ciota"></td>
-<td>Iota</td>
-<td><code>$\Iota$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CKappa"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Ckappa"></td>
-<td>Kappa</td>
-<td><code>$\Kappa$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CLambda"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Clambda"></td>
-<td>Lambda</td>
-<td><code>$\Lambda$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CMu"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cmu"></td>
-<td>Mu</td>
-<td><code>$\Mu$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CNu"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cnu"></td>
-<td>Nu</td>
-<td><code>$\Nu$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CXi"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cxi"></td>
-<td>Xi</td>
-<td><code>$\Xi$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5COmicron"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Comicron"></td>
-<td>Omicron</td>
-<td><code>$\Omicron$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CPi"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cpi"></td>
-<td>Pi</td>
-<td><code>$\Pi$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CRho"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Crho"></td>
-<td>Rho</td>
-<td><code>$\Rho$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CSigma"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Csigma"></td>
-<td>Sigma</td>
-<td><code>$\Sigma$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CTau"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Ctau"></td>
-<td>Tau</td>
-<td><code>$\Tau$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CUpsilon"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cupsilon"></td>
-<td>Upsilon</td>
-<td><code>$\Upsilon$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CPhi"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cphi"></td>
-<td>Phi</td>
-<td><code>$\Phi$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5CChi"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cchi"></td>
-<td>Chi</td>
-<td><code>$\Chi$</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5CPsi"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Cpsi"></td>
-<td>Psi</td>
-<td><code>$\Psi$</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5COmega"></td>
-<td><img src="https://latex.codecogs.com/png.latex?%5Comega"></td>
-<td>Omega</td>
-<td><code>$\Omega$</code></td>
-</tr>
-</tbody>
-</table>
-
-
-<!-- -->
-
-
- ]]></description>
-  <category>Markdown</category>
-  <category>RMarkdown</category>
-  <category>Greek Alphabet</category>
-  <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/greek-letters.html</guid>
   <pubDate>Sun, 19 May 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -2704,9 +2704,9 @@ mlm.or &lt;- cbind(exp(coef(mlm.mod)), exp(confint(mlm.mod)))
   <pubDate>Mon, 02 Oct 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>Adjacent Categories Models</title>
+  <title>Stereotype Logit Model</title>
   <dc:creator>Kevin Navarrete-Parra</dc:creator>
-  <link>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/adjacent-categories-model.html</link>
+  <link>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/stereotype-logit.html</link>
   <description><![CDATA[ 
 
 
@@ -2717,75 +2717,69 @@ mlm.or &lt;- cbind(exp(coef(mlm.mod)), exp(confint(mlm.mod)))
 <h1>Table of contents</h1>
 <ol type="1">
 <li>Model Formula</li>
-<li>Conditional Probabilities and Odds Ratios</li>
+<li>Odds Ratios</li>
 <li>Running it in R</li>
-<li>Diagnostic Statistics</li>
 </ol>
+<p><em>Note that I explore much of the information for Sections 2-4 more thoroughly in other posts. Of particular utility will be my posts on <a href="https://www.kevinparra.co/blog/Notes/logit-notes">logit models</a> and <a href="https://www.kevinparra.co/blog/Notes/continuation-ratio-model">continuation ratio models</a>.</em></p>
 </section>
 <section id="model-formula" class="level1">
 <h1>Model Formula <a name="section1"></a></h1>
-<p>The adjacent categories model is similar to the <a href="https://www.kevinparra.co/blog/continuation-ratio-model">continuation ratio model</a> and the series of <a href="https://www.kevinparra.co/blog/ppo-notes">proportional odds models</a>, differing only slightly in how the equation is specified. As the name indicates, the AC model estimates the odds of being in category <img src="https://latex.codecogs.com/png.latex?j+1"> as opposed to being in the lower category j of the given ordinal response variable. Simply put, this model takes category pairs and compares the odds of being in category j instead of category <img src="https://latex.codecogs.com/png.latex?j+1">. The model is written as</p>
-<p><img src="https://latex.codecogs.com/png.latex?%20logit%5BP(Y%20=%20j%20+%201%7Cx_1,%20x_2,%20...,%20x_p)%5D%20=%20ln%20%5Cleft(%20%5Cfrac%7BP(Y%20=%20j%20+%201%20%7C%20x_1,%20x_2,%20...,%20x_p)%7D%7BP(Y%20+%20j%20%7C%20x_1,%20x_2,%20...,%20x_p)%7D%20%5Cright)%20=%20%5Calpha_j%20+%20%5Cbeta_1X_1%20+%20%5Cbeta_2X_2%20+%20...%20+%20%5Cbeta_3X_3%20"></p>
-<p>where j represents <img src="https://latex.codecogs.com/png.latex?J-1"> categories, _j gives us the intercepts, and the betas are logit coefficients.</p>
+<p>The stereotype logit model is an interesting generalization of the proportional odds model, as we will see below because it adds a series of nuances to categorical data exploration. One of the primary use cases for this model instead of the PO model is when the proportional odds assumption does not hold, which is unsurprisingly common for most data. Of course, you could fit the PPO and GOL models if your data don’t follow the PO assumption, but the SL model might be more interesting.</p>
+<p>The model’s equation is as follows:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%20logit%5B%5Cpi%20(j,%20J)%5D%20=%20ln%20%5Cleft(%20%5Cfrac%7BP(Y%20=%20j%20%7C%20x_1,%20x_2,%20...,%20x_p)%7D%7BP(Y%20=%20J%20%7C%20x_1,%20x_2,%20...,%20x_p)%7D%20%5Cright)%20=%20%5Calpha_j%20+%20%5Cphi_j(%5Cbeta_1X_1%20+%20%5Cbeta_2X_2%20+%20...%20+%20%5Cbeta_pX_p)%20"></p>
+<p>where J is the baseline (i.e., last) category for this given equation, <img src="https://latex.codecogs.com/png.latex?j=1,2,...,%20J%20-%201">, Y is the ordinal response variable with J categories, _j represents the intercepts, the values are the coefficients for X variables, and _j represents the constraints or scale parameters used to determine whether the outcome variable is ordinal. Importantly, _j assumes that</p>
+<p><img src="https://latex.codecogs.com/png.latex?%201%20=%20%5Cphi_1%20%3E%20%5Cphi_2%20%3E%20%5Cphi_3%20%3E%20...%20%3E%20%5Cphi_%7BJ-1%7D%20%3E%20%5Cphi_J%20=%200%20"></p>
+<p>Notice that the constraints are ordered from one to zero, with each subsequent constraint being smaller than the last. Therefore, <img src="https://latex.codecogs.com/png.latex?%5Cphi_1%20=%201"> and <img src="https://latex.codecogs.com/png.latex?%5Cphi_J%20=%200">, the constraints in the middle falling somewhere in between. What this does is force the model to have <em>ordered</em> categorical variables. Suppose, then, that you have a variable where J = 4. Once you know what <img src="https://latex.codecogs.com/png.latex?%5Cphi_1"> and <img src="https://latex.codecogs.com/png.latex?%5Cphi_4"> are, the only constraints you have left to estimate are <img src="https://latex.codecogs.com/png.latex?%5Cphi_2"> and <img src="https://latex.codecogs.com/png.latex?%5Cphi_3">.</p>
+<p>As you can probably guess from the model formula above, the values are distributed across your coefficients, leading to</p>
+<p><img src="https://latex.codecogs.com/png.latex?%20%5Cphi_1%5Cbeta%20%3E%20%5Cphi_2%5Cbeta%20%3E%20%5Cphi_3%5Cbeta%20%3E%20%5Cphi_4%5Cbeta%20"></p>
+<p>assuming we continue with our earlier example. As you can see here, the scale parameters (aka, constraints) ensure ordinality in the model.</p>
+<p>Naturally, this leads to a minor complication when calculating the odds of being in category j versus category m. Rather than simply exponentiating the coefficients, we take the exponential of <img src="https://latex.codecogs.com/png.latex?%5B(%5Calpha_j%20-%20%5Calpha_m)%20+%20(%5Cphi_j%20-%20%5Cphi_m)%5Cbeta%5D"></p>
 </section>
-<section id="conditional-probabilities-and-odds-ratios" class="level1">
-<h1>Conditional Probabilities and Odds Ratios <a name="section2"></a></h1>
-<p>Unsurprisingly, calculating this model’s odds is very similar to the <a href="https://www.kevinparra.co/blog/continuation-ratio-model">CR model</a> and <a href="https://www.kevinparra.co/blog/ppo-notes">PO model</a>. In this case, the equation is</p>
-<p><img src="https://latex.codecogs.com/png.latex?%20Odds(Y%20=%20j%20vs.%20Y%20=%20j%20-%201)%20=%20%5Cfrac%7BP(Y%20=%20j)%7D%7BP(Y%20=%20j-1)%7D%20"></p>
-<p>where j is any category above zero.</p>
-<p>And like with the other models mentioned above, the first thing you do after running the model is exponentiate the odds to get an odds ratio. Interpreting the odds ratio differs only insofar as this model is marginally distinct from the earlier models.</p>
+<section id="odds-ratios" class="level1">
+<h1>Odds Ratios <a name="section2"></a></h1>
+<p>The stereotype logit model estimates the log odds of being in a given category relative to the baseline. Therefore, generating the odds ratio can be done by</p>
+<p><img src="https://latex.codecogs.com/png.latex?%20Odds(Y%20=%20j%20vs.%20Y%20=%20J)%20=%20%5Cfrac%7BP(Y%20=%20j)%7D%7BP(Y%20=%20J)%7D%20"></p>
+<p>where j can be any category from 1 to J - 1. Recall, however, that the log odds of being in a given category as opposed to the baseline need to be multiplied by the scale parameters 4_j$, as we saw above.</p>
 </section>
 <section id="running-it-in-r" class="level1">
 <h1>Running it in R <a name="section3"></a></h1>
-<p>You can run the AC model in R using the <code>vglm</code> function from the <code>VGAM</code> package, just like for the earlier models. The only difference is that the <code>family</code> argument should be <code>acat</code>, such that the model looks like</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"></span>
-<span id="cb1-2">model <span class="ot" style="color: #003B4F;
+<p>Running the stereotype logit model in r works with the <code>rrvglm</code> function from the <code>VGAM</code> package. An SL model would look like the following:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">sl.model <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">vglm</span>(dv <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">rrvglm</span>(y <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">~</span> iv, <span class="at" style="color: #657422;
+font-style: inherit;">~</span> x1 <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">family =</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">+</span> x2 <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">acat</span>(<span class="at" style="color: #657422;
+font-style: inherit;">+</span> x3, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">parallel =</span> <span class="cn" style="color: #8f5902;
+font-style: inherit;">family =</span> multinomial, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">TRUE</span>, <span class="at" style="color: #657422;
+font-style: inherit;">rank =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">reverse =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>), <span class="at" style="color: #657422;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> data)</span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">summary</span>(model)</span></code></pre></div>
-<p>where parallel = TRUE indicates that the model abides by the proportional odds assumption.</p>
-<p>And as with the earlier models, you can get an odds ratio by running</p>
+font-style: inherit;">summary</span>(sl.model)</span></code></pre></div>
+<p>where <code>rank = 1</code> indicates to R that the model is a one-dimensional SL model.</p>
+<p>After you run your model, be sure to get the odds ratio table to interpret the results.</p>
 <div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"></span>
-<span id="cb2-2">ac.or <span class="ot" style="color: #003B4F;
+<span id="cb2-2">sl.or <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">cbind</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
 font-style: inherit;">exp</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">coef</span>(model)), <span class="fu" style="color: #4758AB;
+font-style: inherit;">coef</span>(sl.model, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">exp</span>(<span class="fu" style="color: #4758AB;
+font-style: inherit;">matrix =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">confint</span>(model)))</span>
-<span id="cb2-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">print</span>(ac.or)</span></code></pre></div>
-</section>
-<section id="diagnostic-statistics" class="level1">
-<h1>Diagnostic Statistics <a name="section4"></a></h1>
-<p>For a deeper dive into the model fit statistics, see the <a href="https://www.kevinparra.co/blog/logit-notes">Logit Model Notes</a> and the <a href="https://www.kevinparra.co/blog/continuation-ratio-model">CR Model Notes</a>.</p>
+font-style: inherit;">TRUE</span>))</span></code></pre></div>
 
 
 <!-- -->
@@ -2794,10 +2788,10 @@ font-style: inherit;">print</span>(ac.or)</span></code></pre></div>
 
  ]]></description>
   <category>Notes</category>
-  <category>Adjacent Categories</category>
+  <category>Stereotyped Logit</category>
   <category>Model</category>
   <category>Data Science</category>
-  <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/adjacent-categories-model.html</guid>
+  <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/stereotype-logit.html</guid>
   <pubDate>Sun, 24 Sep 2023 00:00:00 GMT</pubDate>
 </item>
 </channel>
