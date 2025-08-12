@@ -229,7 +229,7 @@ The data for the edges will contain information about how many studies states ha
 ```{r}
 #| label: network
 # makes network
-network <- graph_from_data_frame(
+network <- igraph::graph_from_data_frame(
     d = edge_data, 
     vertices = node_data |> 
         select(-node_id),
