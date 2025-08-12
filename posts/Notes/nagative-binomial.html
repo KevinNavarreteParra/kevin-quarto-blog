@@ -314,7 +314,7 @@ window.Quarto = {
 </section>
 <section id="model-equation" class="level1">
 <h1>Model Equation <a name="subsection1"></a></h1>
-<p>This model is similar to the <a href="https://www.kevinparra.co/blog/Notes/poisson-notes">Poisson Model</a> in that it is suited for count dependent variables. However, the Poisson model assumes that the response variable’s mean and variance are equal–a condition that most real data commonly violate. If your response variable suffers from overdispersion (i.e., the dependent variable’s variance is greater than its mean), then the negative binomial model is a good alternative. Whereas the Poisson model assumes the variable follows a Poisson distribution, the negative binomial model works off of the negative binomial distribution, which relaxes the dispersion assumption. In order to do so, the <span class="math inline">Variance (Y)</span> is made into a function of the mean <span class="math inline">\mu</span> and a dispersion parameter <span class="math inline">\alpha</span>. Therefore, $Variance (Y) = (1 + ). When <span class="math inline">\alpha = 0</span>, the variance is equal to the mean, making the negative binomial identical to the Poisson, under these circumstances.</p>
+<p>This model is similar to the <a href="https://www.kevinparra.co/posts/Notes/poisson-notes">Poisson Model</a> in that it is suited for count dependent variables. However, the Poisson model assumes that the response variable’s mean and variance are equal–a condition that most real data commonly violate. If your response variable suffers from overdispersion (i.e., the dependent variable’s variance is greater than its mean), then the negative binomial model is a good alternative. Whereas the Poisson model assumes the variable follows a Poisson distribution, the negative binomial model works off of the negative binomial distribution, which relaxes the dispersion assumption. In order to do so, the <span class="math inline">Variance (Y)</span> is made into a function of the mean <span class="math inline">\mu</span> and a dispersion parameter <span class="math inline">\alpha</span>. Therefore, $Variance (Y) = (1 + ). When <span class="math inline">\alpha = 0</span>, the variance is equal to the mean, making the negative binomial identical to the Poisson, under these circumstances.</p>
 <p>The negative binomial model is similar to the Poisson model in that it can be modeled as</p>
 <p><span class="math display"> ln(\mu) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \epsilon </span></p>
 <p>where <span class="math inline">mu</span> is the mean, <span class="math inline">\beta_0</span> is the intercept, the remaining <span class="math inline">\beta</span> values are coefficients, and <span class="math inline">\epsilon</span> is an error term. The equation’s left side contains the log link function. We include an error term in this model to reflect the overdispersion. Notably, there are two ways of expressing the response variable’s variance: as a linear equation <span class="math inline">Variance (Y) = \mu(1 + \mu)</span> or a quadratic equation <span class="math inline">Variance (Y) = \mu(1 + \alpha \mu) = \mu + \alpha \mu^2</span>. The former is often called the NB1 model and the latter the NB2 model, and the latter is the one that most people use.</p>
@@ -353,7 +353,7 @@ summary(nb.vglm)
 </section>
 <section id="diagnostic-statistics" class="level1">
 <h1>Diagnostic Statistics <a name="section4"></a></h1>
-<p>The diagnostic statistics for this model are mostly the same as those used for the <a href="https://www.kevinparra.co/blog/Notes/poisson-notes">Poisson model</a> and others I’ve covered here.</p>
+<p>The diagnostic statistics for this model are mostly the same as those used for the <a href="https://www.kevinparra.co/posts/Notes/poisson-notes">Poisson model</a> and others I’ve covered here.</p>
 
 
 <!-- -->
@@ -915,7 +915,7 @@ summary(nb.vglm)
 <span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a><span class="ot">[1]: </span>navark4@unlv.nevada.edu</span>
 <span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a><span class="ot">[2]: https://www.kevinparra.co/blog/Notes/poisson-notes</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a><span class="ot">[2]: https://www.kevinparra.co/posts/Notes/poisson-notes</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

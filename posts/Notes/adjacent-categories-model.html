@@ -305,13 +305,13 @@ window.Quarto = {
 </section>
 <section id="model-formula" class="level1">
 <h1>Model Formula <a name="section1"></a></h1>
-<p>The adjacent categories model is similar to the <a href="https://www.kevinparra.co/blog/continuation-ratio-model">continuation ratio model</a> and the series of <a href="https://www.kevinparra.co/blog/ppo-notes">proportional odds models</a>, differing only slightly in how the equation is specified. As the name indicates, the AC model estimates the odds of being in category <span class="math inline">j+1</span> as opposed to being in the lower category j of the given ordinal response variable. Simply put, this model takes category pairs and compares the odds of being in category j instead of category <span class="math inline">j+1</span>. The model is written as</p>
+<p>The adjacent categories model is similar to the <a href="https://www.kevinparra.co/posts/Notes/continuation-ratio-model">continuation ratio model</a> and the series of <a href="https://www.kevinparra.co/posts/Notes/ppo-notes">proportional odds models</a>, differing only slightly in how the equation is specified. As the name indicates, the AC model estimates the odds of being in category <span class="math inline">j+1</span> as opposed to being in the lower category j of the given ordinal response variable. Simply put, this model takes category pairs and compares the odds of being in category j instead of category <span class="math inline">j+1</span>. The model is written as</p>
 <p><span class="math display"> logit[P(Y = j + 1|x_1, x_2, ..., x_p)] = ln \left( \frac{P(Y = j + 1 | x_1, x_2, ..., x_p)}{P(Y + j | x_1, x_2, ..., x_p)} \right) = \alpha_j + \beta_1X_1 + \beta_2X_2 + ... + \beta_3X_3 </span></p>
 <p>where j represents <span class="math inline">J-1</span> categories, _j gives us the intercepts, and the betas are logit coefficients.</p>
 </section>
 <section id="conditional-probabilities-and-odds-ratios" class="level1">
 <h1>Conditional Probabilities and Odds Ratios <a name="section2"></a></h1>
-<p>Unsurprisingly, calculating this model’s odds is very similar to the <a href="https://www.kevinparra.co/blog/continuation-ratio-model">CR model</a> and <a href="https://www.kevinparra.co/blog/ppo-notes">PO model</a>. In this case, the equation is</p>
+<p>Unsurprisingly, calculating this model’s odds is very similar to the <a href="https://www.kevinparra.co/posts/Notes/continuation-ratio-model">CR model</a> and <a href="https://www.kevinparra.co/posts/Notes/ppo-notes">PO model</a>. In this case, the equation is</p>
 <p><span class="math display"> Odds(Y = j vs. Y = j - 1) = \frac{P(Y = j)}{P(Y = j-1)} </span></p>
 <p>where j is any category above zero.</p>
 <p>And like with the other models mentioned above, the first thing you do after running the model is exponentiate the odds to get an odds ratio. Interpreting the odds ratio differs only insofar as this model is marginally distinct from the earlier models.</p>
@@ -330,7 +330,7 @@ window.Quarto = {
 </section>
 <section id="diagnostic-statistics" class="level1">
 <h1>Diagnostic Statistics <a name="section4"></a></h1>
-<p>For a deeper dive into the model fit statistics, see the <a href="https://www.kevinparra.co/blog/logit-notes">Logit Model Notes</a> and the <a href="https://www.kevinparra.co/blog/continuation-ratio-model">CR Model Notes</a>.</p>
+<p>For a deeper dive into the model fit statistics, see the <a href="https://www.kevinparra.co/posts/Notes/logit-notes">Logit Model Notes</a> and the <a href="https://www.kevinparra.co/posts/Notes/continuation-ratio-model">CR Model Notes</a>.</p>
 
 
 <!-- -->
@@ -864,11 +864,11 @@ window.Quarto = {
 <span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="ot">[1]: </span>navark4@unlv.nevada.edu</span>
 <span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a><span class="ot">[2]: https://www.kevinparra.co/blog/continuation-ratio-model</span></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a><span class="ot">[2]: https://www.kevinparra.co/posts/Notes/continuation-ratio-model</span></span>
 <span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a><span class="ot">[3]: https://www.kevinparra.co/blog/ppo-notes</span></span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a><span class="ot">[3]: https://www.kevinparra.co/posts/Notes/ppo-notes</span></span>
 <span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a><span class="ot">[4]: https://www.kevinparra.co/blog/logit-notes</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a><span class="ot">[4]: https://www.kevinparra.co/posts/Notes/logit-notes</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

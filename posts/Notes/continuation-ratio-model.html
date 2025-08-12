@@ -339,8 +339,8 @@ window.Quarto = {
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lrtest</span>(model.null, model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The null hypothesis is that the specified variables do not contribute to the model and the alternate hypothesis is that the predictors contribute to a better-fitting model relative to the null model. Therefore, a significant result for the fitted model will allow us to reject the null hypothesis, indicating that the predictors contribute to a better-fitting model.</p>
-<p>Additionally, you can use <span class="math inline">Pseudo R^2</span>, which will be the same as for the logit, PO, and GOL models. See the <a href="https://www.kevinparra.co/blog/logit-notes">logit notes</a> for a deeper dive into the <span class="math inline">Pseudo R^2</span> diagnostics. Recall that these values act like the <span class="math inline">R^2</span> values for OLS models, but they’re are not entirely interchangeable.</p>
-<p>Consult the <a href="https://www.kevinparra.co/blog/logit-notes">logit notes</a> for a deeper dive into the AIC and BIC values as well. Recall that lower values of AIC and BIC are better than higher ones. Additionally, the BIC is slightly preferable to the AIC because the former rewards more parsimonious models.</p>
+<p>Additionally, you can use <span class="math inline">Pseudo R^2</span>, which will be the same as for the logit, PO, and GOL models. See the <a href="https://www.kevinparra.co/posts/Notes/logit-notes">logit notes</a> for a deeper dive into the <span class="math inline">Pseudo R^2</span> diagnostics. Recall that these values act like the <span class="math inline">R^2</span> values for OLS models, but they’re are not entirely interchangeable.</p>
+<p>Consult the <a href="https://www.kevinparra.co/posts/Notes/logit-notes">logit notes</a> for a deeper dive into the AIC and BIC values as well. Recall that lower values of AIC and BIC are better than higher ones. Additionally, the BIC is slightly preferable to the AIC because the former rewards more parsimonious models.</p>
 <p>Finally, you can use <code>ggpredict</code> from <code>ggeffects</code> to create marginal effects plots for the model</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>prd.m <span class="ot">&lt;-</span> <span class="fu">ggpredict</span>(model, <span class="at">terms =</span> <span class="st">"iv[x, y, z]"</span>)</span>
@@ -908,7 +908,7 @@ window.Quarto = {
 <span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a><span class="ot">[1]: </span>navark4@unlv.nevada.edu</span>
 <span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="ot">[2]: https://www.kevinparra.co/blog/logit-notes</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="ot">[2]: https://www.kevinparra.co/posts/Notes/logit-notes</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

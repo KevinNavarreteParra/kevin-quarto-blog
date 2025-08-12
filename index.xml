@@ -10,7 +10,7 @@
 <atom:link href="https://kevinnavreteparra.github.io/kevin-quarto-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>A place for my notes and thoughts on political science, data science, and research methods</description>
 <generator>quarto-1.7.33</generator>
-<lastBuildDate>Sun, 10 Aug 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 12 Aug 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Migrating to Quarto</title>
   <dc:creator>Kevin Navarrete-Parra</dc:creator>
@@ -187,7 +187,7 @@ font-style: inherit;">pdf_gauss</span>(x))</span></code></pre></div>
   <category>Quarto</category>
   <category>Code</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/migrating-to-quarto.html</guid>
-  <pubDate>Sun, 10 Aug 2025 00:00:00 GMT</pubDate>
+  <pubDate>Tue, 12 Aug 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Writing on Watches</title>
@@ -2418,15 +2418,15 @@ install.packages(pack_vec)
 </section>
 <section id="model-formula" class="level1">
 <h1>Model Formula <a name="section1"></a></h1>
-<p>When we are dealing with count data, the first step is always going to be to fit a <a href="https://www.kevinparra.co/blog/Notes/poisson-notes">Poisson</a> or <a href="https://www.kevinparra.co/blog/Notes/nagative-binomial">negative binomial</a> model. However, sometimes this is not always the best way of handling count data because neither model handles zero inflation adequately. Zero inflation is bound to be an issue with many data for the Poisson model because, as one can probably imagine, this will likely lead to a significant difference between the response variable’s variance and mean (i.e., dispersion). The negative binomial model is not immune to such an issue either, so a zero-inflated model necessarily becomes more appropriate for our purposes.</p>
+<p>When we are dealing with count data, the first step is always going to be to fit a <a href="https://www.kevinparra.co/posts/Notes/poisson-notes">Poisson</a> or <a href="https://www.kevinparra.co/posts/Notes/nagative-binomial">negative binomial</a> model. However, sometimes this is not always the best way of handling count data because neither model handles zero inflation adequately. Zero inflation is bound to be an issue with many data for the Poisson model because, as one can probably imagine, this will likely lead to a significant difference between the response variable’s variance and mean (i.e., dispersion). The negative binomial model is not immune to such an issue either, so a zero-inflated model necessarily becomes more appropriate for our purposes.</p>
 <p>Now, just because the Poisson and negative binomial models are no longer appropriate for a response with zero inflation does not mean we forget about those models altogether. Just the opposite, in fact. The Poisson and negative binomial models play a key role in the zero-inflated models I’ll discuss below.</p>
 <p>Before looking at those models, though, it is crucial to begin with a base understanding of what zero inflation means. Simply having zero values in count data does not mean there is zero inflation. Indeed, we likely expect there to be zero counts in a given response variable. For zero inflation to occur, we have to have a dependent variable with an excessive degree of zeroes.</p>
-<p>When fitting a zero-inflated model, we see that there are two steps to predicting the dependent variable: (1) the zero prediction and (2) the count prediction. In other words, the zero-inflated model begins by running a <a href="https://www.kevinparra.co/blog/Notes/logit-notes">logistic regression</a>, which, if we recall, can be expressed as</p>
+<p>When fitting a zero-inflated model, we see that there are two steps to predicting the dependent variable: (1) the zero prediction and (2) the count prediction. In other words, the zero-inflated model begins by running a <a href="https://www.kevinparra.co/posts/Notes/logit-notes">logistic regression</a>, which, if we recall, can be expressed as</p>
 <p><img src="https://latex.codecogs.com/png.latex?%20logit(p)%20=%20%5Calpha%20+%20%5Cbeta_1%20X_1%20+%20%5Cbeta_2%20X_2%20+%20...%20+%20%5Cbeta_p%20X_p%20"></p>
 <p>This half of the model will predict whether the outcome will be zero or a positive count integer(coded as 1 for zero predictions and 0 for count predictions). From this, we get the probability of observing a zero in the response. If the given predictors can significantly predict the probability of observing a zero, then we have a pretty good indication that there is zero inflation. Note that the model does not go on to exclude the observed zero values from the count half of the model.</p>
-<p>After the model accounts for the probability of observing zero values, we move on to the next step, which is the count prediction. Here, the model applies either a Poisson regression or negative binomial regression to the response variable, which is how we distinguish between a ZIP and ZINB model. If we recall, the <a href="https://www.kevinparra.co/blog/Notes/poisson-notes">Poisson model</a> can be expressed as</p>
+<p>After the model accounts for the probability of observing zero values, we move on to the next step, which is the count prediction. Here, the model applies either a Poisson regression or negative binomial regression to the response variable, which is how we distinguish between a ZIP and ZINB model. If we recall, the <a href="https://www.kevinparra.co/posts/Notes/poisson-notes">Poisson model</a> can be expressed as</p>
 <p><img src="https://latex.codecogs.com/png.latex?%20ln(%5Cmu)%20=%20%5Calpha%20+%20%5Cbeta_1X_1%20+%20%5Cbeta_2X_2%20+%20...%20+%20%5Cbeta_pX_p%20"></p>
-<p>and the <a href="https://www.kevinparra.co/blog/Notes/nagative-binomial">negative binomial model</a> can be expressed as</p>
+<p>and the <a href="https://www.kevinparra.co/posts/Notes/nagative-binomial">negative binomial model</a> can be expressed as</p>
 <p><img src="https://latex.codecogs.com/png.latex?%20ln(%5Cmu)%20=%20%5Cbeta_0%20+%20%5Cbeta_1X_1%20+%20%5Cbeta_2X_2%20+%20...%20+%20%5Cbeta_pX_p%20+%20%5Cepsilon%20"></p>
 <p>We can therefore express the zero-inflated Poisson model as</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0APr(Y%20=%200)%20=%20%5Cpi%20+%20(1%20-%20%5Cpi)e%5E%7B-%5Clambda%7D%20%5C%5C%0APr(Y%20=%20y_i)%20=%20(1%20-%20%5Cpi)%5Cfrac%7B%5Clambda%5E%7By_1%7De%5E%7B-%5Clambda%7D%7D%7By_%7Bi%7D!%7D%20%5C%5C%0Ay_i%20=%201,2,3,...%0A%5Cend%7Baligned%7D%0A"></p>
@@ -2497,7 +2497,7 @@ summary(zinb.mod)
 </section>
 <section id="model-equation" class="level1">
 <h1>Model Equation <a name="subsection1"></a></h1>
-<p>This model is similar to the <a href="https://www.kevinparra.co/blog/Notes/poisson-notes">Poisson Model</a> in that it is suited for count dependent variables. However, the Poisson model assumes that the response variable’s mean and variance are equal–a condition that most real data commonly violate. If your response variable suffers from overdispersion (i.e., the dependent variable’s variance is greater than its mean), then the negative binomial model is a good alternative. Whereas the Poisson model assumes the variable follows a Poisson distribution, the negative binomial model works off of the negative binomial distribution, which relaxes the dispersion assumption. In order to do so, the <img src="https://latex.codecogs.com/png.latex?Variance%20(Y)"> is made into a function of the mean <img src="https://latex.codecogs.com/png.latex?%5Cmu"> and a dispersion parameter <img src="https://latex.codecogs.com/png.latex?%5Calpha">. Therefore, $Variance (Y) = (1 + ). When <img src="https://latex.codecogs.com/png.latex?%5Calpha%20=%200">, the variance is equal to the mean, making the negative binomial identical to the Poisson, under these circumstances.</p>
+<p>This model is similar to the <a href="https://www.kevinparra.co/posts/Notes/poisson-notes">Poisson Model</a> in that it is suited for count dependent variables. However, the Poisson model assumes that the response variable’s mean and variance are equal–a condition that most real data commonly violate. If your response variable suffers from overdispersion (i.e., the dependent variable’s variance is greater than its mean), then the negative binomial model is a good alternative. Whereas the Poisson model assumes the variable follows a Poisson distribution, the negative binomial model works off of the negative binomial distribution, which relaxes the dispersion assumption. In order to do so, the <img src="https://latex.codecogs.com/png.latex?Variance%20(Y)"> is made into a function of the mean <img src="https://latex.codecogs.com/png.latex?%5Cmu"> and a dispersion parameter <img src="https://latex.codecogs.com/png.latex?%5Calpha">. Therefore, $Variance (Y) = (1 + ). When <img src="https://latex.codecogs.com/png.latex?%5Calpha%20=%200">, the variance is equal to the mean, making the negative binomial identical to the Poisson, under these circumstances.</p>
 <p>The negative binomial model is similar to the Poisson model in that it can be modeled as</p>
 <p><img src="https://latex.codecogs.com/png.latex?%20ln(%5Cmu)%20=%20%5Cbeta_0%20+%20%5Cbeta_1X_1%20+%20%5Cbeta_2X_2%20+%20...%20+%20%5Cbeta_pX_p%20+%20%5Cepsilon%20"></p>
 <p>where <img src="https://latex.codecogs.com/png.latex?mu"> is the mean, <img src="https://latex.codecogs.com/png.latex?%5Cbeta_0"> is the intercept, the remaining <img src="https://latex.codecogs.com/png.latex?%5Cbeta"> values are coefficients, and <img src="https://latex.codecogs.com/png.latex?%5Cepsilon"> is an error term. The equation’s left side contains the log link function. We include an error term in this model to reflect the overdispersion. Notably, there are two ways of expressing the response variable’s variance: as a linear equation <img src="https://latex.codecogs.com/png.latex?Variance%20(Y)%20=%20%5Cmu(1%20+%20%5Cmu)"> or a quadratic equation <img src="https://latex.codecogs.com/png.latex?Variance%20(Y)%20=%20%5Cmu(1%20+%20%5Calpha%20%5Cmu)%20=%20%5Cmu%20+%20%5Calpha%20%5Cmu%5E2">. The former is often called the NB1 model and the latter the NB2 model, and the latter is the one that most people use.</p>
@@ -2536,7 +2536,7 @@ summary(nb.vglm)
 </section>
 <section id="diagnostic-statistics" class="level1">
 <h1>Diagnostic Statistics <a name="section4"></a></h1>
-<p>The diagnostic statistics for this model are mostly the same as those used for the <a href="https://www.kevinparra.co/blog/Notes/poisson-notes">Poisson model</a> and others I’ve covered here.</p>
+<p>The diagnostic statistics for this model are mostly the same as those used for the <a href="https://www.kevinparra.co/posts/Notes/poisson-notes">Poisson model</a> and others I’ve covered here.</p>
 
 
 <!-- -->
@@ -2670,7 +2670,7 @@ anova(poi.mod, update(poi.mod, ~ 1), test = "Chisq")
 <h1>Conditional Probabilities and Odds Ratios <a name="section2"></a></h1>
 <p>If you want to calculate the odds of being in a category as opposed to the baseline, you can express the equation as</p>
 <p><img src="https://latex.codecogs.com/png.latex?%20Odds(Y%20=%20j%20vs.%20Y%20=%20J)%20=%20%5Cfrac%7BP(Y%20=%20j)%7D%7BP(Y%20=%20J)%7D%20"></p>
-<p>The odds ratios for this model function almost exactly like those for the <a href="https://www.kevinparra.co/blog/Notes/logit-notes">logit model</a>.</p>
+<p>The odds ratios for this model function almost exactly like those for the <a href="https://www.kevinparra.co/posts/Notes/logit-notes">logit model</a>.</p>
 </section>
 <section id="running-it-in-r" class="level1">
 <h1>Running it in R <a name="section3"></a></h1>
@@ -2687,7 +2687,7 @@ mlm.or &lt;- cbind(exp(coef(mlm.mod)), exp(confint(mlm.mod)))
 </section>
 <section id="diagnostic-statistics" class="level1">
 <h1>Diagnostic Statistics <a name="section4"></a></h1>
-<p>The diagnostic statistics for this model are exactly the same as those for the <a href="https://www.kevinparra.co/blog/Notes/logit-notes">logit model</a>.</p>
+<p>The diagnostic statistics for this model are exactly the same as those for the <a href="https://www.kevinparra.co/posts/Notes/logit-notes">logit model</a>.</p>
 
 
 <!-- -->
@@ -2720,7 +2720,7 @@ mlm.or &lt;- cbind(exp(coef(mlm.mod)), exp(confint(mlm.mod)))
 <li>Odds Ratios</li>
 <li>Running it in R</li>
 </ol>
-<p><em>Note that I explore much of the information for Sections 2-4 more thoroughly in other posts. Of particular utility will be my posts on <a href="https://www.kevinparra.co/blog/Notes/logit-notes">logit models</a> and <a href="https://www.kevinparra.co/blog/Notes/continuation-ratio-model">continuation ratio models</a>.</em></p>
+<p><em>Note that I explore much of the information for Sections 2-4 more thoroughly in other posts. Of particular utility will be my posts on <a href="https://www.kevinparra.co/posts/Notes/logit-notes">logit models</a> and <a href="https://www.kevinparra.co/posts/Notes/continuation-ratio-model">continuation ratio models</a>.</em></p>
 </section>
 <section id="model-formula" class="level1">
 <h1>Model Formula <a name="section1"></a></h1>

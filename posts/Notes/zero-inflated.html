@@ -304,15 +304,15 @@ window.Quarto = {
 </section>
 <section id="model-formula" class="level1">
 <h1>Model Formula <a name="section1"></a></h1>
-<p>When we are dealing with count data, the first step is always going to be to fit a <a href="https://www.kevinparra.co/blog/Notes/poisson-notes">Poisson</a> or <a href="https://www.kevinparra.co/blog/Notes/nagative-binomial">negative binomial</a> model. However, sometimes this is not always the best way of handling count data because neither model handles zero inflation adequately. Zero inflation is bound to be an issue with many data for the Poisson model because, as one can probably imagine, this will likely lead to a significant difference between the response variable’s variance and mean (i.e., dispersion). The negative binomial model is not immune to such an issue either, so a zero-inflated model necessarily becomes more appropriate for our purposes.</p>
+<p>When we are dealing with count data, the first step is always going to be to fit a <a href="https://www.kevinparra.co/posts/Notes/poisson-notes">Poisson</a> or <a href="https://www.kevinparra.co/posts/Notes/nagative-binomial">negative binomial</a> model. However, sometimes this is not always the best way of handling count data because neither model handles zero inflation adequately. Zero inflation is bound to be an issue with many data for the Poisson model because, as one can probably imagine, this will likely lead to a significant difference between the response variable’s variance and mean (i.e., dispersion). The negative binomial model is not immune to such an issue either, so a zero-inflated model necessarily becomes more appropriate for our purposes.</p>
 <p>Now, just because the Poisson and negative binomial models are no longer appropriate for a response with zero inflation does not mean we forget about those models altogether. Just the opposite, in fact. The Poisson and negative binomial models play a key role in the zero-inflated models I’ll discuss below.</p>
 <p>Before looking at those models, though, it is crucial to begin with a base understanding of what zero inflation means. Simply having zero values in count data does not mean there is zero inflation. Indeed, we likely expect there to be zero counts in a given response variable. For zero inflation to occur, we have to have a dependent variable with an excessive degree of zeroes.</p>
-<p>When fitting a zero-inflated model, we see that there are two steps to predicting the dependent variable: (1) the zero prediction and (2) the count prediction. In other words, the zero-inflated model begins by running a <a href="https://www.kevinparra.co/blog/Notes/logit-notes">logistic regression</a>, which, if we recall, can be expressed as</p>
+<p>When fitting a zero-inflated model, we see that there are two steps to predicting the dependent variable: (1) the zero prediction and (2) the count prediction. In other words, the zero-inflated model begins by running a <a href="https://www.kevinparra.co/posts/Notes/logit-notes">logistic regression</a>, which, if we recall, can be expressed as</p>
 <p><span class="math display"> logit(p) = \alpha + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_p X_p </span></p>
 <p>This half of the model will predict whether the outcome will be zero or a positive count integer(coded as 1 for zero predictions and 0 for count predictions). From this, we get the probability of observing a zero in the response. If the given predictors can significantly predict the probability of observing a zero, then we have a pretty good indication that there is zero inflation. Note that the model does not go on to exclude the observed zero values from the count half of the model.</p>
-<p>After the model accounts for the probability of observing zero values, we move on to the next step, which is the count prediction. Here, the model applies either a Poisson regression or negative binomial regression to the response variable, which is how we distinguish between a ZIP and ZINB model. If we recall, the <a href="https://www.kevinparra.co/blog/Notes/poisson-notes">Poisson model</a> can be expressed as</p>
+<p>After the model accounts for the probability of observing zero values, we move on to the next step, which is the count prediction. Here, the model applies either a Poisson regression or negative binomial regression to the response variable, which is how we distinguish between a ZIP and ZINB model. If we recall, the <a href="https://www.kevinparra.co/posts/Notes/poisson-notes">Poisson model</a> can be expressed as</p>
 <p><span class="math display"> ln(\mu) = \alpha + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p </span></p>
-<p>and the <a href="https://www.kevinparra.co/blog/Notes/nagative-binomial">negative binomial model</a> can be expressed as</p>
+<p>and the <a href="https://www.kevinparra.co/posts/Notes/nagative-binomial">negative binomial model</a> can be expressed as</p>
 <p><span class="math display"> ln(\mu) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \epsilon </span></p>
 <p>We can therefore express the zero-inflated Poisson model as</p>
 <p><span class="math display">
@@ -908,11 +908,11 @@ summary(zinb.mod)
 <span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a><span class="ot">[1]: </span>navark4@unlv.nevada.edu</span>
 <span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a><span class="ot">[2]: https://www.kevinparra.co/blog/Notes/nagative-binomial</span></span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a><span class="ot">[2]: https://www.kevinparra.co/posts/Notes/nagative-binomial</span></span>
 <span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a><span class="ot">[3]: https://www.kevinparra.co/blog/Notes/poisson-notes</span></span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a><span class="ot">[3]: https://www.kevinparra.co/posts/Notes/poisson-notes</span></span>
 <span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a><span class="ot">[4]: https://www.kevinparra.co/blog/Notes/logit-notes</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a><span class="ot">[4]: https://www.kevinparra.co/posts/Notes/logit-notes</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
