@@ -103,8 +103,8 @@ The diagnostic statistics for these two models will be *mostly* the same as thos
 
 [1]: navark4@unlv.nevada.edu
 
-[2]: https://www.kevinparra.co/blog/Notes/nagative-binomial
+[2]: https://www.kevinparra.co/posts/Notes/nagative-binomial
 
-[3]: https://www.kevinparra.co/blog/Notes/poisson-notes
+[3]: https://www.kevinparra.co/posts/Notes/poisson-notes
 
-[4]: https://www.kevinparra.co/blog/Notes/logit-notes
+[4]: https://www.kevinparra.co/posts/Notes/logit-notes

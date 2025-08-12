@@ -91,4 +91,4 @@ The diagnostic statistics for this model are exactly the same as those for the [
 
 [1]: navark4@unlv.nevada.edu
 
-[2]: https://www.kevinparra.co/blog/Notes/logit-notes
+[2]: https://www.kevinparra.co/posts/Notes/logit-notes

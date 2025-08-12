@@ -76,6 +76,6 @@ sl.or <- exp(coef(sl.model, matrix = TRUE))
 
 [1]: navark4@unlv.nevada.edu
 
-[2]: https://www.kevinparra.co/blog/Notes/logit-notes
+[2]: https://www.kevinparra.co/posts/Notes/logit-notes
 
-[3]: https://www.kevinparra.co/blog/Notes/continuation-ratio-model
+[3]: https://www.kevinparra.co/posts/Notes/continuation-ratio-model

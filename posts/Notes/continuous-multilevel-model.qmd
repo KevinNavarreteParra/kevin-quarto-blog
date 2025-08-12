@@ -91,4 +91,4 @@ Centering is a process by which we transform the independent variables in a mode
 
 [1]: navark4@unlv.nevada.edu
 
-[2]: https://www.kevinparra.co/blog/Notes/logit-notes
+[2]: https://www.kevinparra.co/posts/Notes/logit-notes

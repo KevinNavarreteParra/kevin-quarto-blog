@@ -74,8 +74,8 @@ For a deeper dive into the model fit statistics, see the [Logit Model Notes][4] 
 
 [1]: navark4@unlv.nevada.edu
 
-[2]: https://www.kevinparra.co/blog/continuation-ratio-model
+[2]: https://www.kevinparra.co/posts/Notes/continuation-ratio-model
 
-[3]: https://www.kevinparra.co/blog/ppo-notes
+[3]: https://www.kevinparra.co/posts/Notes/ppo-notes
 
-[4]: https://www.kevinparra.co/blog/logit-notes
+[4]: https://www.kevinparra.co/posts/Notes/logit-notes

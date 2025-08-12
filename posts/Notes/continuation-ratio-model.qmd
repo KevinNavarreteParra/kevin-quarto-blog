@@ -103,4 +103,4 @@ where "iv[x, y, z]" indicates the given independent variable for which you'll be
 
 [1]: navark4@unlv.nevada.edu
 
-[2]: https://www.kevinparra.co/blog/logit-notes
+[2]: https://www.kevinparra.co/posts/Notes/logit-notes

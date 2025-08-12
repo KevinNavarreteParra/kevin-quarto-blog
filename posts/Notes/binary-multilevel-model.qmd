@@ -62,4 +62,4 @@ where the first level is the same as the logit model, given the addition of the 
 
 [1]: navark4@unlv.nevada.edu
 
-[2]: https://www.kevinparra.co/blog/Notes/logit-notes
+[2]: https://www.kevinparra.co/posts/Notes/logit-notes

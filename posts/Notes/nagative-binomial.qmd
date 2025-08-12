@@ -102,4 +102,4 @@ The diagnostic statistics for this model are mostly the same as those used for t
 
 [1]: navark4@unlv.nevada.edu
 
-[2]: https://www.kevinparra.co/blog/Notes/poisson-notes
+[2]: https://www.kevinparra.co/posts/Notes/poisson-notes
