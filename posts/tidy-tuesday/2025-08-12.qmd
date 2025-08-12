@@ -45,6 +45,7 @@ As a result, the question driving the analysis below is: how does proximity to t
 suppressPackageStartupMessages({
     if (!require("pacman")) install.packages("pacman")
     pacman::p_load(
+        tidytuesdayR,
         tidyverse,
         magrittr,
         countrycode,
