@@ -14,17 +14,19 @@ about:
       href: https://www.linkedin.com/in/kevin-navarrete-parra
 ---
 
-I am currently a Ph.D. student at the University of Nevada, Las Vegas, where I study international relations in the [Department of Political Science](https://www.unlv.edu/people/kevin-navarrete-parra). 
-
-My research focuses on international courts' role in the world economy, specifically as they relate to foreign direct investment and multinational corporations. My main interests are in: 
+I am currently a Ph.D. student at the University of Nevada, Las Vegas, where I study international relations in the [Department of Political Science](https://www.unlv.edu/people/kevin-navarrete-parra). My research focuses on international courts' role in the world economy, specifically as they relate to foreign direct investment and multinational corporations. My main academic interests are in: 
 
 - how investor-state dispute settlement (ISDS) arbitrations proceed from the (alleged) treaty violation to the concluding decision; 
 - how the design and proliferation of investment agreements impact firms' behavior with regard to ISDS. 
 
-In the course of conducting political science research, I've come to develop a strong passion for data science and programming. My first language is `R`, but I spend most of my time these days coding in `Python`--especially when I work on machine learning pipelines. No matter what I research, I'm always working hard to develop my programming and data science skills. Right now, I'm learning about: 
+Together, these research interests form a research agenda that seeks to deepen our understanding of how institutional design shapes behavior within the ISDS regime—from the strategic calculations of states and multinational corporations facing investment decisions to the procedural dynamics that influence arbitral outcomes.
 
-- using large language models for natural language inference tasks;
+This research requires analyzing large datasets of arbitration cases, legal texts, and corporate behavior, which has cultivated in me both advanced quantitative capabilities and a genuine passion for data science and programming. I began my learning journey with `R` as my first language, but I've come to transition more into `Python` due to its superior capabilities for the machine learning and natural language processing tasks essential to my research. These computational approaches allow me to analyze thousands of ISDS cases and legal documents at scale, uncovering patterns invisible to traditional qualitative methods.
+
+My current technical focus includes:
+
+- using large language models for natural language inference tasks in legal documents and public political discourse;
 - training Word2Vec and Doc2Vec models for document classification; 
-- employing computer vision models (like Detectron2) for image segmetation tasks.
+- employing computer vision models (like Detectron2) for image segmentation tasks in legal documents.
 
-I am originally from Mexicali, Baja California, but I've lived in Las Vegas, Nevada for most of my life. I got my B.A. from UNLV, where I studied political science. When I'm not working, I love to read the classics in philosophy and literature, and I enjoy spending time with friends and family. I also collect watches because I think they're cool. 
+Originally from Mexicali, I've called Las Vegas home for most of my life. When I'm not working on research, I enjoy reading philosophy and literature, and spending time with friends and family.
