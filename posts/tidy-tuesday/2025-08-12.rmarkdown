@@ -14,6 +14,8 @@ code-fold: true
 toc: true
 ---
 
+
+
 # Table of contents
 1. [Introduction](#section1)
 2. [Setup](#section2)
@@ -35,6 +37,8 @@ As a result, the question driving the analysis below is: how does proximity to t
 
 
 # Setup <a name='section2'></a>
+
+
 
 ```{r}
 #| label: setup
@@ -64,7 +68,11 @@ set.seed(12345)
 
 ```
 
+
+
 I'll begin with some useful setup. First, I'll load in some packages and set a random seed. Pretty standard stuff here, no need to spend too much time on it. 
+
+
 
 ```{r}
 #| label: load_tt
@@ -78,9 +86,13 @@ data_unga <- read_csv("https://dataverse.harvard.edu/api/access/datafile/1183723
 
 ```
 
+
+
 Next, I'll load in the Tidy Tuesday data for this week. I only want the clean data, not the raw data, so I loaded it in directly using the `tt_load` package. I also loaded in the newest UNGA data from Erik Voeten's [Dataverse page](https://dataverse.harvard.edu/dataverse/Voeten), which I'll use down the line. 
 
 # Data Cleaning <a name='section3'></a>
+
+
 
 ```{r}
 #| label: clean_data
@@ -136,6 +148,8 @@ data_clean <- data |>
         )
 ```
 
+
+
 My first step is to clean the data a little bit. My main goals here are to make this dataset into a panel data set at the country-study-year level, which means each record will correspond to a study whose content covers that country-year unit. So, if study A covered the US and Canada from 2010-2011, then I want the data to look something like:
 
 | Study | Country | Year |
@@ -144,6 +158,8 @@ My first step is to clean the data a little bit. My main goals here are to make 
 | A     | US      | 2011 |
 | A     | CAN     | 2010 |
 | A     | CAN     | 2011 |
+
+
 
 
 ```{r}
@@ -162,7 +178,11 @@ data_unga_clean <- data_unga |>
 
 ```
 
+
+
 Next, I did some minimal cleaning on the UNGA data, keeping only the variables that I need for the analysis below. I added an `iso3c` variable so that I'd have a common key for the merge down the line, and I filtered out all countries except for the US in the x side of the dyad. 
+
+
 
 ```{r}
 #| label: prep_data
@@ -175,7 +195,11 @@ attribution_data <- data_clean |>
     filter(!is.na(ideal_point_distance))
 ```
 
+
+
 Now that I have the UNGA data how I want it, I can merge it into the cleaned Tidy Tuesday dataset. Notice that I dropped out any country-years with missing ideal point calculations. This only eliminated a few records, like the most recent year for Afghanistan, which doesn't have an ideal point for 2024. 
+
+
 
 ```{r}
 #| label: nodes
@@ -194,9 +218,13 @@ node_data <- attribution_data |>
     )
 ```
 
+
+
 In order to make the data that'd go into the nodes on my chart below, I aggregated the attribution data, keeping only `study_duration`, `country_name`, and `ideal_point_distance` in the final data frame. Note that the study_duration variable measures the number of country-years that have been under study across attribution studies. This means that some years will be double counted on purpose if multiple attribution studies examined similar time periods. The `study_duration` variable, then, should proxy for the amount of attention each state has gotten from scientists doing attribution studies. 
 
 The nodes are also static, meaning that any variance in `ideal_point_distance` is lost at the aggregation step. This could be problematic--especially if a state has either shifted dramatically over time or if its ideal point distribution is bimodal. 
+
+
 
 ```{r}
 #| label: edges
@@ -221,9 +249,13 @@ edge_data <- attribution_data |>
         )
 ```
 
+
+
 The data for the edges will contain information about how many studies states have co-occurred. This means that states that appear together often will have greater weights than those who don't, and states who never appeared in studies together will jot be connected.
 
 # Making the Network <a name='section4'></a>
+
+
 
 ```{r}
 #| label: network
@@ -236,7 +268,11 @@ network <- graph_from_data_frame(
     )
 ```
 
+
+
 I generated a network data using the data I cleaned above, which I used to make the plot below. 
+
+
 
 ```{r}
 #| label: static_plot
@@ -309,6 +345,8 @@ network |>
     )
 ```
 
+
+
 The plot above is the main data visualization I made for this week's Tidy Tuesday. It encodes a few details. First, the node size encodes how many country-years have been studied for that given state, meaning that bigger nodes correspond to states that have gotten longer attention from researchers. The line width indicates how many studies the nodes share. And the continuous gradient indicates the mean ideal point distance from the US for each state. Bluer nodes are states whose mean ideal points are closer to the US and redder ones are those whose mean ideal points are farther away.
 
 I haven't spent a lot of time interpreting these types of charts, so I'll reiterate my warning above: take this with a grain of salt. 
@@ -318,6 +356,8 @@ First, I see a node cluster primarily composed of European states--most of which
 It's also worth noting that three states seem to be the most central: the US, Russia, and China. These states' centrality isn't particularly surprising given how much the three contribute to climate change. However, I'd also venture an additional explanation. These three states, along with the European states, have much more robust research infrastructures, which could suggest a potential convenience bias in the climate attribution research in favor of these types of states. After all, the US and European states, for example, will have greater public data availability and transparency. And China and Russia will potentially have more active researchers.[^2]
 
 When it comes to the ideal point distance scores, I don't actually see much of a relationship between that and the amount of attention each state gets. Sure, there are a lot of studies on European states, which are far more proximal to the US than the rest of the countries in the sample. But I still observe significant attention paid to states farther from the US. 
+
+
 
 ```{r}
 #| label: plotly
@@ -370,11 +410,15 @@ ggplotly(plot, tooltip = "text")
 
 ```
 
+
+
 I reran a simpler version of the plot from earlier using `plotly` to look at all the nodes in greater detail. This actually revealed some interesting patterns in the data.
 
 First, I got to take a closer look at all of those outliers that don't make up the central cluster. It looks like a lot of those states are either African or Latin American, suggesting that the current attribution studies have some weaker coverage in those regions. Whereas some regional studies examine Africa and Latin America, there seem to be some states that are consistently left out for some reason. 
 
 The African region clusters indicate that researchers studying African states tend to study the same few states together. 
+
+
 
 ```{r}
 #| label: table_dat
@@ -422,7 +466,11 @@ network_stats |>
   )
 ```
 
+
+
 I output a few descriptive stats above. The main things worth noting here are the density and average degree stats. The low density tells me that the network is only moderately connected. This isn't particularly surprising since a lot of the studies are single-country studies. However, among the connected nodes, the average state is connected to around thirteen other states. 
+
+
 
 ```{r}
 top_countries |>
@@ -432,6 +480,8 @@ top_countries |>
     format = "html"
   )
 ```
+
+
 
 Looking through the top countries, I see that the US is the most studied of all, which is easily observable in the plots above. However, it's notable that so many African states make it to the top countries, despite not being too connected in the chart above. 
 
