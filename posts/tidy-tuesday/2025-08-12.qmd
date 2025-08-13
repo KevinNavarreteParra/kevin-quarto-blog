@@ -1,6 +1,6 @@
 ---
 title: "Tidy Tuesday (12 August 2025)"
-date: today
+date: '2025-08-12'
 format: html
 categories:
 - R
