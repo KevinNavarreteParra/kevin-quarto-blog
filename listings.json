@@ -2,6 +2,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/tidy-tuesday/2025-08-12.html",
       "/posts/migrating-to-quarto.html",
       "/posts/horology/writing-on-watches.html",
       "/posts/Notes/probability_axioms.html",
@@ -32,6 +33,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/tidy-tuesday/2025-08-12.html",
       "/posts/migrating-to-quarto.html",
       "/posts/horology/writing-on-watches.html",
       "/posts/Notes/probability_axioms.html",

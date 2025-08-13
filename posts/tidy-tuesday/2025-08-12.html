@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kevin Navarrete-Parra">
+<meta name="dcterms.date" content="2025-08-13">
+<meta name="description" content="Tidy Tuesday.">
+
+<title>Tidy Tuesday (12 August 2025) – Kevin Navarrete-Parra</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-73d3277125a3096872c40122c5bd8e72.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+ 
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied'
+  });
+gtag('config', '${GOOGLE_ANALYTICS_ID}', { 'anonymize_ip': true});
+</script>
+<link href="../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="../../site_libs/plotly-binding-4.11.0/plotly.js"></script>
+<script src="../../site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="../../site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="../../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="../../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="../../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="../../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Tidy Tuesday (12 August 2025) – Kevin Navarrete-Parra">
+<meta property="og:description" content="Tidy Tuesday.">
+<meta property="og:image" content="https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/tidy-tuesday/2025-08-12_files/figure-html/static_plot-1.png">
+<meta property="og:site_name" content="Kevin Navarrete-Parra">
+<meta property="og:image:height" content="1152">
+<meta property="og:image:width" content="1536">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Kevin Navarrete-Parra</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../presentations.html"> 
+<span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/KevinNavarreteParra"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/kevin-navarrete-parra"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link active" data-scroll-target="#table-of-contents">Table of contents</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction </a><a name="section1" class="nav-link" data-scroll-target="undefined"></a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup </a><a name="section2" class="nav-link" data-scroll-target="undefined"></a></li>
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning </a><a name="section3" class="nav-link" data-scroll-target="undefined"></a></li>
+  <li><a href="#making-the-network" id="toc-making-the-network" class="nav-link" data-scroll-target="#making-the-network">Making the Network </a><a name="section4" class="nav-link" data-scroll-target="undefined"></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Tidy Tuesday (12 August 2025)</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">Quarto</div>
+    <div class="quarto-category">Tidy Tuesday</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Tidy Tuesday.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Kevin Navarrete-Parra </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 13, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="table-of-contents" class="level1">
+<h1>Table of contents</h1>
+<ol type="1">
+<li><a href="#section1">Introduction</a></li>
+<li><a href="#section2">Setup</a></li>
+<li><a href="#section3">Data Cleaning</a></li>
+<li><a href="#section4">Making the Network</a></li>
+</ol>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction <a name="section1"></a></h1>
+<p>This week’s Tidy Tuesday looked like fun, so I decided to give it a stab. The data set is at the climate attribution study level of analysis, and it has some useful meta information about the studies. The variables that caught my eye are the <code>event_period</code> and <code>iso</code> variables because I figured I could try to merge in some international relations data from the World Bank or something. Initially, I thought about bringing in something like a GDP variable or something, but that seemed too easy.</p>
+<p>I spent some time thinking about what I could do to visualize these data. My first instinct was to do some sort of word cloud with the variable that summarizes the studies, but I ultimately decided against that for two reasons:</p>
+<ol type="1">
+<li>The variable has a lot of noisy words, and I didn’t feel like filtering them out;</li>
+<li>There wasn’t a good way to look at the word clouds by country.</li>
+</ol>
+<p>Ultimately, I decided instead on doing a network analysis to learn a little more about how to make those types of charts. With that goal in mind, I started brainstorming some relationships I could test using a network graph. And since I recently saw that <a href="https://gufaculty360.georgetown.edu/s/contact/00336000014Rdd7AAC/erik-voeten">Erik Voeten</a> updated the United Nations General Assembly (UNGA) ideal points data, I decided to kill two birds with one stone by playing around with this new data set.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>As a result, the question driving the analysis below is: how does proximity to the United States affect the attention paid to states in climate attribution studies? In other words, are states more proximal to the US more likely to be the subjects of study in these studies? Now, I should note a few things before moving on. First, I don’t spend any time below controlling for any confounding variables that could have an effect here, like region, industrialization, or economic capacity, to name a few. So all the results below should be taking with a grain of salt considering the guaranteed omitted variable bias present in the analysis! Second, I didn’t do a lot of testing to ensure that my data cleaning worked exactly as intended, so there very well could be some errors in the code. Again: grain of salt! Finally, I’m not too experienced with network analysis, so take my interpretations with an additional grain of salt. This project is as much a learning experience for me as it is a fun data exercise.</p>
+</section>
+<section id="setup" class="level1">
+<h1>Setup <a name="section2"></a></h1>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"pacman"</span>)) <span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        tidytuesdayR,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        tidyverse,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        magrittr,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        countrycode,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        janitor,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        igraph,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        ggraph,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        RColorBrewer,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        scales,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        ggthemes,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        plotly,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        knitr,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        kableExtra</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>I’ll begin with some useful setup. First, I’ll load in some packages and set a random seed. Pretty standard stuff here, no need to spend too much time on it.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">'2025-08-12'</span>)<span class="sc">$</span>attribution_studies</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data_unga <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://dataverse.harvard.edu/api/access/datafile/11837234"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>x1, <span class="sc">-</span>session_x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Next, I’ll load in the Tidy Tuesday data for this week. I only want the clean data, not the raw data, so I loaded it in directly using the <code>tt_load</code> package. I also loaded in the newest UNGA data from Erik Voeten’s <a href="https://dataverse.harvard.edu/dataverse/Voeten">Dataverse page</a>, which I’ll use down the line.</p>
+</section>
+<section id="data-cleaning" class="level1">
+<h1>Data Cleaning <a name="section3"></a></h1>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_clean <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># i'm just interested in states</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(iso_country_code))  <span class="sc">|&gt;</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># extract start and end years</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">event_period_clean =</span> <span class="fu">str_replace_all</span>(event_period, <span class="at">pattern =</span> <span class="st">"[A-Za-z]"</span>, <span class="st">""</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">event_period_clean =</span> <span class="fu">str_trim</span>(event_period_clean),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">event_period_clean =</span> <span class="fu">str_replace</span>(event_period_clean, <span class="st">'- '</span>, <span class="st">''</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span> </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>((<span class="sc">!</span><span class="fu">is.na</span>(event_period)) <span class="sc">&amp;</span> (<span class="sc">!</span><span class="fu">is.na</span>(event_year))) <span class="sc">|&gt;</span> </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate_wider_regex</span>(</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    event_period_clean,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">patterns =</span> <span class="fu">c</span>(</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">start =</span> <span class="st">"[^-, ]+"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"[-, ]"</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">end =</span> <span class="st">".*"</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">too_few =</span> <span class="st">'align_start'</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">end =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(end), start, end),</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">end =</span> <span class="fu">str_trim</span>(end),</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># hard code fix because it's late, and I'm tired</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">start =</span> <span class="fu">if_else</span>(start <span class="sc">==</span> <span class="st">"20172018"</span>, <span class="st">"2017"</span>, start),</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">end =</span> <span class="fu">if_else</span>(end <span class="sc">==</span> <span class="st">"20172018"</span>, <span class="st">"2018"</span>, end),</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">start =</span> <span class="fu">as.integer</span>(start),</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">end =</span> <span class="fu">as.integer</span>(end)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># make into panel data</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate_wider_delim</span>(</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        iso_country_code,</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        <span class="st">','</span>,</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>        <span class="at">names_sep =</span> <span class="st">'-'</span>,</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>        <span class="at">too_few =</span> <span class="st">'align_start'</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">'iso_country_code-'</span>),</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        <span class="at">values_to =</span> <span class="st">'iso3c'</span>,</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        <span class="at">names_to =</span> <span class="st">'iso_code_level'</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>iso_code_level) <span class="sc">|&gt;</span> </span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(iso3c)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowwise</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">list</span>(start<span class="sc">:</span>end)) <span class="sc">|&gt;</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>        <span class="sc">-</span>start, <span class="sc">-</span>end, <span class="sc">-</span>event_period, </span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>        <span class="sc">-</span>event_year, <span class="sc">-</span>study_focus</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>My first step is to clean the data a little bit. My main goals here are to make this dataset into a panel data set at the country-study-year level, which means each record will correspond to a study whose content covers that country-year unit. So, if study A covered the US and Canada from 2010-2011, then I want the data to look something like:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Study</th>
+<th>Country</th>
+<th>Year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>US</td>
+<td>2010</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>US</td>
+<td>2011</td>
+</tr>
+<tr class="odd">
+<td>A</td>
+<td>CAN</td>
+<td>2010</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>CAN</td>
+<td>2011</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_unga_clean <span class="ot">&lt;-</span> data_unga <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">iso3c_y =</span> <span class="fu">countrycode</span>(ccode2, <span class="st">'cown'</span>, <span class="st">'iso3c'</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(ccode1 <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">'ccode'</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">'ideal_point_fp'</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="sc">-</span>agree,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">'n_votes_fp'</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Next, I did some minimal cleaning on the UNGA data, keeping only the variables that I need for the analysis below. I added an <code>iso3c</code> variable so that I’d have a common key for the merge down the line, and I filtered out all countries except for the US in the x side of the dyad.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>attribution_data <span class="ot">&lt;-</span> data_clean <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(data_unga_clean, <span class="at">by =</span> <span class="fu">join_by</span>(<span class="st">'iso3c'</span> <span class="sc">==</span> <span class="st">'iso3c_y'</span>, <span class="st">'year'</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ideal_point_distance =</span> <span class="fu">if_else</span>(iso3c <span class="sc">==</span> <span class="st">'USA'</span>, <span class="dv">0</span>, ideal_point_distance),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">country_name =</span> <span class="fu">countrycode</span>(iso3c, <span class="st">'iso3c'</span>, <span class="st">'country.name.en'</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ideal_point_distance))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Now that I have the UNGA data how I want it, I can merge it into the cleaned Tidy Tuesday dataset. Notice that I dropped out any country-years with missing ideal point calculations. This only eliminated a few records, like the most recent year for Afghanistan, which doesn’t have an ideal point for 2024.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make nodes</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>node_data <span class="ot">&lt;-</span> attribution_data <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(iso3c) <span class="sc">|&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">study_duration =</span> <span class="fu">n</span>(),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">country_name =</span> <span class="fu">first</span>(country_name),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ideal_point_distance =</span> <span class="fu">mean</span>(ideal_point_distance),</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">.groups =</span> <span class="st">'drop'</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(study_duration <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">node_id =</span> <span class="fu">row_number</span>()</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>In order to make the data that’d go into the nodes on my chart below, I aggregated the attribution data, keeping only <code>study_duration</code>, <code>country_name</code>, and <code>ideal_point_distance</code> in the final data frame. Note that the study_duration variable measures the number of country-years that have been under study across attribution studies. This means that some years will be double counted on purpose if multiple attribution studies examined similar time periods. The <code>study_duration</code> variable, then, should proxy for the amount of attention each state has gotten from scientists doing attribution studies.</p>
+<p>The nodes are also static, meaning that any variance in <code>ideal_point_distance</code> is lost at the aggregation step. This could be problematic–especially if a state has either shifted dramatically over time or if its ideal point distribution is bimodal.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get edge weights</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>edge_data <span class="ot">&lt;-</span> attribution_data <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(iso3c <span class="sc">%in%</span> node_data<span class="sc">$</span>iso3c) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(citation, publication_year) <span class="sc">|&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">do</span>({</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        countries <span class="ot">&lt;-</span> .<span class="sc">$</span>iso3c</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        combinations <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">from =</span> countries, <span class="at">to =</span> countries, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        combinations[combinations<span class="sc">$</span>from <span class="sc">!=</span> combinations<span class="sc">$</span>to, ]</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        }) <span class="sc">|&gt;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(from, to) <span class="sc">|&gt;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight =</span> <span class="fu">n</span>(), </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">.groups =</span> <span class="st">'drop'</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        from <span class="sc">%in%</span> node_data<span class="sc">$</span>iso3c, </span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        to <span class="sc">%in%</span> node_data<span class="sc">$</span>iso3c</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The data for the edges will contain information about how many studies states have co-occurred. This means that states that appear together often will have greater weights than those who don’t, and states who never appeared in studies together will jot be connected.</p>
+</section>
+<section id="making-the-network" class="level1">
+<h1>Making the Network <a name="section4"></a></h1>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># makes network</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>network <span class="ot">&lt;-</span> igraph<span class="sc">::</span><span class="fu">graph_from_data_frame</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">d =</span> edge_data, </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">vertices =</span> node_data <span class="sc">|&gt;</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(<span class="sc">-</span>node_id),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">directed =</span> <span class="cn">FALSE</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>I generated a network data using the data I cleaned above, which I used to make the plot below.</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>network <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_edge_link</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">width =</span> weight</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>            ),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"gray50"</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_edge_width_continuous</span>(</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">range =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="dv">2</span>),</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">guide =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">"Shared Studies"</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_node_point</span>(</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> study_duration,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> ideal_point_distance</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.8</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    )  <span class="sc">+</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_size_continuous</span>(</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">15</span>),</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">guide =</span> <span class="fu">guide_legend</span>(</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">"Study Duration (years)"</span>, </span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">alpha =</span> <span class="dv">1</span>)</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_gradient2</span>(</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">low =</span> <span class="st">"blue"</span>, <span class="at">mid =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"red"</span>,</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">midpoint =</span> <span class="fu">median</span>(node_data<span class="sc">$</span>ideal_point_distance, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">name =</span> <span class="st">"Distance from US</span><span class="sc">\n</span><span class="st">(UNGA Ideal Points)"</span>,</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">round</span>(x, <span class="dv">2</span>)</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_node_text</span>(</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(study_duration <span class="sc">&gt;</span> <span class="fu">quantile</span>(study_duration, <span class="fl">0.8</span>), </span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>                        country_name, <span class="st">""</span>)),</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>        <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>        <span class="at">max.overlaps =</span> <span class="dv">20</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_graph</span>() <span class="sc">+</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Climate Attribution Research Network"</span>,</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle =</span> <span class="st">"Countries connected by shared extreme weather studies</span><span class="sc">\n</span><span class="st">Node size = Study Duration (years)</span><span class="sc">\n</span><span class="st">Color = diplomatic distance from US"</span>,</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>        <span class="at">caption =</span> <span class="st">"Data: Extreme Weather Attribution Studies &amp; UNGA Ideal Points</span><span class="sc">\n</span><span class="st">Edges represent shared attribution studies between countries"</span>,</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">""</span></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_solarized</span>() <span class="sc">+</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>),</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>, <span class="at">color =</span> <span class="st">"gray50"</span>),</span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">+</span></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_gradient</span>(</span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>        <span class="at">low =</span> <span class="st">"#268bd2"</span>,</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>        <span class="at">high =</span> <span class="st">"#cb4b16"</span>,</span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>        <span class="at">name =</span> <span class="st">"Distance from US</span><span class="sc">\n</span><span class="st">(UNGA Ideal Points)"</span>,</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">round</span>(x, <span class="dv">2</span>)</span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<p><img src="2025-08-12_files/figure-html/static_plot-1.png" class="img-fluid" width="768"></p>
+<p>The plot above is the main data visualization I made for this week’s Tidy Tuesday. It encodes a few details. First, the node size encodes how many country-years have been studied for that given state, meaning that bigger nodes correspond to states that have gotten longer attention from researchers. The line width indicates how many studies the nodes share. And the continuous gradient indicates the mean ideal point distance from the US for each state. Bluer nodes are states whose mean ideal points are closer to the US and redder ones are those whose mean ideal points are farther away.</p>
+<p>I haven’t spent a lot of time interpreting these types of charts, so I’ll reiterate my warning above: take this with a grain of salt.</p>
+<p>First, I see a node cluster primarily composed of European states–most of which have a pretty high proximity to the US. It looks like a lot of them are connected to the US, which is a pretty central node in this chart, but the fact that the European states are a little isolated indicates to me that a lot of these studies look at Europe as a region. I see similar, though less defined, node clusters for some African and Asian states, though it’s notable that there are a bunch of African and Asian states that are isolated from the main cluster in the middle. Overall, the node clusters make a lot of sense. These studies often span multiple states, and there are natural spatial relationships that researchers would be unlikely to ignore. Still, I wonder why states like Japan, South Africa, Vietnam, and Brazil are off on their own, despite having pretty large nodes.</p>
+<p>It’s also worth noting that three states seem to be the most central: the US, Russia, and China. These states’ centrality isn’t particularly surprising given how much the three contribute to climate change. However, I’d also venture an additional explanation. These three states, along with the European states, have much more robust research infrastructures, which could suggest a potential convenience bias in the climate attribution research in favor of these types of states. After all, the US and European states, for example, will have greater public data availability and transparency. And China and Russia will potentially have more active researchers.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>When it comes to the ideal point distance scores, I don’t actually see much of a relationship between that and the amount of attention each state gets. Sure, there are a lot of studies on European states, which are far more proximal to the US than the rest of the countries in the sample. But I still observe significant attention paid to states farther from the US.</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> network <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_node_point</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> study_duration,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> ideal_point_distance,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">paste</span>(<span class="st">"Country:"</span>, country_name,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"&lt;br&gt;Study Duration:"</span>, study_duration, <span class="st">"years"</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"&lt;br&gt;Distance from US:"</span>, <span class="fu">round</span>(ideal_point_distance, <span class="dv">2</span>))</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.8</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    )  <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_size_continuous</span>(</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">15</span>),</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">guide =</span> <span class="fu">guide_legend</span>(</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">"Study Duration (years)"</span>, </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">alpha =</span> <span class="dv">1</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Climate Attribution Research Network"</span>,</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">""</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_solarized</span>() <span class="sc">+</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>),</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>, <span class="at">color =</span> <span class="st">"gray50"</span>),</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">+</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_gradient</span>(</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>        <span class="at">low =</span> <span class="st">"#268bd2"</span>,</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>        <span class="at">high =</span> <span class="st">"#cb4b16"</span>,</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>        <span class="at">name =</span> <span class="st">"Distance from US</span><span class="sc">\n</span><span class="st">(UNGA Ideal Points)"</span>,</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">round</span>(x, <span class="dv">2</span>)</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(plot, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-7199518c4f50c8ce55af" style="width:768px;height:576px;"></div>
+<script type="application/json" data-for="htmlwidget-7199518c4f50c8ce55af">{"x":{"data":[{"x":[3.1450382864871149,-6.3291523569867332,-0.77391960697880025,2.5444026564040483,2.5946889664664581,-0.69115004211359377,2.4016265141127167,5.6324149570103419,3.1931715955031761,-1.5505407516956549,2.499386507950121,0.76705608562992778,-5.2025432777941498,3.0190485271916874,2.371618007374916,-1.4441107296416131,3.433837058441346,2.6195673663121983,-6.0967465720095344,2.8374444957482341,-0.81357867999444045,-2.8157003507435947,-1.7428456138432091,8.4093568221946242,-0.4752112295375206,4.6713803817104953,-1.594187971503205,-0.30112317189887661,-1.8096475153404563,4.3203746728362864,1.7429983820065513,0.2120151019137633,0.63785951997693879,1.4279935762509417,2.5343274314453681,1.6213738445002652,4.9122760360913231,-3.138808588713661,6.470091368890083,7.0293649795163828,-0.026214817352354543,-3.75616026873614,3.9896782688149148,-6.6446656778608313,5.9194834609484266,5.2878082252979857,6.8565465774417982,6.5462345835792073,-0.89501384370312986,5.4862519982982398,1.3435902495831644,2.546514583640997,4.3491409595187456,4.6150322600704827,3.4787624945299536,1.8719052581329187,2.6161024303438349,-0.64813086772676165,-0.46836612620455687,-2.8860681135445736,2.5494574369005534,-6.5026676053984316,3.4294441997967957,0.8161753436549235,2.9836505013546271,-2.3264567441919479,-0.97384339462148584,2.9986140762182041,2.7869569998607493,-6.3090201801681021,2.1943555453819932,-4.0657331491320194,1.0584325712902163,3.6804140612410237,-0.21978221445413007,-0.067774154560955258,2.3210715957073287,4.398862648225097,4.326631854419233,4.1753983534172372,4.3441979406355022,-5.3680095021685261,1.8199862834063447,4.6759779937422499,6.250269908747689,3.8434231250336643,4.132422608849641],"y":[1.9224499565445388,2.5476467425747518,-6.6814658850649904,1.0124170894216111,-7.3273770441956154,1.6838011837771154,1.8178730161624259,-1.4372157826677501,1.419348678730578,-7.9423205370457444,1.2110409543734173,-0.40587666995214083,-5.1788224257392246,2.027247799498928,1.3364242180493904,1.6949346082742744,-8.391252144918349,1.3572810166814657,-2.6228715293885707,0.67552062086981979,1.1222111273063369,0.4688922974664016,3.1428837115849659,-4.8005780114793009,1.7640126675978458,-2.8921828678483856,-0.17248126955199666,1.7463739282468596,2.1358182782289057,0.88821466735985555,3.2145723441618488,2.4152069823821636,-0.78078539226309129,-0.85294047868994072,1.5096692805554341,-8.5845902764709816,-0.034119877588135547,2.5944345924843208,1.4206163798994003,1.4992731608393581,1.4929090659079025,-4.7437083338773229,-2.9021036819136374,-0.40638437762952451,-1.0335164315279648,1.6787550102974504,-0.69644577682309095,-6.6383933025652162,2.7344591290913018,4.4639079627523026,0.063055017234249222,1.8186557687394027,3.5763343436035959,3.2425266592576576,2.4376994774693843,3.6061290863762596,3.4645556334712726,1.4328059347846487,0.87027188397753552,-7.2686910151841193,0.12214525067831643,1.8027932456964271,1.0563084858066161,-7.2075818948804118,0.74192797152421797,-5.901396062016719,2.2299661476129793,1.2153200666388877,1.3429041987863355,-1.9480043629524353,3.3011325227222388,-6.3149942926201339,-0.92240386866036017,-1.2747232978206475,0.90365317174354309,-8.4309174421145858,3.7459223886188484,-0.70509876685296557,1.4780910540639878,-3.3597777877375243,-4.351555574230793,-3.8518130553433285,1.1963064443565878,-7.6333284224270805,-6.8562449522972049,3.5269188823895599,3.1601464501261729],"text":["Country: Angola <br>Study Duration: 5 years <br>Distance from US: 2.97","Country: United Arab Emirates <br>Study Duration: 1 years <br>Distance from US: 2.81","Country: Argentina <br>Study Duration: 1 years <br>Distance from US: 2.62","Country: Australia <br>Study Duration: 66 years <br>Distance from US: 1.23","Country: Austria <br>Study Duration: 1 years <br>Distance from US: 1.37","Country: Belgium <br>Study Duration: 2 years <br>Distance from US: 1.51","Country: Burkina Faso <br>Study Duration: 3 years <br>Distance from US: 3.05","Country: Bangladesh <br>Study Duration: 3 years <br>Distance from US: 3.09","Country: Bulgaria <br>Study Duration: 3 years <br>Distance from US: 1.33","Country: Bahamas <br>Study Duration: 1 years <br>Distance from US: 2.87","Country: Bosnia & Herzegovina <br>Study Duration: 2 years <br>Distance from US: 1.74","Country: Belize <br>Study Duration: 1 years <br>Distance from US: 2.48","Country: Brazil <br>Study Duration: 18 years <br>Distance from US: 2.8","Country: Botswana <br>Study Duration: 5 years <br>Distance from US: 2.67","Country: Canada <br>Study Duration: 22 years <br>Distance from US: 0.97","Country: Switzerland <br>Study Duration: 3 years <br>Distance from US: 1.69","Country: Chile <br>Study Duration: 1 years <br>Distance from US: 2.19","Country: China <br>Study Duration: 147 years <br>Distance from US: 3.1","Country: Congo - Kinshasa <br>Study Duration: 1 years <br>Distance from US: 2.26","Country: Colombia <br>Study Duration: 2 years <br>Distance from US: 2.72","Country: Germany <br>Study Duration: 16 years <br>Distance from US: 1.53","Country: Denmark <br>Study Duration: 1 years <br>Distance from US: 1.55","Country: Algeria <br>Study Duration: 1 years <br>Distance from US: 3.13","Country: Egypt <br>Study Duration: 1 years <br>Distance from US: 3.67","Country: Spain <br>Study Duration: 10 years <br>Distance from US: 1.5","Country: Ethiopia <br>Study Duration: 5 years <br>Distance from US: 3.01","Country: Finland <br>Study Duration: 1 years <br>Distance from US: 1.03","Country: France <br>Study Duration: 15 years <br>Distance from US: 1.04","Country: United Kingdom <br>Study Duration: 53 years <br>Distance from US: 0.91","Country: Georgia <br>Study Duration: 1 years <br>Distance from US: 1.42","Country: Guinea <br>Study Duration: 1 years <br>Distance from US: 2.85","Country: Greece <br>Study Duration: 3 years <br>Distance from US: 1.39","Country: Guatemala <br>Study Duration: 1 years <br>Distance from US: 2.27","Country: Honduras <br>Study Duration: 1 years <br>Distance from US: 2.4","Country: Croatia <br>Study Duration: 2 years <br>Distance from US: 1.52","Country: Indonesia <br>Study Duration: 3 years <br>Distance from US: 3.41","Country: India <br>Study Duration: 12 years <br>Distance from US: 2.66","Country: Ireland <br>Study Duration: 10 years <br>Distance from US: 1.85","Country: Iran <br>Study Duration: 7 years <br>Distance from US: 3.95","Country: Iraq <br>Study Duration: 4 years <br>Distance from US: 3.11","Country: Italy <br>Study Duration: 7 years <br>Distance from US: 1.31","Country: Japan <br>Study Duration: 15 years <br>Distance from US: 1.82","Country: Kenya <br>Study Duration: 7 years <br>Distance from US: 3.14","Country: South Korea <br>Study Duration: 7 years <br>Distance from US: 1.75","Country: Laos <br>Study Duration: 1 years <br>Distance from US: 2.82","Country: Libya <br>Study Duration: 1 years <br>Distance from US: 2.91","Country: Sri Lanka <br>Study Duration: 1 years <br>Distance from US: 3.08","Country: Lesotho <br>Study Duration: 3 years <br>Distance from US: 3.25","Country: Morocco <br>Study Duration: 2 years <br>Distance from US: 2.62","Country: Madagascar <br>Study Duration: 5 years <br>Distance from US: 2.78","Country: Mexico <br>Study Duration: 2 years <br>Distance from US: 2.45","Country: Mali <br>Study Duration: 3 years <br>Distance from US: 3.19","Country: Mozambique <br>Study Duration: 4 years <br>Distance from US: 3.01","Country: Malawi <br>Study Duration: 2 years <br>Distance from US: 2.07","Country: Namibia <br>Study Duration: 3 years <br>Distance from US: 3.1","Country: Niger <br>Study Duration: 1 years <br>Distance from US: 3.19","Country: Nigeria <br>Study Duration: 2 years <br>Distance from US: 3.06","Country: Netherlands <br>Study Duration: 4 years <br>Distance from US: 1.46","Country: Norway <br>Study Duration: 4 years <br>Distance from US: 1.5","Country: Nepal <br>Study Duration: 1 years <br>Distance from US: 3.12","Country: New Zealand <br>Study Duration: 40 years <br>Distance from US: 1.8","Country: Oman <br>Study Duration: 1 years <br>Distance from US: 3.01","Country: Pakistan <br>Study Duration: 8 years <br>Distance from US: 2.85","Country: Panama <br>Study Duration: 1 years <br>Distance from US: 2.2","Country: Peru <br>Study Duration: 4 years <br>Distance from US: 2.66","Country: Philippines <br>Study Duration: 3 years <br>Distance from US: 2.64","Country: Portugal <br>Study Duration: 6 years <br>Distance from US: 1.48","Country: Romania <br>Study Duration: 2 years <br>Distance from US: 1.35","Country: Russia <br>Study Duration: 13 years <br>Distance from US: 2.47","Country: Rwanda <br>Study Duration: 1 years <br>Distance from US: 2.59","Country: Senegal <br>Study Duration: 1 years <br>Distance from US: 2.82","Country: Singapore <br>Study Duration: 1 years <br>Distance from US: 2.9","Country: El Salvador <br>Study Duration: 1 years <br>Distance from US: 2.52","Country: Somalia <br>Study Duration: 5 years <br>Distance from US: 3.14","Country: Sweden <br>Study Duration: 4 years <br>Distance from US: 1.59","Country: Syria <br>Study Duration: 1 years <br>Distance from US: 4.11","Country: Chad <br>Study Duration: 1 years <br>Distance from US: 2.68","Country: Thailand <br>Study Duration: 4 years <br>Distance from US: 2.79","Country: Turkey <br>Study Duration: 2 years <br>Distance from US: 1.62","Country: Tanzania <br>Study Duration: 2 years <br>Distance from US: 3.21","Country: Uganda <br>Study Duration: 1 years <br>Distance from US: 3.3","Country: Uruguay <br>Study Duration: 1 years <br>Distance from US: 2.98","Country: United States <br>Study Duration: 150 years <br>Distance from US: 0","Country: Vietnam <br>Study Duration: 10 years <br>Distance from US: 3.52","Country: South Africa <br>Study Duration: 21 years <br>Distance from US: 2.96","Country: Zambia <br>Study Duration: 2 years <br>Distance from US: 2.95","Country: Zimbabwe <br>Study Duration: 2 years <br>Distance from US: 3.62"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":["rgba(185,96,78,1)","rgba(182,99,85,1)","rgba(178,102,93,1)","rgba(137,122,154,1)","rgba(143,120,148,1)","rgba(148,118,142,1)","rgba(187,95,75,1)","rgba(188,94,73,1)","rgba(141,121,150,1)","rgba(183,98,83,1)","rgba(156,115,132,1)","rgba(175,104,99,1)","rgba(182,99,86,1)","rgba(179,101,91,1)","rgba(126,126,166,1)","rgba(154,116,134,1)","rgba(168,108,112,1)","rgba(188,94,72,1)","rgba(170,107,109,1)","rgba(180,100,89,1)","rgba(149,118,141,1)","rgba(150,118,140,1)","rgba(188,93,71,1)","rgba(197,84,46,1)","rgba(148,119,142,1)","rgba(186,95,76,1)","rgba(129,125,163,1)","rgba(129,125,163,1)","rgba(123,127,169,1)","rgba(145,120,146,1)","rgba(183,98,83,1)","rgba(144,120,147,1)","rgba(170,107,109,1)","rgba(173,105,103,1)","rgba(149,118,141,1)","rgba(193,89,59,1)","rgba(179,101,92,1)","rgba(159,113,127,1)","rgba(201,78,32,1)","rgba(188,94,72,1)","rgba(141,121,151,1)","rgba(158,114,128,1)","rgba(188,93,70,1)","rgba(156,115,131,1)","rgba(182,98,85,1)","rgba(184,97,81,1)","rgba(187,94,73,1)","rgba(190,91,66,1)","rgba(178,102,93,1)","rgba(182,99,86,1)","rgba(175,104,101,1)","rgba(189,92,68,1)","rgba(186,95,77,1)","rgba(165,110,117,1)","rgba(188,94,72,1)","rgba(189,92,68,1)","rgba(187,94,74,1)","rgba(146,119,144,1)","rgba(148,118,142,1)","rgba(188,93,71,1)","rgba(158,114,129,1)","rgba(186,95,76,1)","rgba(183,98,83,1)","rgba(169,108,112,1)","rgba(179,101,92,1)","rgba(179,101,92,1)","rgba(147,119,143,1)","rgba(142,121,149,1)","rgba(175,104,100,1)","rgba(178,102,95,1)","rgba(182,98,85,1)","rgba(184,97,81,1)","rgba(176,103,98,1)","rgba(188,93,71,1)","rgba(151,117,138,1)","rgba(203,75,22,1)","rgba(180,101,91,1)","rgba(182,99,86,1)","rgba(152,117,137,1)","rgba(190,92,67,1)","rgba(191,90,64,1)","rgba(186,96,77,1)","rgba(38,139,210,1)","rgba(195,86,53,1)","rgba(185,96,79,1)","rgba(185,96,79,1)","rgba(196,85,49,1)"],"opacity":0.80000000000000004,"size":[15.609460132344587,7.559055118110237,7.559055118110237,40.01127521958643,7.559055118110237,11.58425762522741,13.25155109497353,13.25155109497353,13.25155109497353,7.559055118110237,11.58425762522741,7.559055118110237,24.155390219455377,15.609460132344587,26.004850294500717,13.25155109497353,7.559055118110237,56.195762064635204,7.559055118110237,11.58425762522741,23.148597393287396,7.559055118110237,7.559055118110237,7.559055118110237,19.634662639461766,15.609460132344587,7.559055118110237,22.619983812126204,36.585203185184596,7.559055118110237,7.559055118110237,13.25155109497353,7.559055118110237,7.559055118110237,11.58425762522741,13.25155109497353,20.909141539415771,19.634662639461766,17.41874737191889,14.53091037119081,17.41874737191889,22.619983812126204,17.41874737191889,17.41874737191889,7.559055118110237,7.559055118110237,7.559055118110237,13.25155109497353,11.58425762522741,15.609460132344587,11.58425762522741,13.25155109497353,14.53091037119081,11.58425762522741,13.25155109497353,7.559055118110237,11.58425762522741,14.53091037119081,14.53091037119081,7.559055118110237,32.696436718205213,7.559055118110237,18.20873992861598,7.559055118110237,14.53091037119081,13.25155109497353,16.559681547226823,11.58425762522741,21.502765624271383,7.559055118110237,7.559055118110237,7.559055118110237,7.559055118110237,15.609460132344587,14.53091037119081,7.559055118110237,7.559055118110237,14.53091037119081,11.58425762522741,11.58425762522741,7.559055118110237,7.559055118110237,56.692913385826778,19.634662639461766,25.56030797634341,11.58425762522741,11.58425762522741],"symbol":"circle","line":{"width":1.8897637795275593,"color":["rgba(185,96,78,1)","rgba(182,99,85,1)","rgba(178,102,93,1)","rgba(137,122,154,1)","rgba(143,120,148,1)","rgba(148,118,142,1)","rgba(187,95,75,1)","rgba(188,94,73,1)","rgba(141,121,150,1)","rgba(183,98,83,1)","rgba(156,115,132,1)","rgba(175,104,99,1)","rgba(182,99,86,1)","rgba(179,101,91,1)","rgba(126,126,166,1)","rgba(154,116,134,1)","rgba(168,108,112,1)","rgba(188,94,72,1)","rgba(170,107,109,1)","rgba(180,100,89,1)","rgba(149,118,141,1)","rgba(150,118,140,1)","rgba(188,93,71,1)","rgba(197,84,46,1)","rgba(148,119,142,1)","rgba(186,95,76,1)","rgba(129,125,163,1)","rgba(129,125,163,1)","rgba(123,127,169,1)","rgba(145,120,146,1)","rgba(183,98,83,1)","rgba(144,120,147,1)","rgba(170,107,109,1)","rgba(173,105,103,1)","rgba(149,118,141,1)","rgba(193,89,59,1)","rgba(179,101,92,1)","rgba(159,113,127,1)","rgba(201,78,32,1)","rgba(188,94,72,1)","rgba(141,121,151,1)","rgba(158,114,128,1)","rgba(188,93,70,1)","rgba(156,115,131,1)","rgba(182,98,85,1)","rgba(184,97,81,1)","rgba(187,94,73,1)","rgba(190,91,66,1)","rgba(178,102,93,1)","rgba(182,99,86,1)","rgba(175,104,101,1)","rgba(189,92,68,1)","rgba(186,95,77,1)","rgba(165,110,117,1)","rgba(188,94,72,1)","rgba(189,92,68,1)","rgba(187,94,74,1)","rgba(146,119,144,1)","rgba(148,118,142,1)","rgba(188,93,71,1)","rgba(158,114,129,1)","rgba(186,95,76,1)","rgba(183,98,83,1)","rgba(169,108,112,1)","rgba(179,101,92,1)","rgba(179,101,92,1)","rgba(147,119,143,1)","rgba(142,121,149,1)","rgba(175,104,100,1)","rgba(178,102,95,1)","rgba(182,98,85,1)","rgba(184,97,81,1)","rgba(176,103,98,1)","rgba(188,93,71,1)","rgba(151,117,138,1)","rgba(203,75,22,1)","rgba(180,101,91,1)","rgba(182,99,86,1)","rgba(152,117,137,1)","rgba(190,92,67,1)","rgba(191,90,64,1)","rgba(186,96,77,1)","rgba(38,139,210,1)","rgba(195,86,53,1)","rgba(185,96,79,1)","rgba(185,96,79,1)","rgba(196,85,49,1)"]}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[-4],"y":[-5],"name":"5e0cc6e1d3dd2cbb05cfa3fc3415283c","type":"scatter","mode":"markers","opacity":0,"hoverinfo":"skip","showlegend":false,"marker":{"color":[0,1],"colorscale":[[0,"#268BD2"],[0.0033444816053511705,"#298BD1"],[0.006688963210702341,"#2C8BD1"],[0.010033444816053512,"#2F8AD0"],[0.013377926421404682,"#318ACF"],[0.016722408026755856,"#348ACF"],[0.020066889632107024,"#368ACE"],[0.023411371237458196,"#388ACE"],[0.026755852842809364,"#3A8ACD"],[0.030100334448160536,"#3C89CC"],[0.033444816053511711,"#3E89CC"],[0.03678929765886288,"#4089CB"],[0.040133779264214048,"#4289CA"],[0.043478260869565216,"#4489CA"],[0.046822742474916391,"#4588C9"],[0.05016722408026756,"#4788C9"],[0.053511705685618728,"#4988C8"],[0.056856187290969903,"#4A88C7"],[0.060200668896321072,"#4C88C7"],[0.06354515050167224,"#4D88C6"],[0.066889632107023422,"#4F87C5"],[0.070234113712374591,"#5087C5"],[0.073578595317725759,"#5187C4"],[0.076923076923076927,"#5387C3"],[0.080267558528428096,"#5487C3"],[0.083612040133779264,"#5586C2"],[0.086956521739130432,"#5686C2"],[0.090301003344481601,"#5886C1"],[0.093645484949832783,"#5986C0"],[0.096989966555183951,"#5A86C0"],[0.10033444816053512,"#5B85BF"],[0.10367892976588629,"#5C85BE"],[0.10702341137123746,"#5D85BE"],[0.11036789297658864,"#5E85BD"],[0.11371237458193981,"#5F85BD"],[0.11705685618729098,"#6185BC"],[0.12040133779264214,"#6284BB"],[0.12374581939799333,"#6384BB"],[0.12709030100334448,"#6484BA"],[0.13043478260869568,"#6584B9"],[0.13377926421404684,"#6684B9"],[0.13712374581939801,"#6683B8"],[0.14046822742474918,"#6783B8"],[0.14381270903010035,"#6883B7"],[0.14715719063545152,"#6983B6"],[0.15050167224080269,"#6A83B6"],[0.15384615384615385,"#6B83B5"],[0.15719063545150502,"#6C82B4"],[0.16053511705685619,"#6D82B4"],[0.16387959866220736,"#6E82B3"],[0.16722408026755853,"#6F82B3"],[0.1705685618729097,"#6F82B2"],[0.17391304347826086,"#7081B1"],[0.17725752508361203,"#7181B1"],[0.1806020066889632,"#7281B0"],[0.18394648829431437,"#7381AF"],[0.18729096989966557,"#7381AF"],[0.19063545150501673,"#7480AE"],[0.1939799331103679,"#7580AE"],[0.19732441471571907,"#7680AD"],[0.20066889632107024,"#7680AC"],[0.20401337792642141,"#7780AC"],[0.20735785953177258,"#7880AB"],[0.21070234113712374,"#797FAB"],[0.21404682274247491,"#797FAA"],[0.21739130434782611,"#7A7FA9"],[0.22073578595317728,"#7B7FA9"],[0.22408026755852845,"#7C7FA8"],[0.22742474916387961,"#7C7EA7"],[0.23076923076923078,"#7D7EA7"],[0.23411371237458195,"#7E7EA6"],[0.23745819397993312,"#7E7EA6"],[0.24080267558528429,"#7F7EA5"],[0.24414715719063546,"#807DA4"],[0.24749163879598665,"#807DA4"],[0.25083612040133779,"#817DA3"],[0.25418060200668896,"#817DA2"],[0.25752508361204013,"#827DA2"],[0.26086956521739135,"#837CA1"],[0.26421404682274247,"#837CA1"],[0.26755852842809369,"#847CA0"],[0.2709030100334448,"#857C9F"],[0.27424749163879603,"#857C9F"],[0.27759197324414714,"#867C9E"],[0.28093645484949836,"#867B9E"],[0.28428093645484948,"#877B9D"],[0.2876254180602007,"#887B9C"],[0.29096989966555187,"#887B9C"],[0.29431438127090304,"#897B9B"],[0.2976588628762542,"#897A9B"],[0.30100334448160537,"#8A7A9A"],[0.30434782608695654,"#8A7A99"],[0.30769230769230771,"#8B7A99"],[0.31103678929765888,"#8C7A98"],[0.31438127090301005,"#8C7997"],[0.31772575250836121,"#8D7997"],[0.32107023411371238,"#8D7996"],[0.32441471571906355,"#8E7996"],[0.32775919732441472,"#8E7995"],[0.33110367892976589,"#8F7894"],[0.33444816053511706,"#8F7894"],[0.33779264214046822,"#907893"],[0.34113712374581939,"#907893"],[0.34448160535117062,"#917892"],[0.34782608695652173,"#917791"],[0.35117056856187295,"#927791"],[0.35451505016722407,"#927790"],[0.35785953177257529,"#937790"],[0.3612040133779264,"#93778F"],[0.36454849498327763,"#94778E"],[0.36789297658862874,"#94768E"],[0.37123745819397996,"#95768D"],[0.37458193979933113,"#95768D"],[0.3779264214046823,"#96768C"],[0.38127090301003347,"#96768B"],[0.38461538461538464,"#97758B"],[0.38795986622073581,"#97758A"],[0.39130434782608697,"#987589"],[0.39464882943143814,"#987589"],[0.39799331103678931,"#987588"],[0.40133779264214048,"#997488"],[0.4046822742474917,"#997487"],[0.40802675585284282,"#9A7486"],[0.41137123745819404,"#9A7486"],[0.41471571906354515,"#9B7485"],[0.41806020066889638,"#9B7385"],[0.42140468227424749,"#9C7384"],[0.42474916387959871,"#9C7383"],[0.42809364548494983,"#9C7383"],[0.43143812709030099,"#9D7382"],[0.43478260869565222,"#9D7282"],[0.43812709030100333,"#9E7281"],[0.44147157190635455,"#9E7280"],[0.44481605351170567,"#9E7280"],[0.44816053511705689,"#9F727F"],[0.451505016722408,"#9F717F"],[0.45484949832775923,"#A0717E"],[0.4581939799331104,"#A0717D"],[0.46153846153846156,"#A0717D"],[0.46488294314381273,"#A1717C"],[0.4682274247491639,"#A1707C"],[0.47157190635451507,"#A2707B"],[0.47491638795986624,"#A2707A"],[0.47826086956521741,"#A2707A"],[0.48160535117056857,"#A37079"],[0.48494983277591974,"#A36F79"],[0.48829431438127091,"#A46F78"],[0.49163879598662213,"#A46F77"],[0.4949832775919733,"#A46F77"],[0.49832775919732442,"#A56E76"],[0.50167224080267558,"#A56E76"],[0.50501672240802686,"#A56E75"],[0.50836120401337792,"#A66E74"],[0.51170568561872909,"#A66E74"],[0.51505016722408026,"#A66D73"],[0.51839464882943154,"#A76D73"],[0.52173913043478271,"#A76D72"],[0.52508361204013376,"#A86D71"],[0.52842809364548493,"#A86D71"],[0.53177257525083621,"#A86C70"],[0.53511705685618738,"#A96C70"],[0.53846153846153844,"#A96C6F"],[0.5418060200668896,"#A96C6E"],[0.54515050167224077,"#AA6C6E"],[0.54849498327759205,"#AA6B6D"],[0.55183946488294322,"#AA6B6D"],[0.55518394648829428,"#AB6B6C"],[0.55852842809364545,"#AB6B6B"],[0.56187290969899673,"#AB6B6B"],[0.56521739130434789,"#AC6A6A"],[0.56856187290969895,"#AC6A6A"],[0.57190635451505012,"#AC6A69"],[0.5752508361204014,"#AD6A68"],[0.57859531772575257,"#AD6968"],[0.58193979933110374,"#AD6967"],[0.58528428093645479,"#AE6967"],[0.58862876254180607,"#AE6966"],[0.59197324414715724,"#AE6965"],[0.59531772575250841,"#AF6865"],[0.59866220735785947,"#AF6864"],[0.60200668896321075,"#AF6864"],[0.60535117056856191,"#AF6863"],[0.60869565217391308,"#B06862"],[0.61204013377926425,"#B06762"],[0.61538461538461542,"#B06761"],[0.61872909698996659,"#B16761"],[0.62207357859531776,"#B16760"],[0.62541806020066892,"#B1665F"],[0.62876254180602009,"#B2665F"],[0.63210702341137126,"#B2665E"],[0.63545150501672243,"#B2665E"],[0.6387959866220736,"#B2665D"],[0.64214046822742477,"#B3655D"],[0.64548494983277593,"#B3655C"],[0.6488294314381271,"#B3655B"],[0.65217391304347827,"#B4655B"],[0.65551839464882944,"#B4655A"],[0.65886287625418072,"#B4645A"],[0.66220735785953178,"#B46459"],[0.66555183946488294,"#B56458"],[0.66889632107023411,"#B56458"],[0.67224080267558539,"#B56357"],[0.67558528428093645,"#B66357"],[0.67892976588628762,"#B66356"],[0.68227424749163879,"#B66355"],[0.68561872909699006,"#B66355"],[0.68896321070234123,"#B76254"],[0.69230769230769229,"#B76254"],[0.69565217391304346,"#B76253"],[0.69899665551839474,"#B76252"],[0.70234113712374591,"#B86152"],[0.70568561872909696,"#B86151"],[0.70903010033444813,"#B86151"],[0.71237458193979941,"#B86150"],[0.71571906354515058,"#B9614F"],[0.71906354515050175,"#B9604F"],[0.72240802675585281,"#B9604E"],[0.72575250836120409,"#BA604E"],[0.72909698996655525,"#BA604D"],[0.73244147157190642,"#BA5F4C"],[0.73578595317725748,"#BA5F4C"],[0.73913043478260876,"#BB5F4B"],[0.74247491638795993,"#BB5F4A"],[0.7458193979933111,"#BB5E4A"],[0.74916387959866226,"#BB5E49"],[0.75250836120401332,"#BC5E49"],[0.7558528428093646,"#BC5E48"],[0.75919732441471577,"#BC5E47"],[0.76254180602006694,"#BC5D47"],[0.76588628762541799,"#BD5D46"],[0.76923076923076927,"#BD5D46"],[0.77257525083612044,"#BD5D45"],[0.77591973244147161,"#BD5C44"],[0.77926421404682278,"#BD5C44"],[0.78260869565217395,"#BE5C43"],[0.78595317725752512,"#BE5C43"],[0.78929765886287628,"#BE5B42"],[0.79264214046822745,"#BE5B41"],[0.79598662207357862,"#BF5B41"],[0.79933110367892979,"#BF5B40"],[0.80267558528428096,"#BF5A3F"],[0.80602006688963213,"#BF5A3F"],[0.8093645484949834,"#C05A3E"],[0.81270903010033446,"#C05A3E"],[0.81605351170568563,"#C0593D"],[0.8193979933110368,"#C0593C"],[0.82274247491638808,"#C0593C"],[0.82608695652173914,"#C1593B"],[0.8294314381270903,"#C1583B"],[0.83277591973244147,"#C1583A"],[0.83612040133779275,"#C15839"],[0.83946488294314392,"#C25839"],[0.84280936454849498,"#C25738"],[0.84615384615384615,"#C25737"],[0.84949832775919742,"#C25737"],[0.85284280936454859,"#C25736"],[0.85618729096989965,"#C35635"],[0.85953177257525082,"#C35635"],[0.86287625418060199,"#C35634"],[0.86622073578595327,"#C35633"],[0.86956521739130443,"#C35533"],[0.87290969899665549,"#C45532"],[0.87625418060200666,"#C45532"],[0.87959866220735794,"#C45531"],[0.88294314381270911,"#C45430"],[0.88628762541806028,"#C45430"],[0.88963210702341133,"#C5542F"],[0.89297658862876261,"#C5542E"],[0.89632107023411378,"#C5532E"],[0.89966555183946495,"#C5532D"],[0.90301003344481601,"#C6532C"],[0.90635451505016729,"#C6532C"],[0.90969899665551845,"#C6522B"],[0.91304347826086962,"#C6522A"],[0.91638795986622079,"#C65229"],[0.91973244147157196,"#C65229"],[0.92307692307692313,"#C75128"],[0.9264214046822743,"#C75127"],[0.92976588628762546,"#C75127"],[0.93311036789297663,"#C75126"],[0.9364548494983278,"#C75025"],[0.93979933110367897,"#C85025"],[0.94314381270903014,"#C85024"],[0.94648829431438142,"#C84F23"],[0.94983277591973247,"#C84F22"],[0.95317725752508364,"#C84F22"],[0.95652173913043481,"#C94F21"],[0.95986622073578609,"#C94E20"],[0.96321070234113715,"#C94E1F"],[0.96655518394648832,"#C94E1E"],[0.96989966555183948,"#C94E1E"],[0.97324414715719065,"#CA4D1D"],[0.97658862876254182,"#CA4D1C"],[0.97993311036789288,"#CA4D1B"],[0.98327759197324427,"#CA4C1A"],[0.98662207357859544,"#CA4C1A"],[0.98996655518394661,"#CA4C19"],[0.99331103678929766,"#CB4C18"],[0.99665551839464883,"#CB4B17"],[1,"#CB4B16"]],"colorbar":{"bgcolor":"rgba(253,246,227,1)","bordercolor":"transparent","borderwidth":2.0615604867573376,"thickness":23.040000000000003,"title":"Distance from US<br />(UNGA Ideal Points)","titlefont":{"color":"rgba(101,123,131,1)","family":"","size":15.940224159402243},"tickmode":"array","ticktext":[0,1,2,3,4],"tickvals":[0.0016666666666666668,0.24416375406577998,0.48666084146489325,0.72915792886400665,0.9716550162631199],"tickfont":{"color":"rgba(147,161,161,1)","family":"","size":12.7521793275218},"ticklen":2,"len":0.5}},"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":45.223744292237448,"r":7.9701120797011216,"b":14.611872146118721,"l":11.955168119551683},"plot_bgcolor":"rgba(253,246,227,1)","paper_bgcolor":"rgba(253,246,227,1)","font":{"color":"rgba(147,161,161,1)","family":"","size":15.940224159402243},"title":{"text":"<b> Climate Attribution Research Network <\/b>","font":{"color":"rgba(101,123,131,1)","family":"","size":18.596928185969286},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-7.3973668028636039,9.1620579471973969],"tickmode":"array","ticktext":["-4","0","4","8"],"tickvals":[-4,0,4.0000000000000009,8],"categoryorder":"array","categoryarray":["-4","0","4","8"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.9850560398505608,"tickwidth":0,"showticklabels":false,"tickfont":{"color":null,"family":null,"size":0},"tickangle":-0,"showline":true,"linecolor":"rgba(147,161,161,1)","linewidth":0.72455564360919278,"showgrid":true,"gridcolor":"rgba(238,232,213,1)","gridwidth":0.72455564360919278,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(101,123,131,1)","family":"","size":15.940224159402243}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-9.2370151884321459,5.1163328747134669],"tickmode":"array","ticktext":["-5","0","5"],"tickvals":[-5,0,5],"categoryorder":"array","categoryarray":["-5","0","5"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.9850560398505608,"tickwidth":0,"showticklabels":false,"tickfont":{"color":null,"family":null,"size":0},"tickangle":-0,"showline":true,"linecolor":"rgba(147,161,161,1)","linewidth":0.72455564360919278,"showgrid":true,"gridcolor":"rgba(238,232,213,1)","gridwidth":0.72455564360919278,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(101,123,131,1)","family":"","size":15.940224159402243}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(253,246,227,1)","bordercolor":"transparent","borderwidth":2.0615604867573376,"font":{"color":"rgba(147,161,161,1)","family":"","size":12.7521793275218},"title":{"text":"Distance from US<br />(UNGA Ideal Points)<br />Study Duration (years)","font":{"color":"rgba(101,123,131,1)","family":"","size":15.940224159402243}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"2fa8241b2982":{"size":{},"colour":{},"text":{},"x":{},"y":{},"type":"scatter"}},"cur_data":"2fa8241b2982","visdat":{"2fa8241b2982":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>I reran a simpler version of the plot from earlier using <code>plotly</code> to look at all the nodes in greater detail. This actually revealed some interesting patterns in the data.</p>
+<p>First, I got to take a closer look at all of those outliers that don’t make up the central cluster. It looks like a lot of those states are either African or Latin American, suggesting that the current attribution studies have some weaker coverage in those regions. Whereas some regional studies examine Africa and Latin America, there seem to be some states that are consistently left out for some reason.</p>
+<p>The African region clusters indicate that researchers studying African states tend to study the same few states together.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>top_countries <span class="ot">&lt;-</span> node_data <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">degree =</span> <span class="fu">degree</span>(network),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">betweenness =</span> <span class="fu">betweenness</span>(network),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">closeness =</span> <span class="fu">closeness</span>(network)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(degree)) <span class="sc">|&gt;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(country_name, study_duration, ideal_point_distance, degree) <span class="sc">|&gt;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">ideal_point_distance =</span> <span class="fu">round</span>(ideal_point_distance, <span class="dv">2</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Country"</span> <span class="ot">=</span> country_name,</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Study Duration (years)"</span> <span class="ot">=</span> study_duration,</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Distance from US"</span> <span class="ot">=</span> ideal_point_distance,</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Degree Centrality"</span> <span class="ot">=</span> degree</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>network_stats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">Metric =</span> <span class="fu">c</span>(<span class="st">"Nodes"</span>, <span class="st">"Edges"</span>, <span class="st">"Density"</span>, <span class="st">"Average Degree"</span>),</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">Value =</span> <span class="fu">c</span>(</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        <span class="fu">vcount</span>(network),</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ecount</span>(network),</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>        <span class="fu">round</span>(<span class="fu">edge_density</span>(network), <span class="dv">4</span>),</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>        <span class="fu">round</span>(<span class="fu">mean</span>(<span class="fu">degree</span>(network)), <span class="dv">2</span>)</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">Value =</span> <span class="fu">round</span>(Value, <span class="dv">2</span>)</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>network_stats <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Network Summary Statistics"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>, <span class="st">"r"</span>),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">"html"</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Network Summary Statistics</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Metric</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Nodes</td>
+<td style="text-align: right;">87.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Edges</td>
+<td style="text-align: right;">560.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Density</td>
+<td style="text-align: right;">0.15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Average Degree</td>
+<td style="text-align: right;">12.87</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>I output a few descriptive stats above. The main things worth noting here are the density and average degree stats. The low density tells me that the network is only moderately connected. This isn’t particularly surprising since a lot of the studies are single-country studies. However, among the connected nodes, the average state is connected to around thirteen other states.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>top_countries <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Top 10 Countries by Degree Centrality"</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>, <span class="st">"r"</span>, <span class="st">"r"</span>, <span class="st">"r"</span>),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">"html"</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Top 10 Countries by Degree Centrality</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Country</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Study Duration (years)</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Distance from US</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Degree Centrality</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">56</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Angola</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2.97</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Burkina Faso</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3.05</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Botswana</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2.67</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mali</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3.19</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bulgaria</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.33</td>
+<td style="text-align: right;">36</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Canada</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">0.97</td>
+<td style="text-align: right;">34</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Colombia</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2.72</td>
+<td style="text-align: right;">34</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pakistan</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2.85</td>
+<td style="text-align: right;">34</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Peru</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.66</td>
+<td style="text-align: right;">34</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Looking through the top countries, I see that the US is the most studied of all, which is easily observable in the plots above. However, it’s notable that so many African states make it to the top countries, despite not being too connected in the chart above.</p>
+
+
+<!-- -->
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Notably, the new data set has a year variable for the first time instead of the usual UNGA session variable! This makes data cleaning easier since I don’t have to make the year variable using the session variable, which has some funkiness for UNGA years with absent sessions.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Note that I have no idea how much Russian and Chinese research there is in this field. Take what I say with a grain of salt.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/kevinnavreteparra\.github\.io\/kevin-quarto-blog\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb14" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Tidy Tuesday (12 August 2025)"</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> today</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">- R</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">- Quarto</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">- Tidy Tuesday</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> Tidy Tuesday.</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="an">draft:</span><span class="co"> false</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="an">warning:</span><span class="co"> false</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="an">message:</span><span class="co"> false</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> true</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu"># Table of contents</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Introduction</span><span class="co">](#section1)</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span><span class="co">[</span><span class="ot">Setup</span><span class="co">](#section2)</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span><span class="co">[</span><span class="ot">Data Cleaning</span><span class="co">](#section3)</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span><span class="co">[</span><span class="ot">Making the Network</span><span class="co">](#section4)</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction &lt;a name="section1"&gt;&lt;/a&gt;</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>This week's Tidy Tuesday looked like fun, so I decided to give it a stab. The data set is at the climate attribution study level of analysis, and it has some useful meta information about the studies. The variables that caught my eye are the <span class="in">`event_period`</span> and <span class="in">`iso`</span> variables because I figured I could try to merge in some international relations data from the World Bank or something. Initially, I thought about bringing in something like a GDP variable or something, but that seemed too easy.</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>I spent some time thinking about what I could do to visualize these data. My first instinct was to do some sort of word cloud with the variable that summarizes the studies, but I ultimately decided against that for two reasons:</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>The variable has a lot of noisy words, and I didn't feel like filtering them out;</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>There wasn't a good way to look at the word clouds by country.</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>Ultimately, I decided instead on doing a network analysis to learn a little more about how to make those types of charts. With that goal in mind, I started brainstorming some relationships I could test using a network graph. And since I recently saw that <span class="co">[</span><span class="ot">Erik Voeten</span><span class="co">](https://gufaculty360.georgetown.edu/s/contact/00336000014Rdd7AAC/erik-voeten)</span> updated the United Nations General Assembly (UNGA) ideal points data, I decided to kill two birds with one stone by playing around with this new data set.<span class="ot">[^1]</span> </span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>As a result, the question driving the analysis below is: how does proximity to the United States affect the attention paid to states in climate attribution studies? In other words, are states more proximal to the US more likely to be the subjects of study in these studies? Now, I should note a few things before moving on. First, I don't spend any time below controlling for any confounding variables that could have an effect here, like region, industrialization, or economic capacity, to name a few. So all the results below should be taking with a grain of salt considering the guaranteed omitted variable bias present in the analysis! Second, I didn't do a lot of testing to ensure that my data cleaning worked exactly as intended, so there very well could be some errors in the code. Again: grain of salt! Finally, I'm not too experienced with network analysis, so take my interpretations with an additional grain of salt. This project is as much a learning experience for me as it is a fun data exercise.</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a><span class="fu"># Setup &lt;a name='section2'&gt;&lt;/a&gt;</span></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: "hide"</span></span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"pacman"</span>)) <span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>    pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>        tidytuesdayR,</span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>        tidyverse,</span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>        magrittr,</span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>        countrycode,</span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>        janitor,</span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>        igraph,</span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a>        ggraph,</span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a>        RColorBrewer,</span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a>        scales,</span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a>        ggthemes,</span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>        plotly,</span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a>        knitr,</span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a>        kableExtra</span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a>I'll begin with some useful setup. First, I'll load in some packages and set a random seed. Pretty standard stuff here, no need to spend too much time on it. </span>
+<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load_tt</span></span>
+<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">'2025-08-12'</span>)<span class="sc">$</span>attribution_studies</span>
+<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a>data_unga <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://dataverse.harvard.edu/api/access/datafile/11837234"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a>    <span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>x1, <span class="sc">-</span>session_x)</span>
+<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a>Next, I'll load in the Tidy Tuesday data for this week. I only want the clean data, not the raw data, so I loaded it in directly using the <span class="in">`tt_load`</span> package. I also loaded in the newest UNGA data from Erik Voeten's <span class="co">[</span><span class="ot">Dataverse page</span><span class="co">](https://dataverse.harvard.edu/dataverse/Voeten)</span>, which I'll use down the line. </span>
+<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data Cleaning &lt;a name='section3'&gt;&lt;/a&gt;</span></span>
+<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: clean_data</span></span>
+<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a>data_clean <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a>    <span class="co"># i'm just interested in states</span></span>
+<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(iso_country_code))  <span class="sc">|&gt;</span> </span>
+<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a>    <span class="co"># extract start and end years</span></span>
+<span id="cb14-99"><a href="#cb14-99" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a>        <span class="at">event_period_clean =</span> <span class="fu">str_replace_all</span>(event_period, <span class="at">pattern =</span> <span class="st">"[A-Za-z]"</span>, <span class="st">""</span>),</span>
+<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a>        <span class="at">event_period_clean =</span> <span class="fu">str_trim</span>(event_period_clean),</span>
+<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a>        <span class="at">event_period_clean =</span> <span class="fu">str_replace</span>(event_period_clean, <span class="st">'- '</span>, <span class="st">''</span>)</span>
+<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span> </span>
+<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>((<span class="sc">!</span><span class="fu">is.na</span>(event_period)) <span class="sc">&amp;</span> (<span class="sc">!</span><span class="fu">is.na</span>(event_year))) <span class="sc">|&gt;</span> </span>
+<span id="cb14-105"><a href="#cb14-105" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate_wider_regex</span>(</span>
+<span id="cb14-106"><a href="#cb14-106" aria-hidden="true" tabindex="-1"></a>    event_period_clean,</span>
+<span id="cb14-107"><a href="#cb14-107" aria-hidden="true" tabindex="-1"></a>    <span class="at">patterns =</span> <span class="fu">c</span>(</span>
+<span id="cb14-108"><a href="#cb14-108" aria-hidden="true" tabindex="-1"></a>        <span class="at">start =</span> <span class="st">"[^-, ]+"</span>,</span>
+<span id="cb14-109"><a href="#cb14-109" aria-hidden="true" tabindex="-1"></a>        <span class="st">"[-, ]"</span>,</span>
+<span id="cb14-110"><a href="#cb14-110" aria-hidden="true" tabindex="-1"></a>        <span class="at">end =</span> <span class="st">".*"</span></span>
+<span id="cb14-111"><a href="#cb14-111" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb14-112"><a href="#cb14-112" aria-hidden="true" tabindex="-1"></a>    <span class="at">too_few =</span> <span class="st">'align_start'</span></span>
+<span id="cb14-113"><a href="#cb14-113" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb14-114"><a href="#cb14-114" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb14-115"><a href="#cb14-115" aria-hidden="true" tabindex="-1"></a>        <span class="at">end =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(end), start, end),</span>
+<span id="cb14-116"><a href="#cb14-116" aria-hidden="true" tabindex="-1"></a>        <span class="at">end =</span> <span class="fu">str_trim</span>(end),</span>
+<span id="cb14-117"><a href="#cb14-117" aria-hidden="true" tabindex="-1"></a>        <span class="co"># hard code fix because it's late, and I'm tired</span></span>
+<span id="cb14-118"><a href="#cb14-118" aria-hidden="true" tabindex="-1"></a>        <span class="at">start =</span> <span class="fu">if_else</span>(start <span class="sc">==</span> <span class="st">"20172018"</span>, <span class="st">"2017"</span>, start),</span>
+<span id="cb14-119"><a href="#cb14-119" aria-hidden="true" tabindex="-1"></a>        <span class="at">end =</span> <span class="fu">if_else</span>(end <span class="sc">==</span> <span class="st">"20172018"</span>, <span class="st">"2018"</span>, end),</span>
+<span id="cb14-120"><a href="#cb14-120" aria-hidden="true" tabindex="-1"></a>        <span class="at">start =</span> <span class="fu">as.integer</span>(start),</span>
+<span id="cb14-121"><a href="#cb14-121" aria-hidden="true" tabindex="-1"></a>        <span class="at">end =</span> <span class="fu">as.integer</span>(end)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-122"><a href="#cb14-122" aria-hidden="true" tabindex="-1"></a>    <span class="co"># make into panel data</span></span>
+<span id="cb14-123"><a href="#cb14-123" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate_wider_delim</span>(</span>
+<span id="cb14-124"><a href="#cb14-124" aria-hidden="true" tabindex="-1"></a>        iso_country_code,</span>
+<span id="cb14-125"><a href="#cb14-125" aria-hidden="true" tabindex="-1"></a>        <span class="st">','</span>,</span>
+<span id="cb14-126"><a href="#cb14-126" aria-hidden="true" tabindex="-1"></a>        <span class="at">names_sep =</span> <span class="st">'-'</span>,</span>
+<span id="cb14-127"><a href="#cb14-127" aria-hidden="true" tabindex="-1"></a>        <span class="at">too_few =</span> <span class="st">'align_start'</span></span>
+<span id="cb14-128"><a href="#cb14-128" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb14-129"><a href="#cb14-129" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(</span>
+<span id="cb14-130"><a href="#cb14-130" aria-hidden="true" tabindex="-1"></a>        <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">'iso_country_code-'</span>),</span>
+<span id="cb14-131"><a href="#cb14-131" aria-hidden="true" tabindex="-1"></a>        <span class="at">values_to =</span> <span class="st">'iso3c'</span>,</span>
+<span id="cb14-132"><a href="#cb14-132" aria-hidden="true" tabindex="-1"></a>        <span class="at">names_to =</span> <span class="st">'iso_code_level'</span></span>
+<span id="cb14-133"><a href="#cb14-133" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb14-134"><a href="#cb14-134" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>iso_code_level) <span class="sc">|&gt;</span> </span>
+<span id="cb14-135"><a href="#cb14-135" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(iso3c)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-136"><a href="#cb14-136" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowwise</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb14-137"><a href="#cb14-137" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">list</span>(start<span class="sc">:</span>end)) <span class="sc">|&gt;</span></span>
+<span id="cb14-138"><a href="#cb14-138" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb14-139"><a href="#cb14-139" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb14-140"><a href="#cb14-140" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(</span>
+<span id="cb14-141"><a href="#cb14-141" aria-hidden="true" tabindex="-1"></a>        <span class="sc">-</span>start, <span class="sc">-</span>end, <span class="sc">-</span>event_period, </span>
+<span id="cb14-142"><a href="#cb14-142" aria-hidden="true" tabindex="-1"></a>        <span class="sc">-</span>event_year, <span class="sc">-</span>study_focus</span>
+<span id="cb14-143"><a href="#cb14-143" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb14-144"><a href="#cb14-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-145"><a href="#cb14-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-146"><a href="#cb14-146" aria-hidden="true" tabindex="-1"></a>My first step is to clean the data a little bit. My main goals here are to make this dataset into a panel data set at the country-study-year level, which means each record will correspond to a study whose content covers that country-year unit. So, if study A covered the US and Canada from 2010-2011, then I want the data to look something like:</span>
+<span id="cb14-147"><a href="#cb14-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-148"><a href="#cb14-148" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Study <span class="pp">|</span> Country <span class="pp">|</span> Year <span class="pp">|</span></span>
+<span id="cb14-149"><a href="#cb14-149" aria-hidden="true" tabindex="-1"></a><span class="pp">|-------|---------|------|</span></span>
+<span id="cb14-150"><a href="#cb14-150" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> A     <span class="pp">|</span> US      <span class="pp">|</span> 2010 <span class="pp">|</span></span>
+<span id="cb14-151"><a href="#cb14-151" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> A     <span class="pp">|</span> US      <span class="pp">|</span> 2011 <span class="pp">|</span></span>
+<span id="cb14-152"><a href="#cb14-152" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> A     <span class="pp">|</span> CAN     <span class="pp">|</span> 2010 <span class="pp">|</span></span>
+<span id="cb14-153"><a href="#cb14-153" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> A     <span class="pp">|</span> CAN     <span class="pp">|</span> 2011 <span class="pp">|</span></span>
+<span id="cb14-154"><a href="#cb14-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-155"><a href="#cb14-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-158"><a href="#cb14-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-159"><a href="#cb14-159" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: clean_unga</span></span>
+<span id="cb14-160"><a href="#cb14-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-161"><a href="#cb14-161" aria-hidden="true" tabindex="-1"></a>data_unga_clean <span class="ot">&lt;-</span> data_unga <span class="sc">|&gt;</span> </span>
+<span id="cb14-162"><a href="#cb14-162" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb14-163"><a href="#cb14-163" aria-hidden="true" tabindex="-1"></a>        <span class="at">iso3c_y =</span> <span class="fu">countrycode</span>(ccode2, <span class="st">'cown'</span>, <span class="st">'iso3c'</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-164"><a href="#cb14-164" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(ccode1 <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb14-165"><a href="#cb14-165" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(</span>
+<span id="cb14-166"><a href="#cb14-166" aria-hidden="true" tabindex="-1"></a>        <span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">'ccode'</span>),</span>
+<span id="cb14-167"><a href="#cb14-167" aria-hidden="true" tabindex="-1"></a>        <span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">'ideal_point_fp'</span>),</span>
+<span id="cb14-168"><a href="#cb14-168" aria-hidden="true" tabindex="-1"></a>        <span class="sc">-</span>agree,</span>
+<span id="cb14-169"><a href="#cb14-169" aria-hidden="true" tabindex="-1"></a>        <span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">'n_votes_fp'</span>)</span>
+<span id="cb14-170"><a href="#cb14-170" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-171"><a href="#cb14-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-172"><a href="#cb14-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-173"><a href="#cb14-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-174"><a href="#cb14-174" aria-hidden="true" tabindex="-1"></a>Next, I did some minimal cleaning on the UNGA data, keeping only the variables that I need for the analysis below. I added an <span class="in">`iso3c`</span> variable so that I'd have a common key for the merge down the line, and I filtered out all countries except for the US in the x side of the dyad. </span>
+<span id="cb14-175"><a href="#cb14-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-178"><a href="#cb14-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-179"><a href="#cb14-179" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: prep_data</span></span>
+<span id="cb14-180"><a href="#cb14-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-181"><a href="#cb14-181" aria-hidden="true" tabindex="-1"></a>attribution_data <span class="ot">&lt;-</span> data_clean <span class="sc">|&gt;</span> </span>
+<span id="cb14-182"><a href="#cb14-182" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(data_unga_clean, <span class="at">by =</span> <span class="fu">join_by</span>(<span class="st">'iso3c'</span> <span class="sc">==</span> <span class="st">'iso3c_y'</span>, <span class="st">'year'</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-183"><a href="#cb14-183" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb14-184"><a href="#cb14-184" aria-hidden="true" tabindex="-1"></a>        <span class="at">ideal_point_distance =</span> <span class="fu">if_else</span>(iso3c <span class="sc">==</span> <span class="st">'USA'</span>, <span class="dv">0</span>, ideal_point_distance),</span>
+<span id="cb14-185"><a href="#cb14-185" aria-hidden="true" tabindex="-1"></a>        <span class="at">country_name =</span> <span class="fu">countrycode</span>(iso3c, <span class="st">'iso3c'</span>, <span class="st">'country.name.en'</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-186"><a href="#cb14-186" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ideal_point_distance))</span>
+<span id="cb14-187"><a href="#cb14-187" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-188"><a href="#cb14-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-189"><a href="#cb14-189" aria-hidden="true" tabindex="-1"></a>Now that I have the UNGA data how I want it, I can merge it into the cleaned Tidy Tuesday dataset. Notice that I dropped out any country-years with missing ideal point calculations. This only eliminated a few records, like the most recent year for Afghanistan, which doesn't have an ideal point for 2024. </span>
+<span id="cb14-190"><a href="#cb14-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-193"><a href="#cb14-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-194"><a href="#cb14-194" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nodes</span></span>
+<span id="cb14-195"><a href="#cb14-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-196"><a href="#cb14-196" aria-hidden="true" tabindex="-1"></a><span class="co"># make nodes</span></span>
+<span id="cb14-197"><a href="#cb14-197" aria-hidden="true" tabindex="-1"></a>node_data <span class="ot">&lt;-</span> attribution_data <span class="sc">|&gt;</span></span>
+<span id="cb14-198"><a href="#cb14-198" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(iso3c) <span class="sc">|&gt;</span></span>
+<span id="cb14-199"><a href="#cb14-199" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb14-200"><a href="#cb14-200" aria-hidden="true" tabindex="-1"></a>        <span class="at">study_duration =</span> <span class="fu">n</span>(),</span>
+<span id="cb14-201"><a href="#cb14-201" aria-hidden="true" tabindex="-1"></a>        <span class="at">country_name =</span> <span class="fu">first</span>(country_name),</span>
+<span id="cb14-202"><a href="#cb14-202" aria-hidden="true" tabindex="-1"></a>        <span class="at">ideal_point_distance =</span> <span class="fu">mean</span>(ideal_point_distance),</span>
+<span id="cb14-203"><a href="#cb14-203" aria-hidden="true" tabindex="-1"></a>        <span class="at">.groups =</span> <span class="st">'drop'</span></span>
+<span id="cb14-204"><a href="#cb14-204" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span></span>
+<span id="cb14-205"><a href="#cb14-205" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(study_duration <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-206"><a href="#cb14-206" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">node_id =</span> <span class="fu">row_number</span>()</span>
+<span id="cb14-207"><a href="#cb14-207" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-208"><a href="#cb14-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-209"><a href="#cb14-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-210"><a href="#cb14-210" aria-hidden="true" tabindex="-1"></a>In order to make the data that'd go into the nodes on my chart below, I aggregated the attribution data, keeping only <span class="in">`study_duration`</span>, <span class="in">`country_name`</span>, and <span class="in">`ideal_point_distance`</span> in the final data frame. Note that the study_duration variable measures the number of country-years that have been under study across attribution studies. This means that some years will be double counted on purpose if multiple attribution studies examined similar time periods. The <span class="in">`study_duration`</span> variable, then, should proxy for the amount of attention each state has gotten from scientists doing attribution studies. </span>
+<span id="cb14-211"><a href="#cb14-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-212"><a href="#cb14-212" aria-hidden="true" tabindex="-1"></a>The nodes are also static, meaning that any variance in <span class="in">`ideal_point_distance`</span> is lost at the aggregation step. This could be problematic--especially if a state has either shifted dramatically over time or if its ideal point distribution is bimodal. </span>
+<span id="cb14-213"><a href="#cb14-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-216"><a href="#cb14-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-217"><a href="#cb14-217" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: edges</span></span>
+<span id="cb14-218"><a href="#cb14-218" aria-hidden="true" tabindex="-1"></a><span class="co"># get edge weights</span></span>
+<span id="cb14-219"><a href="#cb14-219" aria-hidden="true" tabindex="-1"></a>edge_data <span class="ot">&lt;-</span> attribution_data <span class="sc">|&gt;</span></span>
+<span id="cb14-220"><a href="#cb14-220" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(iso3c <span class="sc">%in%</span> node_data<span class="sc">$</span>iso3c) <span class="sc">|&gt;</span></span>
+<span id="cb14-221"><a href="#cb14-221" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(citation, publication_year) <span class="sc">|&gt;</span></span>
+<span id="cb14-222"><a href="#cb14-222" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb14-223"><a href="#cb14-223" aria-hidden="true" tabindex="-1"></a>    <span class="fu">do</span>({</span>
+<span id="cb14-224"><a href="#cb14-224" aria-hidden="true" tabindex="-1"></a>        countries <span class="ot">&lt;-</span> .<span class="sc">$</span>iso3c</span>
+<span id="cb14-225"><a href="#cb14-225" aria-hidden="true" tabindex="-1"></a>        combinations <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">from =</span> countries, <span class="at">to =</span> countries, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb14-226"><a href="#cb14-226" aria-hidden="true" tabindex="-1"></a>        combinations[combinations<span class="sc">$</span>from <span class="sc">!=</span> combinations<span class="sc">$</span>to, ]</span>
+<span id="cb14-227"><a href="#cb14-227" aria-hidden="true" tabindex="-1"></a>        }) <span class="sc">|&gt;</span></span>
+<span id="cb14-228"><a href="#cb14-228" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb14-229"><a href="#cb14-229" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(from, to) <span class="sc">|&gt;</span></span>
+<span id="cb14-230"><a href="#cb14-230" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb14-231"><a href="#cb14-231" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight =</span> <span class="fu">n</span>(), </span>
+<span id="cb14-232"><a href="#cb14-232" aria-hidden="true" tabindex="-1"></a>        <span class="at">.groups =</span> <span class="st">'drop'</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-233"><a href="#cb14-233" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(</span>
+<span id="cb14-234"><a href="#cb14-234" aria-hidden="true" tabindex="-1"></a>        from <span class="sc">%in%</span> node_data<span class="sc">$</span>iso3c, </span>
+<span id="cb14-235"><a href="#cb14-235" aria-hidden="true" tabindex="-1"></a>        to <span class="sc">%in%</span> node_data<span class="sc">$</span>iso3c</span>
+<span id="cb14-236"><a href="#cb14-236" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb14-237"><a href="#cb14-237" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-238"><a href="#cb14-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-239"><a href="#cb14-239" aria-hidden="true" tabindex="-1"></a>The data for the edges will contain information about how many studies states have co-occurred. This means that states that appear together often will have greater weights than those who don't, and states who never appeared in studies together will jot be connected.</span>
+<span id="cb14-240"><a href="#cb14-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-241"><a href="#cb14-241" aria-hidden="true" tabindex="-1"></a><span class="fu"># Making the Network &lt;a name='section4'&gt;&lt;/a&gt;</span></span>
+<span id="cb14-242"><a href="#cb14-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-245"><a href="#cb14-245" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-246"><a href="#cb14-246" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: network</span></span>
+<span id="cb14-247"><a href="#cb14-247" aria-hidden="true" tabindex="-1"></a><span class="co"># makes network</span></span>
+<span id="cb14-248"><a href="#cb14-248" aria-hidden="true" tabindex="-1"></a>network <span class="ot">&lt;-</span> igraph<span class="sc">::</span><span class="fu">graph_from_data_frame</span>(</span>
+<span id="cb14-249"><a href="#cb14-249" aria-hidden="true" tabindex="-1"></a>    <span class="at">d =</span> edge_data, </span>
+<span id="cb14-250"><a href="#cb14-250" aria-hidden="true" tabindex="-1"></a>    <span class="at">vertices =</span> node_data <span class="sc">|&gt;</span> </span>
+<span id="cb14-251"><a href="#cb14-251" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(<span class="sc">-</span>node_id),</span>
+<span id="cb14-252"><a href="#cb14-252" aria-hidden="true" tabindex="-1"></a>    <span class="at">directed =</span> <span class="cn">FALSE</span></span>
+<span id="cb14-253"><a href="#cb14-253" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-254"><a href="#cb14-254" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-255"><a href="#cb14-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-256"><a href="#cb14-256" aria-hidden="true" tabindex="-1"></a>I generated a network data using the data I cleaned above, which I used to make the plot below. </span>
+<span id="cb14-257"><a href="#cb14-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-260"><a href="#cb14-260" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-261"><a href="#cb14-261" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: static_plot</span></span>
+<span id="cb14-262"><a href="#cb14-262" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: 'asis'</span></span>
+<span id="cb14-263"><a href="#cb14-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-264"><a href="#cb14-264" aria-hidden="true" tabindex="-1"></a>network <span class="sc">|&gt;</span></span>
+<span id="cb14-265"><a href="#cb14-265" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb14-266"><a href="#cb14-266" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_edge_link</span>(</span>
+<span id="cb14-267"><a href="#cb14-267" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(</span>
+<span id="cb14-268"><a href="#cb14-268" aria-hidden="true" tabindex="-1"></a>            <span class="at">width =</span> weight</span>
+<span id="cb14-269"><a href="#cb14-269" aria-hidden="true" tabindex="-1"></a>            ),</span>
+<span id="cb14-270"><a href="#cb14-270" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
+<span id="cb14-271"><a href="#cb14-271" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"gray50"</span></span>
+<span id="cb14-272"><a href="#cb14-272" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb14-273"><a href="#cb14-273" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_edge_width_continuous</span>(</span>
+<span id="cb14-274"><a href="#cb14-274" aria-hidden="true" tabindex="-1"></a>        <span class="at">range =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="dv">2</span>),</span>
+<span id="cb14-275"><a href="#cb14-275" aria-hidden="true" tabindex="-1"></a>        <span class="at">guide =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">"Shared Studies"</span>)</span>
+<span id="cb14-276"><a href="#cb14-276" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb14-277"><a href="#cb14-277" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_node_point</span>(</span>
+<span id="cb14-278"><a href="#cb14-278" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb14-279"><a href="#cb14-279" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> study_duration,</span>
+<span id="cb14-280"><a href="#cb14-280" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> ideal_point_distance</span>
+<span id="cb14-281"><a href="#cb14-281" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb14-282"><a href="#cb14-282" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.8</span></span>
+<span id="cb14-283"><a href="#cb14-283" aria-hidden="true" tabindex="-1"></a>    )  <span class="sc">+</span></span>
+<span id="cb14-284"><a href="#cb14-284" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_size_continuous</span>(</span>
+<span id="cb14-285"><a href="#cb14-285" aria-hidden="true" tabindex="-1"></a>        <span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">15</span>),</span>
+<span id="cb14-286"><a href="#cb14-286" aria-hidden="true" tabindex="-1"></a>        <span class="at">guide =</span> <span class="fu">guide_legend</span>(</span>
+<span id="cb14-287"><a href="#cb14-287" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">"Study Duration (years)"</span>, </span>
+<span id="cb14-288"><a href="#cb14-288" aria-hidden="true" tabindex="-1"></a>            <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">alpha =</span> <span class="dv">1</span>)</span>
+<span id="cb14-289"><a href="#cb14-289" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb14-290"><a href="#cb14-290" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb14-291"><a href="#cb14-291" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_gradient2</span>(</span>
+<span id="cb14-292"><a href="#cb14-292" aria-hidden="true" tabindex="-1"></a>        <span class="at">low =</span> <span class="st">"blue"</span>, <span class="at">mid =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"red"</span>,</span>
+<span id="cb14-293"><a href="#cb14-293" aria-hidden="true" tabindex="-1"></a>        <span class="at">midpoint =</span> <span class="fu">median</span>(node_data<span class="sc">$</span>ideal_point_distance, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-294"><a href="#cb14-294" aria-hidden="true" tabindex="-1"></a>        <span class="at">name =</span> <span class="st">"Distance from US</span><span class="sc">\n</span><span class="st">(UNGA Ideal Points)"</span>,</span>
+<span id="cb14-295"><a href="#cb14-295" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">round</span>(x, <span class="dv">2</span>)</span>
+<span id="cb14-296"><a href="#cb14-296" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb14-297"><a href="#cb14-297" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_node_text</span>(</span>
+<span id="cb14-298"><a href="#cb14-298" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(study_duration <span class="sc">&gt;</span> <span class="fu">quantile</span>(study_duration, <span class="fl">0.8</span>), </span>
+<span id="cb14-299"><a href="#cb14-299" aria-hidden="true" tabindex="-1"></a>                        country_name, <span class="st">""</span>)),</span>
+<span id="cb14-300"><a href="#cb14-300" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb14-301"><a href="#cb14-301" aria-hidden="true" tabindex="-1"></a>        <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-302"><a href="#cb14-302" aria-hidden="true" tabindex="-1"></a>        <span class="at">max.overlaps =</span> <span class="dv">20</span></span>
+<span id="cb14-303"><a href="#cb14-303" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb14-304"><a href="#cb14-304" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_graph</span>() <span class="sc">+</span></span>
+<span id="cb14-305"><a href="#cb14-305" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb14-306"><a href="#cb14-306" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Climate Attribution Research Network"</span>,</span>
+<span id="cb14-307"><a href="#cb14-307" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle =</span> <span class="st">"Countries connected by shared extreme weather studies</span><span class="sc">\n</span><span class="st">Node size = Study Duration (years)</span><span class="sc">\n</span><span class="st">Color = diplomatic distance from US"</span>,</span>
+<span id="cb14-308"><a href="#cb14-308" aria-hidden="true" tabindex="-1"></a>        <span class="at">caption =</span> <span class="st">"Data: Extreme Weather Attribution Studies &amp; UNGA Ideal Points</span><span class="sc">\n</span><span class="st">Edges represent shared attribution studies between countries"</span>,</span>
+<span id="cb14-309"><a href="#cb14-309" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb14-310"><a href="#cb14-310" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">""</span></span>
+<span id="cb14-311"><a href="#cb14-311" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb14-312"><a href="#cb14-312" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_solarized</span>() <span class="sc">+</span></span>
+<span id="cb14-313"><a href="#cb14-313" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb14-314"><a href="#cb14-314" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb14-315"><a href="#cb14-315" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb14-316"><a href="#cb14-316" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>),</span>
+<span id="cb14-317"><a href="#cb14-317" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>, <span class="at">color =</span> <span class="st">"gray50"</span>),</span>
+<span id="cb14-318"><a href="#cb14-318" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb14-319"><a href="#cb14-319" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb14-320"><a href="#cb14-320" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb14-321"><a href="#cb14-321" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb14-322"><a href="#cb14-322" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">+</span></span>
+<span id="cb14-323"><a href="#cb14-323" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_gradient</span>(</span>
+<span id="cb14-324"><a href="#cb14-324" aria-hidden="true" tabindex="-1"></a>        <span class="at">low =</span> <span class="st">"#268bd2"</span>,</span>
+<span id="cb14-325"><a href="#cb14-325" aria-hidden="true" tabindex="-1"></a>        <span class="at">high =</span> <span class="st">"#cb4b16"</span>,</span>
+<span id="cb14-326"><a href="#cb14-326" aria-hidden="true" tabindex="-1"></a>        <span class="at">name =</span> <span class="st">"Distance from US</span><span class="sc">\n</span><span class="st">(UNGA Ideal Points)"</span>,</span>
+<span id="cb14-327"><a href="#cb14-327" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">round</span>(x, <span class="dv">2</span>)</span>
+<span id="cb14-328"><a href="#cb14-328" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-329"><a href="#cb14-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-330"><a href="#cb14-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-331"><a href="#cb14-331" aria-hidden="true" tabindex="-1"></a>The plot above is the main data visualization I made for this week's Tidy Tuesday. It encodes a few details. First, the node size encodes how many country-years have been studied for that given state, meaning that bigger nodes correspond to states that have gotten longer attention from researchers. The line width indicates how many studies the nodes share. And the continuous gradient indicates the mean ideal point distance from the US for each state. Bluer nodes are states whose mean ideal points are closer to the US and redder ones are those whose mean ideal points are farther away.</span>
+<span id="cb14-332"><a href="#cb14-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-333"><a href="#cb14-333" aria-hidden="true" tabindex="-1"></a>I haven't spent a lot of time interpreting these types of charts, so I'll reiterate my warning above: take this with a grain of salt. </span>
+<span id="cb14-334"><a href="#cb14-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-335"><a href="#cb14-335" aria-hidden="true" tabindex="-1"></a>First, I see a node cluster primarily composed of European states--most of which have a pretty high proximity to the US. It looks like a lot of them are connected to the US, which is a pretty central node in this chart, but the fact that the European states are a little isolated indicates to me that a lot of these studies look at Europe as a region. I see similar, though less defined, node clusters for some African and Asian states, though it's notable that there are a bunch of African and Asian states that are isolated from the main cluster in the middle. Overall, the node clusters make a lot of sense. These studies often span multiple states, and there are natural spatial relationships that researchers would be unlikely to ignore. Still, I wonder why states like Japan, South Africa, Vietnam, and Brazil are off on their own, despite having pretty large nodes. </span>
+<span id="cb14-336"><a href="#cb14-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-337"><a href="#cb14-337" aria-hidden="true" tabindex="-1"></a>It's also worth noting that three states seem to be the most central: the US, Russia, and China. These states' centrality isn't particularly surprising given how much the three contribute to climate change. However, I'd also venture an additional explanation. These three states, along with the European states, have much more robust research infrastructures, which could suggest a potential convenience bias in the climate attribution research in favor of these types of states. After all, the US and European states, for example, will have greater public data availability and transparency. And China and Russia will potentially have more active researchers.<span class="ot">[^2]</span></span>
+<span id="cb14-338"><a href="#cb14-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-339"><a href="#cb14-339" aria-hidden="true" tabindex="-1"></a>When it comes to the ideal point distance scores, I don't actually see much of a relationship between that and the amount of attention each state gets. Sure, there are a lot of studies on European states, which are far more proximal to the US than the rest of the countries in the sample. But I still observe significant attention paid to states farther from the US. </span>
+<span id="cb14-340"><a href="#cb14-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-343"><a href="#cb14-343" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-344"><a href="#cb14-344" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: plotly</span></span>
+<span id="cb14-345"><a href="#cb14-345" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: 'asis'</span></span>
+<span id="cb14-346"><a href="#cb14-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-347"><a href="#cb14-347" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> network <span class="sc">|&gt;</span></span>
+<span id="cb14-348"><a href="#cb14-348" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb14-349"><a href="#cb14-349" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_node_point</span>(</span>
+<span id="cb14-350"><a href="#cb14-350" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb14-351"><a href="#cb14-351" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> study_duration,</span>
+<span id="cb14-352"><a href="#cb14-352" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> ideal_point_distance,</span>
+<span id="cb14-353"><a href="#cb14-353" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">paste</span>(<span class="st">"Country:"</span>, country_name,</span>
+<span id="cb14-354"><a href="#cb14-354" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"&lt;br&gt;Study Duration:"</span>, study_duration, <span class="st">"years"</span>,</span>
+<span id="cb14-355"><a href="#cb14-355" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"&lt;br&gt;Distance from US:"</span>, <span class="fu">round</span>(ideal_point_distance, <span class="dv">2</span>))</span>
+<span id="cb14-356"><a href="#cb14-356" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb14-357"><a href="#cb14-357" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.8</span></span>
+<span id="cb14-358"><a href="#cb14-358" aria-hidden="true" tabindex="-1"></a>    )  <span class="sc">+</span></span>
+<span id="cb14-359"><a href="#cb14-359" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_size_continuous</span>(</span>
+<span id="cb14-360"><a href="#cb14-360" aria-hidden="true" tabindex="-1"></a>        <span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">15</span>),</span>
+<span id="cb14-361"><a href="#cb14-361" aria-hidden="true" tabindex="-1"></a>        <span class="at">guide =</span> <span class="fu">guide_legend</span>(</span>
+<span id="cb14-362"><a href="#cb14-362" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">"Study Duration (years)"</span>, </span>
+<span id="cb14-363"><a href="#cb14-363" aria-hidden="true" tabindex="-1"></a>            <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">alpha =</span> <span class="dv">1</span>)</span>
+<span id="cb14-364"><a href="#cb14-364" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb14-365"><a href="#cb14-365" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb14-366"><a href="#cb14-366" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb14-367"><a href="#cb14-367" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Climate Attribution Research Network"</span>,</span>
+<span id="cb14-368"><a href="#cb14-368" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb14-369"><a href="#cb14-369" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">""</span></span>
+<span id="cb14-370"><a href="#cb14-370" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb14-371"><a href="#cb14-371" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_solarized</span>() <span class="sc">+</span></span>
+<span id="cb14-372"><a href="#cb14-372" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb14-373"><a href="#cb14-373" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb14-374"><a href="#cb14-374" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb14-375"><a href="#cb14-375" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>),</span>
+<span id="cb14-376"><a href="#cb14-376" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>, <span class="at">color =</span> <span class="st">"gray50"</span>),</span>
+<span id="cb14-377"><a href="#cb14-377" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb14-378"><a href="#cb14-378" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb14-379"><a href="#cb14-379" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb14-380"><a href="#cb14-380" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb14-381"><a href="#cb14-381" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">+</span></span>
+<span id="cb14-382"><a href="#cb14-382" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_gradient</span>(</span>
+<span id="cb14-383"><a href="#cb14-383" aria-hidden="true" tabindex="-1"></a>        <span class="at">low =</span> <span class="st">"#268bd2"</span>,</span>
+<span id="cb14-384"><a href="#cb14-384" aria-hidden="true" tabindex="-1"></a>        <span class="at">high =</span> <span class="st">"#cb4b16"</span>,</span>
+<span id="cb14-385"><a href="#cb14-385" aria-hidden="true" tabindex="-1"></a>        <span class="at">name =</span> <span class="st">"Distance from US</span><span class="sc">\n</span><span class="st">(UNGA Ideal Points)"</span>,</span>
+<span id="cb14-386"><a href="#cb14-386" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">round</span>(x, <span class="dv">2</span>)</span>
+<span id="cb14-387"><a href="#cb14-387" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-388"><a href="#cb14-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-389"><a href="#cb14-389" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(plot, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span>
+<span id="cb14-390"><a href="#cb14-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-391"><a href="#cb14-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-392"><a href="#cb14-392" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-393"><a href="#cb14-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-394"><a href="#cb14-394" aria-hidden="true" tabindex="-1"></a>I reran a simpler version of the plot from earlier using <span class="in">`plotly`</span> to look at all the nodes in greater detail. This actually revealed some interesting patterns in the data.</span>
+<span id="cb14-395"><a href="#cb14-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-396"><a href="#cb14-396" aria-hidden="true" tabindex="-1"></a>First, I got to take a closer look at all of those outliers that don't make up the central cluster. It looks like a lot of those states are either African or Latin American, suggesting that the current attribution studies have some weaker coverage in those regions. Whereas some regional studies examine Africa and Latin America, there seem to be some states that are consistently left out for some reason. </span>
+<span id="cb14-397"><a href="#cb14-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-398"><a href="#cb14-398" aria-hidden="true" tabindex="-1"></a>The African region clusters indicate that researchers studying African states tend to study the same few states together. </span>
+<span id="cb14-399"><a href="#cb14-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-402"><a href="#cb14-402" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-403"><a href="#cb14-403" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: table_dat</span></span>
+<span id="cb14-404"><a href="#cb14-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-405"><a href="#cb14-405" aria-hidden="true" tabindex="-1"></a>top_countries <span class="ot">&lt;-</span> node_data <span class="sc">|&gt;</span></span>
+<span id="cb14-406"><a href="#cb14-406" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb14-407"><a href="#cb14-407" aria-hidden="true" tabindex="-1"></a>        <span class="at">degree =</span> <span class="fu">degree</span>(network),</span>
+<span id="cb14-408"><a href="#cb14-408" aria-hidden="true" tabindex="-1"></a>        <span class="at">betweenness =</span> <span class="fu">betweenness</span>(network),</span>
+<span id="cb14-409"><a href="#cb14-409" aria-hidden="true" tabindex="-1"></a>        <span class="at">closeness =</span> <span class="fu">closeness</span>(network)</span>
+<span id="cb14-410"><a href="#cb14-410" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb14-411"><a href="#cb14-411" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(degree)) <span class="sc">|&gt;</span></span>
+<span id="cb14-412"><a href="#cb14-412" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(country_name, study_duration, ideal_point_distance, degree) <span class="sc">|&gt;</span></span>
+<span id="cb14-413"><a href="#cb14-413" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-414"><a href="#cb14-414" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb14-415"><a href="#cb14-415" aria-hidden="true" tabindex="-1"></a>        <span class="at">ideal_point_distance =</span> <span class="fu">round</span>(ideal_point_distance, <span class="dv">2</span>)</span>
+<span id="cb14-416"><a href="#cb14-416" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb14-417"><a href="#cb14-417" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(</span>
+<span id="cb14-418"><a href="#cb14-418" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Country"</span> <span class="ot">=</span> country_name,</span>
+<span id="cb14-419"><a href="#cb14-419" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Study Duration (years)"</span> <span class="ot">=</span> study_duration,</span>
+<span id="cb14-420"><a href="#cb14-420" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Distance from US"</span> <span class="ot">=</span> ideal_point_distance,</span>
+<span id="cb14-421"><a href="#cb14-421" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Degree Centrality"</span> <span class="ot">=</span> degree</span>
+<span id="cb14-422"><a href="#cb14-422" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-423"><a href="#cb14-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-424"><a href="#cb14-424" aria-hidden="true" tabindex="-1"></a>network_stats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb14-425"><a href="#cb14-425" aria-hidden="true" tabindex="-1"></a>    <span class="at">Metric =</span> <span class="fu">c</span>(<span class="st">"Nodes"</span>, <span class="st">"Edges"</span>, <span class="st">"Density"</span>, <span class="st">"Average Degree"</span>),</span>
+<span id="cb14-426"><a href="#cb14-426" aria-hidden="true" tabindex="-1"></a>    <span class="at">Value =</span> <span class="fu">c</span>(</span>
+<span id="cb14-427"><a href="#cb14-427" aria-hidden="true" tabindex="-1"></a>        <span class="fu">vcount</span>(network),</span>
+<span id="cb14-428"><a href="#cb14-428" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ecount</span>(network),</span>
+<span id="cb14-429"><a href="#cb14-429" aria-hidden="true" tabindex="-1"></a>        <span class="fu">round</span>(<span class="fu">edge_density</span>(network), <span class="dv">4</span>),</span>
+<span id="cb14-430"><a href="#cb14-430" aria-hidden="true" tabindex="-1"></a>        <span class="fu">round</span>(<span class="fu">mean</span>(<span class="fu">degree</span>(network)), <span class="dv">2</span>)</span>
+<span id="cb14-431"><a href="#cb14-431" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-432"><a href="#cb14-432" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb14-433"><a href="#cb14-433" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb14-434"><a href="#cb14-434" aria-hidden="true" tabindex="-1"></a>        <span class="at">Value =</span> <span class="fu">round</span>(Value, <span class="dv">2</span>)</span>
+<span id="cb14-435"><a href="#cb14-435" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-436"><a href="#cb14-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-437"><a href="#cb14-437" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-438"><a href="#cb14-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-441"><a href="#cb14-441" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-442"><a href="#cb14-442" aria-hidden="true" tabindex="-1"></a>network_stats <span class="sc">|&gt;</span></span>
+<span id="cb14-443"><a href="#cb14-443" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb14-444"><a href="#cb14-444" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Network Summary Statistics"</span>,</span>
+<span id="cb14-445"><a href="#cb14-445" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>, <span class="st">"r"</span>),</span>
+<span id="cb14-446"><a href="#cb14-446" aria-hidden="true" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">"html"</span></span>
+<span id="cb14-447"><a href="#cb14-447" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-448"><a href="#cb14-448" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-449"><a href="#cb14-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-450"><a href="#cb14-450" aria-hidden="true" tabindex="-1"></a>I output a few descriptive stats above. The main things worth noting here are the density and average degree stats. The low density tells me that the network is only moderately connected. This isn't particularly surprising since a lot of the studies are single-country studies. However, among the connected nodes, the average state is connected to around thirteen other states. </span>
+<span id="cb14-451"><a href="#cb14-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-454"><a href="#cb14-454" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-455"><a href="#cb14-455" aria-hidden="true" tabindex="-1"></a>top_countries <span class="sc">|&gt;</span></span>
+<span id="cb14-456"><a href="#cb14-456" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb14-457"><a href="#cb14-457" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Top 10 Countries by Degree Centrality"</span>,</span>
+<span id="cb14-458"><a href="#cb14-458" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>, <span class="st">"r"</span>, <span class="st">"r"</span>, <span class="st">"r"</span>),</span>
+<span id="cb14-459"><a href="#cb14-459" aria-hidden="true" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">"html"</span></span>
+<span id="cb14-460"><a href="#cb14-460" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-461"><a href="#cb14-461" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-462"><a href="#cb14-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-463"><a href="#cb14-463" aria-hidden="true" tabindex="-1"></a>Looking through the top countries, I see that the US is the most studied of all, which is easily observable in the plots above. However, it's notable that so many African states make it to the top countries, despite not being too connected in the chart above. </span>
+<span id="cb14-464"><a href="#cb14-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-465"><a href="#cb14-465" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>Notably, the new data set has a year variable for the first time instead of the usual UNGA session variable! This makes data cleaning easier since I don't have to make the year variable using the session variable, which has some funkiness for UNGA years with absent sessions. </span>
+<span id="cb14-466"><a href="#cb14-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-467"><a href="#cb14-467" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>Note that I have no idea how much Russian and Chinese research there is in this field. Take what I say with a grain of salt. </span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2025 Kevin Navarrete-Parra. All rights reserved.</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
