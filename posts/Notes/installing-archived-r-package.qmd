@@ -82,7 +82,9 @@ install.packages('CDVine', repos = NULL, type = 'source')
 which worked successfully! Once that package was installed, I could then proceed to install the `SemiParSampleSelect` package without any issues. 
 
 It is worth noting that I came about this solution through the following means:
+
 - I downloaded the source code for `CDVine` and `SemiParSampleSelect` from CRAN and inspected the source code files to familiarize myself with the package structure. This helped me identify where the problematic macros were being called in the `CDVine` package. 
+
 - I searched online for similar issues. I didn't find any specific solutions for this package, nor did I find much reference material to help me understand the problem.
 - I asked around with AI tools like ChatGPT and Claude, which provided me with some useful insights as well as some incorrect suggestions. I spent some time sifting through responses and trying different approaches until I found a solution that worked. 
 
