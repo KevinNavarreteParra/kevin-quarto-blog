@@ -1,0 +1,89 @@
+---
+title: "Installing an Archived R Package with Archived Dependencies"
+date: '2025-08-20'
+format: html
+categories:
+- R
+- Troubleshooting
+description: Some notes on issues that might come up when installing an archived R package and how to resolve them.
+draft: false
+toc: true
+eval: false
+---
+
+This post just contains some helpful notes on installing an archived R package that also has archived dependencies. This is something that can be a bit tricky, so I thought it would be useful to document the process for future reference. Note that this is not a comprehensive guide, nor does it offer a general solution, but rather a specific example I recently encountered. This post is as much for my own future reference as it is for anyone else that might find it useful. 
+
+The archived R package I was trying to install is [SemiParSampleSelect](https://cran.r-project.org/src/contrib/Archive/SemiParSampleSel/), which was archived in 2017 by CRAN due to lack of maintenance. Installing an archived package is not too difficult in principle. All you typically need to do is find the link to the last version of the package on CRAN and install it using the `install.packages()` function with the `repos` argument set to `NULL`. For example, to install the last version of `SemiParSampleSelect`, you could run:
+
+```r
+
+install.packages("https://cran.r-project.org/src/contrib/Archive/SemiParSampleSel/SemiParSampleSel_0.1-2.tar.gz", repos = NULL, type = "source")
+
+```
+
+However, this package has a few dependencies that also need to be installed along with it. Glancing at its DESCRIPTION file, we can see that it has the following dependencies and imports:
+
+```txt
+Depends: R (>= 3.1.1), copula, mgcv, mvtnorm, gamlss.dist
+Imports: magic, trust, VGAM, Matrix, graphics, grDevices, stats, utils,
+        CDVine, matrixStats
+```
+
+Most of these packages are still available on CRAN, so there really shouldn't be any issues with installation--especially if those packages didn't deprecate and break any functionality on which `SemiParSampleSelect` relies. However, notice that one of the imports is the `CDVine` package, which is also archived on CRAN. You can find the [archived version on CRAN](https://cran.r-project.org/src/contrib/Archive/CDVine/), which indicates that it was archived in 2015--again, probably due to lack of maintenance. 
+
+When I tried installing the `CDVine` package from the archived source, I ran into the error below, which indicates that there are some issues with the C code in the package that prevent it from compiling on my system. 
+
+```r
+install.packages('https://cran.r-project.org/src/contrib/Archive/CDVine/CDVine_1.4.tar.gz', repo=NULL, type = 'source')
+trying URL 'https://cran.r-project.org/src/contrib/Archive/CDVine/CDVine_1.4.tar.gz'
+Content type 'application/x-gzip' length 101130 bytes (98 KB)
+==================================================
+downloaded 98 KB
+
+* installing *source* package ‘CDVine’ ...
+** this is package ‘CDVine’ version ‘1.4’
+** package ‘CDVine’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C compiler: ‘Apple clang version 17.0.0 (clang-1700.0.13.5)’
+using SDK: ‘MacOSX15.5.sdk’
+clang -arch arm64 -std=gnu2x -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c cdvine.c -o cdvine.o
+cdvine.c:40:21: error: expected expression
+   40 |   w = Calloc((*d+1),double);
+      |                     ^
+cdvine.c:40:7: error: use of undeclared identifier 'Calloc'
+   40 |   w = Calloc((*d+1),double);
+      |       ^
+cdvine.c:125:3: error: use of undeclared identifier 'Free'; did you mean 'free'?
+  125 |   Free(w); free_matrix(v,*d+1); free_matrix(theta,*d); free_matrix(ny,*d); free_intmatrix(fam,*d); free_matrix(x,*n+1);
+      |   ^~~~
+      |   free
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:56:7: note: 'free' declared here
+   56 | void  free(void * __unsafe_indexable);
+      |       ^
+3 errors generated.
+make: *** [cdvine.o] Error 1
+ERROR: compilation failed for package ‘CDVine’
+* removing ‘/Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/CDVine’
+* restoring previous ‘/Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/CDVine’
+Warning message:
+In install.packages("https://cran.r-project.org/src/contrib/Archive/CDVine/CDVine_1.4.tar.gz",  :
+  installation of package ‘/var/folders/w6/tqfwg0q50dg_6t9q7dk4wqlh0000gn/T//RtmpYvH01E/downloaded_packages/CDVine_1.4.tar.gz’ had non-zero exit status
+```
+
+The main issue here is that the `CDVine` package uses the `Calloc()` and `Free()` macros, which are no longer compatible with the latest versions of R and the C compiler. To resolve this, I had to modify the package's source code to replace these macros with more appropriate alternatives. Specifically, I went into all the `*.c` files in the package's `src/` directory and replaced `Calloc()` with `R_Calloc()` and `Free()` with `R_Free()`.
+
+Once I made these changes, I attempted to install the modified package again, only this time I did so from the local directory where I had saved the modified source code. 
+
+```r
+install.packages('CDVine', repos = NULL, type = 'source')
+```
+
+which worked successfully! Once that package was installed, I could then proceed to install the `SemiParSampleSelect` package without any issues. 
+
+It is worth noting that I came about this solution through the following means:
+- I downloaded the source code for `CDVine` and `SemiParSampleSelect` from CRAN and inspected the source code files to familiarize myself with the package structure. This helped me identify where the problematic macros were being called in the `CDVine` package. 
+- I searched online for similar issues. I didn't find any specific solutions for this package, nor did I find much reference material to help me understand the problem.
+- I asked around with AI tools like ChatGPT and Claude, which provided me with some useful insights as well as some incorrect suggestions. I spent some time sifting through responses and trying different approaches until I found a solution that worked. 
+
+Given that I used AI tools to help me troubleshoot this issue, I'll also say that this solution should be taken with a grain of salt. It worked for me for now, but there may be other issues that arise down the road. I also don't know `C` programming, so this solution was more of a best attempt than a guaranteed fix. 
