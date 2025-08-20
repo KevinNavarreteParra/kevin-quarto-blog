@@ -2,6 +2,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/Notes/installing-archived-r-package.html",
       "/posts/tidy-tuesday/2025-08-12.html",
       "/posts/horology/writing-on-watches.html",
       "/posts/Notes/probability_axioms.html",
@@ -33,6 +34,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Notes/installing-archived-r-package.html",
       "/posts/tidy-tuesday/2025-08-12.html",
       "/posts/horology/writing-on-watches.html",
       "/posts/Notes/probability_axioms.html",

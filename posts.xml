@@ -10,7 +10,457 @@
 <atom:link href="https://kevinnavreteparra.github.io/kevin-quarto-blog/posts.xml" rel="self" type="application/rss+xml"/>
 <description>A place for my notes and thoughts on political science, data science, and research methods</description>
 <generator>quarto-1.7.33</generator>
-<lastBuildDate>Tue, 12 Aug 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 20 Aug 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Installing an Archived R Package with Archived Dependencies</title>
+  <link>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/installing-archived-r-package.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This post just contains some helpful notes on installing an archived R package that also has archived dependencies. This is something that can be a bit tricky, so I thought it would be useful to document the process for future reference. Note that this is not a comprehensive guide, nor does it offer a general solution, but rather a specific example I recently encountered. This post is as much for my own future reference as it is for anyone else that might find it useful.</p>
+<p>The archived R package I was trying to install is <a href="https://cran.r-project.org/src/contrib/Archive/SemiParSampleSel/">SemiParSampleSelect</a>, which was archived in 2017 by CRAN due to lack of maintenance. Installing an archived package is not too difficult in principle. All you typically need to do is find the link to the last version of the package on CRAN and install it using the <code>install.packages()</code> function with the <code>repos</code> argument set to <code>NULL</code>. For example, to install the last version of <code>SemiParSampleSelect</code>, you could run:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install.packages</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://cran.r-project.org/src/contrib/Archive/SemiParSampleSel/SemiParSampleSel_0.1-2.tar.gz"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">repos =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"source"</span>)</span></code></pre></div>
+<p>However, this package has a few dependencies that also need to be installed along with it. Glancing at its DESCRIPTION file, we can see that it has the following dependencies and imports:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb2-1">Depends: R (&gt;= 3.1.1), copula, mgcv, mvtnorm, gamlss.dist</span>
+<span id="cb2-2">Imports: magic, trust, VGAM, Matrix, graphics, grDevices, stats, utils,</span>
+<span id="cb2-3">        CDVine, matrixStats</span></code></pre></div>
+<p>Most of these packages are still available on CRAN, so there really shouldn’t be any issues with installation–especially if those packages didn’t deprecate and break any functionality on which <code>SemiParSampleSelect</code> relies. However, notice that one of the imports is the <code>CDVine</code> package, which is also archived on CRAN. You can find the <a href="https://cran.r-project.org/src/contrib/Archive/CDVine/">archived version on CRAN</a>, which indicates that it was archived in 2015–again, probably due to lack of maintenance.</p>
+<p>When I tried installing the <code>CDVine</code> package from the archived source, I ran into the error below, which indicates that there are some issues with the C code in the package that prevent it from compiling on my system.</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install.packages</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'https://cran.r-project.org/src/contrib/Archive/CDVine/CDVine_1.4.tar.gz'</span>,&nbsp;<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">repo=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>,&nbsp;<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type&nbsp;=</span>&nbsp;<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'source'</span>)</span>
+<span id="cb3-2">trying URL <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'https://cran.r-project.org/src/contrib/Archive/CDVine/CDVine_1.4.tar.gz'</span></span>
+<span id="cb3-3">Content type <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'application/x-gzip'</span> length <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">101130</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bytes</span> (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">98</span> KB)</span>
+<span id="cb3-4"><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">================================================</span></span>
+<span id="cb3-5">downloaded <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">98</span> KB</span>
+<span id="cb3-6"></span>
+<span id="cb3-7"><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> installing <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>source<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> package ‘CDVine’ ...</span>
+<span id="cb3-8"><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span> this is package ‘CDVine’ version ‘<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.4</span>’</span>
+<span id="cb3-9"><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span> package ‘CDVine’ successfully unpacked and MD5 sums checked</span>
+<span id="cb3-10"><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span> using staged installation</span>
+<span id="cb3-11"><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span> libs</span>
+<span id="cb3-12">using C compiler<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> ‘Apple clang version <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">17</span>.<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.0</span> (clang<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">-1700</span>.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>.<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">13.5</span>)’</span>
+<span id="cb3-13">using SDK<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> ‘MacOSX15.<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5.</span>sdk’</span>
+<span id="cb3-14">clang <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>arch arm64 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>std<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span>gnu2x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>I<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"/Library/Frameworks/R.framework/Resources/include"</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>DNDEBUG   <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>I<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>opt<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>R<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>arm64<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>include    <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>fPIC  <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>falign<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>functions<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">64</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>Wall <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>g <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>O2  <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>c cdvine.c <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>o cdvine.o</span>
+<span id="cb3-15">cdvine.c<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> error<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> expected expression</span>
+<span id="cb3-16">   <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span>   w <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Calloc</span>((<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>d<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),double);</span>
+<span id="cb3-17">      <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span>                     <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">^</span></span>
+<span id="cb3-18">cdvine.c<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> error<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> use of undeclared identifier <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Calloc'</span></span>
+<span id="cb3-19">   <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">40</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span>   w <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Calloc</span>((<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>d<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),double);</span>
+<span id="cb3-20">      <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span>       <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">^</span></span>
+<span id="cb3-21">cdvine.c<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">125</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> error<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> use of undeclared identifier <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Free'</span>; did you mean <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'free'</span>?</span>
+<span id="cb3-22">  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">125</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span>   <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Free</span>(w); <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">free_matrix</span>(v,<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>d<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>); <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">free_matrix</span>(theta,<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>d); <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">free_matrix</span>(ny,<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>d); <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">free_intmatrix</span>(fam,<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>d); <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">free_matrix</span>(x,<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>n<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>);</span>
+<span id="cb3-23">      <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span>   <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">^~~~</span></span>
+<span id="cb3-24">      <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">|</span>   free</span>
+<span id="cb3-25"><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>Library<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>Developer<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>CommandLineTools<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>SDKs<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>MacOSX.sdk<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>usr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>include<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>malloc<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>_malloc.h<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">56</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> note<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'free'</span> declared here</span>
+<span id="cb3-26">   <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">56</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> void  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">free</span>(void <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> __unsafe_indexable);</span>
+<span id="cb3-27">      <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span>       <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">^</span></span>
+<span id="cb3-28"><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span> errors generated.</span>
+<span id="cb3-29">make<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">***</span> [cdvine.o] Error <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb3-30">ERROR<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> compilation failed <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> package ‘CDVine’</span>
+<span id="cb3-31"><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> removing ‘<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>Library<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>Frameworks<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>R.framework<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>Versions<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4.5</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>arm64<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>Resources<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>library<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>CDVine’</span>
+<span id="cb3-32"><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> restoring previous ‘<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>Library<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>Frameworks<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>R.framework<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>Versions<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4.5</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>arm64<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>Resources<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>library<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>CDVine’</span>
+<span id="cb3-33">Warning message<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb3-34">In <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install.packages</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://cran.r-project.org/src/contrib/Archive/CDVine/CDVine_1.4.tar.gz"</span>,  <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb3-35">  installation of package ‘<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>var<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>folders<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>w6<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>tqfwg0q50dg_6t9q7dk4wqlh0000gn<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>T<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">/</span>RtmpYvH01E<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>downloaded_packages<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>CDVine_1.<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4.</span>tar.gz’ had non<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>zero exit status</span></code></pre></div>
+<p>The main issue here is that the <code>CDVine</code> package uses the <code>Calloc()</code> and <code>Free()</code> macros, which are no longer compatible with the latest versions of R and the C compiler. To resolve this, I had to modify the package’s source code to replace these macros with more appropriate alternatives. Specifically, I went into all the <code>*.c</code> files in the package’s <code>src/</code> directory and replaced <code>Calloc()</code> with <code>R_Calloc()</code> and <code>Free()</code> with <code>R_Free()</code>.</p>
+<p>Once I made these changes, I attempted to install the modified package again, only this time I did so from the local directory where I had saved the modified source code.</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install.packages</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'CDVine'</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">repos =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'source'</span>)</span></code></pre></div>
+<p>which worked successfully! Once that package was installed, I could then proceed to install the <code>SemiParSampleSelect</code> package without any issues.</p>
+<p>It is worth noting that I came about this solution through the following means:</p>
+<ul>
+<li><p>I downloaded the source code for <code>CDVine</code> and <code>SemiParSampleSelect</code> from CRAN and inspected the source code files to familiarize myself with the package structure. This helped me identify where the problematic macros were being called in the <code>CDVine</code> package.</p></li>
+<li><p>I searched online for similar issues. I didn’t find any specific solutions for this package, nor did I find much reference material to help me understand the problem.</p></li>
+<li><p>I asked around with AI tools like ChatGPT and Claude, which provided me with some useful insights as well as some incorrect suggestions. I spent some time sifting through responses and trying different approaches until I found a solution that worked.</p></li>
+</ul>
+<p>Given that I used AI tools to help me troubleshoot this issue, I’ll also say that this solution should be taken with a grain of salt. It worked for me for now, but there may be other issues that arise down the road. I also don’t know <code>C</code> programming, so this solution was more of a best attempt than a guaranteed fix.</p>
+
+
+<!-- -->
+
+
+ ]]></description>
+  <category>R</category>
+  <category>Troubleshooting</category>
+  <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/installing-archived-r-package.html</guid>
+  <pubDate>Wed, 20 Aug 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Tidy Tuesday (12 August 2025)</title>
   <link>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/tidy-tuesday/2025-08-12.html</link>
@@ -1342,7 +1792,7 @@ background-color: null;
 font-style: inherit;">"text"</span>)</span></code></pre></div>
 </details>
 <div class="plotly html-widget html-fill-item" id="htmlwidget-7199518c4f50c8ce55af" style="width:768px;height:576px;"></div>
-<script type="application/json" data-for="htmlwidget-7199518c4f50c8ce55af">{"x":{"data":[{"x":[3.1450382864871149,-6.3291523569867332,-0.77391960697880025,2.5444026564040483,2.5946889664664581,-0.69115004211359377,2.4016265141127167,5.6324149570103419,3.1931715955031761,-1.5505407516956549,2.499386507950121,0.76705608562992778,-5.2025432777941498,3.0190485271916874,2.371618007374916,-1.4441107296416131,3.433837058441346,2.6195673663121983,-6.0967465720095344,2.8374444957482341,-0.81357867999444045,-2.8157003507435947,-1.7428456138432091,8.4093568221946242,-0.4752112295375206,4.6713803817104953,-1.594187971503205,-0.30112317189887661,-1.8096475153404563,4.3203746728362864,1.7429983820065513,0.2120151019137633,0.63785951997693879,1.4279935762509417,2.5343274314453681,1.6213738445002652,4.9122760360913231,-3.138808588713661,6.470091368890083,7.0293649795163828,-0.026214817352354543,-3.75616026873614,3.9896782688149148,-6.6446656778608313,5.9194834609484266,5.2878082252979857,6.8565465774417982,6.5462345835792073,-0.89501384370312986,5.4862519982982398,1.3435902495831644,2.546514583640997,4.3491409595187456,4.6150322600704827,3.4787624945299536,1.8719052581329187,2.6161024303438349,-0.64813086772676165,-0.46836612620455687,-2.8860681135445736,2.5494574369005534,-6.5026676053984316,3.4294441997967957,0.8161753436549235,2.9836505013546271,-2.3264567441919479,-0.97384339462148584,2.9986140762182041,2.7869569998607493,-6.3090201801681021,2.1943555453819932,-4.0657331491320194,1.0584325712902163,3.6804140612410237,-0.21978221445413007,-0.067774154560955258,2.3210715957073287,4.398862648225097,4.326631854419233,4.1753983534172372,4.3441979406355022,-5.3680095021685261,1.8199862834063447,4.6759779937422499,6.250269908747689,3.8434231250336643,4.132422608849641],"y":[1.9224499565445388,2.5476467425747518,-6.6814658850649904,1.0124170894216111,-7.3273770441956154,1.6838011837771154,1.8178730161624259,-1.4372157826677501,1.419348678730578,-7.9423205370457444,1.2110409543734173,-0.40587666995214083,-5.1788224257392246,2.027247799498928,1.3364242180493904,1.6949346082742744,-8.391252144918349,1.3572810166814657,-2.6228715293885707,0.67552062086981979,1.1222111273063369,0.4688922974664016,3.1428837115849659,-4.8005780114793009,1.7640126675978458,-2.8921828678483856,-0.17248126955199666,1.7463739282468596,2.1358182782289057,0.88821466735985555,3.2145723441618488,2.4152069823821636,-0.78078539226309129,-0.85294047868994072,1.5096692805554341,-8.5845902764709816,-0.034119877588135547,2.5944345924843208,1.4206163798994003,1.4992731608393581,1.4929090659079025,-4.7437083338773229,-2.9021036819136374,-0.40638437762952451,-1.0335164315279648,1.6787550102974504,-0.69644577682309095,-6.6383933025652162,2.7344591290913018,4.4639079627523026,0.063055017234249222,1.8186557687394027,3.5763343436035959,3.2425266592576576,2.4376994774693843,3.6061290863762596,3.4645556334712726,1.4328059347846487,0.87027188397753552,-7.2686910151841193,0.12214525067831643,1.8027932456964271,1.0563084858066161,-7.2075818948804118,0.74192797152421797,-5.901396062016719,2.2299661476129793,1.2153200666388877,1.3429041987863355,-1.9480043629524353,3.3011325227222388,-6.3149942926201339,-0.92240386866036017,-1.2747232978206475,0.90365317174354309,-8.4309174421145858,3.7459223886188484,-0.70509876685296557,1.4780910540639878,-3.3597777877375243,-4.351555574230793,-3.8518130553433285,1.1963064443565878,-7.6333284224270805,-6.8562449522972049,3.5269188823895599,3.1601464501261729],"text":["Country: Angola <br>Study Duration: 5 years <br>Distance from US: 2.97","Country: United Arab Emirates <br>Study Duration: 1 years <br>Distance from US: 2.81","Country: Argentina <br>Study Duration: 1 years <br>Distance from US: 2.62","Country: Australia <br>Study Duration: 66 years <br>Distance from US: 1.23","Country: Austria <br>Study Duration: 1 years <br>Distance from US: 1.37","Country: Belgium <br>Study Duration: 2 years <br>Distance from US: 1.51","Country: Burkina Faso <br>Study Duration: 3 years <br>Distance from US: 3.05","Country: Bangladesh <br>Study Duration: 3 years <br>Distance from US: 3.09","Country: Bulgaria <br>Study Duration: 3 years <br>Distance from US: 1.33","Country: Bahamas <br>Study Duration: 1 years <br>Distance from US: 2.87","Country: Bosnia & Herzegovina <br>Study Duration: 2 years <br>Distance from US: 1.74","Country: Belize <br>Study Duration: 1 years <br>Distance from US: 2.48","Country: Brazil <br>Study Duration: 18 years <br>Distance from US: 2.8","Country: Botswana <br>Study Duration: 5 years <br>Distance from US: 2.67","Country: Canada <br>Study Duration: 22 years <br>Distance from US: 0.97","Country: Switzerland <br>Study Duration: 3 years <br>Distance from US: 1.69","Country: Chile <br>Study Duration: 1 years <br>Distance from US: 2.19","Country: China <br>Study Duration: 147 years <br>Distance from US: 3.1","Country: Congo - Kinshasa <br>Study Duration: 1 years <br>Distance from US: 2.26","Country: Colombia <br>Study Duration: 2 years <br>Distance from US: 2.72","Country: Germany <br>Study Duration: 16 years <br>Distance from US: 1.53","Country: Denmark <br>Study Duration: 1 years <br>Distance from US: 1.55","Country: Algeria <br>Study Duration: 1 years <br>Distance from US: 3.13","Country: Egypt <br>Study Duration: 1 years <br>Distance from US: 3.67","Country: Spain <br>Study Duration: 10 years <br>Distance from US: 1.5","Country: Ethiopia <br>Study Duration: 5 years <br>Distance from US: 3.01","Country: Finland <br>Study Duration: 1 years <br>Distance from US: 1.03","Country: France <br>Study Duration: 15 years <br>Distance from US: 1.04","Country: United Kingdom <br>Study Duration: 53 years <br>Distance from US: 0.91","Country: Georgia <br>Study Duration: 1 years <br>Distance from US: 1.42","Country: Guinea <br>Study Duration: 1 years <br>Distance from US: 2.85","Country: Greece <br>Study Duration: 3 years <br>Distance from US: 1.39","Country: Guatemala <br>Study Duration: 1 years <br>Distance from US: 2.27","Country: Honduras <br>Study Duration: 1 years <br>Distance from US: 2.4","Country: Croatia <br>Study Duration: 2 years <br>Distance from US: 1.52","Country: Indonesia <br>Study Duration: 3 years <br>Distance from US: 3.41","Country: India <br>Study Duration: 12 years <br>Distance from US: 2.66","Country: Ireland <br>Study Duration: 10 years <br>Distance from US: 1.85","Country: Iran <br>Study Duration: 7 years <br>Distance from US: 3.95","Country: Iraq <br>Study Duration: 4 years <br>Distance from US: 3.11","Country: Italy <br>Study Duration: 7 years <br>Distance from US: 1.31","Country: Japan <br>Study Duration: 15 years <br>Distance from US: 1.82","Country: Kenya <br>Study Duration: 7 years <br>Distance from US: 3.14","Country: South Korea <br>Study Duration: 7 years <br>Distance from US: 1.75","Country: Laos <br>Study Duration: 1 years <br>Distance from US: 2.82","Country: Libya <br>Study Duration: 1 years <br>Distance from US: 2.91","Country: Sri Lanka <br>Study Duration: 1 years <br>Distance from US: 3.08","Country: Lesotho <br>Study Duration: 3 years <br>Distance from US: 3.25","Country: Morocco <br>Study Duration: 2 years <br>Distance from US: 2.62","Country: Madagascar <br>Study Duration: 5 years <br>Distance from US: 2.78","Country: Mexico <br>Study Duration: 2 years <br>Distance from US: 2.45","Country: Mali <br>Study Duration: 3 years <br>Distance from US: 3.19","Country: Mozambique <br>Study Duration: 4 years <br>Distance from US: 3.01","Country: Malawi <br>Study Duration: 2 years <br>Distance from US: 2.07","Country: Namibia <br>Study Duration: 3 years <br>Distance from US: 3.1","Country: Niger <br>Study Duration: 1 years <br>Distance from US: 3.19","Country: Nigeria <br>Study Duration: 2 years <br>Distance from US: 3.06","Country: Netherlands <br>Study Duration: 4 years <br>Distance from US: 1.46","Country: Norway <br>Study Duration: 4 years <br>Distance from US: 1.5","Country: Nepal <br>Study Duration: 1 years <br>Distance from US: 3.12","Country: New Zealand <br>Study Duration: 40 years <br>Distance from US: 1.8","Country: Oman <br>Study Duration: 1 years <br>Distance from US: 3.01","Country: Pakistan <br>Study Duration: 8 years <br>Distance from US: 2.85","Country: Panama <br>Study Duration: 1 years <br>Distance from US: 2.2","Country: Peru <br>Study Duration: 4 years <br>Distance from US: 2.66","Country: Philippines <br>Study Duration: 3 years <br>Distance from US: 2.64","Country: Portugal <br>Study Duration: 6 years <br>Distance from US: 1.48","Country: Romania <br>Study Duration: 2 years <br>Distance from US: 1.35","Country: Russia <br>Study Duration: 13 years <br>Distance from US: 2.47","Country: Rwanda <br>Study Duration: 1 years <br>Distance from US: 2.59","Country: Senegal <br>Study Duration: 1 years <br>Distance from US: 2.82","Country: Singapore <br>Study Duration: 1 years <br>Distance from US: 2.9","Country: El Salvador <br>Study Duration: 1 years <br>Distance from US: 2.52","Country: Somalia <br>Study Duration: 5 years <br>Distance from US: 3.14","Country: Sweden <br>Study Duration: 4 years <br>Distance from US: 1.59","Country: Syria <br>Study Duration: 1 years <br>Distance from US: 4.11","Country: Chad <br>Study Duration: 1 years <br>Distance from US: 2.68","Country: Thailand <br>Study Duration: 4 years <br>Distance from US: 2.79","Country: Turkey <br>Study Duration: 2 years <br>Distance from US: 1.62","Country: Tanzania <br>Study Duration: 2 years <br>Distance from US: 3.21","Country: Uganda <br>Study Duration: 1 years <br>Distance from US: 3.3","Country: Uruguay <br>Study Duration: 1 years <br>Distance from US: 2.98","Country: United States <br>Study Duration: 150 years <br>Distance from US: 0","Country: Vietnam <br>Study Duration: 10 years <br>Distance from US: 3.52","Country: South Africa <br>Study Duration: 21 years <br>Distance from US: 2.96","Country: Zambia <br>Study Duration: 2 years <br>Distance from US: 2.95","Country: Zimbabwe <br>Study Duration: 2 years <br>Distance from US: 3.62"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":["rgba(185,96,78,1)","rgba(182,99,85,1)","rgba(178,102,93,1)","rgba(137,122,154,1)","rgba(143,120,148,1)","rgba(148,118,142,1)","rgba(187,95,75,1)","rgba(188,94,73,1)","rgba(141,121,150,1)","rgba(183,98,83,1)","rgba(156,115,132,1)","rgba(175,104,99,1)","rgba(182,99,86,1)","rgba(179,101,91,1)","rgba(126,126,166,1)","rgba(154,116,134,1)","rgba(168,108,112,1)","rgba(188,94,72,1)","rgba(170,107,109,1)","rgba(180,100,89,1)","rgba(149,118,141,1)","rgba(150,118,140,1)","rgba(188,93,71,1)","rgba(197,84,46,1)","rgba(148,119,142,1)","rgba(186,95,76,1)","rgba(129,125,163,1)","rgba(129,125,163,1)","rgba(123,127,169,1)","rgba(145,120,146,1)","rgba(183,98,83,1)","rgba(144,120,147,1)","rgba(170,107,109,1)","rgba(173,105,103,1)","rgba(149,118,141,1)","rgba(193,89,59,1)","rgba(179,101,92,1)","rgba(159,113,127,1)","rgba(201,78,32,1)","rgba(188,94,72,1)","rgba(141,121,151,1)","rgba(158,114,128,1)","rgba(188,93,70,1)","rgba(156,115,131,1)","rgba(182,98,85,1)","rgba(184,97,81,1)","rgba(187,94,73,1)","rgba(190,91,66,1)","rgba(178,102,93,1)","rgba(182,99,86,1)","rgba(175,104,101,1)","rgba(189,92,68,1)","rgba(186,95,77,1)","rgba(165,110,117,1)","rgba(188,94,72,1)","rgba(189,92,68,1)","rgba(187,94,74,1)","rgba(146,119,144,1)","rgba(148,118,142,1)","rgba(188,93,71,1)","rgba(158,114,129,1)","rgba(186,95,76,1)","rgba(183,98,83,1)","rgba(169,108,112,1)","rgba(179,101,92,1)","rgba(179,101,92,1)","rgba(147,119,143,1)","rgba(142,121,149,1)","rgba(175,104,100,1)","rgba(178,102,95,1)","rgba(182,98,85,1)","rgba(184,97,81,1)","rgba(176,103,98,1)","rgba(188,93,71,1)","rgba(151,117,138,1)","rgba(203,75,22,1)","rgba(180,101,91,1)","rgba(182,99,86,1)","rgba(152,117,137,1)","rgba(190,92,67,1)","rgba(191,90,64,1)","rgba(186,96,77,1)","rgba(38,139,210,1)","rgba(195,86,53,1)","rgba(185,96,79,1)","rgba(185,96,79,1)","rgba(196,85,49,1)"],"opacity":0.80000000000000004,"size":[15.609460132344587,7.559055118110237,7.559055118110237,40.01127521958643,7.559055118110237,11.58425762522741,13.25155109497353,13.25155109497353,13.25155109497353,7.559055118110237,11.58425762522741,7.559055118110237,24.155390219455377,15.609460132344587,26.004850294500717,13.25155109497353,7.559055118110237,56.195762064635204,7.559055118110237,11.58425762522741,23.148597393287396,7.559055118110237,7.559055118110237,7.559055118110237,19.634662639461766,15.609460132344587,7.559055118110237,22.619983812126204,36.585203185184596,7.559055118110237,7.559055118110237,13.25155109497353,7.559055118110237,7.559055118110237,11.58425762522741,13.25155109497353,20.909141539415771,19.634662639461766,17.41874737191889,14.53091037119081,17.41874737191889,22.619983812126204,17.41874737191889,17.41874737191889,7.559055118110237,7.559055118110237,7.559055118110237,13.25155109497353,11.58425762522741,15.609460132344587,11.58425762522741,13.25155109497353,14.53091037119081,11.58425762522741,13.25155109497353,7.559055118110237,11.58425762522741,14.53091037119081,14.53091037119081,7.559055118110237,32.696436718205213,7.559055118110237,18.20873992861598,7.559055118110237,14.53091037119081,13.25155109497353,16.559681547226823,11.58425762522741,21.502765624271383,7.559055118110237,7.559055118110237,7.559055118110237,7.559055118110237,15.609460132344587,14.53091037119081,7.559055118110237,7.559055118110237,14.53091037119081,11.58425762522741,11.58425762522741,7.559055118110237,7.559055118110237,56.692913385826778,19.634662639461766,25.56030797634341,11.58425762522741,11.58425762522741],"symbol":"circle","line":{"width":1.8897637795275593,"color":["rgba(185,96,78,1)","rgba(182,99,85,1)","rgba(178,102,93,1)","rgba(137,122,154,1)","rgba(143,120,148,1)","rgba(148,118,142,1)","rgba(187,95,75,1)","rgba(188,94,73,1)","rgba(141,121,150,1)","rgba(183,98,83,1)","rgba(156,115,132,1)","rgba(175,104,99,1)","rgba(182,99,86,1)","rgba(179,101,91,1)","rgba(126,126,166,1)","rgba(154,116,134,1)","rgba(168,108,112,1)","rgba(188,94,72,1)","rgba(170,107,109,1)","rgba(180,100,89,1)","rgba(149,118,141,1)","rgba(150,118,140,1)","rgba(188,93,71,1)","rgba(197,84,46,1)","rgba(148,119,142,1)","rgba(186,95,76,1)","rgba(129,125,163,1)","rgba(129,125,163,1)","rgba(123,127,169,1)","rgba(145,120,146,1)","rgba(183,98,83,1)","rgba(144,120,147,1)","rgba(170,107,109,1)","rgba(173,105,103,1)","rgba(149,118,141,1)","rgba(193,89,59,1)","rgba(179,101,92,1)","rgba(159,113,127,1)","rgba(201,78,32,1)","rgba(188,94,72,1)","rgba(141,121,151,1)","rgba(158,114,128,1)","rgba(188,93,70,1)","rgba(156,115,131,1)","rgba(182,98,85,1)","rgba(184,97,81,1)","rgba(187,94,73,1)","rgba(190,91,66,1)","rgba(178,102,93,1)","rgba(182,99,86,1)","rgba(175,104,101,1)","rgba(189,92,68,1)","rgba(186,95,77,1)","rgba(165,110,117,1)","rgba(188,94,72,1)","rgba(189,92,68,1)","rgba(187,94,74,1)","rgba(146,119,144,1)","rgba(148,118,142,1)","rgba(188,93,71,1)","rgba(158,114,129,1)","rgba(186,95,76,1)","rgba(183,98,83,1)","rgba(169,108,112,1)","rgba(179,101,92,1)","rgba(179,101,92,1)","rgba(147,119,143,1)","rgba(142,121,149,1)","rgba(175,104,100,1)","rgba(178,102,95,1)","rgba(182,98,85,1)","rgba(184,97,81,1)","rgba(176,103,98,1)","rgba(188,93,71,1)","rgba(151,117,138,1)","rgba(203,75,22,1)","rgba(180,101,91,1)","rgba(182,99,86,1)","rgba(152,117,137,1)","rgba(190,92,67,1)","rgba(191,90,64,1)","rgba(186,96,77,1)","rgba(38,139,210,1)","rgba(195,86,53,1)","rgba(185,96,79,1)","rgba(185,96,79,1)","rgba(196,85,49,1)"]}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[-4],"y":[-5],"name":"5e0cc6e1d3dd2cbb05cfa3fc3415283c","type":"scatter","mode":"markers","opacity":0,"hoverinfo":"skip","showlegend":false,"marker":{"color":[0,1],"colorscale":[[0,"#268BD2"],[0.0033444816053511705,"#298BD1"],[0.006688963210702341,"#2C8BD1"],[0.010033444816053512,"#2F8AD0"],[0.013377926421404682,"#318ACF"],[0.016722408026755856,"#348ACF"],[0.020066889632107024,"#368ACE"],[0.023411371237458196,"#388ACE"],[0.026755852842809364,"#3A8ACD"],[0.030100334448160536,"#3C89CC"],[0.033444816053511711,"#3E89CC"],[0.03678929765886288,"#4089CB"],[0.040133779264214048,"#4289CA"],[0.043478260869565216,"#4489CA"],[0.046822742474916391,"#4588C9"],[0.05016722408026756,"#4788C9"],[0.053511705685618728,"#4988C8"],[0.056856187290969903,"#4A88C7"],[0.060200668896321072,"#4C88C7"],[0.06354515050167224,"#4D88C6"],[0.066889632107023422,"#4F87C5"],[0.070234113712374591,"#5087C5"],[0.073578595317725759,"#5187C4"],[0.076923076923076927,"#5387C3"],[0.080267558528428096,"#5487C3"],[0.083612040133779264,"#5586C2"],[0.086956521739130432,"#5686C2"],[0.090301003344481601,"#5886C1"],[0.093645484949832783,"#5986C0"],[0.096989966555183951,"#5A86C0"],[0.10033444816053512,"#5B85BF"],[0.10367892976588629,"#5C85BE"],[0.10702341137123746,"#5D85BE"],[0.11036789297658864,"#5E85BD"],[0.11371237458193981,"#5F85BD"],[0.11705685618729098,"#6185BC"],[0.12040133779264214,"#6284BB"],[0.12374581939799333,"#6384BB"],[0.12709030100334448,"#6484BA"],[0.13043478260869568,"#6584B9"],[0.13377926421404684,"#6684B9"],[0.13712374581939801,"#6683B8"],[0.14046822742474918,"#6783B8"],[0.14381270903010035,"#6883B7"],[0.14715719063545152,"#6983B6"],[0.15050167224080269,"#6A83B6"],[0.15384615384615385,"#6B83B5"],[0.15719063545150502,"#6C82B4"],[0.16053511705685619,"#6D82B4"],[0.16387959866220736,"#6E82B3"],[0.16722408026755853,"#6F82B3"],[0.1705685618729097,"#6F82B2"],[0.17391304347826086,"#7081B1"],[0.17725752508361203,"#7181B1"],[0.1806020066889632,"#7281B0"],[0.18394648829431437,"#7381AF"],[0.18729096989966557,"#7381AF"],[0.19063545150501673,"#7480AE"],[0.1939799331103679,"#7580AE"],[0.19732441471571907,"#7680AD"],[0.20066889632107024,"#7680AC"],[0.20401337792642141,"#7780AC"],[0.20735785953177258,"#7880AB"],[0.21070234113712374,"#797FAB"],[0.21404682274247491,"#797FAA"],[0.21739130434782611,"#7A7FA9"],[0.22073578595317728,"#7B7FA9"],[0.22408026755852845,"#7C7FA8"],[0.22742474916387961,"#7C7EA7"],[0.23076923076923078,"#7D7EA7"],[0.23411371237458195,"#7E7EA6"],[0.23745819397993312,"#7E7EA6"],[0.24080267558528429,"#7F7EA5"],[0.24414715719063546,"#807DA4"],[0.24749163879598665,"#807DA4"],[0.25083612040133779,"#817DA3"],[0.25418060200668896,"#817DA2"],[0.25752508361204013,"#827DA2"],[0.26086956521739135,"#837CA1"],[0.26421404682274247,"#837CA1"],[0.26755852842809369,"#847CA0"],[0.2709030100334448,"#857C9F"],[0.27424749163879603,"#857C9F"],[0.27759197324414714,"#867C9E"],[0.28093645484949836,"#867B9E"],[0.28428093645484948,"#877B9D"],[0.2876254180602007,"#887B9C"],[0.29096989966555187,"#887B9C"],[0.29431438127090304,"#897B9B"],[0.2976588628762542,"#897A9B"],[0.30100334448160537,"#8A7A9A"],[0.30434782608695654,"#8A7A99"],[0.30769230769230771,"#8B7A99"],[0.31103678929765888,"#8C7A98"],[0.31438127090301005,"#8C7997"],[0.31772575250836121,"#8D7997"],[0.32107023411371238,"#8D7996"],[0.32441471571906355,"#8E7996"],[0.32775919732441472,"#8E7995"],[0.33110367892976589,"#8F7894"],[0.33444816053511706,"#8F7894"],[0.33779264214046822,"#907893"],[0.34113712374581939,"#907893"],[0.34448160535117062,"#917892"],[0.34782608695652173,"#917791"],[0.35117056856187295,"#927791"],[0.35451505016722407,"#927790"],[0.35785953177257529,"#937790"],[0.3612040133779264,"#93778F"],[0.36454849498327763,"#94778E"],[0.36789297658862874,"#94768E"],[0.37123745819397996,"#95768D"],[0.37458193979933113,"#95768D"],[0.3779264214046823,"#96768C"],[0.38127090301003347,"#96768B"],[0.38461538461538464,"#97758B"],[0.38795986622073581,"#97758A"],[0.39130434782608697,"#987589"],[0.39464882943143814,"#987589"],[0.39799331103678931,"#987588"],[0.40133779264214048,"#997488"],[0.4046822742474917,"#997487"],[0.40802675585284282,"#9A7486"],[0.41137123745819404,"#9A7486"],[0.41471571906354515,"#9B7485"],[0.41806020066889638,"#9B7385"],[0.42140468227424749,"#9C7384"],[0.42474916387959871,"#9C7383"],[0.42809364548494983,"#9C7383"],[0.43143812709030099,"#9D7382"],[0.43478260869565222,"#9D7282"],[0.43812709030100333,"#9E7281"],[0.44147157190635455,"#9E7280"],[0.44481605351170567,"#9E7280"],[0.44816053511705689,"#9F727F"],[0.451505016722408,"#9F717F"],[0.45484949832775923,"#A0717E"],[0.4581939799331104,"#A0717D"],[0.46153846153846156,"#A0717D"],[0.46488294314381273,"#A1717C"],[0.4682274247491639,"#A1707C"],[0.47157190635451507,"#A2707B"],[0.47491638795986624,"#A2707A"],[0.47826086956521741,"#A2707A"],[0.48160535117056857,"#A37079"],[0.48494983277591974,"#A36F79"],[0.48829431438127091,"#A46F78"],[0.49163879598662213,"#A46F77"],[0.4949832775919733,"#A46F77"],[0.49832775919732442,"#A56E76"],[0.50167224080267558,"#A56E76"],[0.50501672240802686,"#A56E75"],[0.50836120401337792,"#A66E74"],[0.51170568561872909,"#A66E74"],[0.51505016722408026,"#A66D73"],[0.51839464882943154,"#A76D73"],[0.52173913043478271,"#A76D72"],[0.52508361204013376,"#A86D71"],[0.52842809364548493,"#A86D71"],[0.53177257525083621,"#A86C70"],[0.53511705685618738,"#A96C70"],[0.53846153846153844,"#A96C6F"],[0.5418060200668896,"#A96C6E"],[0.54515050167224077,"#AA6C6E"],[0.54849498327759205,"#AA6B6D"],[0.55183946488294322,"#AA6B6D"],[0.55518394648829428,"#AB6B6C"],[0.55852842809364545,"#AB6B6B"],[0.56187290969899673,"#AB6B6B"],[0.56521739130434789,"#AC6A6A"],[0.56856187290969895,"#AC6A6A"],[0.57190635451505012,"#AC6A69"],[0.5752508361204014,"#AD6A68"],[0.57859531772575257,"#AD6968"],[0.58193979933110374,"#AD6967"],[0.58528428093645479,"#AE6967"],[0.58862876254180607,"#AE6966"],[0.59197324414715724,"#AE6965"],[0.59531772575250841,"#AF6865"],[0.59866220735785947,"#AF6864"],[0.60200668896321075,"#AF6864"],[0.60535117056856191,"#AF6863"],[0.60869565217391308,"#B06862"],[0.61204013377926425,"#B06762"],[0.61538461538461542,"#B06761"],[0.61872909698996659,"#B16761"],[0.62207357859531776,"#B16760"],[0.62541806020066892,"#B1665F"],[0.62876254180602009,"#B2665F"],[0.63210702341137126,"#B2665E"],[0.63545150501672243,"#B2665E"],[0.6387959866220736,"#B2665D"],[0.64214046822742477,"#B3655D"],[0.64548494983277593,"#B3655C"],[0.6488294314381271,"#B3655B"],[0.65217391304347827,"#B4655B"],[0.65551839464882944,"#B4655A"],[0.65886287625418072,"#B4645A"],[0.66220735785953178,"#B46459"],[0.66555183946488294,"#B56458"],[0.66889632107023411,"#B56458"],[0.67224080267558539,"#B56357"],[0.67558528428093645,"#B66357"],[0.67892976588628762,"#B66356"],[0.68227424749163879,"#B66355"],[0.68561872909699006,"#B66355"],[0.68896321070234123,"#B76254"],[0.69230769230769229,"#B76254"],[0.69565217391304346,"#B76253"],[0.69899665551839474,"#B76252"],[0.70234113712374591,"#B86152"],[0.70568561872909696,"#B86151"],[0.70903010033444813,"#B86151"],[0.71237458193979941,"#B86150"],[0.71571906354515058,"#B9614F"],[0.71906354515050175,"#B9604F"],[0.72240802675585281,"#B9604E"],[0.72575250836120409,"#BA604E"],[0.72909698996655525,"#BA604D"],[0.73244147157190642,"#BA5F4C"],[0.73578595317725748,"#BA5F4C"],[0.73913043478260876,"#BB5F4B"],[0.74247491638795993,"#BB5F4A"],[0.7458193979933111,"#BB5E4A"],[0.74916387959866226,"#BB5E49"],[0.75250836120401332,"#BC5E49"],[0.7558528428093646,"#BC5E48"],[0.75919732441471577,"#BC5E47"],[0.76254180602006694,"#BC5D47"],[0.76588628762541799,"#BD5D46"],[0.76923076923076927,"#BD5D46"],[0.77257525083612044,"#BD5D45"],[0.77591973244147161,"#BD5C44"],[0.77926421404682278,"#BD5C44"],[0.78260869565217395,"#BE5C43"],[0.78595317725752512,"#BE5C43"],[0.78929765886287628,"#BE5B42"],[0.79264214046822745,"#BE5B41"],[0.79598662207357862,"#BF5B41"],[0.79933110367892979,"#BF5B40"],[0.80267558528428096,"#BF5A3F"],[0.80602006688963213,"#BF5A3F"],[0.8093645484949834,"#C05A3E"],[0.81270903010033446,"#C05A3E"],[0.81605351170568563,"#C0593D"],[0.8193979933110368,"#C0593C"],[0.82274247491638808,"#C0593C"],[0.82608695652173914,"#C1593B"],[0.8294314381270903,"#C1583B"],[0.83277591973244147,"#C1583A"],[0.83612040133779275,"#C15839"],[0.83946488294314392,"#C25839"],[0.84280936454849498,"#C25738"],[0.84615384615384615,"#C25737"],[0.84949832775919742,"#C25737"],[0.85284280936454859,"#C25736"],[0.85618729096989965,"#C35635"],[0.85953177257525082,"#C35635"],[0.86287625418060199,"#C35634"],[0.86622073578595327,"#C35633"],[0.86956521739130443,"#C35533"],[0.87290969899665549,"#C45532"],[0.87625418060200666,"#C45532"],[0.87959866220735794,"#C45531"],[0.88294314381270911,"#C45430"],[0.88628762541806028,"#C45430"],[0.88963210702341133,"#C5542F"],[0.89297658862876261,"#C5542E"],[0.89632107023411378,"#C5532E"],[0.89966555183946495,"#C5532D"],[0.90301003344481601,"#C6532C"],[0.90635451505016729,"#C6532C"],[0.90969899665551845,"#C6522B"],[0.91304347826086962,"#C6522A"],[0.91638795986622079,"#C65229"],[0.91973244147157196,"#C65229"],[0.92307692307692313,"#C75128"],[0.9264214046822743,"#C75127"],[0.92976588628762546,"#C75127"],[0.93311036789297663,"#C75126"],[0.9364548494983278,"#C75025"],[0.93979933110367897,"#C85025"],[0.94314381270903014,"#C85024"],[0.94648829431438142,"#C84F23"],[0.94983277591973247,"#C84F22"],[0.95317725752508364,"#C84F22"],[0.95652173913043481,"#C94F21"],[0.95986622073578609,"#C94E20"],[0.96321070234113715,"#C94E1F"],[0.96655518394648832,"#C94E1E"],[0.96989966555183948,"#C94E1E"],[0.97324414715719065,"#CA4D1D"],[0.97658862876254182,"#CA4D1C"],[0.97993311036789288,"#CA4D1B"],[0.98327759197324427,"#CA4C1A"],[0.98662207357859544,"#CA4C1A"],[0.98996655518394661,"#CA4C19"],[0.99331103678929766,"#CB4C18"],[0.99665551839464883,"#CB4B17"],[1,"#CB4B16"]],"colorbar":{"bgcolor":"rgba(253,246,227,1)","bordercolor":"transparent","borderwidth":2.0615604867573376,"thickness":23.040000000000003,"title":"Distance from US<br />(UNGA Ideal Points)","titlefont":{"color":"rgba(101,123,131,1)","family":"","size":15.940224159402243},"tickmode":"array","ticktext":[0,1,2,3,4],"tickvals":[0.0016666666666666668,0.24416375406577998,0.48666084146489325,0.72915792886400665,0.9716550162631199],"tickfont":{"color":"rgba(147,161,161,1)","family":"","size":12.7521793275218},"ticklen":2,"len":0.5}},"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":45.223744292237448,"r":7.9701120797011216,"b":14.611872146118721,"l":11.955168119551683},"plot_bgcolor":"rgba(253,246,227,1)","paper_bgcolor":"rgba(253,246,227,1)","font":{"color":"rgba(147,161,161,1)","family":"","size":15.940224159402243},"title":{"text":"<b> Climate Attribution Research Network <\/b>","font":{"color":"rgba(101,123,131,1)","family":"","size":18.596928185969286},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-7.3973668028636039,9.1620579471973969],"tickmode":"array","ticktext":["-4","0","4","8"],"tickvals":[-4,0,4.0000000000000009,8],"categoryorder":"array","categoryarray":["-4","0","4","8"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.9850560398505608,"tickwidth":0,"showticklabels":false,"tickfont":{"color":null,"family":null,"size":0},"tickangle":-0,"showline":true,"linecolor":"rgba(147,161,161,1)","linewidth":0.72455564360919278,"showgrid":true,"gridcolor":"rgba(238,232,213,1)","gridwidth":0.72455564360919278,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(101,123,131,1)","family":"","size":15.940224159402243}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-9.2370151884321459,5.1163328747134669],"tickmode":"array","ticktext":["-5","0","5"],"tickvals":[-5,0,5],"categoryorder":"array","categoryarray":["-5","0","5"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.9850560398505608,"tickwidth":0,"showticklabels":false,"tickfont":{"color":null,"family":null,"size":0},"tickangle":-0,"showline":true,"linecolor":"rgba(147,161,161,1)","linewidth":0.72455564360919278,"showgrid":true,"gridcolor":"rgba(238,232,213,1)","gridwidth":0.72455564360919278,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(101,123,131,1)","family":"","size":15.940224159402243}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(253,246,227,1)","bordercolor":"transparent","borderwidth":2.0615604867573376,"font":{"color":"rgba(147,161,161,1)","family":"","size":12.7521793275218},"title":{"text":"Distance from US<br />(UNGA Ideal Points)<br />Study Duration (years)","font":{"color":"rgba(101,123,131,1)","family":"","size":15.940224159402243}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"2fb07152446e":{"size":{},"colour":{},"text":{},"x":{},"y":{},"type":"scatter"}},"cur_data":"2fb07152446e","visdat":{"2fb07152446e":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-7199518c4f50c8ce55af">{"x":{"data":[{"x":[3.1450382864871149,-6.3291523569867332,-0.77391960697880025,2.5444026564040483,2.5946889664664581,-0.69115004211359377,2.4016265141127167,5.6324149570103419,3.1931715955031761,-1.5505407516956549,2.499386507950121,0.76705608562992778,-5.2025432777941498,3.0190485271916874,2.371618007374916,-1.4441107296416131,3.433837058441346,2.6195673663121983,-6.0967465720095344,2.8374444957482341,-0.81357867999444045,-2.8157003507435947,-1.7428456138432091,8.4093568221946242,-0.4752112295375206,4.6713803817104953,-1.594187971503205,-0.30112317189887661,-1.8096475153404563,4.3203746728362864,1.7429983820065513,0.2120151019137633,0.63785951997693879,1.4279935762509417,2.5343274314453681,1.6213738445002652,4.9122760360913231,-3.138808588713661,6.470091368890083,7.0293649795163828,-0.026214817352354543,-3.75616026873614,3.9896782688149148,-6.6446656778608313,5.9194834609484266,5.2878082252979857,6.8565465774417982,6.5462345835792073,-0.89501384370312986,5.4862519982982398,1.3435902495831644,2.546514583640997,4.3491409595187456,4.6150322600704827,3.4787624945299536,1.8719052581329187,2.6161024303438349,-0.64813086772676165,-0.46836612620455687,-2.8860681135445736,2.5494574369005534,-6.5026676053984316,3.4294441997967957,0.8161753436549235,2.9836505013546271,-2.3264567441919479,-0.97384339462148584,2.9986140762182041,2.7869569998607493,-6.3090201801681021,2.1943555453819932,-4.0657331491320194,1.0584325712902163,3.6804140612410237,-0.21978221445413007,-0.067774154560955258,2.3210715957073287,4.398862648225097,4.326631854419233,4.1753983534172372,4.3441979406355022,-5.3680095021685261,1.8199862834063447,4.6759779937422499,6.250269908747689,3.8434231250336643,4.132422608849641],"y":[1.9224499565445388,2.5476467425747518,-6.6814658850649904,1.0124170894216111,-7.3273770441956154,1.6838011837771154,1.8178730161624259,-1.4372157826677501,1.419348678730578,-7.9423205370457444,1.2110409543734173,-0.40587666995214083,-5.1788224257392246,2.027247799498928,1.3364242180493904,1.6949346082742744,-8.391252144918349,1.3572810166814657,-2.6228715293885707,0.67552062086981979,1.1222111273063369,0.4688922974664016,3.1428837115849659,-4.8005780114793009,1.7640126675978458,-2.8921828678483856,-0.17248126955199666,1.7463739282468596,2.1358182782289057,0.88821466735985555,3.2145723441618488,2.4152069823821636,-0.78078539226309129,-0.85294047868994072,1.5096692805554341,-8.5845902764709816,-0.034119877588135547,2.5944345924843208,1.4206163798994003,1.4992731608393581,1.4929090659079025,-4.7437083338773229,-2.9021036819136374,-0.40638437762952451,-1.0335164315279648,1.6787550102974504,-0.69644577682309095,-6.6383933025652162,2.7344591290913018,4.4639079627523026,0.063055017234249222,1.8186557687394027,3.5763343436035959,3.2425266592576576,2.4376994774693843,3.6061290863762596,3.4645556334712726,1.4328059347846487,0.87027188397753552,-7.2686910151841193,0.12214525067831643,1.8027932456964271,1.0563084858066161,-7.2075818948804118,0.74192797152421797,-5.901396062016719,2.2299661476129793,1.2153200666388877,1.3429041987863355,-1.9480043629524353,3.3011325227222388,-6.3149942926201339,-0.92240386866036017,-1.2747232978206475,0.90365317174354309,-8.4309174421145858,3.7459223886188484,-0.70509876685296557,1.4780910540639878,-3.3597777877375243,-4.351555574230793,-3.8518130553433285,1.1963064443565878,-7.6333284224270805,-6.8562449522972049,3.5269188823895599,3.1601464501261729],"text":["Country: Angola <br>Study Duration: 5 years <br>Distance from US: 2.97","Country: United Arab Emirates <br>Study Duration: 1 years <br>Distance from US: 2.81","Country: Argentina <br>Study Duration: 1 years <br>Distance from US: 2.62","Country: Australia <br>Study Duration: 66 years <br>Distance from US: 1.23","Country: Austria <br>Study Duration: 1 years <br>Distance from US: 1.37","Country: Belgium <br>Study Duration: 2 years <br>Distance from US: 1.51","Country: Burkina Faso <br>Study Duration: 3 years <br>Distance from US: 3.05","Country: Bangladesh <br>Study Duration: 3 years <br>Distance from US: 3.09","Country: Bulgaria <br>Study Duration: 3 years <br>Distance from US: 1.33","Country: Bahamas <br>Study Duration: 1 years <br>Distance from US: 2.87","Country: Bosnia & Herzegovina <br>Study Duration: 2 years <br>Distance from US: 1.74","Country: Belize <br>Study Duration: 1 years <br>Distance from US: 2.48","Country: Brazil <br>Study Duration: 18 years <br>Distance from US: 2.8","Country: Botswana <br>Study Duration: 5 years <br>Distance from US: 2.67","Country: Canada <br>Study Duration: 22 years <br>Distance from US: 0.97","Country: Switzerland <br>Study Duration: 3 years <br>Distance from US: 1.69","Country: Chile <br>Study Duration: 1 years <br>Distance from US: 2.19","Country: China <br>Study Duration: 147 years <br>Distance from US: 3.1","Country: Congo - Kinshasa <br>Study Duration: 1 years <br>Distance from US: 2.26","Country: Colombia <br>Study Duration: 2 years <br>Distance from US: 2.72","Country: Germany <br>Study Duration: 16 years <br>Distance from US: 1.53","Country: Denmark <br>Study Duration: 1 years <br>Distance from US: 1.55","Country: Algeria <br>Study Duration: 1 years <br>Distance from US: 3.13","Country: Egypt <br>Study Duration: 1 years <br>Distance from US: 3.67","Country: Spain <br>Study Duration: 10 years <br>Distance from US: 1.5","Country: Ethiopia <br>Study Duration: 5 years <br>Distance from US: 3.01","Country: Finland <br>Study Duration: 1 years <br>Distance from US: 1.03","Country: France <br>Study Duration: 15 years <br>Distance from US: 1.04","Country: United Kingdom <br>Study Duration: 53 years <br>Distance from US: 0.91","Country: Georgia <br>Study Duration: 1 years <br>Distance from US: 1.42","Country: Guinea <br>Study Duration: 1 years <br>Distance from US: 2.85","Country: Greece <br>Study Duration: 3 years <br>Distance from US: 1.39","Country: Guatemala <br>Study Duration: 1 years <br>Distance from US: 2.27","Country: Honduras <br>Study Duration: 1 years <br>Distance from US: 2.4","Country: Croatia <br>Study Duration: 2 years <br>Distance from US: 1.52","Country: Indonesia <br>Study Duration: 3 years <br>Distance from US: 3.41","Country: India <br>Study Duration: 12 years <br>Distance from US: 2.66","Country: Ireland <br>Study Duration: 10 years <br>Distance from US: 1.85","Country: Iran <br>Study Duration: 7 years <br>Distance from US: 3.95","Country: Iraq <br>Study Duration: 4 years <br>Distance from US: 3.11","Country: Italy <br>Study Duration: 7 years <br>Distance from US: 1.31","Country: Japan <br>Study Duration: 15 years <br>Distance from US: 1.82","Country: Kenya <br>Study Duration: 7 years <br>Distance from US: 3.14","Country: South Korea <br>Study Duration: 7 years <br>Distance from US: 1.75","Country: Laos <br>Study Duration: 1 years <br>Distance from US: 2.82","Country: Libya <br>Study Duration: 1 years <br>Distance from US: 2.91","Country: Sri Lanka <br>Study Duration: 1 years <br>Distance from US: 3.08","Country: Lesotho <br>Study Duration: 3 years <br>Distance from US: 3.25","Country: Morocco <br>Study Duration: 2 years <br>Distance from US: 2.62","Country: Madagascar <br>Study Duration: 5 years <br>Distance from US: 2.78","Country: Mexico <br>Study Duration: 2 years <br>Distance from US: 2.45","Country: Mali <br>Study Duration: 3 years <br>Distance from US: 3.19","Country: Mozambique <br>Study Duration: 4 years <br>Distance from US: 3.01","Country: Malawi <br>Study Duration: 2 years <br>Distance from US: 2.07","Country: Namibia <br>Study Duration: 3 years <br>Distance from US: 3.1","Country: Niger <br>Study Duration: 1 years <br>Distance from US: 3.19","Country: Nigeria <br>Study Duration: 2 years <br>Distance from US: 3.06","Country: Netherlands <br>Study Duration: 4 years <br>Distance from US: 1.46","Country: Norway <br>Study Duration: 4 years <br>Distance from US: 1.5","Country: Nepal <br>Study Duration: 1 years <br>Distance from US: 3.12","Country: New Zealand <br>Study Duration: 40 years <br>Distance from US: 1.8","Country: Oman <br>Study Duration: 1 years <br>Distance from US: 3.01","Country: Pakistan <br>Study Duration: 8 years <br>Distance from US: 2.85","Country: Panama <br>Study Duration: 1 years <br>Distance from US: 2.2","Country: Peru <br>Study Duration: 4 years <br>Distance from US: 2.66","Country: Philippines <br>Study Duration: 3 years <br>Distance from US: 2.64","Country: Portugal <br>Study Duration: 6 years <br>Distance from US: 1.48","Country: Romania <br>Study Duration: 2 years <br>Distance from US: 1.35","Country: Russia <br>Study Duration: 13 years <br>Distance from US: 2.47","Country: Rwanda <br>Study Duration: 1 years <br>Distance from US: 2.59","Country: Senegal <br>Study Duration: 1 years <br>Distance from US: 2.82","Country: Singapore <br>Study Duration: 1 years <br>Distance from US: 2.9","Country: El Salvador <br>Study Duration: 1 years <br>Distance from US: 2.52","Country: Somalia <br>Study Duration: 5 years <br>Distance from US: 3.14","Country: Sweden <br>Study Duration: 4 years <br>Distance from US: 1.59","Country: Syria <br>Study Duration: 1 years <br>Distance from US: 4.11","Country: Chad <br>Study Duration: 1 years <br>Distance from US: 2.68","Country: Thailand <br>Study Duration: 4 years <br>Distance from US: 2.79","Country: Turkey <br>Study Duration: 2 years <br>Distance from US: 1.62","Country: Tanzania <br>Study Duration: 2 years <br>Distance from US: 3.21","Country: Uganda <br>Study Duration: 1 years <br>Distance from US: 3.3","Country: Uruguay <br>Study Duration: 1 years <br>Distance from US: 2.98","Country: United States <br>Study Duration: 150 years <br>Distance from US: 0","Country: Vietnam <br>Study Duration: 10 years <br>Distance from US: 3.52","Country: South Africa <br>Study Duration: 21 years <br>Distance from US: 2.96","Country: Zambia <br>Study Duration: 2 years <br>Distance from US: 2.95","Country: Zimbabwe <br>Study Duration: 2 years <br>Distance from US: 3.62"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":["rgba(185,96,78,1)","rgba(182,99,85,1)","rgba(178,102,93,1)","rgba(137,122,154,1)","rgba(143,120,148,1)","rgba(148,118,142,1)","rgba(187,95,75,1)","rgba(188,94,73,1)","rgba(141,121,150,1)","rgba(183,98,83,1)","rgba(156,115,132,1)","rgba(175,104,99,1)","rgba(182,99,86,1)","rgba(179,101,91,1)","rgba(126,126,166,1)","rgba(154,116,134,1)","rgba(168,108,112,1)","rgba(188,94,72,1)","rgba(170,107,109,1)","rgba(180,100,89,1)","rgba(149,118,141,1)","rgba(150,118,140,1)","rgba(188,93,71,1)","rgba(197,84,46,1)","rgba(148,119,142,1)","rgba(186,95,76,1)","rgba(129,125,163,1)","rgba(129,125,163,1)","rgba(123,127,169,1)","rgba(145,120,146,1)","rgba(183,98,83,1)","rgba(144,120,147,1)","rgba(170,107,109,1)","rgba(173,105,103,1)","rgba(149,118,141,1)","rgba(193,89,59,1)","rgba(179,101,92,1)","rgba(159,113,127,1)","rgba(201,78,32,1)","rgba(188,94,72,1)","rgba(141,121,151,1)","rgba(158,114,128,1)","rgba(188,93,70,1)","rgba(156,115,131,1)","rgba(182,98,85,1)","rgba(184,97,81,1)","rgba(187,94,73,1)","rgba(190,91,66,1)","rgba(178,102,93,1)","rgba(182,99,86,1)","rgba(175,104,101,1)","rgba(189,92,68,1)","rgba(186,95,77,1)","rgba(165,110,117,1)","rgba(188,94,72,1)","rgba(189,92,68,1)","rgba(187,94,74,1)","rgba(146,119,144,1)","rgba(148,118,142,1)","rgba(188,93,71,1)","rgba(158,114,129,1)","rgba(186,95,76,1)","rgba(183,98,83,1)","rgba(169,108,112,1)","rgba(179,101,92,1)","rgba(179,101,92,1)","rgba(147,119,143,1)","rgba(142,121,149,1)","rgba(175,104,100,1)","rgba(178,102,95,1)","rgba(182,98,85,1)","rgba(184,97,81,1)","rgba(176,103,98,1)","rgba(188,93,71,1)","rgba(151,117,138,1)","rgba(203,75,22,1)","rgba(180,101,91,1)","rgba(182,99,86,1)","rgba(152,117,137,1)","rgba(190,92,67,1)","rgba(191,90,64,1)","rgba(186,96,77,1)","rgba(38,139,210,1)","rgba(195,86,53,1)","rgba(185,96,79,1)","rgba(185,96,79,1)","rgba(196,85,49,1)"],"opacity":0.80000000000000004,"size":[15.609460132344587,7.559055118110237,7.559055118110237,40.01127521958643,7.559055118110237,11.58425762522741,13.25155109497353,13.25155109497353,13.25155109497353,7.559055118110237,11.58425762522741,7.559055118110237,24.155390219455377,15.609460132344587,26.004850294500717,13.25155109497353,7.559055118110237,56.195762064635204,7.559055118110237,11.58425762522741,23.148597393287396,7.559055118110237,7.559055118110237,7.559055118110237,19.634662639461766,15.609460132344587,7.559055118110237,22.619983812126204,36.585203185184596,7.559055118110237,7.559055118110237,13.25155109497353,7.559055118110237,7.559055118110237,11.58425762522741,13.25155109497353,20.909141539415771,19.634662639461766,17.41874737191889,14.53091037119081,17.41874737191889,22.619983812126204,17.41874737191889,17.41874737191889,7.559055118110237,7.559055118110237,7.559055118110237,13.25155109497353,11.58425762522741,15.609460132344587,11.58425762522741,13.25155109497353,14.53091037119081,11.58425762522741,13.25155109497353,7.559055118110237,11.58425762522741,14.53091037119081,14.53091037119081,7.559055118110237,32.696436718205213,7.559055118110237,18.20873992861598,7.559055118110237,14.53091037119081,13.25155109497353,16.559681547226823,11.58425762522741,21.502765624271383,7.559055118110237,7.559055118110237,7.559055118110237,7.559055118110237,15.609460132344587,14.53091037119081,7.559055118110237,7.559055118110237,14.53091037119081,11.58425762522741,11.58425762522741,7.559055118110237,7.559055118110237,56.692913385826778,19.634662639461766,25.56030797634341,11.58425762522741,11.58425762522741],"symbol":"circle","line":{"width":1.8897637795275593,"color":["rgba(185,96,78,1)","rgba(182,99,85,1)","rgba(178,102,93,1)","rgba(137,122,154,1)","rgba(143,120,148,1)","rgba(148,118,142,1)","rgba(187,95,75,1)","rgba(188,94,73,1)","rgba(141,121,150,1)","rgba(183,98,83,1)","rgba(156,115,132,1)","rgba(175,104,99,1)","rgba(182,99,86,1)","rgba(179,101,91,1)","rgba(126,126,166,1)","rgba(154,116,134,1)","rgba(168,108,112,1)","rgba(188,94,72,1)","rgba(170,107,109,1)","rgba(180,100,89,1)","rgba(149,118,141,1)","rgba(150,118,140,1)","rgba(188,93,71,1)","rgba(197,84,46,1)","rgba(148,119,142,1)","rgba(186,95,76,1)","rgba(129,125,163,1)","rgba(129,125,163,1)","rgba(123,127,169,1)","rgba(145,120,146,1)","rgba(183,98,83,1)","rgba(144,120,147,1)","rgba(170,107,109,1)","rgba(173,105,103,1)","rgba(149,118,141,1)","rgba(193,89,59,1)","rgba(179,101,92,1)","rgba(159,113,127,1)","rgba(201,78,32,1)","rgba(188,94,72,1)","rgba(141,121,151,1)","rgba(158,114,128,1)","rgba(188,93,70,1)","rgba(156,115,131,1)","rgba(182,98,85,1)","rgba(184,97,81,1)","rgba(187,94,73,1)","rgba(190,91,66,1)","rgba(178,102,93,1)","rgba(182,99,86,1)","rgba(175,104,101,1)","rgba(189,92,68,1)","rgba(186,95,77,1)","rgba(165,110,117,1)","rgba(188,94,72,1)","rgba(189,92,68,1)","rgba(187,94,74,1)","rgba(146,119,144,1)","rgba(148,118,142,1)","rgba(188,93,71,1)","rgba(158,114,129,1)","rgba(186,95,76,1)","rgba(183,98,83,1)","rgba(169,108,112,1)","rgba(179,101,92,1)","rgba(179,101,92,1)","rgba(147,119,143,1)","rgba(142,121,149,1)","rgba(175,104,100,1)","rgba(178,102,95,1)","rgba(182,98,85,1)","rgba(184,97,81,1)","rgba(176,103,98,1)","rgba(188,93,71,1)","rgba(151,117,138,1)","rgba(203,75,22,1)","rgba(180,101,91,1)","rgba(182,99,86,1)","rgba(152,117,137,1)","rgba(190,92,67,1)","rgba(191,90,64,1)","rgba(186,96,77,1)","rgba(38,139,210,1)","rgba(195,86,53,1)","rgba(185,96,79,1)","rgba(185,96,79,1)","rgba(196,85,49,1)"]}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[-4],"y":[-5],"name":"5e0cc6e1d3dd2cbb05cfa3fc3415283c","type":"scatter","mode":"markers","opacity":0,"hoverinfo":"skip","showlegend":false,"marker":{"color":[0,1],"colorscale":[[0,"#268BD2"],[0.0033444816053511705,"#298BD1"],[0.006688963210702341,"#2C8BD1"],[0.010033444816053512,"#2F8AD0"],[0.013377926421404682,"#318ACF"],[0.016722408026755856,"#348ACF"],[0.020066889632107024,"#368ACE"],[0.023411371237458196,"#388ACE"],[0.026755852842809364,"#3A8ACD"],[0.030100334448160536,"#3C89CC"],[0.033444816053511711,"#3E89CC"],[0.03678929765886288,"#4089CB"],[0.040133779264214048,"#4289CA"],[0.043478260869565216,"#4489CA"],[0.046822742474916391,"#4588C9"],[0.05016722408026756,"#4788C9"],[0.053511705685618728,"#4988C8"],[0.056856187290969903,"#4A88C7"],[0.060200668896321072,"#4C88C7"],[0.06354515050167224,"#4D88C6"],[0.066889632107023422,"#4F87C5"],[0.070234113712374591,"#5087C5"],[0.073578595317725759,"#5187C4"],[0.076923076923076927,"#5387C3"],[0.080267558528428096,"#5487C3"],[0.083612040133779264,"#5586C2"],[0.086956521739130432,"#5686C2"],[0.090301003344481601,"#5886C1"],[0.093645484949832783,"#5986C0"],[0.096989966555183951,"#5A86C0"],[0.10033444816053512,"#5B85BF"],[0.10367892976588629,"#5C85BE"],[0.10702341137123746,"#5D85BE"],[0.11036789297658864,"#5E85BD"],[0.11371237458193981,"#5F85BD"],[0.11705685618729098,"#6185BC"],[0.12040133779264214,"#6284BB"],[0.12374581939799333,"#6384BB"],[0.12709030100334448,"#6484BA"],[0.13043478260869568,"#6584B9"],[0.13377926421404684,"#6684B9"],[0.13712374581939801,"#6683B8"],[0.14046822742474918,"#6783B8"],[0.14381270903010035,"#6883B7"],[0.14715719063545152,"#6983B6"],[0.15050167224080269,"#6A83B6"],[0.15384615384615385,"#6B83B5"],[0.15719063545150502,"#6C82B4"],[0.16053511705685619,"#6D82B4"],[0.16387959866220736,"#6E82B3"],[0.16722408026755853,"#6F82B3"],[0.1705685618729097,"#6F82B2"],[0.17391304347826086,"#7081B1"],[0.17725752508361203,"#7181B1"],[0.1806020066889632,"#7281B0"],[0.18394648829431437,"#7381AF"],[0.18729096989966557,"#7381AF"],[0.19063545150501673,"#7480AE"],[0.1939799331103679,"#7580AE"],[0.19732441471571907,"#7680AD"],[0.20066889632107024,"#7680AC"],[0.20401337792642141,"#7780AC"],[0.20735785953177258,"#7880AB"],[0.21070234113712374,"#797FAB"],[0.21404682274247491,"#797FAA"],[0.21739130434782611,"#7A7FA9"],[0.22073578595317728,"#7B7FA9"],[0.22408026755852845,"#7C7FA8"],[0.22742474916387961,"#7C7EA7"],[0.23076923076923078,"#7D7EA7"],[0.23411371237458195,"#7E7EA6"],[0.23745819397993312,"#7E7EA6"],[0.24080267558528429,"#7F7EA5"],[0.24414715719063546,"#807DA4"],[0.24749163879598665,"#807DA4"],[0.25083612040133779,"#817DA3"],[0.25418060200668896,"#817DA2"],[0.25752508361204013,"#827DA2"],[0.26086956521739135,"#837CA1"],[0.26421404682274247,"#837CA1"],[0.26755852842809369,"#847CA0"],[0.2709030100334448,"#857C9F"],[0.27424749163879603,"#857C9F"],[0.27759197324414714,"#867C9E"],[0.28093645484949836,"#867B9E"],[0.28428093645484948,"#877B9D"],[0.2876254180602007,"#887B9C"],[0.29096989966555187,"#887B9C"],[0.29431438127090304,"#897B9B"],[0.2976588628762542,"#897A9B"],[0.30100334448160537,"#8A7A9A"],[0.30434782608695654,"#8A7A99"],[0.30769230769230771,"#8B7A99"],[0.31103678929765888,"#8C7A98"],[0.31438127090301005,"#8C7997"],[0.31772575250836121,"#8D7997"],[0.32107023411371238,"#8D7996"],[0.32441471571906355,"#8E7996"],[0.32775919732441472,"#8E7995"],[0.33110367892976589,"#8F7894"],[0.33444816053511706,"#8F7894"],[0.33779264214046822,"#907893"],[0.34113712374581939,"#907893"],[0.34448160535117062,"#917892"],[0.34782608695652173,"#917791"],[0.35117056856187295,"#927791"],[0.35451505016722407,"#927790"],[0.35785953177257529,"#937790"],[0.3612040133779264,"#93778F"],[0.36454849498327763,"#94778E"],[0.36789297658862874,"#94768E"],[0.37123745819397996,"#95768D"],[0.37458193979933113,"#95768D"],[0.3779264214046823,"#96768C"],[0.38127090301003347,"#96768B"],[0.38461538461538464,"#97758B"],[0.38795986622073581,"#97758A"],[0.39130434782608697,"#987589"],[0.39464882943143814,"#987589"],[0.39799331103678931,"#987588"],[0.40133779264214048,"#997488"],[0.4046822742474917,"#997487"],[0.40802675585284282,"#9A7486"],[0.41137123745819404,"#9A7486"],[0.41471571906354515,"#9B7485"],[0.41806020066889638,"#9B7385"],[0.42140468227424749,"#9C7384"],[0.42474916387959871,"#9C7383"],[0.42809364548494983,"#9C7383"],[0.43143812709030099,"#9D7382"],[0.43478260869565222,"#9D7282"],[0.43812709030100333,"#9E7281"],[0.44147157190635455,"#9E7280"],[0.44481605351170567,"#9E7280"],[0.44816053511705689,"#9F727F"],[0.451505016722408,"#9F717F"],[0.45484949832775923,"#A0717E"],[0.4581939799331104,"#A0717D"],[0.46153846153846156,"#A0717D"],[0.46488294314381273,"#A1717C"],[0.4682274247491639,"#A1707C"],[0.47157190635451507,"#A2707B"],[0.47491638795986624,"#A2707A"],[0.47826086956521741,"#A2707A"],[0.48160535117056857,"#A37079"],[0.48494983277591974,"#A36F79"],[0.48829431438127091,"#A46F78"],[0.49163879598662213,"#A46F77"],[0.4949832775919733,"#A46F77"],[0.49832775919732442,"#A56E76"],[0.50167224080267558,"#A56E76"],[0.50501672240802686,"#A56E75"],[0.50836120401337792,"#A66E74"],[0.51170568561872909,"#A66E74"],[0.51505016722408026,"#A66D73"],[0.51839464882943154,"#A76D73"],[0.52173913043478271,"#A76D72"],[0.52508361204013376,"#A86D71"],[0.52842809364548493,"#A86D71"],[0.53177257525083621,"#A86C70"],[0.53511705685618738,"#A96C70"],[0.53846153846153844,"#A96C6F"],[0.5418060200668896,"#A96C6E"],[0.54515050167224077,"#AA6C6E"],[0.54849498327759205,"#AA6B6D"],[0.55183946488294322,"#AA6B6D"],[0.55518394648829428,"#AB6B6C"],[0.55852842809364545,"#AB6B6B"],[0.56187290969899673,"#AB6B6B"],[0.56521739130434789,"#AC6A6A"],[0.56856187290969895,"#AC6A6A"],[0.57190635451505012,"#AC6A69"],[0.5752508361204014,"#AD6A68"],[0.57859531772575257,"#AD6968"],[0.58193979933110374,"#AD6967"],[0.58528428093645479,"#AE6967"],[0.58862876254180607,"#AE6966"],[0.59197324414715724,"#AE6965"],[0.59531772575250841,"#AF6865"],[0.59866220735785947,"#AF6864"],[0.60200668896321075,"#AF6864"],[0.60535117056856191,"#AF6863"],[0.60869565217391308,"#B06862"],[0.61204013377926425,"#B06762"],[0.61538461538461542,"#B06761"],[0.61872909698996659,"#B16761"],[0.62207357859531776,"#B16760"],[0.62541806020066892,"#B1665F"],[0.62876254180602009,"#B2665F"],[0.63210702341137126,"#B2665E"],[0.63545150501672243,"#B2665E"],[0.6387959866220736,"#B2665D"],[0.64214046822742477,"#B3655D"],[0.64548494983277593,"#B3655C"],[0.6488294314381271,"#B3655B"],[0.65217391304347827,"#B4655B"],[0.65551839464882944,"#B4655A"],[0.65886287625418072,"#B4645A"],[0.66220735785953178,"#B46459"],[0.66555183946488294,"#B56458"],[0.66889632107023411,"#B56458"],[0.67224080267558539,"#B56357"],[0.67558528428093645,"#B66357"],[0.67892976588628762,"#B66356"],[0.68227424749163879,"#B66355"],[0.68561872909699006,"#B66355"],[0.68896321070234123,"#B76254"],[0.69230769230769229,"#B76254"],[0.69565217391304346,"#B76253"],[0.69899665551839474,"#B76252"],[0.70234113712374591,"#B86152"],[0.70568561872909696,"#B86151"],[0.70903010033444813,"#B86151"],[0.71237458193979941,"#B86150"],[0.71571906354515058,"#B9614F"],[0.71906354515050175,"#B9604F"],[0.72240802675585281,"#B9604E"],[0.72575250836120409,"#BA604E"],[0.72909698996655525,"#BA604D"],[0.73244147157190642,"#BA5F4C"],[0.73578595317725748,"#BA5F4C"],[0.73913043478260876,"#BB5F4B"],[0.74247491638795993,"#BB5F4A"],[0.7458193979933111,"#BB5E4A"],[0.74916387959866226,"#BB5E49"],[0.75250836120401332,"#BC5E49"],[0.7558528428093646,"#BC5E48"],[0.75919732441471577,"#BC5E47"],[0.76254180602006694,"#BC5D47"],[0.76588628762541799,"#BD5D46"],[0.76923076923076927,"#BD5D46"],[0.77257525083612044,"#BD5D45"],[0.77591973244147161,"#BD5C44"],[0.77926421404682278,"#BD5C44"],[0.78260869565217395,"#BE5C43"],[0.78595317725752512,"#BE5C43"],[0.78929765886287628,"#BE5B42"],[0.79264214046822745,"#BE5B41"],[0.79598662207357862,"#BF5B41"],[0.79933110367892979,"#BF5B40"],[0.80267558528428096,"#BF5A3F"],[0.80602006688963213,"#BF5A3F"],[0.8093645484949834,"#C05A3E"],[0.81270903010033446,"#C05A3E"],[0.81605351170568563,"#C0593D"],[0.8193979933110368,"#C0593C"],[0.82274247491638808,"#C0593C"],[0.82608695652173914,"#C1593B"],[0.8294314381270903,"#C1583B"],[0.83277591973244147,"#C1583A"],[0.83612040133779275,"#C15839"],[0.83946488294314392,"#C25839"],[0.84280936454849498,"#C25738"],[0.84615384615384615,"#C25737"],[0.84949832775919742,"#C25737"],[0.85284280936454859,"#C25736"],[0.85618729096989965,"#C35635"],[0.85953177257525082,"#C35635"],[0.86287625418060199,"#C35634"],[0.86622073578595327,"#C35633"],[0.86956521739130443,"#C35533"],[0.87290969899665549,"#C45532"],[0.87625418060200666,"#C45532"],[0.87959866220735794,"#C45531"],[0.88294314381270911,"#C45430"],[0.88628762541806028,"#C45430"],[0.88963210702341133,"#C5542F"],[0.89297658862876261,"#C5542E"],[0.89632107023411378,"#C5532E"],[0.89966555183946495,"#C5532D"],[0.90301003344481601,"#C6532C"],[0.90635451505016729,"#C6532C"],[0.90969899665551845,"#C6522B"],[0.91304347826086962,"#C6522A"],[0.91638795986622079,"#C65229"],[0.91973244147157196,"#C65229"],[0.92307692307692313,"#C75128"],[0.9264214046822743,"#C75127"],[0.92976588628762546,"#C75127"],[0.93311036789297663,"#C75126"],[0.9364548494983278,"#C75025"],[0.93979933110367897,"#C85025"],[0.94314381270903014,"#C85024"],[0.94648829431438142,"#C84F23"],[0.94983277591973247,"#C84F22"],[0.95317725752508364,"#C84F22"],[0.95652173913043481,"#C94F21"],[0.95986622073578609,"#C94E20"],[0.96321070234113715,"#C94E1F"],[0.96655518394648832,"#C94E1E"],[0.96989966555183948,"#C94E1E"],[0.97324414715719065,"#CA4D1D"],[0.97658862876254182,"#CA4D1C"],[0.97993311036789288,"#CA4D1B"],[0.98327759197324427,"#CA4C1A"],[0.98662207357859544,"#CA4C1A"],[0.98996655518394661,"#CA4C19"],[0.99331103678929766,"#CB4C18"],[0.99665551839464883,"#CB4B17"],[1,"#CB4B16"]],"colorbar":{"bgcolor":"rgba(253,246,227,1)","bordercolor":"transparent","borderwidth":2.0615604867573376,"thickness":23.040000000000003,"title":"Distance from US<br />(UNGA Ideal Points)","titlefont":{"color":"rgba(101,123,131,1)","family":"","size":15.940224159402243},"tickmode":"array","ticktext":[0,1,2,3,4],"tickvals":[0.0016666666666666668,0.24416375406577998,0.48666084146489325,0.72915792886400665,0.9716550162631199],"tickfont":{"color":"rgba(147,161,161,1)","family":"","size":12.7521793275218},"ticklen":2,"len":0.5}},"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":45.223744292237448,"r":7.9701120797011216,"b":14.611872146118721,"l":11.955168119551683},"plot_bgcolor":"rgba(253,246,227,1)","paper_bgcolor":"rgba(253,246,227,1)","font":{"color":"rgba(147,161,161,1)","family":"","size":15.940224159402243},"title":{"text":"<b> Climate Attribution Research Network <\/b>","font":{"color":"rgba(101,123,131,1)","family":"","size":18.596928185969286},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-7.3973668028636039,9.1620579471973969],"tickmode":"array","ticktext":["-4","0","4","8"],"tickvals":[-4,0,4.0000000000000009,8],"categoryorder":"array","categoryarray":["-4","0","4","8"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.9850560398505608,"tickwidth":0,"showticklabels":false,"tickfont":{"color":null,"family":null,"size":0},"tickangle":-0,"showline":true,"linecolor":"rgba(147,161,161,1)","linewidth":0.72455564360919278,"showgrid":true,"gridcolor":"rgba(238,232,213,1)","gridwidth":0.72455564360919278,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(101,123,131,1)","family":"","size":15.940224159402243}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-9.2370151884321459,5.1163328747134669],"tickmode":"array","ticktext":["-5","0","5"],"tickvals":[-5,0,5],"categoryorder":"array","categoryarray":["-5","0","5"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.9850560398505608,"tickwidth":0,"showticklabels":false,"tickfont":{"color":null,"family":null,"size":0},"tickangle":-0,"showline":true,"linecolor":"rgba(147,161,161,1)","linewidth":0.72455564360919278,"showgrid":true,"gridcolor":"rgba(238,232,213,1)","gridwidth":0.72455564360919278,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(101,123,131,1)","family":"","size":15.940224159402243}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(253,246,227,1)","bordercolor":"transparent","borderwidth":2.0615604867573376,"font":{"color":"rgba(147,161,161,1)","family":"","size":12.7521793275218},"title":{"text":"Distance from US<br />(UNGA Ideal Points)<br />Study Duration (years)","font":{"color":"rgba(101,123,131,1)","family":"","size":15.940224159402243}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"2fe757f08d82":{"size":{},"colour":{},"text":{},"x":{},"y":{},"type":"scatter"}},"cur_data":"2fe757f08d82","visdat":{"2fe757f08d82":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p>I reran a simpler version of the plot from earlier using <code>plotly</code> to look at all the nodes in greater detail. This actually revealed some interesting patterns in the data.</p>
 <p>First, I got to take a closer look at all of those outliers that don’t make up the central cluster. It looks like a lot of those states are either African or Latin American, suggesting that the current attribution studies have some weaker coverage in those regions. Whereas some regional studies examine Africa and Latin America, there seem to be some states that are consistently left out for some reason.</p>
 <p>The African region clusters indicate that researchers studying African states tend to study the same few states together.</p>
@@ -4304,79 +4754,6 @@ anova(poi.mod, update(poi.mod, ~ 1), test = "Chisq")
   <category>Poisson</category>
   <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/poisson-notes.html</guid>
   <pubDate>Sun, 08 Oct 2023 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Multinomial Logit Model</title>
-  <dc:creator>Kevin Navarrete-Parra</dc:creator>
-  <link>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/multinomial-logit.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><em>I am writing quick and easy R guides for my didactic purposes and to provide useful starting places for my peers in grad school. If you see that I have made a mistake or would like to suggest some way to make the post better or more accurate, please feel free to <a href="navark4@unlv.nevada.edu">email</a> me. I am always happy to learn from others’ experiences!</em></p>
-<section id="table-of-contents" class="level1">
-<h1>Table of contents</h1>
-<ol type="1">
-<li>Model Formula</li>
-<li>Conditional Probabilities and Odds Ratios</li>
-<li>Running it in R</li>
-<li>Diagnostic Statistics</li>
-</ol>
-</section>
-<section id="model-formula" class="level1">
-<h1>Model Formula <a name="section1"></a></h1>
-<p>The multinomial logistic regression is used for nominal response variables with multiple unordered categories, like party ID variables. You can also use this for an ordinal response variable, assuming the proportional odds assumption doesn’t hold. This model differs from the proportional odds and partial proportional odds models because it compares the odds of being in a given category against the odds of being in the baseline category. Recall that the PO and PPO models compare the odds of being at or below a given category. The multinomial logit model can be expressed as</p>
-<p><img src="https://latex.codecogs.com/png.latex?%20ln%20%5Cleft(%20%5Cfrac%7BP(Y%20=%20j%20%7C%20x_1,%20x_2,%20...,%20x_p)%7D%7BP(Y%20=%20J%20%7C%20x_1,%20x_2,%20...,%20x_p)%7D%20%5Cright)%20=%20%5Calpha_j%20+%20%5Cbeta_%7Bj1%7DX_1%20+%20%5Cbeta_%7Bj2%7DX_2%20+%20...%20+%20%5Cbeta_%7Bjp%7DX_p%20%20"></p>
-<p>where <img src="https://latex.codecogs.com/png.latex?j%20=%201,2,%20...,%20J%20-%201">. J is the baseline category, which can be any category but is usually the highest. <img src="https://latex.codecogs.com/png.latex?%5Calpha_j"> represents the intercepts and the beta values represent the logit coefficients. This model is similar to the generalized ordinal logit model in that it estimates <img src="https://latex.codecogs.com/png.latex?J%20-%201"> logit coefficients for each independent variable.</p>
-<p>As you can see, this model is essentially a series of logit models, where being in a given category is coded as 1 and being in the baseline is a 0.</p>
-<p>It’s important to note that this model assumes the dependent variable follows the multinomial distribution, which is an extension of the binomial distribution. The binomial distribution can be expressed as</p>
-<p><img src="https://latex.codecogs.com/png.latex?%20P(Y%20=%20k)%20=%20%5Cbinom%7Bn%7D%7Bk%7Dp%5Ek%20(1-p)%5E%7Bn-k%7D%20"></p>
-<p>where <img src="https://latex.codecogs.com/png.latex?%5Cbinom%7Bn%7D%7Bk%7D"> is the binomial coefficient, k is the number of successes (1), n is the number of trials, and p is the success probability when the outcome is 1. Therefore,</p>
-<p><img src="https://latex.codecogs.com/png.latex?%20%5Cbinom%7Bn%7D%7Bk%7D%20=%20%5Cfrac%7Bn!%7D%7B(n-k)!%20k!%7D%20"></p>
-<p>Since our model has a response variable with multiple categories, the probability function can be expressed as</p>
-<p><img src="https://latex.codecogs.com/png.latex?%20P(n_1,%20n_2,%20...,%20n_j)%20=%20%5Cfrac%7Bn!%7D%7B(n_1!n_2!...n_j!)%7Dp_%7B1%7D%5E%7Bn_1%7Dp_%7B2%7D%5E%7Bn_2%7D...p_%7Bj%7D%5E%7Bn_j%7D%20"></p>
-<p>where j is the number of categories in the response, <img src="https://latex.codecogs.com/png.latex?n_j"> is the number of observations for a given category, and <img src="https://latex.codecogs.com/png.latex?p_j"> is the probability of choosing a given category.</p>
-<p>The log-likelihood function for the multinomial distribution can be expressed as</p>
-<p><img src="https://latex.codecogs.com/png.latex?%20l(p,%20n)%20=%20%5Csum%5Ej_%7Bi=1%7D%20n_i%20ln%20p_i%20+%20ln%5Cfrac%7Bn!%7D%7Bn_1!n_2!...n_j!%7D%20"></p>
-<p>where <img src="https://latex.codecogs.com/png.latex?ln%5Cfrac%7Bn!%7D%7Bn_1!n_2!...n_j!%7D"> is a constant term and does not involve parameter <em>p</em>. <img src="https://latex.codecogs.com/png.latex?%5Csum%7Bj%7D%7Bi=1%7D%20n_i%20ln%20p_i"> is the sum of the number of observations for a given category and the log probability of choosing that category.</p>
-</section>
-<section id="conditional-probabilities-and-odds-ratios" class="level1">
-<h1>Conditional Probabilities and Odds Ratios <a name="section2"></a></h1>
-<p>If you want to calculate the odds of being in a category as opposed to the baseline, you can express the equation as</p>
-<p><img src="https://latex.codecogs.com/png.latex?%20Odds(Y%20=%20j%20vs.%20Y%20=%20J)%20=%20%5Cfrac%7BP(Y%20=%20j)%7D%7BP(Y%20=%20J)%7D%20"></p>
-<p>The odds ratios for this model function almost exactly like those for the <a href="https://www.kevinparra.co/posts/Notes/logit-notes">logit model</a>.</p>
-</section>
-<section id="running-it-in-r" class="level1">
-<h1>Running it in R <a name="section3"></a></h1>
-<p>There are three packages you can use to run the multinomial logit model: <code>VGAM</code>, <code>nnet</code>, and <code>mlogit</code>. Using <code>VGAM</code>, you can run the <code>vglm</code> function. <code>nnet</code> uses the <code>multinom</code> function. And <code>mlogit</code> uses the <code>mlogit</code> function. The syntax for the <code>vglm</code> function is</p>
-<pre><code>
-mlm.mod &lt;- vglm(dv ~ iv1 + iv2 + ivp, multinomial(refLevel = 1), data = data)
-summary(mlm.mod)
-</code></pre>
-<p>where multinomial is the family function and the refLevel argument indicates which level will serve as the baseline.</p>
-<p>After running the code above, make sure to generate an odds ratio table, which can be done by running the following code:</p>
-<pre><code>
-mlm.or &lt;- cbind(exp(coef(mlm.mod)), exp(confint(mlm.mod)))
-</code></pre>
-</section>
-<section id="diagnostic-statistics" class="level1">
-<h1>Diagnostic Statistics <a name="section4"></a></h1>
-<p>The diagnostic statistics for this model are exactly the same as those for the <a href="https://www.kevinparra.co/posts/Notes/logit-notes">logit model</a>.</p>
-
-
-<!-- -->
-
-</section>
-
- ]]></description>
-  <category>Notes</category>
-  <category>Model</category>
-  <category>Data Science</category>
-  <category>Multinomial</category>
-  <category>Logit</category>
-  <guid>https://kevinnavreteparra.github.io/kevin-quarto-blog/posts/Notes/multinomial-logit.html</guid>
-  <pubDate>Mon, 02 Oct 2023 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
