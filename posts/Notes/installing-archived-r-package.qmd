@@ -85,7 +85,8 @@ It is worth noting that I came about this solution through the following means:
 
 - I downloaded the source code for `CDVine` and `SemiParSampleSelect` from CRAN and inspected the source code files to familiarize myself with the package structure. This helped me identify where the problematic macros were being called in the `CDVine` package. 
 
-- I searched online for similar issues. I didn't find any specific solutions for this package, nor did I find much reference material to help me understand the problem.
+- I searched online for similar issues. I didn't find any specific solutions for this package, nor did I find much reference material to help me understand the problem. However, I did find [this email thread](https://stat.ethz.ch/pipermail/r-devel/2022-April/081602.html) posted online that gave me some confidence that I arrived at the right solution.
+
 - I asked around with AI tools like ChatGPT and Claude, which provided me with some useful insights as well as some incorrect suggestions. I spent some time sifting through responses and trying different approaches until I found a solution that worked. 
 
 Given that I used AI tools to help me troubleshoot this issue, I'll also say that this solution should be taken with a grain of salt. It worked for me for now, but there may be other issues that arise down the road. I also don't know `C` programming, so this solution was more of a best attempt than a guaranteed fix. 
